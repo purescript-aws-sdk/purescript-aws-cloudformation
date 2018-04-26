@@ -3,7 +3,7 @@
 #### `cancelUpdateStack`
 
 ``` purescript
-cancelUpdateStack :: forall eff. Service -> CancelUpdateStackInput -> Aff (exception :: EXCEPTION | eff) NoOutput
+cancelUpdateStack :: forall eff. Service -> CancelUpdateStackInput -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Cancels an update on the specified stack. If the call completes successfully, the stack rolls back the update and reverts to the previous stack configuration.</p> <note> <p>You can cancel only stacks that are in the UPDATE_IN_PROGRESS state.</p> </note>
@@ -59,7 +59,7 @@ deleteChangeSet :: forall eff. Service -> DeleteChangeSetInput -> Aff (exception
 #### `deleteStack`
 
 ``` purescript
-deleteStack :: forall eff. Service -> DeleteStackInput -> Aff (exception :: EXCEPTION | eff) NoOutput
+deleteStack :: forall eff. Service -> DeleteStackInput -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Deletes a specified stack. Once the call completes successfully, stack deletion starts. Deleted stacks do not show up in the <a>DescribeStacks</a> API if the deletion has been completed successfully.</p>
@@ -267,7 +267,7 @@ listStacks :: forall eff. Service -> ListStacksInput -> Aff (exception :: EXCEPT
 #### `setStackPolicy`
 
 ``` purescript
-setStackPolicy :: forall eff. Service -> SetStackPolicyInput -> Aff (exception :: EXCEPTION | eff) NoOutput
+setStackPolicy :: forall eff. Service -> SetStackPolicyInput -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Sets a stack policy for a specified stack.</p>
@@ -275,7 +275,7 @@ setStackPolicy :: forall eff. Service -> SetStackPolicyInput -> Aff (exception :
 #### `signalResource`
 
 ``` purescript
-signalResource :: forall eff. Service -> SignalResourceInput -> Aff (exception :: EXCEPTION | eff) NoOutput
+signalResource :: forall eff. Service -> SignalResourceInput -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Sends a signal to the specified resource with a success or failure status. You can use the SignalResource API in conjunction with a creation policy or update policy. AWS CloudFormation doesn't proceed with a stack creation or update until resources receive the required number of signals or the timeout period is exceeded. The SignalResource API is useful in cases where you want to send signals from anywhere other than an Amazon EC2 instance.</p>

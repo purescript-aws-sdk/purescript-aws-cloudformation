@@ -26,7 +26,7 @@ Encode Account
 
 ``` purescript
 newtype AccountGateResult
-  = AccountGateResult { "Status" :: NullOrUndefined (AccountGateStatus), "StatusReason" :: NullOrUndefined (AccountGateStatusReason) }
+  = AccountGateResult { "Status" :: Maybe (AccountGateStatus), "StatusReason" :: Maybe (AccountGateStatusReason) }
 ```
 
 <p>Structure that contains the results of the account gate function which AWS CloudFormation invokes, if present, before proceeding with a stack set operation in an account and region.</p> <p>For each account and region, AWS CloudFormation lets you specify a Lamdba function that encapsulates any requirements that must be met before CloudFormation can proceed with a stack set operation in that account and region. CloudFormation invokes the function each time a stack set operation is requested for that account and region; if the function returns <code>FAILED</code>, CloudFormation cancels the operation in that account and region, and sets the stack set operation result status for that account and region to <code>FAILED</code>. </p> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-account-gating.html">Configuring a target account gate</a>.</p>
@@ -51,7 +51,7 @@ Constructs AccountGateResult from required parameters
 #### `newAccountGateResult'`
 
 ``` purescript
-newAccountGateResult' :: ({ "Status" :: NullOrUndefined (AccountGateStatus), "StatusReason" :: NullOrUndefined (AccountGateStatusReason) } -> { "Status" :: NullOrUndefined (AccountGateStatus), "StatusReason" :: NullOrUndefined (AccountGateStatusReason) }) -> AccountGateResult
+newAccountGateResult' :: ({ "Status" :: Maybe (AccountGateStatus), "StatusReason" :: Maybe (AccountGateStatusReason) } -> { "Status" :: Maybe (AccountGateStatus), "StatusReason" :: Maybe (AccountGateStatusReason) }) -> AccountGateResult
 ```
 
 Constructs AccountGateResult's fields from required parameters
@@ -92,7 +92,7 @@ Encode AccountGateStatusReason
 
 ``` purescript
 newtype AccountLimit
-  = AccountLimit { "Name" :: NullOrUndefined (LimitName), "Value" :: NullOrUndefined (LimitValue) }
+  = AccountLimit { "Name" :: Maybe (LimitName), "Value" :: Maybe (LimitValue) }
 ```
 
 <p>The AccountLimit data type.</p>
@@ -117,7 +117,7 @@ Constructs AccountLimit from required parameters
 #### `newAccountLimit'`
 
 ``` purescript
-newAccountLimit' :: ({ "Name" :: NullOrUndefined (LimitName), "Value" :: NullOrUndefined (LimitValue) } -> { "Name" :: NullOrUndefined (LimitName), "Value" :: NullOrUndefined (LimitValue) }) -> AccountLimit
+newAccountLimit' :: ({ "Name" :: Maybe (LimitName), "Value" :: Maybe (LimitValue) } -> { "Name" :: Maybe (LimitName), "Value" :: Maybe (LimitValue) }) -> AccountLimit
 ```
 
 Constructs AccountLimit's fields from required parameters
@@ -224,7 +224,7 @@ Encode Arn
 
 ``` purescript
 newtype CancelUpdateStackInput
-  = CancelUpdateStackInput { "StackName" :: StackName, "ClientRequestToken" :: NullOrUndefined (ClientRequestToken) }
+  = CancelUpdateStackInput { "StackName" :: StackName, "ClientRequestToken" :: Maybe (ClientRequestToken) }
 ```
 
 <p>The input for the <a>CancelUpdateStack</a> action.</p>
@@ -249,7 +249,7 @@ Constructs CancelUpdateStackInput from required parameters
 #### `newCancelUpdateStackInput'`
 
 ``` purescript
-newCancelUpdateStackInput' :: StackName -> ({ "StackName" :: StackName, "ClientRequestToken" :: NullOrUndefined (ClientRequestToken) } -> { "StackName" :: StackName, "ClientRequestToken" :: NullOrUndefined (ClientRequestToken) }) -> CancelUpdateStackInput
+newCancelUpdateStackInput' :: StackName -> ({ "StackName" :: StackName, "ClientRequestToken" :: Maybe (ClientRequestToken) } -> { "StackName" :: StackName, "ClientRequestToken" :: Maybe (ClientRequestToken) }) -> CancelUpdateStackInput
 ```
 
 Constructs CancelUpdateStackInput's fields from required parameters
@@ -322,7 +322,7 @@ Encode CausingEntity
 
 ``` purescript
 newtype Change
-  = Change { "Type" :: NullOrUndefined (ChangeType), "ResourceChange" :: NullOrUndefined (ResourceChange) }
+  = Change { "Type" :: Maybe (ChangeType), "ResourceChange" :: Maybe (ResourceChange) }
 ```
 
 <p>The <code>Change</code> structure describes the changes AWS CloudFormation will perform if you execute the change set.</p>
@@ -347,7 +347,7 @@ Constructs Change from required parameters
 #### `newChange'`
 
 ``` purescript
-newChange' :: ({ "Type" :: NullOrUndefined (ChangeType), "ResourceChange" :: NullOrUndefined (ResourceChange) } -> { "Type" :: NullOrUndefined (ChangeType), "ResourceChange" :: NullOrUndefined (ResourceChange) }) -> Change
+newChange' :: ({ "Type" :: Maybe (ChangeType), "ResourceChange" :: Maybe (ResourceChange) } -> { "Type" :: Maybe (ChangeType), "ResourceChange" :: Maybe (ResourceChange) }) -> Change
 ```
 
 Constructs Change's fields from required parameters
@@ -486,7 +486,7 @@ Encode ChangeSetSummaries
 
 ``` purescript
 newtype ChangeSetSummary
-  = ChangeSetSummary { "StackId" :: NullOrUndefined (StackId), "StackName" :: NullOrUndefined (StackName), "ChangeSetId" :: NullOrUndefined (ChangeSetId), "ChangeSetName" :: NullOrUndefined (ChangeSetName), "ExecutionStatus" :: NullOrUndefined (ExecutionStatus), "Status" :: NullOrUndefined (ChangeSetStatus), "StatusReason" :: NullOrUndefined (ChangeSetStatusReason), "CreationTime" :: NullOrUndefined (CreationTime), "Description" :: NullOrUndefined (Description) }
+  = ChangeSetSummary { "StackId" :: Maybe (StackId), "StackName" :: Maybe (StackName), "ChangeSetId" :: Maybe (ChangeSetId), "ChangeSetName" :: Maybe (ChangeSetName), "ExecutionStatus" :: Maybe (ExecutionStatus), "Status" :: Maybe (ChangeSetStatus), "StatusReason" :: Maybe (ChangeSetStatusReason), "CreationTime" :: Maybe (CreationTime), "Description" :: Maybe (Description) }
 ```
 
 <p>The <code>ChangeSetSummary</code> structure describes a change set, its status, and the stack with which it's associated.</p>
@@ -511,7 +511,7 @@ Constructs ChangeSetSummary from required parameters
 #### `newChangeSetSummary'`
 
 ``` purescript
-newChangeSetSummary' :: ({ "StackId" :: NullOrUndefined (StackId), "StackName" :: NullOrUndefined (StackName), "ChangeSetId" :: NullOrUndefined (ChangeSetId), "ChangeSetName" :: NullOrUndefined (ChangeSetName), "ExecutionStatus" :: NullOrUndefined (ExecutionStatus), "Status" :: NullOrUndefined (ChangeSetStatus), "StatusReason" :: NullOrUndefined (ChangeSetStatusReason), "CreationTime" :: NullOrUndefined (CreationTime), "Description" :: NullOrUndefined (Description) } -> { "StackId" :: NullOrUndefined (StackId), "StackName" :: NullOrUndefined (StackName), "ChangeSetId" :: NullOrUndefined (ChangeSetId), "ChangeSetName" :: NullOrUndefined (ChangeSetName), "ExecutionStatus" :: NullOrUndefined (ExecutionStatus), "Status" :: NullOrUndefined (ChangeSetStatus), "StatusReason" :: NullOrUndefined (ChangeSetStatusReason), "CreationTime" :: NullOrUndefined (CreationTime), "Description" :: NullOrUndefined (Description) }) -> ChangeSetSummary
+newChangeSetSummary' :: ({ "StackId" :: Maybe (StackId), "StackName" :: Maybe (StackName), "ChangeSetId" :: Maybe (ChangeSetId), "ChangeSetName" :: Maybe (ChangeSetName), "ExecutionStatus" :: Maybe (ExecutionStatus), "Status" :: Maybe (ChangeSetStatus), "StatusReason" :: Maybe (ChangeSetStatusReason), "CreationTime" :: Maybe (CreationTime), "Description" :: Maybe (Description) } -> { "StackId" :: Maybe (StackId), "StackName" :: Maybe (StackName), "ChangeSetId" :: Maybe (ChangeSetId), "ChangeSetName" :: Maybe (ChangeSetName), "ExecutionStatus" :: Maybe (ExecutionStatus), "Status" :: Maybe (ChangeSetStatus), "StatusReason" :: Maybe (ChangeSetStatusReason), "CreationTime" :: Maybe (CreationTime), "Description" :: Maybe (Description) }) -> ChangeSetSummary
 ```
 
 Constructs ChangeSetSummary's fields from required parameters
@@ -616,7 +616,7 @@ Encode ClientToken
 
 ``` purescript
 newtype ContinueUpdateRollbackInput
-  = ContinueUpdateRollbackInput { "StackName" :: StackNameOrId, "RoleARN" :: NullOrUndefined (RoleARN), "ResourcesToSkip" :: NullOrUndefined (ResourcesToSkip), "ClientRequestToken" :: NullOrUndefined (ClientRequestToken) }
+  = ContinueUpdateRollbackInput { "StackName" :: StackNameOrId, "RoleARN" :: Maybe (RoleARN), "ResourcesToSkip" :: Maybe (ResourcesToSkip), "ClientRequestToken" :: Maybe (ClientRequestToken) }
 ```
 
 <p>The input for the <a>ContinueUpdateRollback</a> action.</p>
@@ -641,7 +641,7 @@ Constructs ContinueUpdateRollbackInput from required parameters
 #### `newContinueUpdateRollbackInput'`
 
 ``` purescript
-newContinueUpdateRollbackInput' :: StackNameOrId -> ({ "StackName" :: StackNameOrId, "RoleARN" :: NullOrUndefined (RoleARN), "ResourcesToSkip" :: NullOrUndefined (ResourcesToSkip), "ClientRequestToken" :: NullOrUndefined (ClientRequestToken) } -> { "StackName" :: StackNameOrId, "RoleARN" :: NullOrUndefined (RoleARN), "ResourcesToSkip" :: NullOrUndefined (ResourcesToSkip), "ClientRequestToken" :: NullOrUndefined (ClientRequestToken) }) -> ContinueUpdateRollbackInput
+newContinueUpdateRollbackInput' :: StackNameOrId -> ({ "StackName" :: StackNameOrId, "RoleARN" :: Maybe (RoleARN), "ResourcesToSkip" :: Maybe (ResourcesToSkip), "ClientRequestToken" :: Maybe (ClientRequestToken) } -> { "StackName" :: StackNameOrId, "RoleARN" :: Maybe (RoleARN), "ResourcesToSkip" :: Maybe (ResourcesToSkip), "ClientRequestToken" :: Maybe (ClientRequestToken) }) -> ContinueUpdateRollbackInput
 ```
 
 Constructs ContinueUpdateRollbackInput's fields from required parameters
@@ -668,7 +668,7 @@ Encode ContinueUpdateRollbackOutput
 
 ``` purescript
 newtype CreateChangeSetInput
-  = CreateChangeSetInput { "StackName" :: StackNameOrId, "TemplateBody" :: NullOrUndefined (TemplateBody), "TemplateURL" :: NullOrUndefined (TemplateURL), "UsePreviousTemplate" :: NullOrUndefined (UsePreviousTemplate), "Parameters" :: NullOrUndefined (Parameters), "Capabilities" :: NullOrUndefined (Capabilities), "ResourceTypes" :: NullOrUndefined (ResourceTypes), "RoleARN" :: NullOrUndefined (RoleARN), "RollbackConfiguration" :: NullOrUndefined (RollbackConfiguration), "NotificationARNs" :: NullOrUndefined (NotificationARNs), "Tags" :: NullOrUndefined (Tags), "ChangeSetName" :: ChangeSetName, "ClientToken" :: NullOrUndefined (ClientToken), "Description" :: NullOrUndefined (Description), "ChangeSetType" :: NullOrUndefined (ChangeSetType) }
+  = CreateChangeSetInput { "StackName" :: StackNameOrId, "TemplateBody" :: Maybe (TemplateBody), "TemplateURL" :: Maybe (TemplateURL), "UsePreviousTemplate" :: Maybe (UsePreviousTemplate), "Parameters" :: Maybe (Parameters), "Capabilities" :: Maybe (Capabilities), "ResourceTypes" :: Maybe (ResourceTypes), "RoleARN" :: Maybe (RoleARN), "RollbackConfiguration" :: Maybe (RollbackConfiguration), "NotificationARNs" :: Maybe (NotificationARNs), "Tags" :: Maybe (Tags), "ChangeSetName" :: ChangeSetName, "ClientToken" :: Maybe (ClientToken), "Description" :: Maybe (Description), "ChangeSetType" :: Maybe (ChangeSetType) }
 ```
 
 <p>The input for the <a>CreateChangeSet</a> action.</p>
@@ -693,7 +693,7 @@ Constructs CreateChangeSetInput from required parameters
 #### `newCreateChangeSetInput'`
 
 ``` purescript
-newCreateChangeSetInput' :: ChangeSetName -> StackNameOrId -> ({ "StackName" :: StackNameOrId, "TemplateBody" :: NullOrUndefined (TemplateBody), "TemplateURL" :: NullOrUndefined (TemplateURL), "UsePreviousTemplate" :: NullOrUndefined (UsePreviousTemplate), "Parameters" :: NullOrUndefined (Parameters), "Capabilities" :: NullOrUndefined (Capabilities), "ResourceTypes" :: NullOrUndefined (ResourceTypes), "RoleARN" :: NullOrUndefined (RoleARN), "RollbackConfiguration" :: NullOrUndefined (RollbackConfiguration), "NotificationARNs" :: NullOrUndefined (NotificationARNs), "Tags" :: NullOrUndefined (Tags), "ChangeSetName" :: ChangeSetName, "ClientToken" :: NullOrUndefined (ClientToken), "Description" :: NullOrUndefined (Description), "ChangeSetType" :: NullOrUndefined (ChangeSetType) } -> { "StackName" :: StackNameOrId, "TemplateBody" :: NullOrUndefined (TemplateBody), "TemplateURL" :: NullOrUndefined (TemplateURL), "UsePreviousTemplate" :: NullOrUndefined (UsePreviousTemplate), "Parameters" :: NullOrUndefined (Parameters), "Capabilities" :: NullOrUndefined (Capabilities), "ResourceTypes" :: NullOrUndefined (ResourceTypes), "RoleARN" :: NullOrUndefined (RoleARN), "RollbackConfiguration" :: NullOrUndefined (RollbackConfiguration), "NotificationARNs" :: NullOrUndefined (NotificationARNs), "Tags" :: NullOrUndefined (Tags), "ChangeSetName" :: ChangeSetName, "ClientToken" :: NullOrUndefined (ClientToken), "Description" :: NullOrUndefined (Description), "ChangeSetType" :: NullOrUndefined (ChangeSetType) }) -> CreateChangeSetInput
+newCreateChangeSetInput' :: ChangeSetName -> StackNameOrId -> ({ "StackName" :: StackNameOrId, "TemplateBody" :: Maybe (TemplateBody), "TemplateURL" :: Maybe (TemplateURL), "UsePreviousTemplate" :: Maybe (UsePreviousTemplate), "Parameters" :: Maybe (Parameters), "Capabilities" :: Maybe (Capabilities), "ResourceTypes" :: Maybe (ResourceTypes), "RoleARN" :: Maybe (RoleARN), "RollbackConfiguration" :: Maybe (RollbackConfiguration), "NotificationARNs" :: Maybe (NotificationARNs), "Tags" :: Maybe (Tags), "ChangeSetName" :: ChangeSetName, "ClientToken" :: Maybe (ClientToken), "Description" :: Maybe (Description), "ChangeSetType" :: Maybe (ChangeSetType) } -> { "StackName" :: StackNameOrId, "TemplateBody" :: Maybe (TemplateBody), "TemplateURL" :: Maybe (TemplateURL), "UsePreviousTemplate" :: Maybe (UsePreviousTemplate), "Parameters" :: Maybe (Parameters), "Capabilities" :: Maybe (Capabilities), "ResourceTypes" :: Maybe (ResourceTypes), "RoleARN" :: Maybe (RoleARN), "RollbackConfiguration" :: Maybe (RollbackConfiguration), "NotificationARNs" :: Maybe (NotificationARNs), "Tags" :: Maybe (Tags), "ChangeSetName" :: ChangeSetName, "ClientToken" :: Maybe (ClientToken), "Description" :: Maybe (Description), "ChangeSetType" :: Maybe (ChangeSetType) }) -> CreateChangeSetInput
 ```
 
 Constructs CreateChangeSetInput's fields from required parameters
@@ -702,7 +702,7 @@ Constructs CreateChangeSetInput's fields from required parameters
 
 ``` purescript
 newtype CreateChangeSetOutput
-  = CreateChangeSetOutput { "Id" :: NullOrUndefined (ChangeSetId), "StackId" :: NullOrUndefined (StackId) }
+  = CreateChangeSetOutput { "Id" :: Maybe (ChangeSetId), "StackId" :: Maybe (StackId) }
 ```
 
 <p>The output for the <a>CreateChangeSet</a> action.</p>
@@ -727,7 +727,7 @@ Constructs CreateChangeSetOutput from required parameters
 #### `newCreateChangeSetOutput'`
 
 ``` purescript
-newCreateChangeSetOutput' :: ({ "Id" :: NullOrUndefined (ChangeSetId), "StackId" :: NullOrUndefined (StackId) } -> { "Id" :: NullOrUndefined (ChangeSetId), "StackId" :: NullOrUndefined (StackId) }) -> CreateChangeSetOutput
+newCreateChangeSetOutput' :: ({ "Id" :: Maybe (ChangeSetId), "StackId" :: Maybe (StackId) } -> { "Id" :: Maybe (ChangeSetId), "StackId" :: Maybe (StackId) }) -> CreateChangeSetOutput
 ```
 
 Constructs CreateChangeSetOutput's fields from required parameters
@@ -736,7 +736,7 @@ Constructs CreateChangeSetOutput's fields from required parameters
 
 ``` purescript
 newtype CreateStackInput
-  = CreateStackInput { "StackName" :: StackName, "TemplateBody" :: NullOrUndefined (TemplateBody), "TemplateURL" :: NullOrUndefined (TemplateURL), "Parameters" :: NullOrUndefined (Parameters), "DisableRollback" :: NullOrUndefined (DisableRollback), "RollbackConfiguration" :: NullOrUndefined (RollbackConfiguration), "TimeoutInMinutes" :: NullOrUndefined (TimeoutMinutes), "NotificationARNs" :: NullOrUndefined (NotificationARNs), "Capabilities" :: NullOrUndefined (Capabilities), "ResourceTypes" :: NullOrUndefined (ResourceTypes), "RoleARN" :: NullOrUndefined (RoleARN), "OnFailure" :: NullOrUndefined (OnFailure), "StackPolicyBody" :: NullOrUndefined (StackPolicyBody), "StackPolicyURL" :: NullOrUndefined (StackPolicyURL), "Tags" :: NullOrUndefined (Tags), "ClientRequestToken" :: NullOrUndefined (ClientRequestToken), "EnableTerminationProtection" :: NullOrUndefined (EnableTerminationProtection) }
+  = CreateStackInput { "StackName" :: StackName, "TemplateBody" :: Maybe (TemplateBody), "TemplateURL" :: Maybe (TemplateURL), "Parameters" :: Maybe (Parameters), "DisableRollback" :: Maybe (DisableRollback), "RollbackConfiguration" :: Maybe (RollbackConfiguration), "TimeoutInMinutes" :: Maybe (TimeoutMinutes), "NotificationARNs" :: Maybe (NotificationARNs), "Capabilities" :: Maybe (Capabilities), "ResourceTypes" :: Maybe (ResourceTypes), "RoleARN" :: Maybe (RoleARN), "OnFailure" :: Maybe (OnFailure), "StackPolicyBody" :: Maybe (StackPolicyBody), "StackPolicyURL" :: Maybe (StackPolicyURL), "Tags" :: Maybe (Tags), "ClientRequestToken" :: Maybe (ClientRequestToken), "EnableTerminationProtection" :: Maybe (EnableTerminationProtection) }
 ```
 
 <p>The input for <a>CreateStack</a> action.</p>
@@ -761,7 +761,7 @@ Constructs CreateStackInput from required parameters
 #### `newCreateStackInput'`
 
 ``` purescript
-newCreateStackInput' :: StackName -> ({ "StackName" :: StackName, "TemplateBody" :: NullOrUndefined (TemplateBody), "TemplateURL" :: NullOrUndefined (TemplateURL), "Parameters" :: NullOrUndefined (Parameters), "DisableRollback" :: NullOrUndefined (DisableRollback), "RollbackConfiguration" :: NullOrUndefined (RollbackConfiguration), "TimeoutInMinutes" :: NullOrUndefined (TimeoutMinutes), "NotificationARNs" :: NullOrUndefined (NotificationARNs), "Capabilities" :: NullOrUndefined (Capabilities), "ResourceTypes" :: NullOrUndefined (ResourceTypes), "RoleARN" :: NullOrUndefined (RoleARN), "OnFailure" :: NullOrUndefined (OnFailure), "StackPolicyBody" :: NullOrUndefined (StackPolicyBody), "StackPolicyURL" :: NullOrUndefined (StackPolicyURL), "Tags" :: NullOrUndefined (Tags), "ClientRequestToken" :: NullOrUndefined (ClientRequestToken), "EnableTerminationProtection" :: NullOrUndefined (EnableTerminationProtection) } -> { "StackName" :: StackName, "TemplateBody" :: NullOrUndefined (TemplateBody), "TemplateURL" :: NullOrUndefined (TemplateURL), "Parameters" :: NullOrUndefined (Parameters), "DisableRollback" :: NullOrUndefined (DisableRollback), "RollbackConfiguration" :: NullOrUndefined (RollbackConfiguration), "TimeoutInMinutes" :: NullOrUndefined (TimeoutMinutes), "NotificationARNs" :: NullOrUndefined (NotificationARNs), "Capabilities" :: NullOrUndefined (Capabilities), "ResourceTypes" :: NullOrUndefined (ResourceTypes), "RoleARN" :: NullOrUndefined (RoleARN), "OnFailure" :: NullOrUndefined (OnFailure), "StackPolicyBody" :: NullOrUndefined (StackPolicyBody), "StackPolicyURL" :: NullOrUndefined (StackPolicyURL), "Tags" :: NullOrUndefined (Tags), "ClientRequestToken" :: NullOrUndefined (ClientRequestToken), "EnableTerminationProtection" :: NullOrUndefined (EnableTerminationProtection) }) -> CreateStackInput
+newCreateStackInput' :: StackName -> ({ "StackName" :: StackName, "TemplateBody" :: Maybe (TemplateBody), "TemplateURL" :: Maybe (TemplateURL), "Parameters" :: Maybe (Parameters), "DisableRollback" :: Maybe (DisableRollback), "RollbackConfiguration" :: Maybe (RollbackConfiguration), "TimeoutInMinutes" :: Maybe (TimeoutMinutes), "NotificationARNs" :: Maybe (NotificationARNs), "Capabilities" :: Maybe (Capabilities), "ResourceTypes" :: Maybe (ResourceTypes), "RoleARN" :: Maybe (RoleARN), "OnFailure" :: Maybe (OnFailure), "StackPolicyBody" :: Maybe (StackPolicyBody), "StackPolicyURL" :: Maybe (StackPolicyURL), "Tags" :: Maybe (Tags), "ClientRequestToken" :: Maybe (ClientRequestToken), "EnableTerminationProtection" :: Maybe (EnableTerminationProtection) } -> { "StackName" :: StackName, "TemplateBody" :: Maybe (TemplateBody), "TemplateURL" :: Maybe (TemplateURL), "Parameters" :: Maybe (Parameters), "DisableRollback" :: Maybe (DisableRollback), "RollbackConfiguration" :: Maybe (RollbackConfiguration), "TimeoutInMinutes" :: Maybe (TimeoutMinutes), "NotificationARNs" :: Maybe (NotificationARNs), "Capabilities" :: Maybe (Capabilities), "ResourceTypes" :: Maybe (ResourceTypes), "RoleARN" :: Maybe (RoleARN), "OnFailure" :: Maybe (OnFailure), "StackPolicyBody" :: Maybe (StackPolicyBody), "StackPolicyURL" :: Maybe (StackPolicyURL), "Tags" :: Maybe (Tags), "ClientRequestToken" :: Maybe (ClientRequestToken), "EnableTerminationProtection" :: Maybe (EnableTerminationProtection) }) -> CreateStackInput
 ```
 
 Constructs CreateStackInput's fields from required parameters
@@ -770,7 +770,7 @@ Constructs CreateStackInput's fields from required parameters
 
 ``` purescript
 newtype CreateStackInstancesInput
-  = CreateStackInstancesInput { "StackSetName" :: StackSetName, "Accounts" :: AccountList, "Regions" :: RegionList, "ParameterOverrides" :: NullOrUndefined (Parameters), "OperationPreferences" :: NullOrUndefined (StackSetOperationPreferences), "OperationId" :: NullOrUndefined (ClientRequestToken) }
+  = CreateStackInstancesInput { "StackSetName" :: StackSetName, "Accounts" :: AccountList, "Regions" :: RegionList, "ParameterOverrides" :: Maybe (Parameters), "OperationPreferences" :: Maybe (StackSetOperationPreferences), "OperationId" :: Maybe (ClientRequestToken) }
 ```
 
 ##### Instances
@@ -793,7 +793,7 @@ Constructs CreateStackInstancesInput from required parameters
 #### `newCreateStackInstancesInput'`
 
 ``` purescript
-newCreateStackInstancesInput' :: AccountList -> RegionList -> StackSetName -> ({ "StackSetName" :: StackSetName, "Accounts" :: AccountList, "Regions" :: RegionList, "ParameterOverrides" :: NullOrUndefined (Parameters), "OperationPreferences" :: NullOrUndefined (StackSetOperationPreferences), "OperationId" :: NullOrUndefined (ClientRequestToken) } -> { "StackSetName" :: StackSetName, "Accounts" :: AccountList, "Regions" :: RegionList, "ParameterOverrides" :: NullOrUndefined (Parameters), "OperationPreferences" :: NullOrUndefined (StackSetOperationPreferences), "OperationId" :: NullOrUndefined (ClientRequestToken) }) -> CreateStackInstancesInput
+newCreateStackInstancesInput' :: AccountList -> RegionList -> StackSetName -> ({ "StackSetName" :: StackSetName, "Accounts" :: AccountList, "Regions" :: RegionList, "ParameterOverrides" :: Maybe (Parameters), "OperationPreferences" :: Maybe (StackSetOperationPreferences), "OperationId" :: Maybe (ClientRequestToken) } -> { "StackSetName" :: StackSetName, "Accounts" :: AccountList, "Regions" :: RegionList, "ParameterOverrides" :: Maybe (Parameters), "OperationPreferences" :: Maybe (StackSetOperationPreferences), "OperationId" :: Maybe (ClientRequestToken) }) -> CreateStackInstancesInput
 ```
 
 Constructs CreateStackInstancesInput's fields from required parameters
@@ -802,7 +802,7 @@ Constructs CreateStackInstancesInput's fields from required parameters
 
 ``` purescript
 newtype CreateStackInstancesOutput
-  = CreateStackInstancesOutput { "OperationId" :: NullOrUndefined (ClientRequestToken) }
+  = CreateStackInstancesOutput { "OperationId" :: Maybe (ClientRequestToken) }
 ```
 
 ##### Instances
@@ -825,7 +825,7 @@ Constructs CreateStackInstancesOutput from required parameters
 #### `newCreateStackInstancesOutput'`
 
 ``` purescript
-newCreateStackInstancesOutput' :: ({ "OperationId" :: NullOrUndefined (ClientRequestToken) } -> { "OperationId" :: NullOrUndefined (ClientRequestToken) }) -> CreateStackInstancesOutput
+newCreateStackInstancesOutput' :: ({ "OperationId" :: Maybe (ClientRequestToken) } -> { "OperationId" :: Maybe (ClientRequestToken) }) -> CreateStackInstancesOutput
 ```
 
 Constructs CreateStackInstancesOutput's fields from required parameters
@@ -834,7 +834,7 @@ Constructs CreateStackInstancesOutput's fields from required parameters
 
 ``` purescript
 newtype CreateStackOutput
-  = CreateStackOutput { "StackId" :: NullOrUndefined (StackId) }
+  = CreateStackOutput { "StackId" :: Maybe (StackId) }
 ```
 
 <p>The output for a <a>CreateStack</a> action.</p>
@@ -859,7 +859,7 @@ Constructs CreateStackOutput from required parameters
 #### `newCreateStackOutput'`
 
 ``` purescript
-newCreateStackOutput' :: ({ "StackId" :: NullOrUndefined (StackId) } -> { "StackId" :: NullOrUndefined (StackId) }) -> CreateStackOutput
+newCreateStackOutput' :: ({ "StackId" :: Maybe (StackId) } -> { "StackId" :: Maybe (StackId) }) -> CreateStackOutput
 ```
 
 Constructs CreateStackOutput's fields from required parameters
@@ -868,7 +868,7 @@ Constructs CreateStackOutput's fields from required parameters
 
 ``` purescript
 newtype CreateStackSetInput
-  = CreateStackSetInput { "StackSetName" :: StackSetName, "Description" :: NullOrUndefined (Description), "TemplateBody" :: NullOrUndefined (TemplateBody), "TemplateURL" :: NullOrUndefined (TemplateURL), "Parameters" :: NullOrUndefined (Parameters), "Capabilities" :: NullOrUndefined (Capabilities), "Tags" :: NullOrUndefined (Tags), "ClientRequestToken" :: NullOrUndefined (ClientRequestToken) }
+  = CreateStackSetInput { "StackSetName" :: StackSetName, "Description" :: Maybe (Description), "TemplateBody" :: Maybe (TemplateBody), "TemplateURL" :: Maybe (TemplateURL), "Parameters" :: Maybe (Parameters), "Capabilities" :: Maybe (Capabilities), "Tags" :: Maybe (Tags), "ClientRequestToken" :: Maybe (ClientRequestToken) }
 ```
 
 ##### Instances
@@ -891,7 +891,7 @@ Constructs CreateStackSetInput from required parameters
 #### `newCreateStackSetInput'`
 
 ``` purescript
-newCreateStackSetInput' :: StackSetName -> ({ "StackSetName" :: StackSetName, "Description" :: NullOrUndefined (Description), "TemplateBody" :: NullOrUndefined (TemplateBody), "TemplateURL" :: NullOrUndefined (TemplateURL), "Parameters" :: NullOrUndefined (Parameters), "Capabilities" :: NullOrUndefined (Capabilities), "Tags" :: NullOrUndefined (Tags), "ClientRequestToken" :: NullOrUndefined (ClientRequestToken) } -> { "StackSetName" :: StackSetName, "Description" :: NullOrUndefined (Description), "TemplateBody" :: NullOrUndefined (TemplateBody), "TemplateURL" :: NullOrUndefined (TemplateURL), "Parameters" :: NullOrUndefined (Parameters), "Capabilities" :: NullOrUndefined (Capabilities), "Tags" :: NullOrUndefined (Tags), "ClientRequestToken" :: NullOrUndefined (ClientRequestToken) }) -> CreateStackSetInput
+newCreateStackSetInput' :: StackSetName -> ({ "StackSetName" :: StackSetName, "Description" :: Maybe (Description), "TemplateBody" :: Maybe (TemplateBody), "TemplateURL" :: Maybe (TemplateURL), "Parameters" :: Maybe (Parameters), "Capabilities" :: Maybe (Capabilities), "Tags" :: Maybe (Tags), "ClientRequestToken" :: Maybe (ClientRequestToken) } -> { "StackSetName" :: StackSetName, "Description" :: Maybe (Description), "TemplateBody" :: Maybe (TemplateBody), "TemplateURL" :: Maybe (TemplateURL), "Parameters" :: Maybe (Parameters), "Capabilities" :: Maybe (Capabilities), "Tags" :: Maybe (Tags), "ClientRequestToken" :: Maybe (ClientRequestToken) }) -> CreateStackSetInput
 ```
 
 Constructs CreateStackSetInput's fields from required parameters
@@ -900,7 +900,7 @@ Constructs CreateStackSetInput's fields from required parameters
 
 ``` purescript
 newtype CreateStackSetOutput
-  = CreateStackSetOutput { "StackSetId" :: NullOrUndefined (StackSetId) }
+  = CreateStackSetOutput { "StackSetId" :: Maybe (StackSetId) }
 ```
 
 ##### Instances
@@ -923,7 +923,7 @@ Constructs CreateStackSetOutput from required parameters
 #### `newCreateStackSetOutput'`
 
 ``` purescript
-newCreateStackSetOutput' :: ({ "StackSetId" :: NullOrUndefined (StackSetId) } -> { "StackSetId" :: NullOrUndefined (StackSetId) }) -> CreateStackSetOutput
+newCreateStackSetOutput' :: ({ "StackSetId" :: Maybe (StackSetId) } -> { "StackSetId" :: Maybe (StackSetId) }) -> CreateStackSetOutput
 ```
 
 Constructs CreateStackSetOutput's fields from required parameters
@@ -966,7 +966,7 @@ Encode CreationTime
 
 ``` purescript
 newtype DeleteChangeSetInput
-  = DeleteChangeSetInput { "ChangeSetName" :: ChangeSetNameOrId, "StackName" :: NullOrUndefined (StackNameOrId) }
+  = DeleteChangeSetInput { "ChangeSetName" :: ChangeSetNameOrId, "StackName" :: Maybe (StackNameOrId) }
 ```
 
 <p>The input for the <a>DeleteChangeSet</a> action.</p>
@@ -991,7 +991,7 @@ Constructs DeleteChangeSetInput from required parameters
 #### `newDeleteChangeSetInput'`
 
 ``` purescript
-newDeleteChangeSetInput' :: ChangeSetNameOrId -> ({ "ChangeSetName" :: ChangeSetNameOrId, "StackName" :: NullOrUndefined (StackNameOrId) } -> { "ChangeSetName" :: ChangeSetNameOrId, "StackName" :: NullOrUndefined (StackNameOrId) }) -> DeleteChangeSetInput
+newDeleteChangeSetInput' :: ChangeSetNameOrId -> ({ "ChangeSetName" :: ChangeSetNameOrId, "StackName" :: Maybe (StackNameOrId) } -> { "ChangeSetName" :: ChangeSetNameOrId, "StackName" :: Maybe (StackNameOrId) }) -> DeleteChangeSetInput
 ```
 
 Constructs DeleteChangeSetInput's fields from required parameters
@@ -1018,7 +1018,7 @@ Encode DeleteChangeSetOutput
 
 ``` purescript
 newtype DeleteStackInput
-  = DeleteStackInput { "StackName" :: StackName, "RetainResources" :: NullOrUndefined (RetainResources), "RoleARN" :: NullOrUndefined (RoleARN), "ClientRequestToken" :: NullOrUndefined (ClientRequestToken) }
+  = DeleteStackInput { "StackName" :: StackName, "RetainResources" :: Maybe (RetainResources), "RoleARN" :: Maybe (RoleARN), "ClientRequestToken" :: Maybe (ClientRequestToken) }
 ```
 
 <p>The input for <a>DeleteStack</a> action.</p>
@@ -1043,7 +1043,7 @@ Constructs DeleteStackInput from required parameters
 #### `newDeleteStackInput'`
 
 ``` purescript
-newDeleteStackInput' :: StackName -> ({ "StackName" :: StackName, "RetainResources" :: NullOrUndefined (RetainResources), "RoleARN" :: NullOrUndefined (RoleARN), "ClientRequestToken" :: NullOrUndefined (ClientRequestToken) } -> { "StackName" :: StackName, "RetainResources" :: NullOrUndefined (RetainResources), "RoleARN" :: NullOrUndefined (RoleARN), "ClientRequestToken" :: NullOrUndefined (ClientRequestToken) }) -> DeleteStackInput
+newDeleteStackInput' :: StackName -> ({ "StackName" :: StackName, "RetainResources" :: Maybe (RetainResources), "RoleARN" :: Maybe (RoleARN), "ClientRequestToken" :: Maybe (ClientRequestToken) } -> { "StackName" :: StackName, "RetainResources" :: Maybe (RetainResources), "RoleARN" :: Maybe (RoleARN), "ClientRequestToken" :: Maybe (ClientRequestToken) }) -> DeleteStackInput
 ```
 
 Constructs DeleteStackInput's fields from required parameters
@@ -1052,7 +1052,7 @@ Constructs DeleteStackInput's fields from required parameters
 
 ``` purescript
 newtype DeleteStackInstancesInput
-  = DeleteStackInstancesInput { "StackSetName" :: StackSetName, "Accounts" :: AccountList, "Regions" :: RegionList, "OperationPreferences" :: NullOrUndefined (StackSetOperationPreferences), "RetainStacks" :: RetainStacks, "OperationId" :: NullOrUndefined (ClientRequestToken) }
+  = DeleteStackInstancesInput { "StackSetName" :: StackSetName, "Accounts" :: AccountList, "Regions" :: RegionList, "OperationPreferences" :: Maybe (StackSetOperationPreferences), "RetainStacks" :: RetainStacks, "OperationId" :: Maybe (ClientRequestToken) }
 ```
 
 ##### Instances
@@ -1075,7 +1075,7 @@ Constructs DeleteStackInstancesInput from required parameters
 #### `newDeleteStackInstancesInput'`
 
 ``` purescript
-newDeleteStackInstancesInput' :: AccountList -> RegionList -> RetainStacks -> StackSetName -> ({ "StackSetName" :: StackSetName, "Accounts" :: AccountList, "Regions" :: RegionList, "OperationPreferences" :: NullOrUndefined (StackSetOperationPreferences), "RetainStacks" :: RetainStacks, "OperationId" :: NullOrUndefined (ClientRequestToken) } -> { "StackSetName" :: StackSetName, "Accounts" :: AccountList, "Regions" :: RegionList, "OperationPreferences" :: NullOrUndefined (StackSetOperationPreferences), "RetainStacks" :: RetainStacks, "OperationId" :: NullOrUndefined (ClientRequestToken) }) -> DeleteStackInstancesInput
+newDeleteStackInstancesInput' :: AccountList -> RegionList -> RetainStacks -> StackSetName -> ({ "StackSetName" :: StackSetName, "Accounts" :: AccountList, "Regions" :: RegionList, "OperationPreferences" :: Maybe (StackSetOperationPreferences), "RetainStacks" :: RetainStacks, "OperationId" :: Maybe (ClientRequestToken) } -> { "StackSetName" :: StackSetName, "Accounts" :: AccountList, "Regions" :: RegionList, "OperationPreferences" :: Maybe (StackSetOperationPreferences), "RetainStacks" :: RetainStacks, "OperationId" :: Maybe (ClientRequestToken) }) -> DeleteStackInstancesInput
 ```
 
 Constructs DeleteStackInstancesInput's fields from required parameters
@@ -1084,7 +1084,7 @@ Constructs DeleteStackInstancesInput's fields from required parameters
 
 ``` purescript
 newtype DeleteStackInstancesOutput
-  = DeleteStackInstancesOutput { "OperationId" :: NullOrUndefined (ClientRequestToken) }
+  = DeleteStackInstancesOutput { "OperationId" :: Maybe (ClientRequestToken) }
 ```
 
 ##### Instances
@@ -1107,7 +1107,7 @@ Constructs DeleteStackInstancesOutput from required parameters
 #### `newDeleteStackInstancesOutput'`
 
 ``` purescript
-newDeleteStackInstancesOutput' :: ({ "OperationId" :: NullOrUndefined (ClientRequestToken) } -> { "OperationId" :: NullOrUndefined (ClientRequestToken) }) -> DeleteStackInstancesOutput
+newDeleteStackInstancesOutput' :: ({ "OperationId" :: Maybe (ClientRequestToken) } -> { "OperationId" :: Maybe (ClientRequestToken) }) -> DeleteStackInstancesOutput
 ```
 
 Constructs DeleteStackInstancesOutput's fields from required parameters
@@ -1180,7 +1180,7 @@ Encode DeletionTime
 
 ``` purescript
 newtype DescribeAccountLimitsInput
-  = DescribeAccountLimitsInput { "NextToken" :: NullOrUndefined (NextToken) }
+  = DescribeAccountLimitsInput { "NextToken" :: Maybe (NextToken) }
 ```
 
 <p>The input for the <a>DescribeAccountLimits</a> action.</p>
@@ -1205,7 +1205,7 @@ Constructs DescribeAccountLimitsInput from required parameters
 #### `newDescribeAccountLimitsInput'`
 
 ``` purescript
-newDescribeAccountLimitsInput' :: ({ "NextToken" :: NullOrUndefined (NextToken) } -> { "NextToken" :: NullOrUndefined (NextToken) }) -> DescribeAccountLimitsInput
+newDescribeAccountLimitsInput' :: ({ "NextToken" :: Maybe (NextToken) } -> { "NextToken" :: Maybe (NextToken) }) -> DescribeAccountLimitsInput
 ```
 
 Constructs DescribeAccountLimitsInput's fields from required parameters
@@ -1214,7 +1214,7 @@ Constructs DescribeAccountLimitsInput's fields from required parameters
 
 ``` purescript
 newtype DescribeAccountLimitsOutput
-  = DescribeAccountLimitsOutput { "AccountLimits" :: NullOrUndefined (AccountLimitList), "NextToken" :: NullOrUndefined (NextToken) }
+  = DescribeAccountLimitsOutput { "AccountLimits" :: Maybe (AccountLimitList), "NextToken" :: Maybe (NextToken) }
 ```
 
 <p>The output for the <a>DescribeAccountLimits</a> action.</p>
@@ -1239,7 +1239,7 @@ Constructs DescribeAccountLimitsOutput from required parameters
 #### `newDescribeAccountLimitsOutput'`
 
 ``` purescript
-newDescribeAccountLimitsOutput' :: ({ "AccountLimits" :: NullOrUndefined (AccountLimitList), "NextToken" :: NullOrUndefined (NextToken) } -> { "AccountLimits" :: NullOrUndefined (AccountLimitList), "NextToken" :: NullOrUndefined (NextToken) }) -> DescribeAccountLimitsOutput
+newDescribeAccountLimitsOutput' :: ({ "AccountLimits" :: Maybe (AccountLimitList), "NextToken" :: Maybe (NextToken) } -> { "AccountLimits" :: Maybe (AccountLimitList), "NextToken" :: Maybe (NextToken) }) -> DescribeAccountLimitsOutput
 ```
 
 Constructs DescribeAccountLimitsOutput's fields from required parameters
@@ -1248,7 +1248,7 @@ Constructs DescribeAccountLimitsOutput's fields from required parameters
 
 ``` purescript
 newtype DescribeChangeSetInput
-  = DescribeChangeSetInput { "ChangeSetName" :: ChangeSetNameOrId, "StackName" :: NullOrUndefined (StackNameOrId), "NextToken" :: NullOrUndefined (NextToken) }
+  = DescribeChangeSetInput { "ChangeSetName" :: ChangeSetNameOrId, "StackName" :: Maybe (StackNameOrId), "NextToken" :: Maybe (NextToken) }
 ```
 
 <p>The input for the <a>DescribeChangeSet</a> action.</p>
@@ -1273,7 +1273,7 @@ Constructs DescribeChangeSetInput from required parameters
 #### `newDescribeChangeSetInput'`
 
 ``` purescript
-newDescribeChangeSetInput' :: ChangeSetNameOrId -> ({ "ChangeSetName" :: ChangeSetNameOrId, "StackName" :: NullOrUndefined (StackNameOrId), "NextToken" :: NullOrUndefined (NextToken) } -> { "ChangeSetName" :: ChangeSetNameOrId, "StackName" :: NullOrUndefined (StackNameOrId), "NextToken" :: NullOrUndefined (NextToken) }) -> DescribeChangeSetInput
+newDescribeChangeSetInput' :: ChangeSetNameOrId -> ({ "ChangeSetName" :: ChangeSetNameOrId, "StackName" :: Maybe (StackNameOrId), "NextToken" :: Maybe (NextToken) } -> { "ChangeSetName" :: ChangeSetNameOrId, "StackName" :: Maybe (StackNameOrId), "NextToken" :: Maybe (NextToken) }) -> DescribeChangeSetInput
 ```
 
 Constructs DescribeChangeSetInput's fields from required parameters
@@ -1282,7 +1282,7 @@ Constructs DescribeChangeSetInput's fields from required parameters
 
 ``` purescript
 newtype DescribeChangeSetOutput
-  = DescribeChangeSetOutput { "ChangeSetName" :: NullOrUndefined (ChangeSetName), "ChangeSetId" :: NullOrUndefined (ChangeSetId), "StackId" :: NullOrUndefined (StackId), "StackName" :: NullOrUndefined (StackName), "Description" :: NullOrUndefined (Description), "Parameters" :: NullOrUndefined (Parameters), "CreationTime" :: NullOrUndefined (CreationTime), "ExecutionStatus" :: NullOrUndefined (ExecutionStatus), "Status" :: NullOrUndefined (ChangeSetStatus), "StatusReason" :: NullOrUndefined (ChangeSetStatusReason), "NotificationARNs" :: NullOrUndefined (NotificationARNs), "RollbackConfiguration" :: NullOrUndefined (RollbackConfiguration), "Capabilities" :: NullOrUndefined (Capabilities), "Tags" :: NullOrUndefined (Tags), "Changes" :: NullOrUndefined (Changes), "NextToken" :: NullOrUndefined (NextToken) }
+  = DescribeChangeSetOutput { "ChangeSetName" :: Maybe (ChangeSetName), "ChangeSetId" :: Maybe (ChangeSetId), "StackId" :: Maybe (StackId), "StackName" :: Maybe (StackName), "Description" :: Maybe (Description), "Parameters" :: Maybe (Parameters), "CreationTime" :: Maybe (CreationTime), "ExecutionStatus" :: Maybe (ExecutionStatus), "Status" :: Maybe (ChangeSetStatus), "StatusReason" :: Maybe (ChangeSetStatusReason), "NotificationARNs" :: Maybe (NotificationARNs), "RollbackConfiguration" :: Maybe (RollbackConfiguration), "Capabilities" :: Maybe (Capabilities), "Tags" :: Maybe (Tags), "Changes" :: Maybe (Changes), "NextToken" :: Maybe (NextToken) }
 ```
 
 <p>The output for the <a>DescribeChangeSet</a> action.</p>
@@ -1307,7 +1307,7 @@ Constructs DescribeChangeSetOutput from required parameters
 #### `newDescribeChangeSetOutput'`
 
 ``` purescript
-newDescribeChangeSetOutput' :: ({ "ChangeSetName" :: NullOrUndefined (ChangeSetName), "ChangeSetId" :: NullOrUndefined (ChangeSetId), "StackId" :: NullOrUndefined (StackId), "StackName" :: NullOrUndefined (StackName), "Description" :: NullOrUndefined (Description), "Parameters" :: NullOrUndefined (Parameters), "CreationTime" :: NullOrUndefined (CreationTime), "ExecutionStatus" :: NullOrUndefined (ExecutionStatus), "Status" :: NullOrUndefined (ChangeSetStatus), "StatusReason" :: NullOrUndefined (ChangeSetStatusReason), "NotificationARNs" :: NullOrUndefined (NotificationARNs), "RollbackConfiguration" :: NullOrUndefined (RollbackConfiguration), "Capabilities" :: NullOrUndefined (Capabilities), "Tags" :: NullOrUndefined (Tags), "Changes" :: NullOrUndefined (Changes), "NextToken" :: NullOrUndefined (NextToken) } -> { "ChangeSetName" :: NullOrUndefined (ChangeSetName), "ChangeSetId" :: NullOrUndefined (ChangeSetId), "StackId" :: NullOrUndefined (StackId), "StackName" :: NullOrUndefined (StackName), "Description" :: NullOrUndefined (Description), "Parameters" :: NullOrUndefined (Parameters), "CreationTime" :: NullOrUndefined (CreationTime), "ExecutionStatus" :: NullOrUndefined (ExecutionStatus), "Status" :: NullOrUndefined (ChangeSetStatus), "StatusReason" :: NullOrUndefined (ChangeSetStatusReason), "NotificationARNs" :: NullOrUndefined (NotificationARNs), "RollbackConfiguration" :: NullOrUndefined (RollbackConfiguration), "Capabilities" :: NullOrUndefined (Capabilities), "Tags" :: NullOrUndefined (Tags), "Changes" :: NullOrUndefined (Changes), "NextToken" :: NullOrUndefined (NextToken) }) -> DescribeChangeSetOutput
+newDescribeChangeSetOutput' :: ({ "ChangeSetName" :: Maybe (ChangeSetName), "ChangeSetId" :: Maybe (ChangeSetId), "StackId" :: Maybe (StackId), "StackName" :: Maybe (StackName), "Description" :: Maybe (Description), "Parameters" :: Maybe (Parameters), "CreationTime" :: Maybe (CreationTime), "ExecutionStatus" :: Maybe (ExecutionStatus), "Status" :: Maybe (ChangeSetStatus), "StatusReason" :: Maybe (ChangeSetStatusReason), "NotificationARNs" :: Maybe (NotificationARNs), "RollbackConfiguration" :: Maybe (RollbackConfiguration), "Capabilities" :: Maybe (Capabilities), "Tags" :: Maybe (Tags), "Changes" :: Maybe (Changes), "NextToken" :: Maybe (NextToken) } -> { "ChangeSetName" :: Maybe (ChangeSetName), "ChangeSetId" :: Maybe (ChangeSetId), "StackId" :: Maybe (StackId), "StackName" :: Maybe (StackName), "Description" :: Maybe (Description), "Parameters" :: Maybe (Parameters), "CreationTime" :: Maybe (CreationTime), "ExecutionStatus" :: Maybe (ExecutionStatus), "Status" :: Maybe (ChangeSetStatus), "StatusReason" :: Maybe (ChangeSetStatusReason), "NotificationARNs" :: Maybe (NotificationARNs), "RollbackConfiguration" :: Maybe (RollbackConfiguration), "Capabilities" :: Maybe (Capabilities), "Tags" :: Maybe (Tags), "Changes" :: Maybe (Changes), "NextToken" :: Maybe (NextToken) }) -> DescribeChangeSetOutput
 ```
 
 Constructs DescribeChangeSetOutput's fields from required parameters
@@ -1316,7 +1316,7 @@ Constructs DescribeChangeSetOutput's fields from required parameters
 
 ``` purescript
 newtype DescribeStackEventsInput
-  = DescribeStackEventsInput { "StackName" :: NullOrUndefined (StackName), "NextToken" :: NullOrUndefined (NextToken) }
+  = DescribeStackEventsInput { "StackName" :: Maybe (StackName), "NextToken" :: Maybe (NextToken) }
 ```
 
 <p>The input for <a>DescribeStackEvents</a> action.</p>
@@ -1341,7 +1341,7 @@ Constructs DescribeStackEventsInput from required parameters
 #### `newDescribeStackEventsInput'`
 
 ``` purescript
-newDescribeStackEventsInput' :: ({ "StackName" :: NullOrUndefined (StackName), "NextToken" :: NullOrUndefined (NextToken) } -> { "StackName" :: NullOrUndefined (StackName), "NextToken" :: NullOrUndefined (NextToken) }) -> DescribeStackEventsInput
+newDescribeStackEventsInput' :: ({ "StackName" :: Maybe (StackName), "NextToken" :: Maybe (NextToken) } -> { "StackName" :: Maybe (StackName), "NextToken" :: Maybe (NextToken) }) -> DescribeStackEventsInput
 ```
 
 Constructs DescribeStackEventsInput's fields from required parameters
@@ -1350,7 +1350,7 @@ Constructs DescribeStackEventsInput's fields from required parameters
 
 ``` purescript
 newtype DescribeStackEventsOutput
-  = DescribeStackEventsOutput { "StackEvents" :: NullOrUndefined (StackEvents), "NextToken" :: NullOrUndefined (NextToken) }
+  = DescribeStackEventsOutput { "StackEvents" :: Maybe (StackEvents), "NextToken" :: Maybe (NextToken) }
 ```
 
 <p>The output for a <a>DescribeStackEvents</a> action.</p>
@@ -1375,7 +1375,7 @@ Constructs DescribeStackEventsOutput from required parameters
 #### `newDescribeStackEventsOutput'`
 
 ``` purescript
-newDescribeStackEventsOutput' :: ({ "StackEvents" :: NullOrUndefined (StackEvents), "NextToken" :: NullOrUndefined (NextToken) } -> { "StackEvents" :: NullOrUndefined (StackEvents), "NextToken" :: NullOrUndefined (NextToken) }) -> DescribeStackEventsOutput
+newDescribeStackEventsOutput' :: ({ "StackEvents" :: Maybe (StackEvents), "NextToken" :: Maybe (NextToken) } -> { "StackEvents" :: Maybe (StackEvents), "NextToken" :: Maybe (NextToken) }) -> DescribeStackEventsOutput
 ```
 
 Constructs DescribeStackEventsOutput's fields from required parameters
@@ -1416,7 +1416,7 @@ Constructs DescribeStackInstanceInput's fields from required parameters
 
 ``` purescript
 newtype DescribeStackInstanceOutput
-  = DescribeStackInstanceOutput { "StackInstance" :: NullOrUndefined (StackInstance) }
+  = DescribeStackInstanceOutput { "StackInstance" :: Maybe (StackInstance) }
 ```
 
 ##### Instances
@@ -1439,7 +1439,7 @@ Constructs DescribeStackInstanceOutput from required parameters
 #### `newDescribeStackInstanceOutput'`
 
 ``` purescript
-newDescribeStackInstanceOutput' :: ({ "StackInstance" :: NullOrUndefined (StackInstance) } -> { "StackInstance" :: NullOrUndefined (StackInstance) }) -> DescribeStackInstanceOutput
+newDescribeStackInstanceOutput' :: ({ "StackInstance" :: Maybe (StackInstance) } -> { "StackInstance" :: Maybe (StackInstance) }) -> DescribeStackInstanceOutput
 ```
 
 Constructs DescribeStackInstanceOutput's fields from required parameters
@@ -1482,7 +1482,7 @@ Constructs DescribeStackResourceInput's fields from required parameters
 
 ``` purescript
 newtype DescribeStackResourceOutput
-  = DescribeStackResourceOutput { "StackResourceDetail" :: NullOrUndefined (StackResourceDetail) }
+  = DescribeStackResourceOutput { "StackResourceDetail" :: Maybe (StackResourceDetail) }
 ```
 
 <p>The output for a <a>DescribeStackResource</a> action.</p>
@@ -1507,7 +1507,7 @@ Constructs DescribeStackResourceOutput from required parameters
 #### `newDescribeStackResourceOutput'`
 
 ``` purescript
-newDescribeStackResourceOutput' :: ({ "StackResourceDetail" :: NullOrUndefined (StackResourceDetail) } -> { "StackResourceDetail" :: NullOrUndefined (StackResourceDetail) }) -> DescribeStackResourceOutput
+newDescribeStackResourceOutput' :: ({ "StackResourceDetail" :: Maybe (StackResourceDetail) } -> { "StackResourceDetail" :: Maybe (StackResourceDetail) }) -> DescribeStackResourceOutput
 ```
 
 Constructs DescribeStackResourceOutput's fields from required parameters
@@ -1516,7 +1516,7 @@ Constructs DescribeStackResourceOutput's fields from required parameters
 
 ``` purescript
 newtype DescribeStackResourcesInput
-  = DescribeStackResourcesInput { "StackName" :: NullOrUndefined (StackName), "LogicalResourceId" :: NullOrUndefined (LogicalResourceId), "PhysicalResourceId" :: NullOrUndefined (PhysicalResourceId) }
+  = DescribeStackResourcesInput { "StackName" :: Maybe (StackName), "LogicalResourceId" :: Maybe (LogicalResourceId), "PhysicalResourceId" :: Maybe (PhysicalResourceId) }
 ```
 
 <p>The input for <a>DescribeStackResources</a> action.</p>
@@ -1541,7 +1541,7 @@ Constructs DescribeStackResourcesInput from required parameters
 #### `newDescribeStackResourcesInput'`
 
 ``` purescript
-newDescribeStackResourcesInput' :: ({ "StackName" :: NullOrUndefined (StackName), "LogicalResourceId" :: NullOrUndefined (LogicalResourceId), "PhysicalResourceId" :: NullOrUndefined (PhysicalResourceId) } -> { "StackName" :: NullOrUndefined (StackName), "LogicalResourceId" :: NullOrUndefined (LogicalResourceId), "PhysicalResourceId" :: NullOrUndefined (PhysicalResourceId) }) -> DescribeStackResourcesInput
+newDescribeStackResourcesInput' :: ({ "StackName" :: Maybe (StackName), "LogicalResourceId" :: Maybe (LogicalResourceId), "PhysicalResourceId" :: Maybe (PhysicalResourceId) } -> { "StackName" :: Maybe (StackName), "LogicalResourceId" :: Maybe (LogicalResourceId), "PhysicalResourceId" :: Maybe (PhysicalResourceId) }) -> DescribeStackResourcesInput
 ```
 
 Constructs DescribeStackResourcesInput's fields from required parameters
@@ -1550,7 +1550,7 @@ Constructs DescribeStackResourcesInput's fields from required parameters
 
 ``` purescript
 newtype DescribeStackResourcesOutput
-  = DescribeStackResourcesOutput { "StackResources" :: NullOrUndefined (StackResources) }
+  = DescribeStackResourcesOutput { "StackResources" :: Maybe (StackResources) }
 ```
 
 <p>The output for a <a>DescribeStackResources</a> action.</p>
@@ -1575,7 +1575,7 @@ Constructs DescribeStackResourcesOutput from required parameters
 #### `newDescribeStackResourcesOutput'`
 
 ``` purescript
-newDescribeStackResourcesOutput' :: ({ "StackResources" :: NullOrUndefined (StackResources) } -> { "StackResources" :: NullOrUndefined (StackResources) }) -> DescribeStackResourcesOutput
+newDescribeStackResourcesOutput' :: ({ "StackResources" :: Maybe (StackResources) } -> { "StackResources" :: Maybe (StackResources) }) -> DescribeStackResourcesOutput
 ```
 
 Constructs DescribeStackResourcesOutput's fields from required parameters
@@ -1648,7 +1648,7 @@ Constructs DescribeStackSetOperationInput's fields from required parameters
 
 ``` purescript
 newtype DescribeStackSetOperationOutput
-  = DescribeStackSetOperationOutput { "StackSetOperation" :: NullOrUndefined (StackSetOperation) }
+  = DescribeStackSetOperationOutput { "StackSetOperation" :: Maybe (StackSetOperation) }
 ```
 
 ##### Instances
@@ -1671,7 +1671,7 @@ Constructs DescribeStackSetOperationOutput from required parameters
 #### `newDescribeStackSetOperationOutput'`
 
 ``` purescript
-newDescribeStackSetOperationOutput' :: ({ "StackSetOperation" :: NullOrUndefined (StackSetOperation) } -> { "StackSetOperation" :: NullOrUndefined (StackSetOperation) }) -> DescribeStackSetOperationOutput
+newDescribeStackSetOperationOutput' :: ({ "StackSetOperation" :: Maybe (StackSetOperation) } -> { "StackSetOperation" :: Maybe (StackSetOperation) }) -> DescribeStackSetOperationOutput
 ```
 
 Constructs DescribeStackSetOperationOutput's fields from required parameters
@@ -1680,7 +1680,7 @@ Constructs DescribeStackSetOperationOutput's fields from required parameters
 
 ``` purescript
 newtype DescribeStackSetOutput
-  = DescribeStackSetOutput { "StackSet" :: NullOrUndefined (StackSet) }
+  = DescribeStackSetOutput { "StackSet" :: Maybe (StackSet) }
 ```
 
 ##### Instances
@@ -1703,7 +1703,7 @@ Constructs DescribeStackSetOutput from required parameters
 #### `newDescribeStackSetOutput'`
 
 ``` purescript
-newDescribeStackSetOutput' :: ({ "StackSet" :: NullOrUndefined (StackSet) } -> { "StackSet" :: NullOrUndefined (StackSet) }) -> DescribeStackSetOutput
+newDescribeStackSetOutput' :: ({ "StackSet" :: Maybe (StackSet) } -> { "StackSet" :: Maybe (StackSet) }) -> DescribeStackSetOutput
 ```
 
 Constructs DescribeStackSetOutput's fields from required parameters
@@ -1712,7 +1712,7 @@ Constructs DescribeStackSetOutput's fields from required parameters
 
 ``` purescript
 newtype DescribeStacksInput
-  = DescribeStacksInput { "StackName" :: NullOrUndefined (StackName), "NextToken" :: NullOrUndefined (NextToken) }
+  = DescribeStacksInput { "StackName" :: Maybe (StackName), "NextToken" :: Maybe (NextToken) }
 ```
 
 <p>The input for <a>DescribeStacks</a> action.</p>
@@ -1737,7 +1737,7 @@ Constructs DescribeStacksInput from required parameters
 #### `newDescribeStacksInput'`
 
 ``` purescript
-newDescribeStacksInput' :: ({ "StackName" :: NullOrUndefined (StackName), "NextToken" :: NullOrUndefined (NextToken) } -> { "StackName" :: NullOrUndefined (StackName), "NextToken" :: NullOrUndefined (NextToken) }) -> DescribeStacksInput
+newDescribeStacksInput' :: ({ "StackName" :: Maybe (StackName), "NextToken" :: Maybe (NextToken) } -> { "StackName" :: Maybe (StackName), "NextToken" :: Maybe (NextToken) }) -> DescribeStacksInput
 ```
 
 Constructs DescribeStacksInput's fields from required parameters
@@ -1746,7 +1746,7 @@ Constructs DescribeStacksInput's fields from required parameters
 
 ``` purescript
 newtype DescribeStacksOutput
-  = DescribeStacksOutput { "Stacks" :: NullOrUndefined (Stacks), "NextToken" :: NullOrUndefined (NextToken) }
+  = DescribeStacksOutput { "Stacks" :: Maybe (Stacks), "NextToken" :: Maybe (NextToken) }
 ```
 
 <p>The output for a <a>DescribeStacks</a> action.</p>
@@ -1771,7 +1771,7 @@ Constructs DescribeStacksOutput from required parameters
 #### `newDescribeStacksOutput'`
 
 ``` purescript
-newDescribeStacksOutput' :: ({ "Stacks" :: NullOrUndefined (Stacks), "NextToken" :: NullOrUndefined (NextToken) } -> { "Stacks" :: NullOrUndefined (Stacks), "NextToken" :: NullOrUndefined (NextToken) }) -> DescribeStacksOutput
+newDescribeStacksOutput' :: ({ "Stacks" :: Maybe (Stacks), "NextToken" :: Maybe (NextToken) } -> { "Stacks" :: Maybe (Stacks), "NextToken" :: Maybe (NextToken) }) -> DescribeStacksOutput
 ```
 
 Constructs DescribeStacksOutput's fields from required parameters
@@ -1828,7 +1828,7 @@ Encode EnableTerminationProtection
 
 ``` purescript
 newtype EstimateTemplateCostInput
-  = EstimateTemplateCostInput { "TemplateBody" :: NullOrUndefined (TemplateBody), "TemplateURL" :: NullOrUndefined (TemplateURL), "Parameters" :: NullOrUndefined (Parameters) }
+  = EstimateTemplateCostInput { "TemplateBody" :: Maybe (TemplateBody), "TemplateURL" :: Maybe (TemplateURL), "Parameters" :: Maybe (Parameters) }
 ```
 
 <p>The input for an <a>EstimateTemplateCost</a> action.</p>
@@ -1853,7 +1853,7 @@ Constructs EstimateTemplateCostInput from required parameters
 #### `newEstimateTemplateCostInput'`
 
 ``` purescript
-newEstimateTemplateCostInput' :: ({ "TemplateBody" :: NullOrUndefined (TemplateBody), "TemplateURL" :: NullOrUndefined (TemplateURL), "Parameters" :: NullOrUndefined (Parameters) } -> { "TemplateBody" :: NullOrUndefined (TemplateBody), "TemplateURL" :: NullOrUndefined (TemplateURL), "Parameters" :: NullOrUndefined (Parameters) }) -> EstimateTemplateCostInput
+newEstimateTemplateCostInput' :: ({ "TemplateBody" :: Maybe (TemplateBody), "TemplateURL" :: Maybe (TemplateURL), "Parameters" :: Maybe (Parameters) } -> { "TemplateBody" :: Maybe (TemplateBody), "TemplateURL" :: Maybe (TemplateURL), "Parameters" :: Maybe (Parameters) }) -> EstimateTemplateCostInput
 ```
 
 Constructs EstimateTemplateCostInput's fields from required parameters
@@ -1862,7 +1862,7 @@ Constructs EstimateTemplateCostInput's fields from required parameters
 
 ``` purescript
 newtype EstimateTemplateCostOutput
-  = EstimateTemplateCostOutput { "Url" :: NullOrUndefined (Url) }
+  = EstimateTemplateCostOutput { "Url" :: Maybe (Url) }
 ```
 
 <p>The output for a <a>EstimateTemplateCost</a> action.</p>
@@ -1887,7 +1887,7 @@ Constructs EstimateTemplateCostOutput from required parameters
 #### `newEstimateTemplateCostOutput'`
 
 ``` purescript
-newEstimateTemplateCostOutput' :: ({ "Url" :: NullOrUndefined (Url) } -> { "Url" :: NullOrUndefined (Url) }) -> EstimateTemplateCostOutput
+newEstimateTemplateCostOutput' :: ({ "Url" :: Maybe (Url) } -> { "Url" :: Maybe (Url) }) -> EstimateTemplateCostOutput
 ```
 
 Constructs EstimateTemplateCostOutput's fields from required parameters
@@ -1928,7 +1928,7 @@ Encode EventId
 
 ``` purescript
 newtype ExecuteChangeSetInput
-  = ExecuteChangeSetInput { "ChangeSetName" :: ChangeSetNameOrId, "StackName" :: NullOrUndefined (StackNameOrId), "ClientRequestToken" :: NullOrUndefined (ClientRequestToken) }
+  = ExecuteChangeSetInput { "ChangeSetName" :: ChangeSetNameOrId, "StackName" :: Maybe (StackNameOrId), "ClientRequestToken" :: Maybe (ClientRequestToken) }
 ```
 
 <p>The input for the <a>ExecuteChangeSet</a> action.</p>
@@ -1953,7 +1953,7 @@ Constructs ExecuteChangeSetInput from required parameters
 #### `newExecuteChangeSetInput'`
 
 ``` purescript
-newExecuteChangeSetInput' :: ChangeSetNameOrId -> ({ "ChangeSetName" :: ChangeSetNameOrId, "StackName" :: NullOrUndefined (StackNameOrId), "ClientRequestToken" :: NullOrUndefined (ClientRequestToken) } -> { "ChangeSetName" :: ChangeSetNameOrId, "StackName" :: NullOrUndefined (StackNameOrId), "ClientRequestToken" :: NullOrUndefined (ClientRequestToken) }) -> ExecuteChangeSetInput
+newExecuteChangeSetInput' :: ChangeSetNameOrId -> ({ "ChangeSetName" :: ChangeSetNameOrId, "StackName" :: Maybe (StackNameOrId), "ClientRequestToken" :: Maybe (ClientRequestToken) } -> { "ChangeSetName" :: ChangeSetNameOrId, "StackName" :: Maybe (StackNameOrId), "ClientRequestToken" :: Maybe (ClientRequestToken) }) -> ExecuteChangeSetInput
 ```
 
 Constructs ExecuteChangeSetInput's fields from required parameters
@@ -1996,7 +1996,7 @@ Encode ExecutionStatus
 
 ``` purescript
 newtype Export
-  = Export { "ExportingStackId" :: NullOrUndefined (StackId), "Name" :: NullOrUndefined (ExportName), "Value" :: NullOrUndefined (ExportValue) }
+  = Export { "ExportingStackId" :: Maybe (StackId), "Name" :: Maybe (ExportName), "Value" :: Maybe (ExportValue) }
 ```
 
 <p>The <code>Export</code> structure describes the exported output values for a stack.</p>
@@ -2021,7 +2021,7 @@ Constructs Export from required parameters
 #### `newExport'`
 
 ``` purescript
-newExport' :: ({ "ExportingStackId" :: NullOrUndefined (StackId), "Name" :: NullOrUndefined (ExportName), "Value" :: NullOrUndefined (ExportValue) } -> { "ExportingStackId" :: NullOrUndefined (StackId), "Name" :: NullOrUndefined (ExportName), "Value" :: NullOrUndefined (ExportValue) }) -> Export
+newExport' :: ({ "ExportingStackId" :: Maybe (StackId), "Name" :: Maybe (ExportName), "Value" :: Maybe (ExportValue) } -> { "ExportingStackId" :: Maybe (StackId), "Name" :: Maybe (ExportName), "Value" :: Maybe (ExportValue) }) -> Export
 ```
 
 Constructs Export's fields from required parameters
@@ -2144,7 +2144,7 @@ Constructs GetStackPolicyInput's fields from required parameters
 
 ``` purescript
 newtype GetStackPolicyOutput
-  = GetStackPolicyOutput { "StackPolicyBody" :: NullOrUndefined (StackPolicyBody) }
+  = GetStackPolicyOutput { "StackPolicyBody" :: Maybe (StackPolicyBody) }
 ```
 
 <p>The output for the <a>GetStackPolicy</a> action.</p>
@@ -2169,7 +2169,7 @@ Constructs GetStackPolicyOutput from required parameters
 #### `newGetStackPolicyOutput'`
 
 ``` purescript
-newGetStackPolicyOutput' :: ({ "StackPolicyBody" :: NullOrUndefined (StackPolicyBody) } -> { "StackPolicyBody" :: NullOrUndefined (StackPolicyBody) }) -> GetStackPolicyOutput
+newGetStackPolicyOutput' :: ({ "StackPolicyBody" :: Maybe (StackPolicyBody) } -> { "StackPolicyBody" :: Maybe (StackPolicyBody) }) -> GetStackPolicyOutput
 ```
 
 Constructs GetStackPolicyOutput's fields from required parameters
@@ -2178,7 +2178,7 @@ Constructs GetStackPolicyOutput's fields from required parameters
 
 ``` purescript
 newtype GetTemplateInput
-  = GetTemplateInput { "StackName" :: NullOrUndefined (StackName), "ChangeSetName" :: NullOrUndefined (ChangeSetNameOrId), "TemplateStage" :: NullOrUndefined (TemplateStage) }
+  = GetTemplateInput { "StackName" :: Maybe (StackName), "ChangeSetName" :: Maybe (ChangeSetNameOrId), "TemplateStage" :: Maybe (TemplateStage) }
 ```
 
 <p>The input for a <a>GetTemplate</a> action.</p>
@@ -2203,7 +2203,7 @@ Constructs GetTemplateInput from required parameters
 #### `newGetTemplateInput'`
 
 ``` purescript
-newGetTemplateInput' :: ({ "StackName" :: NullOrUndefined (StackName), "ChangeSetName" :: NullOrUndefined (ChangeSetNameOrId), "TemplateStage" :: NullOrUndefined (TemplateStage) } -> { "StackName" :: NullOrUndefined (StackName), "ChangeSetName" :: NullOrUndefined (ChangeSetNameOrId), "TemplateStage" :: NullOrUndefined (TemplateStage) }) -> GetTemplateInput
+newGetTemplateInput' :: ({ "StackName" :: Maybe (StackName), "ChangeSetName" :: Maybe (ChangeSetNameOrId), "TemplateStage" :: Maybe (TemplateStage) } -> { "StackName" :: Maybe (StackName), "ChangeSetName" :: Maybe (ChangeSetNameOrId), "TemplateStage" :: Maybe (TemplateStage) }) -> GetTemplateInput
 ```
 
 Constructs GetTemplateInput's fields from required parameters
@@ -2212,7 +2212,7 @@ Constructs GetTemplateInput's fields from required parameters
 
 ``` purescript
 newtype GetTemplateOutput
-  = GetTemplateOutput { "TemplateBody" :: NullOrUndefined (TemplateBody), "StagesAvailable" :: NullOrUndefined (StageList) }
+  = GetTemplateOutput { "TemplateBody" :: Maybe (TemplateBody), "StagesAvailable" :: Maybe (StageList) }
 ```
 
 <p>The output for <a>GetTemplate</a> action.</p>
@@ -2237,7 +2237,7 @@ Constructs GetTemplateOutput from required parameters
 #### `newGetTemplateOutput'`
 
 ``` purescript
-newGetTemplateOutput' :: ({ "TemplateBody" :: NullOrUndefined (TemplateBody), "StagesAvailable" :: NullOrUndefined (StageList) } -> { "TemplateBody" :: NullOrUndefined (TemplateBody), "StagesAvailable" :: NullOrUndefined (StageList) }) -> GetTemplateOutput
+newGetTemplateOutput' :: ({ "TemplateBody" :: Maybe (TemplateBody), "StagesAvailable" :: Maybe (StageList) } -> { "TemplateBody" :: Maybe (TemplateBody), "StagesAvailable" :: Maybe (StageList) }) -> GetTemplateOutput
 ```
 
 Constructs GetTemplateOutput's fields from required parameters
@@ -2246,7 +2246,7 @@ Constructs GetTemplateOutput's fields from required parameters
 
 ``` purescript
 newtype GetTemplateSummaryInput
-  = GetTemplateSummaryInput { "TemplateBody" :: NullOrUndefined (TemplateBody), "TemplateURL" :: NullOrUndefined (TemplateURL), "StackName" :: NullOrUndefined (StackNameOrId), "StackSetName" :: NullOrUndefined (StackSetNameOrId) }
+  = GetTemplateSummaryInput { "TemplateBody" :: Maybe (TemplateBody), "TemplateURL" :: Maybe (TemplateURL), "StackName" :: Maybe (StackNameOrId), "StackSetName" :: Maybe (StackSetNameOrId) }
 ```
 
 <p>The input for the <a>GetTemplateSummary</a> action.</p>
@@ -2271,7 +2271,7 @@ Constructs GetTemplateSummaryInput from required parameters
 #### `newGetTemplateSummaryInput'`
 
 ``` purescript
-newGetTemplateSummaryInput' :: ({ "TemplateBody" :: NullOrUndefined (TemplateBody), "TemplateURL" :: NullOrUndefined (TemplateURL), "StackName" :: NullOrUndefined (StackNameOrId), "StackSetName" :: NullOrUndefined (StackSetNameOrId) } -> { "TemplateBody" :: NullOrUndefined (TemplateBody), "TemplateURL" :: NullOrUndefined (TemplateURL), "StackName" :: NullOrUndefined (StackNameOrId), "StackSetName" :: NullOrUndefined (StackSetNameOrId) }) -> GetTemplateSummaryInput
+newGetTemplateSummaryInput' :: ({ "TemplateBody" :: Maybe (TemplateBody), "TemplateURL" :: Maybe (TemplateURL), "StackName" :: Maybe (StackNameOrId), "StackSetName" :: Maybe (StackSetNameOrId) } -> { "TemplateBody" :: Maybe (TemplateBody), "TemplateURL" :: Maybe (TemplateURL), "StackName" :: Maybe (StackNameOrId), "StackSetName" :: Maybe (StackSetNameOrId) }) -> GetTemplateSummaryInput
 ```
 
 Constructs GetTemplateSummaryInput's fields from required parameters
@@ -2280,7 +2280,7 @@ Constructs GetTemplateSummaryInput's fields from required parameters
 
 ``` purescript
 newtype GetTemplateSummaryOutput
-  = GetTemplateSummaryOutput { "Parameters" :: NullOrUndefined (ParameterDeclarations), "Description" :: NullOrUndefined (Description), "Capabilities" :: NullOrUndefined (Capabilities), "CapabilitiesReason" :: NullOrUndefined (CapabilitiesReason), "ResourceTypes" :: NullOrUndefined (ResourceTypes), "Version" :: NullOrUndefined (Version), "Metadata" :: NullOrUndefined (Metadata), "DeclaredTransforms" :: NullOrUndefined (TransformsList) }
+  = GetTemplateSummaryOutput { "Parameters" :: Maybe (ParameterDeclarations), "Description" :: Maybe (Description), "Capabilities" :: Maybe (Capabilities), "CapabilitiesReason" :: Maybe (CapabilitiesReason), "ResourceTypes" :: Maybe (ResourceTypes), "Version" :: Maybe (Version), "Metadata" :: Maybe (Metadata), "DeclaredTransforms" :: Maybe (TransformsList) }
 ```
 
 <p>The output for the <a>GetTemplateSummary</a> action.</p>
@@ -2305,7 +2305,7 @@ Constructs GetTemplateSummaryOutput from required parameters
 #### `newGetTemplateSummaryOutput'`
 
 ``` purescript
-newGetTemplateSummaryOutput' :: ({ "Parameters" :: NullOrUndefined (ParameterDeclarations), "Description" :: NullOrUndefined (Description), "Capabilities" :: NullOrUndefined (Capabilities), "CapabilitiesReason" :: NullOrUndefined (CapabilitiesReason), "ResourceTypes" :: NullOrUndefined (ResourceTypes), "Version" :: NullOrUndefined (Version), "Metadata" :: NullOrUndefined (Metadata), "DeclaredTransforms" :: NullOrUndefined (TransformsList) } -> { "Parameters" :: NullOrUndefined (ParameterDeclarations), "Description" :: NullOrUndefined (Description), "Capabilities" :: NullOrUndefined (Capabilities), "CapabilitiesReason" :: NullOrUndefined (CapabilitiesReason), "ResourceTypes" :: NullOrUndefined (ResourceTypes), "Version" :: NullOrUndefined (Version), "Metadata" :: NullOrUndefined (Metadata), "DeclaredTransforms" :: NullOrUndefined (TransformsList) }) -> GetTemplateSummaryOutput
+newGetTemplateSummaryOutput' :: ({ "Parameters" :: Maybe (ParameterDeclarations), "Description" :: Maybe (Description), "Capabilities" :: Maybe (Capabilities), "CapabilitiesReason" :: Maybe (CapabilitiesReason), "ResourceTypes" :: Maybe (ResourceTypes), "Version" :: Maybe (Version), "Metadata" :: Maybe (Metadata), "DeclaredTransforms" :: Maybe (TransformsList) } -> { "Parameters" :: Maybe (ParameterDeclarations), "Description" :: Maybe (Description), "Capabilities" :: Maybe (Capabilities), "CapabilitiesReason" :: Maybe (CapabilitiesReason), "ResourceTypes" :: Maybe (ResourceTypes), "Version" :: Maybe (Version), "Metadata" :: Maybe (Metadata), "DeclaredTransforms" :: Maybe (TransformsList) }) -> GetTemplateSummaryOutput
 ```
 
 Constructs GetTemplateSummaryOutput's fields from required parameters
@@ -2450,7 +2450,7 @@ Encode LimitValue
 
 ``` purescript
 newtype ListChangeSetsInput
-  = ListChangeSetsInput { "StackName" :: StackNameOrId, "NextToken" :: NullOrUndefined (NextToken) }
+  = ListChangeSetsInput { "StackName" :: StackNameOrId, "NextToken" :: Maybe (NextToken) }
 ```
 
 <p>The input for the <a>ListChangeSets</a> action.</p>
@@ -2475,7 +2475,7 @@ Constructs ListChangeSetsInput from required parameters
 #### `newListChangeSetsInput'`
 
 ``` purescript
-newListChangeSetsInput' :: StackNameOrId -> ({ "StackName" :: StackNameOrId, "NextToken" :: NullOrUndefined (NextToken) } -> { "StackName" :: StackNameOrId, "NextToken" :: NullOrUndefined (NextToken) }) -> ListChangeSetsInput
+newListChangeSetsInput' :: StackNameOrId -> ({ "StackName" :: StackNameOrId, "NextToken" :: Maybe (NextToken) } -> { "StackName" :: StackNameOrId, "NextToken" :: Maybe (NextToken) }) -> ListChangeSetsInput
 ```
 
 Constructs ListChangeSetsInput's fields from required parameters
@@ -2484,7 +2484,7 @@ Constructs ListChangeSetsInput's fields from required parameters
 
 ``` purescript
 newtype ListChangeSetsOutput
-  = ListChangeSetsOutput { "Summaries" :: NullOrUndefined (ChangeSetSummaries), "NextToken" :: NullOrUndefined (NextToken) }
+  = ListChangeSetsOutput { "Summaries" :: Maybe (ChangeSetSummaries), "NextToken" :: Maybe (NextToken) }
 ```
 
 <p>The output for the <a>ListChangeSets</a> action.</p>
@@ -2509,7 +2509,7 @@ Constructs ListChangeSetsOutput from required parameters
 #### `newListChangeSetsOutput'`
 
 ``` purescript
-newListChangeSetsOutput' :: ({ "Summaries" :: NullOrUndefined (ChangeSetSummaries), "NextToken" :: NullOrUndefined (NextToken) } -> { "Summaries" :: NullOrUndefined (ChangeSetSummaries), "NextToken" :: NullOrUndefined (NextToken) }) -> ListChangeSetsOutput
+newListChangeSetsOutput' :: ({ "Summaries" :: Maybe (ChangeSetSummaries), "NextToken" :: Maybe (NextToken) } -> { "Summaries" :: Maybe (ChangeSetSummaries), "NextToken" :: Maybe (NextToken) }) -> ListChangeSetsOutput
 ```
 
 Constructs ListChangeSetsOutput's fields from required parameters
@@ -2518,7 +2518,7 @@ Constructs ListChangeSetsOutput's fields from required parameters
 
 ``` purescript
 newtype ListExportsInput
-  = ListExportsInput { "NextToken" :: NullOrUndefined (NextToken) }
+  = ListExportsInput { "NextToken" :: Maybe (NextToken) }
 ```
 
 ##### Instances
@@ -2541,7 +2541,7 @@ Constructs ListExportsInput from required parameters
 #### `newListExportsInput'`
 
 ``` purescript
-newListExportsInput' :: ({ "NextToken" :: NullOrUndefined (NextToken) } -> { "NextToken" :: NullOrUndefined (NextToken) }) -> ListExportsInput
+newListExportsInput' :: ({ "NextToken" :: Maybe (NextToken) } -> { "NextToken" :: Maybe (NextToken) }) -> ListExportsInput
 ```
 
 Constructs ListExportsInput's fields from required parameters
@@ -2550,7 +2550,7 @@ Constructs ListExportsInput's fields from required parameters
 
 ``` purescript
 newtype ListExportsOutput
-  = ListExportsOutput { "Exports" :: NullOrUndefined (Exports), "NextToken" :: NullOrUndefined (NextToken) }
+  = ListExportsOutput { "Exports" :: Maybe (Exports), "NextToken" :: Maybe (NextToken) }
 ```
 
 ##### Instances
@@ -2573,7 +2573,7 @@ Constructs ListExportsOutput from required parameters
 #### `newListExportsOutput'`
 
 ``` purescript
-newListExportsOutput' :: ({ "Exports" :: NullOrUndefined (Exports), "NextToken" :: NullOrUndefined (NextToken) } -> { "Exports" :: NullOrUndefined (Exports), "NextToken" :: NullOrUndefined (NextToken) }) -> ListExportsOutput
+newListExportsOutput' :: ({ "Exports" :: Maybe (Exports), "NextToken" :: Maybe (NextToken) } -> { "Exports" :: Maybe (Exports), "NextToken" :: Maybe (NextToken) }) -> ListExportsOutput
 ```
 
 Constructs ListExportsOutput's fields from required parameters
@@ -2582,7 +2582,7 @@ Constructs ListExportsOutput's fields from required parameters
 
 ``` purescript
 newtype ListImportsInput
-  = ListImportsInput { "ExportName" :: ExportName, "NextToken" :: NullOrUndefined (NextToken) }
+  = ListImportsInput { "ExportName" :: ExportName, "NextToken" :: Maybe (NextToken) }
 ```
 
 ##### Instances
@@ -2605,7 +2605,7 @@ Constructs ListImportsInput from required parameters
 #### `newListImportsInput'`
 
 ``` purescript
-newListImportsInput' :: ExportName -> ({ "ExportName" :: ExportName, "NextToken" :: NullOrUndefined (NextToken) } -> { "ExportName" :: ExportName, "NextToken" :: NullOrUndefined (NextToken) }) -> ListImportsInput
+newListImportsInput' :: ExportName -> ({ "ExportName" :: ExportName, "NextToken" :: Maybe (NextToken) } -> { "ExportName" :: ExportName, "NextToken" :: Maybe (NextToken) }) -> ListImportsInput
 ```
 
 Constructs ListImportsInput's fields from required parameters
@@ -2614,7 +2614,7 @@ Constructs ListImportsInput's fields from required parameters
 
 ``` purescript
 newtype ListImportsOutput
-  = ListImportsOutput { "Imports" :: NullOrUndefined (Imports), "NextToken" :: NullOrUndefined (NextToken) }
+  = ListImportsOutput { "Imports" :: Maybe (Imports), "NextToken" :: Maybe (NextToken) }
 ```
 
 ##### Instances
@@ -2637,7 +2637,7 @@ Constructs ListImportsOutput from required parameters
 #### `newListImportsOutput'`
 
 ``` purescript
-newListImportsOutput' :: ({ "Imports" :: NullOrUndefined (Imports), "NextToken" :: NullOrUndefined (NextToken) } -> { "Imports" :: NullOrUndefined (Imports), "NextToken" :: NullOrUndefined (NextToken) }) -> ListImportsOutput
+newListImportsOutput' :: ({ "Imports" :: Maybe (Imports), "NextToken" :: Maybe (NextToken) } -> { "Imports" :: Maybe (Imports), "NextToken" :: Maybe (NextToken) }) -> ListImportsOutput
 ```
 
 Constructs ListImportsOutput's fields from required parameters
@@ -2646,7 +2646,7 @@ Constructs ListImportsOutput's fields from required parameters
 
 ``` purescript
 newtype ListStackInstancesInput
-  = ListStackInstancesInput { "StackSetName" :: StackSetName, "NextToken" :: NullOrUndefined (NextToken), "MaxResults" :: NullOrUndefined (MaxResults), "StackInstanceAccount" :: NullOrUndefined (Account), "StackInstanceRegion" :: NullOrUndefined (Region) }
+  = ListStackInstancesInput { "StackSetName" :: StackSetName, "NextToken" :: Maybe (NextToken), "MaxResults" :: Maybe (MaxResults), "StackInstanceAccount" :: Maybe (Account), "StackInstanceRegion" :: Maybe (Region) }
 ```
 
 ##### Instances
@@ -2669,7 +2669,7 @@ Constructs ListStackInstancesInput from required parameters
 #### `newListStackInstancesInput'`
 
 ``` purescript
-newListStackInstancesInput' :: StackSetName -> ({ "StackSetName" :: StackSetName, "NextToken" :: NullOrUndefined (NextToken), "MaxResults" :: NullOrUndefined (MaxResults), "StackInstanceAccount" :: NullOrUndefined (Account), "StackInstanceRegion" :: NullOrUndefined (Region) } -> { "StackSetName" :: StackSetName, "NextToken" :: NullOrUndefined (NextToken), "MaxResults" :: NullOrUndefined (MaxResults), "StackInstanceAccount" :: NullOrUndefined (Account), "StackInstanceRegion" :: NullOrUndefined (Region) }) -> ListStackInstancesInput
+newListStackInstancesInput' :: StackSetName -> ({ "StackSetName" :: StackSetName, "NextToken" :: Maybe (NextToken), "MaxResults" :: Maybe (MaxResults), "StackInstanceAccount" :: Maybe (Account), "StackInstanceRegion" :: Maybe (Region) } -> { "StackSetName" :: StackSetName, "NextToken" :: Maybe (NextToken), "MaxResults" :: Maybe (MaxResults), "StackInstanceAccount" :: Maybe (Account), "StackInstanceRegion" :: Maybe (Region) }) -> ListStackInstancesInput
 ```
 
 Constructs ListStackInstancesInput's fields from required parameters
@@ -2678,7 +2678,7 @@ Constructs ListStackInstancesInput's fields from required parameters
 
 ``` purescript
 newtype ListStackInstancesOutput
-  = ListStackInstancesOutput { "Summaries" :: NullOrUndefined (StackInstanceSummaries), "NextToken" :: NullOrUndefined (NextToken) }
+  = ListStackInstancesOutput { "Summaries" :: Maybe (StackInstanceSummaries), "NextToken" :: Maybe (NextToken) }
 ```
 
 ##### Instances
@@ -2701,7 +2701,7 @@ Constructs ListStackInstancesOutput from required parameters
 #### `newListStackInstancesOutput'`
 
 ``` purescript
-newListStackInstancesOutput' :: ({ "Summaries" :: NullOrUndefined (StackInstanceSummaries), "NextToken" :: NullOrUndefined (NextToken) } -> { "Summaries" :: NullOrUndefined (StackInstanceSummaries), "NextToken" :: NullOrUndefined (NextToken) }) -> ListStackInstancesOutput
+newListStackInstancesOutput' :: ({ "Summaries" :: Maybe (StackInstanceSummaries), "NextToken" :: Maybe (NextToken) } -> { "Summaries" :: Maybe (StackInstanceSummaries), "NextToken" :: Maybe (NextToken) }) -> ListStackInstancesOutput
 ```
 
 Constructs ListStackInstancesOutput's fields from required parameters
@@ -2710,7 +2710,7 @@ Constructs ListStackInstancesOutput's fields from required parameters
 
 ``` purescript
 newtype ListStackResourcesInput
-  = ListStackResourcesInput { "StackName" :: StackName, "NextToken" :: NullOrUndefined (NextToken) }
+  = ListStackResourcesInput { "StackName" :: StackName, "NextToken" :: Maybe (NextToken) }
 ```
 
 <p>The input for the <a>ListStackResource</a> action.</p>
@@ -2735,7 +2735,7 @@ Constructs ListStackResourcesInput from required parameters
 #### `newListStackResourcesInput'`
 
 ``` purescript
-newListStackResourcesInput' :: StackName -> ({ "StackName" :: StackName, "NextToken" :: NullOrUndefined (NextToken) } -> { "StackName" :: StackName, "NextToken" :: NullOrUndefined (NextToken) }) -> ListStackResourcesInput
+newListStackResourcesInput' :: StackName -> ({ "StackName" :: StackName, "NextToken" :: Maybe (NextToken) } -> { "StackName" :: StackName, "NextToken" :: Maybe (NextToken) }) -> ListStackResourcesInput
 ```
 
 Constructs ListStackResourcesInput's fields from required parameters
@@ -2744,7 +2744,7 @@ Constructs ListStackResourcesInput's fields from required parameters
 
 ``` purescript
 newtype ListStackResourcesOutput
-  = ListStackResourcesOutput { "StackResourceSummaries" :: NullOrUndefined (StackResourceSummaries), "NextToken" :: NullOrUndefined (NextToken) }
+  = ListStackResourcesOutput { "StackResourceSummaries" :: Maybe (StackResourceSummaries), "NextToken" :: Maybe (NextToken) }
 ```
 
 <p>The output for a <a>ListStackResources</a> action.</p>
@@ -2769,7 +2769,7 @@ Constructs ListStackResourcesOutput from required parameters
 #### `newListStackResourcesOutput'`
 
 ``` purescript
-newListStackResourcesOutput' :: ({ "StackResourceSummaries" :: NullOrUndefined (StackResourceSummaries), "NextToken" :: NullOrUndefined (NextToken) } -> { "StackResourceSummaries" :: NullOrUndefined (StackResourceSummaries), "NextToken" :: NullOrUndefined (NextToken) }) -> ListStackResourcesOutput
+newListStackResourcesOutput' :: ({ "StackResourceSummaries" :: Maybe (StackResourceSummaries), "NextToken" :: Maybe (NextToken) } -> { "StackResourceSummaries" :: Maybe (StackResourceSummaries), "NextToken" :: Maybe (NextToken) }) -> ListStackResourcesOutput
 ```
 
 Constructs ListStackResourcesOutput's fields from required parameters
@@ -2778,7 +2778,7 @@ Constructs ListStackResourcesOutput's fields from required parameters
 
 ``` purescript
 newtype ListStackSetOperationResultsInput
-  = ListStackSetOperationResultsInput { "StackSetName" :: StackSetName, "OperationId" :: ClientRequestToken, "NextToken" :: NullOrUndefined (NextToken), "MaxResults" :: NullOrUndefined (MaxResults) }
+  = ListStackSetOperationResultsInput { "StackSetName" :: StackSetName, "OperationId" :: ClientRequestToken, "NextToken" :: Maybe (NextToken), "MaxResults" :: Maybe (MaxResults) }
 ```
 
 ##### Instances
@@ -2801,7 +2801,7 @@ Constructs ListStackSetOperationResultsInput from required parameters
 #### `newListStackSetOperationResultsInput'`
 
 ``` purescript
-newListStackSetOperationResultsInput' :: ClientRequestToken -> StackSetName -> ({ "StackSetName" :: StackSetName, "OperationId" :: ClientRequestToken, "NextToken" :: NullOrUndefined (NextToken), "MaxResults" :: NullOrUndefined (MaxResults) } -> { "StackSetName" :: StackSetName, "OperationId" :: ClientRequestToken, "NextToken" :: NullOrUndefined (NextToken), "MaxResults" :: NullOrUndefined (MaxResults) }) -> ListStackSetOperationResultsInput
+newListStackSetOperationResultsInput' :: ClientRequestToken -> StackSetName -> ({ "StackSetName" :: StackSetName, "OperationId" :: ClientRequestToken, "NextToken" :: Maybe (NextToken), "MaxResults" :: Maybe (MaxResults) } -> { "StackSetName" :: StackSetName, "OperationId" :: ClientRequestToken, "NextToken" :: Maybe (NextToken), "MaxResults" :: Maybe (MaxResults) }) -> ListStackSetOperationResultsInput
 ```
 
 Constructs ListStackSetOperationResultsInput's fields from required parameters
@@ -2810,7 +2810,7 @@ Constructs ListStackSetOperationResultsInput's fields from required parameters
 
 ``` purescript
 newtype ListStackSetOperationResultsOutput
-  = ListStackSetOperationResultsOutput { "Summaries" :: NullOrUndefined (StackSetOperationResultSummaries), "NextToken" :: NullOrUndefined (NextToken) }
+  = ListStackSetOperationResultsOutput { "Summaries" :: Maybe (StackSetOperationResultSummaries), "NextToken" :: Maybe (NextToken) }
 ```
 
 ##### Instances
@@ -2833,7 +2833,7 @@ Constructs ListStackSetOperationResultsOutput from required parameters
 #### `newListStackSetOperationResultsOutput'`
 
 ``` purescript
-newListStackSetOperationResultsOutput' :: ({ "Summaries" :: NullOrUndefined (StackSetOperationResultSummaries), "NextToken" :: NullOrUndefined (NextToken) } -> { "Summaries" :: NullOrUndefined (StackSetOperationResultSummaries), "NextToken" :: NullOrUndefined (NextToken) }) -> ListStackSetOperationResultsOutput
+newListStackSetOperationResultsOutput' :: ({ "Summaries" :: Maybe (StackSetOperationResultSummaries), "NextToken" :: Maybe (NextToken) } -> { "Summaries" :: Maybe (StackSetOperationResultSummaries), "NextToken" :: Maybe (NextToken) }) -> ListStackSetOperationResultsOutput
 ```
 
 Constructs ListStackSetOperationResultsOutput's fields from required parameters
@@ -2842,7 +2842,7 @@ Constructs ListStackSetOperationResultsOutput's fields from required parameters
 
 ``` purescript
 newtype ListStackSetOperationsInput
-  = ListStackSetOperationsInput { "StackSetName" :: StackSetName, "NextToken" :: NullOrUndefined (NextToken), "MaxResults" :: NullOrUndefined (MaxResults) }
+  = ListStackSetOperationsInput { "StackSetName" :: StackSetName, "NextToken" :: Maybe (NextToken), "MaxResults" :: Maybe (MaxResults) }
 ```
 
 ##### Instances
@@ -2865,7 +2865,7 @@ Constructs ListStackSetOperationsInput from required parameters
 #### `newListStackSetOperationsInput'`
 
 ``` purescript
-newListStackSetOperationsInput' :: StackSetName -> ({ "StackSetName" :: StackSetName, "NextToken" :: NullOrUndefined (NextToken), "MaxResults" :: NullOrUndefined (MaxResults) } -> { "StackSetName" :: StackSetName, "NextToken" :: NullOrUndefined (NextToken), "MaxResults" :: NullOrUndefined (MaxResults) }) -> ListStackSetOperationsInput
+newListStackSetOperationsInput' :: StackSetName -> ({ "StackSetName" :: StackSetName, "NextToken" :: Maybe (NextToken), "MaxResults" :: Maybe (MaxResults) } -> { "StackSetName" :: StackSetName, "NextToken" :: Maybe (NextToken), "MaxResults" :: Maybe (MaxResults) }) -> ListStackSetOperationsInput
 ```
 
 Constructs ListStackSetOperationsInput's fields from required parameters
@@ -2874,7 +2874,7 @@ Constructs ListStackSetOperationsInput's fields from required parameters
 
 ``` purescript
 newtype ListStackSetOperationsOutput
-  = ListStackSetOperationsOutput { "Summaries" :: NullOrUndefined (StackSetOperationSummaries), "NextToken" :: NullOrUndefined (NextToken) }
+  = ListStackSetOperationsOutput { "Summaries" :: Maybe (StackSetOperationSummaries), "NextToken" :: Maybe (NextToken) }
 ```
 
 ##### Instances
@@ -2897,7 +2897,7 @@ Constructs ListStackSetOperationsOutput from required parameters
 #### `newListStackSetOperationsOutput'`
 
 ``` purescript
-newListStackSetOperationsOutput' :: ({ "Summaries" :: NullOrUndefined (StackSetOperationSummaries), "NextToken" :: NullOrUndefined (NextToken) } -> { "Summaries" :: NullOrUndefined (StackSetOperationSummaries), "NextToken" :: NullOrUndefined (NextToken) }) -> ListStackSetOperationsOutput
+newListStackSetOperationsOutput' :: ({ "Summaries" :: Maybe (StackSetOperationSummaries), "NextToken" :: Maybe (NextToken) } -> { "Summaries" :: Maybe (StackSetOperationSummaries), "NextToken" :: Maybe (NextToken) }) -> ListStackSetOperationsOutput
 ```
 
 Constructs ListStackSetOperationsOutput's fields from required parameters
@@ -2906,7 +2906,7 @@ Constructs ListStackSetOperationsOutput's fields from required parameters
 
 ``` purescript
 newtype ListStackSetsInput
-  = ListStackSetsInput { "NextToken" :: NullOrUndefined (NextToken), "MaxResults" :: NullOrUndefined (MaxResults), "Status" :: NullOrUndefined (StackSetStatus) }
+  = ListStackSetsInput { "NextToken" :: Maybe (NextToken), "MaxResults" :: Maybe (MaxResults), "Status" :: Maybe (StackSetStatus) }
 ```
 
 ##### Instances
@@ -2929,7 +2929,7 @@ Constructs ListStackSetsInput from required parameters
 #### `newListStackSetsInput'`
 
 ``` purescript
-newListStackSetsInput' :: ({ "NextToken" :: NullOrUndefined (NextToken), "MaxResults" :: NullOrUndefined (MaxResults), "Status" :: NullOrUndefined (StackSetStatus) } -> { "NextToken" :: NullOrUndefined (NextToken), "MaxResults" :: NullOrUndefined (MaxResults), "Status" :: NullOrUndefined (StackSetStatus) }) -> ListStackSetsInput
+newListStackSetsInput' :: ({ "NextToken" :: Maybe (NextToken), "MaxResults" :: Maybe (MaxResults), "Status" :: Maybe (StackSetStatus) } -> { "NextToken" :: Maybe (NextToken), "MaxResults" :: Maybe (MaxResults), "Status" :: Maybe (StackSetStatus) }) -> ListStackSetsInput
 ```
 
 Constructs ListStackSetsInput's fields from required parameters
@@ -2938,7 +2938,7 @@ Constructs ListStackSetsInput's fields from required parameters
 
 ``` purescript
 newtype ListStackSetsOutput
-  = ListStackSetsOutput { "Summaries" :: NullOrUndefined (StackSetSummaries), "NextToken" :: NullOrUndefined (NextToken) }
+  = ListStackSetsOutput { "Summaries" :: Maybe (StackSetSummaries), "NextToken" :: Maybe (NextToken) }
 ```
 
 ##### Instances
@@ -2961,7 +2961,7 @@ Constructs ListStackSetsOutput from required parameters
 #### `newListStackSetsOutput'`
 
 ``` purescript
-newListStackSetsOutput' :: ({ "Summaries" :: NullOrUndefined (StackSetSummaries), "NextToken" :: NullOrUndefined (NextToken) } -> { "Summaries" :: NullOrUndefined (StackSetSummaries), "NextToken" :: NullOrUndefined (NextToken) }) -> ListStackSetsOutput
+newListStackSetsOutput' :: ({ "Summaries" :: Maybe (StackSetSummaries), "NextToken" :: Maybe (NextToken) } -> { "Summaries" :: Maybe (StackSetSummaries), "NextToken" :: Maybe (NextToken) }) -> ListStackSetsOutput
 ```
 
 Constructs ListStackSetsOutput's fields from required parameters
@@ -2970,7 +2970,7 @@ Constructs ListStackSetsOutput's fields from required parameters
 
 ``` purescript
 newtype ListStacksInput
-  = ListStacksInput { "NextToken" :: NullOrUndefined (NextToken), "StackStatusFilter" :: NullOrUndefined (StackStatusFilter) }
+  = ListStacksInput { "NextToken" :: Maybe (NextToken), "StackStatusFilter" :: Maybe (StackStatusFilter) }
 ```
 
 <p>The input for <a>ListStacks</a> action.</p>
@@ -2995,7 +2995,7 @@ Constructs ListStacksInput from required parameters
 #### `newListStacksInput'`
 
 ``` purescript
-newListStacksInput' :: ({ "NextToken" :: NullOrUndefined (NextToken), "StackStatusFilter" :: NullOrUndefined (StackStatusFilter) } -> { "NextToken" :: NullOrUndefined (NextToken), "StackStatusFilter" :: NullOrUndefined (StackStatusFilter) }) -> ListStacksInput
+newListStacksInput' :: ({ "NextToken" :: Maybe (NextToken), "StackStatusFilter" :: Maybe (StackStatusFilter) } -> { "NextToken" :: Maybe (NextToken), "StackStatusFilter" :: Maybe (StackStatusFilter) }) -> ListStacksInput
 ```
 
 Constructs ListStacksInput's fields from required parameters
@@ -3004,7 +3004,7 @@ Constructs ListStacksInput's fields from required parameters
 
 ``` purescript
 newtype ListStacksOutput
-  = ListStacksOutput { "StackSummaries" :: NullOrUndefined (StackSummaries), "NextToken" :: NullOrUndefined (NextToken) }
+  = ListStacksOutput { "StackSummaries" :: Maybe (StackSummaries), "NextToken" :: Maybe (NextToken) }
 ```
 
 <p>The output for <a>ListStacks</a> action.</p>
@@ -3029,7 +3029,7 @@ Constructs ListStacksOutput from required parameters
 #### `newListStacksOutput'`
 
 ``` purescript
-newListStacksOutput' :: ({ "StackSummaries" :: NullOrUndefined (StackSummaries), "NextToken" :: NullOrUndefined (NextToken) } -> { "StackSummaries" :: NullOrUndefined (StackSummaries), "NextToken" :: NullOrUndefined (NextToken) }) -> ListStacksOutput
+newListStacksOutput' :: ({ "StackSummaries" :: Maybe (StackSummaries), "NextToken" :: Maybe (NextToken) } -> { "StackSummaries" :: Maybe (StackSummaries), "NextToken" :: Maybe (NextToken) }) -> ListStacksOutput
 ```
 
 Constructs ListStacksOutput's fields from required parameters
@@ -3286,7 +3286,7 @@ Encode OperationNotFoundException
 
 ``` purescript
 newtype Output
-  = Output { "OutputKey" :: NullOrUndefined (OutputKey), "OutputValue" :: NullOrUndefined (OutputValue), "Description" :: NullOrUndefined (Description), "ExportName" :: NullOrUndefined (ExportName) }
+  = Output { "OutputKey" :: Maybe (OutputKey), "OutputValue" :: Maybe (OutputValue), "Description" :: Maybe (Description), "ExportName" :: Maybe (ExportName) }
 ```
 
 <p>The Output data type.</p>
@@ -3311,7 +3311,7 @@ Constructs Output from required parameters
 #### `newOutput'`
 
 ``` purescript
-newOutput' :: ({ "OutputKey" :: NullOrUndefined (OutputKey), "OutputValue" :: NullOrUndefined (OutputValue), "Description" :: NullOrUndefined (Description), "ExportName" :: NullOrUndefined (ExportName) } -> { "OutputKey" :: NullOrUndefined (OutputKey), "OutputValue" :: NullOrUndefined (OutputValue), "Description" :: NullOrUndefined (Description), "ExportName" :: NullOrUndefined (ExportName) }) -> Output
+newOutput' :: ({ "OutputKey" :: Maybe (OutputKey), "OutputValue" :: Maybe (OutputValue), "Description" :: Maybe (Description), "ExportName" :: Maybe (ExportName) } -> { "OutputKey" :: Maybe (OutputKey), "OutputValue" :: Maybe (OutputValue), "Description" :: Maybe (Description), "ExportName" :: Maybe (ExportName) }) -> Output
 ```
 
 Constructs Output's fields from required parameters
@@ -3368,7 +3368,7 @@ Encode Outputs
 
 ``` purescript
 newtype Parameter
-  = Parameter { "ParameterKey" :: NullOrUndefined (ParameterKey), "ParameterValue" :: NullOrUndefined (ParameterValue), "UsePreviousValue" :: NullOrUndefined (UsePreviousValue), "ResolvedValue" :: NullOrUndefined (ParameterValue) }
+  = Parameter { "ParameterKey" :: Maybe (ParameterKey), "ParameterValue" :: Maybe (ParameterValue), "UsePreviousValue" :: Maybe (UsePreviousValue), "ResolvedValue" :: Maybe (ParameterValue) }
 ```
 
 <p>The Parameter data type.</p>
@@ -3393,7 +3393,7 @@ Constructs Parameter from required parameters
 #### `newParameter'`
 
 ``` purescript
-newParameter' :: ({ "ParameterKey" :: NullOrUndefined (ParameterKey), "ParameterValue" :: NullOrUndefined (ParameterValue), "UsePreviousValue" :: NullOrUndefined (UsePreviousValue), "ResolvedValue" :: NullOrUndefined (ParameterValue) } -> { "ParameterKey" :: NullOrUndefined (ParameterKey), "ParameterValue" :: NullOrUndefined (ParameterValue), "UsePreviousValue" :: NullOrUndefined (UsePreviousValue), "ResolvedValue" :: NullOrUndefined (ParameterValue) }) -> Parameter
+newParameter' :: ({ "ParameterKey" :: Maybe (ParameterKey), "ParameterValue" :: Maybe (ParameterValue), "UsePreviousValue" :: Maybe (UsePreviousValue), "ResolvedValue" :: Maybe (ParameterValue) } -> { "ParameterKey" :: Maybe (ParameterKey), "ParameterValue" :: Maybe (ParameterValue), "UsePreviousValue" :: Maybe (UsePreviousValue), "ResolvedValue" :: Maybe (ParameterValue) }) -> Parameter
 ```
 
 Constructs Parameter's fields from required parameters
@@ -3402,7 +3402,7 @@ Constructs Parameter's fields from required parameters
 
 ``` purescript
 newtype ParameterConstraints
-  = ParameterConstraints { "AllowedValues" :: NullOrUndefined (AllowedValues) }
+  = ParameterConstraints { "AllowedValues" :: Maybe (AllowedValues) }
 ```
 
 <p>A set of criteria that AWS CloudFormation uses to validate parameter values. Although other constraints might be defined in the stack template, AWS CloudFormation returns only the <code>AllowedValues</code> property.</p>
@@ -3427,7 +3427,7 @@ Constructs ParameterConstraints from required parameters
 #### `newParameterConstraints'`
 
 ``` purescript
-newParameterConstraints' :: ({ "AllowedValues" :: NullOrUndefined (AllowedValues) } -> { "AllowedValues" :: NullOrUndefined (AllowedValues) }) -> ParameterConstraints
+newParameterConstraints' :: ({ "AllowedValues" :: Maybe (AllowedValues) } -> { "AllowedValues" :: Maybe (AllowedValues) }) -> ParameterConstraints
 ```
 
 Constructs ParameterConstraints's fields from required parameters
@@ -3436,7 +3436,7 @@ Constructs ParameterConstraints's fields from required parameters
 
 ``` purescript
 newtype ParameterDeclaration
-  = ParameterDeclaration { "ParameterKey" :: NullOrUndefined (ParameterKey), "DefaultValue" :: NullOrUndefined (ParameterValue), "ParameterType" :: NullOrUndefined (ParameterType), "NoEcho" :: NullOrUndefined (NoEcho), "Description" :: NullOrUndefined (Description), "ParameterConstraints" :: NullOrUndefined (ParameterConstraints) }
+  = ParameterDeclaration { "ParameterKey" :: Maybe (ParameterKey), "DefaultValue" :: Maybe (ParameterValue), "ParameterType" :: Maybe (ParameterType), "NoEcho" :: Maybe (NoEcho), "Description" :: Maybe (Description), "ParameterConstraints" :: Maybe (ParameterConstraints) }
 ```
 
 <p>The ParameterDeclaration data type.</p>
@@ -3461,7 +3461,7 @@ Constructs ParameterDeclaration from required parameters
 #### `newParameterDeclaration'`
 
 ``` purescript
-newParameterDeclaration' :: ({ "ParameterKey" :: NullOrUndefined (ParameterKey), "DefaultValue" :: NullOrUndefined (ParameterValue), "ParameterType" :: NullOrUndefined (ParameterType), "NoEcho" :: NullOrUndefined (NoEcho), "Description" :: NullOrUndefined (Description), "ParameterConstraints" :: NullOrUndefined (ParameterConstraints) } -> { "ParameterKey" :: NullOrUndefined (ParameterKey), "DefaultValue" :: NullOrUndefined (ParameterValue), "ParameterType" :: NullOrUndefined (ParameterType), "NoEcho" :: NullOrUndefined (NoEcho), "Description" :: NullOrUndefined (Description), "ParameterConstraints" :: NullOrUndefined (ParameterConstraints) }) -> ParameterDeclaration
+newParameterDeclaration' :: ({ "ParameterKey" :: Maybe (ParameterKey), "DefaultValue" :: Maybe (ParameterValue), "ParameterType" :: Maybe (ParameterType), "NoEcho" :: Maybe (NoEcho), "Description" :: Maybe (Description), "ParameterConstraints" :: Maybe (ParameterConstraints) } -> { "ParameterKey" :: Maybe (ParameterKey), "DefaultValue" :: Maybe (ParameterValue), "ParameterType" :: Maybe (ParameterType), "NoEcho" :: Maybe (NoEcho), "Description" :: Maybe (Description), "ParameterConstraints" :: Maybe (ParameterConstraints) }) -> ParameterDeclaration
 ```
 
 Constructs ParameterDeclaration's fields from required parameters
@@ -3678,7 +3678,7 @@ Encode ResourceAttribute
 
 ``` purescript
 newtype ResourceChange
-  = ResourceChange { "Action" :: NullOrUndefined (ChangeAction), "LogicalResourceId" :: NullOrUndefined (LogicalResourceId), "PhysicalResourceId" :: NullOrUndefined (PhysicalResourceId), "ResourceType" :: NullOrUndefined (ResourceType), "Replacement" :: NullOrUndefined (Replacement), "Scope" :: NullOrUndefined (Scope), "Details" :: NullOrUndefined (ResourceChangeDetails) }
+  = ResourceChange { "Action" :: Maybe (ChangeAction), "LogicalResourceId" :: Maybe (LogicalResourceId), "PhysicalResourceId" :: Maybe (PhysicalResourceId), "ResourceType" :: Maybe (ResourceType), "Replacement" :: Maybe (Replacement), "Scope" :: Maybe (Scope), "Details" :: Maybe (ResourceChangeDetails) }
 ```
 
 <p>The <code>ResourceChange</code> structure describes the resource and the action that AWS CloudFormation will perform on it if you execute this change set.</p>
@@ -3703,7 +3703,7 @@ Constructs ResourceChange from required parameters
 #### `newResourceChange'`
 
 ``` purescript
-newResourceChange' :: ({ "Action" :: NullOrUndefined (ChangeAction), "LogicalResourceId" :: NullOrUndefined (LogicalResourceId), "PhysicalResourceId" :: NullOrUndefined (PhysicalResourceId), "ResourceType" :: NullOrUndefined (ResourceType), "Replacement" :: NullOrUndefined (Replacement), "Scope" :: NullOrUndefined (Scope), "Details" :: NullOrUndefined (ResourceChangeDetails) } -> { "Action" :: NullOrUndefined (ChangeAction), "LogicalResourceId" :: NullOrUndefined (LogicalResourceId), "PhysicalResourceId" :: NullOrUndefined (PhysicalResourceId), "ResourceType" :: NullOrUndefined (ResourceType), "Replacement" :: NullOrUndefined (Replacement), "Scope" :: NullOrUndefined (Scope), "Details" :: NullOrUndefined (ResourceChangeDetails) }) -> ResourceChange
+newResourceChange' :: ({ "Action" :: Maybe (ChangeAction), "LogicalResourceId" :: Maybe (LogicalResourceId), "PhysicalResourceId" :: Maybe (PhysicalResourceId), "ResourceType" :: Maybe (ResourceType), "Replacement" :: Maybe (Replacement), "Scope" :: Maybe (Scope), "Details" :: Maybe (ResourceChangeDetails) } -> { "Action" :: Maybe (ChangeAction), "LogicalResourceId" :: Maybe (LogicalResourceId), "PhysicalResourceId" :: Maybe (PhysicalResourceId), "ResourceType" :: Maybe (ResourceType), "Replacement" :: Maybe (Replacement), "Scope" :: Maybe (Scope), "Details" :: Maybe (ResourceChangeDetails) }) -> ResourceChange
 ```
 
 Constructs ResourceChange's fields from required parameters
@@ -3712,7 +3712,7 @@ Constructs ResourceChange's fields from required parameters
 
 ``` purescript
 newtype ResourceChangeDetail
-  = ResourceChangeDetail { "Target" :: NullOrUndefined (ResourceTargetDefinition), "Evaluation" :: NullOrUndefined (EvaluationType), "ChangeSource" :: NullOrUndefined (ChangeSource), "CausingEntity" :: NullOrUndefined (CausingEntity) }
+  = ResourceChangeDetail { "Target" :: Maybe (ResourceTargetDefinition), "Evaluation" :: Maybe (EvaluationType), "ChangeSource" :: Maybe (ChangeSource), "CausingEntity" :: Maybe (CausingEntity) }
 ```
 
 <p>For a resource with <code>Modify</code> as the action, the <code>ResourceChange</code> structure describes the changes AWS CloudFormation will make to that resource.</p>
@@ -3737,7 +3737,7 @@ Constructs ResourceChangeDetail from required parameters
 #### `newResourceChangeDetail'`
 
 ``` purescript
-newResourceChangeDetail' :: ({ "Target" :: NullOrUndefined (ResourceTargetDefinition), "Evaluation" :: NullOrUndefined (EvaluationType), "ChangeSource" :: NullOrUndefined (ChangeSource), "CausingEntity" :: NullOrUndefined (CausingEntity) } -> { "Target" :: NullOrUndefined (ResourceTargetDefinition), "Evaluation" :: NullOrUndefined (EvaluationType), "ChangeSource" :: NullOrUndefined (ChangeSource), "CausingEntity" :: NullOrUndefined (CausingEntity) }) -> ResourceChangeDetail
+newResourceChangeDetail' :: ({ "Target" :: Maybe (ResourceTargetDefinition), "Evaluation" :: Maybe (EvaluationType), "ChangeSource" :: Maybe (ChangeSource), "CausingEntity" :: Maybe (CausingEntity) } -> { "Target" :: Maybe (ResourceTargetDefinition), "Evaluation" :: Maybe (EvaluationType), "ChangeSource" :: Maybe (ChangeSource), "CausingEntity" :: Maybe (CausingEntity) }) -> ResourceChangeDetail
 ```
 
 Constructs ResourceChangeDetail's fields from required parameters
@@ -3842,7 +3842,7 @@ Encode ResourceStatusReason
 
 ``` purescript
 newtype ResourceTargetDefinition
-  = ResourceTargetDefinition { "Attribute" :: NullOrUndefined (ResourceAttribute), "Name" :: NullOrUndefined (PropertyName), "RequiresRecreation" :: NullOrUndefined (RequiresRecreation) }
+  = ResourceTargetDefinition { "Attribute" :: Maybe (ResourceAttribute), "Name" :: Maybe (PropertyName), "RequiresRecreation" :: Maybe (RequiresRecreation) }
 ```
 
 <p>The field that AWS CloudFormation will change, such as the name of a resource's property, and whether the resource will be recreated.</p>
@@ -3867,7 +3867,7 @@ Constructs ResourceTargetDefinition from required parameters
 #### `newResourceTargetDefinition'`
 
 ``` purescript
-newResourceTargetDefinition' :: ({ "Attribute" :: NullOrUndefined (ResourceAttribute), "Name" :: NullOrUndefined (PropertyName), "RequiresRecreation" :: NullOrUndefined (RequiresRecreation) } -> { "Attribute" :: NullOrUndefined (ResourceAttribute), "Name" :: NullOrUndefined (PropertyName), "RequiresRecreation" :: NullOrUndefined (RequiresRecreation) }) -> ResourceTargetDefinition
+newResourceTargetDefinition' :: ({ "Attribute" :: Maybe (ResourceAttribute), "Name" :: Maybe (PropertyName), "RequiresRecreation" :: Maybe (RequiresRecreation) } -> { "Attribute" :: Maybe (ResourceAttribute), "Name" :: Maybe (PropertyName), "RequiresRecreation" :: Maybe (RequiresRecreation) }) -> ResourceTargetDefinition
 ```
 
 Constructs ResourceTargetDefinition's fields from required parameters
@@ -4004,7 +4004,7 @@ Encode RoleARN
 
 ``` purescript
 newtype RollbackConfiguration
-  = RollbackConfiguration { "RollbackTriggers" :: NullOrUndefined (RollbackTriggers), "MonitoringTimeInMinutes" :: NullOrUndefined (MonitoringTimeInMinutes) }
+  = RollbackConfiguration { "RollbackTriggers" :: Maybe (RollbackTriggers), "MonitoringTimeInMinutes" :: Maybe (MonitoringTimeInMinutes) }
 ```
 
 <p>Structure containing the rollback triggers for AWS CloudFormation to monitor during stack creation and updating operations, and for the specified monitoring period afterwards.</p> <p>Rollback triggers enable you to have AWS CloudFormation monitor the state of your application during stack creation and updating, and to roll back that operation if the application breaches the threshold of any of the alarms you've specified. For each rollback trigger you create, you specify the Cloudwatch alarm that CloudFormation should monitor. CloudFormation monitors the specified alarms during the stack create or update operation, and for the specified amount of time after all resources have been deployed. If any of the alarms goes to ALERT state during the stack operation or the monitoring period, CloudFormation rolls back the entire stack operation. If the monitoring period expires without any alarms going to ALERT state, CloudFormation proceeds to dispose of old resources as usual.</p> <p>By default, CloudFormation only rolls back stack operations if an alarm goes to ALERT state, not INSUFFICIENT_DATA state. To have CloudFormation roll back the stack operation if an alarm goes to INSUFFICIENT_DATA state as well, edit the CloudWatch alarm to treat missing data as <code>breaching</code>. For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html">Configuring How CloudWatch Alarms Treats Missing Data</a>.</p> <p>AWS CloudFormation does not monitor rollback triggers when it rolls back a stack during an update operation.</p>
@@ -4029,7 +4029,7 @@ Constructs RollbackConfiguration from required parameters
 #### `newRollbackConfiguration'`
 
 ``` purescript
-newRollbackConfiguration' :: ({ "RollbackTriggers" :: NullOrUndefined (RollbackTriggers), "MonitoringTimeInMinutes" :: NullOrUndefined (MonitoringTimeInMinutes) } -> { "RollbackTriggers" :: NullOrUndefined (RollbackTriggers), "MonitoringTimeInMinutes" :: NullOrUndefined (MonitoringTimeInMinutes) }) -> RollbackConfiguration
+newRollbackConfiguration' :: ({ "RollbackTriggers" :: Maybe (RollbackTriggers), "MonitoringTimeInMinutes" :: Maybe (MonitoringTimeInMinutes) } -> { "RollbackTriggers" :: Maybe (RollbackTriggers), "MonitoringTimeInMinutes" :: Maybe (MonitoringTimeInMinutes) }) -> RollbackConfiguration
 ```
 
 Constructs RollbackConfiguration's fields from required parameters
@@ -4104,7 +4104,7 @@ Encode Scope
 
 ``` purescript
 newtype SetStackPolicyInput
-  = SetStackPolicyInput { "StackName" :: StackName, "StackPolicyBody" :: NullOrUndefined (StackPolicyBody), "StackPolicyURL" :: NullOrUndefined (StackPolicyURL) }
+  = SetStackPolicyInput { "StackName" :: StackName, "StackPolicyBody" :: Maybe (StackPolicyBody), "StackPolicyURL" :: Maybe (StackPolicyURL) }
 ```
 
 <p>The input for the <a>SetStackPolicy</a> action.</p>
@@ -4129,7 +4129,7 @@ Constructs SetStackPolicyInput from required parameters
 #### `newSetStackPolicyInput'`
 
 ``` purescript
-newSetStackPolicyInput' :: StackName -> ({ "StackName" :: StackName, "StackPolicyBody" :: NullOrUndefined (StackPolicyBody), "StackPolicyURL" :: NullOrUndefined (StackPolicyURL) } -> { "StackName" :: StackName, "StackPolicyBody" :: NullOrUndefined (StackPolicyBody), "StackPolicyURL" :: NullOrUndefined (StackPolicyURL) }) -> SetStackPolicyInput
+newSetStackPolicyInput' :: StackName -> ({ "StackName" :: StackName, "StackPolicyBody" :: Maybe (StackPolicyBody), "StackPolicyURL" :: Maybe (StackPolicyURL) } -> { "StackName" :: StackName, "StackPolicyBody" :: Maybe (StackPolicyBody), "StackPolicyURL" :: Maybe (StackPolicyURL) }) -> SetStackPolicyInput
 ```
 
 Constructs SetStackPolicyInput's fields from required parameters
@@ -4172,7 +4172,7 @@ Constructs SignalResourceInput's fields from required parameters
 
 ``` purescript
 newtype Stack
-  = Stack { "StackId" :: NullOrUndefined (StackId), "StackName" :: StackName, "ChangeSetId" :: NullOrUndefined (ChangeSetId), "Description" :: NullOrUndefined (Description), "Parameters" :: NullOrUndefined (Parameters), "CreationTime" :: CreationTime, "DeletionTime" :: NullOrUndefined (DeletionTime), "LastUpdatedTime" :: NullOrUndefined (LastUpdatedTime), "RollbackConfiguration" :: NullOrUndefined (RollbackConfiguration), "StackStatus" :: StackStatus, "StackStatusReason" :: NullOrUndefined (StackStatusReason), "DisableRollback" :: NullOrUndefined (DisableRollback), "NotificationARNs" :: NullOrUndefined (NotificationARNs), "TimeoutInMinutes" :: NullOrUndefined (TimeoutMinutes), "Capabilities" :: NullOrUndefined (Capabilities), "Outputs" :: NullOrUndefined (Outputs), "RoleARN" :: NullOrUndefined (RoleARN), "Tags" :: NullOrUndefined (Tags), "EnableTerminationProtection" :: NullOrUndefined (EnableTerminationProtection), "ParentId" :: NullOrUndefined (StackId), "RootId" :: NullOrUndefined (StackId) }
+  = Stack { "StackId" :: Maybe (StackId), "StackName" :: StackName, "ChangeSetId" :: Maybe (ChangeSetId), "Description" :: Maybe (Description), "Parameters" :: Maybe (Parameters), "CreationTime" :: CreationTime, "DeletionTime" :: Maybe (DeletionTime), "LastUpdatedTime" :: Maybe (LastUpdatedTime), "RollbackConfiguration" :: Maybe (RollbackConfiguration), "StackStatus" :: StackStatus, "StackStatusReason" :: Maybe (StackStatusReason), "DisableRollback" :: Maybe (DisableRollback), "NotificationARNs" :: Maybe (NotificationARNs), "TimeoutInMinutes" :: Maybe (TimeoutMinutes), "Capabilities" :: Maybe (Capabilities), "Outputs" :: Maybe (Outputs), "RoleARN" :: Maybe (RoleARN), "Tags" :: Maybe (Tags), "EnableTerminationProtection" :: Maybe (EnableTerminationProtection), "ParentId" :: Maybe (StackId), "RootId" :: Maybe (StackId) }
 ```
 
 <p>The Stack data type.</p>
@@ -4197,7 +4197,7 @@ Constructs Stack from required parameters
 #### `newStack'`
 
 ``` purescript
-newStack' :: CreationTime -> StackName -> StackStatus -> ({ "StackId" :: NullOrUndefined (StackId), "StackName" :: StackName, "ChangeSetId" :: NullOrUndefined (ChangeSetId), "Description" :: NullOrUndefined (Description), "Parameters" :: NullOrUndefined (Parameters), "CreationTime" :: CreationTime, "DeletionTime" :: NullOrUndefined (DeletionTime), "LastUpdatedTime" :: NullOrUndefined (LastUpdatedTime), "RollbackConfiguration" :: NullOrUndefined (RollbackConfiguration), "StackStatus" :: StackStatus, "StackStatusReason" :: NullOrUndefined (StackStatusReason), "DisableRollback" :: NullOrUndefined (DisableRollback), "NotificationARNs" :: NullOrUndefined (NotificationARNs), "TimeoutInMinutes" :: NullOrUndefined (TimeoutMinutes), "Capabilities" :: NullOrUndefined (Capabilities), "Outputs" :: NullOrUndefined (Outputs), "RoleARN" :: NullOrUndefined (RoleARN), "Tags" :: NullOrUndefined (Tags), "EnableTerminationProtection" :: NullOrUndefined (EnableTerminationProtection), "ParentId" :: NullOrUndefined (StackId), "RootId" :: NullOrUndefined (StackId) } -> { "StackId" :: NullOrUndefined (StackId), "StackName" :: StackName, "ChangeSetId" :: NullOrUndefined (ChangeSetId), "Description" :: NullOrUndefined (Description), "Parameters" :: NullOrUndefined (Parameters), "CreationTime" :: CreationTime, "DeletionTime" :: NullOrUndefined (DeletionTime), "LastUpdatedTime" :: NullOrUndefined (LastUpdatedTime), "RollbackConfiguration" :: NullOrUndefined (RollbackConfiguration), "StackStatus" :: StackStatus, "StackStatusReason" :: NullOrUndefined (StackStatusReason), "DisableRollback" :: NullOrUndefined (DisableRollback), "NotificationARNs" :: NullOrUndefined (NotificationARNs), "TimeoutInMinutes" :: NullOrUndefined (TimeoutMinutes), "Capabilities" :: NullOrUndefined (Capabilities), "Outputs" :: NullOrUndefined (Outputs), "RoleARN" :: NullOrUndefined (RoleARN), "Tags" :: NullOrUndefined (Tags), "EnableTerminationProtection" :: NullOrUndefined (EnableTerminationProtection), "ParentId" :: NullOrUndefined (StackId), "RootId" :: NullOrUndefined (StackId) }) -> Stack
+newStack' :: CreationTime -> StackName -> StackStatus -> ({ "StackId" :: Maybe (StackId), "StackName" :: StackName, "ChangeSetId" :: Maybe (ChangeSetId), "Description" :: Maybe (Description), "Parameters" :: Maybe (Parameters), "CreationTime" :: CreationTime, "DeletionTime" :: Maybe (DeletionTime), "LastUpdatedTime" :: Maybe (LastUpdatedTime), "RollbackConfiguration" :: Maybe (RollbackConfiguration), "StackStatus" :: StackStatus, "StackStatusReason" :: Maybe (StackStatusReason), "DisableRollback" :: Maybe (DisableRollback), "NotificationARNs" :: Maybe (NotificationARNs), "TimeoutInMinutes" :: Maybe (TimeoutMinutes), "Capabilities" :: Maybe (Capabilities), "Outputs" :: Maybe (Outputs), "RoleARN" :: Maybe (RoleARN), "Tags" :: Maybe (Tags), "EnableTerminationProtection" :: Maybe (EnableTerminationProtection), "ParentId" :: Maybe (StackId), "RootId" :: Maybe (StackId) } -> { "StackId" :: Maybe (StackId), "StackName" :: StackName, "ChangeSetId" :: Maybe (ChangeSetId), "Description" :: Maybe (Description), "Parameters" :: Maybe (Parameters), "CreationTime" :: CreationTime, "DeletionTime" :: Maybe (DeletionTime), "LastUpdatedTime" :: Maybe (LastUpdatedTime), "RollbackConfiguration" :: Maybe (RollbackConfiguration), "StackStatus" :: StackStatus, "StackStatusReason" :: Maybe (StackStatusReason), "DisableRollback" :: Maybe (DisableRollback), "NotificationARNs" :: Maybe (NotificationARNs), "TimeoutInMinutes" :: Maybe (TimeoutMinutes), "Capabilities" :: Maybe (Capabilities), "Outputs" :: Maybe (Outputs), "RoleARN" :: Maybe (RoleARN), "Tags" :: Maybe (Tags), "EnableTerminationProtection" :: Maybe (EnableTerminationProtection), "ParentId" :: Maybe (StackId), "RootId" :: Maybe (StackId) }) -> Stack
 ```
 
 Constructs Stack's fields from required parameters
@@ -4206,7 +4206,7 @@ Constructs Stack's fields from required parameters
 
 ``` purescript
 newtype StackEvent
-  = StackEvent { "StackId" :: StackId, "EventId" :: EventId, "StackName" :: StackName, "LogicalResourceId" :: NullOrUndefined (LogicalResourceId), "PhysicalResourceId" :: NullOrUndefined (PhysicalResourceId), "ResourceType" :: NullOrUndefined (ResourceType), "Timestamp" :: Timestamp, "ResourceStatus" :: NullOrUndefined (ResourceStatus), "ResourceStatusReason" :: NullOrUndefined (ResourceStatusReason), "ResourceProperties" :: NullOrUndefined (ResourceProperties), "ClientRequestToken" :: NullOrUndefined (ClientRequestToken) }
+  = StackEvent { "StackId" :: StackId, "EventId" :: EventId, "StackName" :: StackName, "LogicalResourceId" :: Maybe (LogicalResourceId), "PhysicalResourceId" :: Maybe (PhysicalResourceId), "ResourceType" :: Maybe (ResourceType), "Timestamp" :: Timestamp, "ResourceStatus" :: Maybe (ResourceStatus), "ResourceStatusReason" :: Maybe (ResourceStatusReason), "ResourceProperties" :: Maybe (ResourceProperties), "ClientRequestToken" :: Maybe (ClientRequestToken) }
 ```
 
 <p>The StackEvent data type.</p>
@@ -4231,7 +4231,7 @@ Constructs StackEvent from required parameters
 #### `newStackEvent'`
 
 ``` purescript
-newStackEvent' :: EventId -> StackId -> StackName -> Timestamp -> ({ "StackId" :: StackId, "EventId" :: EventId, "StackName" :: StackName, "LogicalResourceId" :: NullOrUndefined (LogicalResourceId), "PhysicalResourceId" :: NullOrUndefined (PhysicalResourceId), "ResourceType" :: NullOrUndefined (ResourceType), "Timestamp" :: Timestamp, "ResourceStatus" :: NullOrUndefined (ResourceStatus), "ResourceStatusReason" :: NullOrUndefined (ResourceStatusReason), "ResourceProperties" :: NullOrUndefined (ResourceProperties), "ClientRequestToken" :: NullOrUndefined (ClientRequestToken) } -> { "StackId" :: StackId, "EventId" :: EventId, "StackName" :: StackName, "LogicalResourceId" :: NullOrUndefined (LogicalResourceId), "PhysicalResourceId" :: NullOrUndefined (PhysicalResourceId), "ResourceType" :: NullOrUndefined (ResourceType), "Timestamp" :: Timestamp, "ResourceStatus" :: NullOrUndefined (ResourceStatus), "ResourceStatusReason" :: NullOrUndefined (ResourceStatusReason), "ResourceProperties" :: NullOrUndefined (ResourceProperties), "ClientRequestToken" :: NullOrUndefined (ClientRequestToken) }) -> StackEvent
+newStackEvent' :: EventId -> StackId -> StackName -> Timestamp -> ({ "StackId" :: StackId, "EventId" :: EventId, "StackName" :: StackName, "LogicalResourceId" :: Maybe (LogicalResourceId), "PhysicalResourceId" :: Maybe (PhysicalResourceId), "ResourceType" :: Maybe (ResourceType), "Timestamp" :: Timestamp, "ResourceStatus" :: Maybe (ResourceStatus), "ResourceStatusReason" :: Maybe (ResourceStatusReason), "ResourceProperties" :: Maybe (ResourceProperties), "ClientRequestToken" :: Maybe (ClientRequestToken) } -> { "StackId" :: StackId, "EventId" :: EventId, "StackName" :: StackName, "LogicalResourceId" :: Maybe (LogicalResourceId), "PhysicalResourceId" :: Maybe (PhysicalResourceId), "ResourceType" :: Maybe (ResourceType), "Timestamp" :: Timestamp, "ResourceStatus" :: Maybe (ResourceStatus), "ResourceStatusReason" :: Maybe (ResourceStatusReason), "ResourceProperties" :: Maybe (ResourceProperties), "ClientRequestToken" :: Maybe (ClientRequestToken) }) -> StackEvent
 ```
 
 Constructs StackEvent's fields from required parameters
@@ -4272,7 +4272,7 @@ Encode StackId
 
 ``` purescript
 newtype StackInstance
-  = StackInstance { "StackSetId" :: NullOrUndefined (StackSetId), "Region" :: NullOrUndefined (Region), "Account" :: NullOrUndefined (Account), "StackId" :: NullOrUndefined (StackId), "ParameterOverrides" :: NullOrUndefined (Parameters), "Status" :: NullOrUndefined (StackInstanceStatus), "StatusReason" :: NullOrUndefined (Reason) }
+  = StackInstance { "StackSetId" :: Maybe (StackSetId), "Region" :: Maybe (Region), "Account" :: Maybe (Account), "StackId" :: Maybe (StackId), "ParameterOverrides" :: Maybe (Parameters), "Status" :: Maybe (StackInstanceStatus), "StatusReason" :: Maybe (Reason) }
 ```
 
 <p>An AWS CloudFormation stack, in a specific account and region, that's part of a stack set operation. A stack instance is a reference to an attempted or actual stack in a given account within a given region. A stack instance can exist without a stack—for example, if the stack couldn't be created for some reason. A stack instance is associated with only one stack set. Each stack instance contains the ID of its associated stack set, as well as the ID of the actual stack and the stack status.</p>
@@ -4297,7 +4297,7 @@ Constructs StackInstance from required parameters
 #### `newStackInstance'`
 
 ``` purescript
-newStackInstance' :: ({ "StackSetId" :: NullOrUndefined (StackSetId), "Region" :: NullOrUndefined (Region), "Account" :: NullOrUndefined (Account), "StackId" :: NullOrUndefined (StackId), "ParameterOverrides" :: NullOrUndefined (Parameters), "Status" :: NullOrUndefined (StackInstanceStatus), "StatusReason" :: NullOrUndefined (Reason) } -> { "StackSetId" :: NullOrUndefined (StackSetId), "Region" :: NullOrUndefined (Region), "Account" :: NullOrUndefined (Account), "StackId" :: NullOrUndefined (StackId), "ParameterOverrides" :: NullOrUndefined (Parameters), "Status" :: NullOrUndefined (StackInstanceStatus), "StatusReason" :: NullOrUndefined (Reason) }) -> StackInstance
+newStackInstance' :: ({ "StackSetId" :: Maybe (StackSetId), "Region" :: Maybe (Region), "Account" :: Maybe (Account), "StackId" :: Maybe (StackId), "ParameterOverrides" :: Maybe (Parameters), "Status" :: Maybe (StackInstanceStatus), "StatusReason" :: Maybe (Reason) } -> { "StackSetId" :: Maybe (StackSetId), "Region" :: Maybe (Region), "Account" :: Maybe (Account), "StackId" :: Maybe (StackId), "ParameterOverrides" :: Maybe (Parameters), "Status" :: Maybe (StackInstanceStatus), "StatusReason" :: Maybe (Reason) }) -> StackInstance
 ```
 
 Constructs StackInstance's fields from required parameters
@@ -4356,7 +4356,7 @@ Encode StackInstanceSummaries
 
 ``` purescript
 newtype StackInstanceSummary
-  = StackInstanceSummary { "StackSetId" :: NullOrUndefined (StackSetId), "Region" :: NullOrUndefined (Region), "Account" :: NullOrUndefined (Account), "StackId" :: NullOrUndefined (StackId), "Status" :: NullOrUndefined (StackInstanceStatus), "StatusReason" :: NullOrUndefined (Reason) }
+  = StackInstanceSummary { "StackSetId" :: Maybe (StackSetId), "Region" :: Maybe (Region), "Account" :: Maybe (Account), "StackId" :: Maybe (StackId), "Status" :: Maybe (StackInstanceStatus), "StatusReason" :: Maybe (Reason) }
 ```
 
 <p>The structure that contains summary information about a stack instance.</p>
@@ -4381,7 +4381,7 @@ Constructs StackInstanceSummary from required parameters
 #### `newStackInstanceSummary'`
 
 ``` purescript
-newStackInstanceSummary' :: ({ "StackSetId" :: NullOrUndefined (StackSetId), "Region" :: NullOrUndefined (Region), "Account" :: NullOrUndefined (Account), "StackId" :: NullOrUndefined (StackId), "Status" :: NullOrUndefined (StackInstanceStatus), "StatusReason" :: NullOrUndefined (Reason) } -> { "StackSetId" :: NullOrUndefined (StackSetId), "Region" :: NullOrUndefined (Region), "Account" :: NullOrUndefined (Account), "StackId" :: NullOrUndefined (StackId), "Status" :: NullOrUndefined (StackInstanceStatus), "StatusReason" :: NullOrUndefined (Reason) }) -> StackInstanceSummary
+newStackInstanceSummary' :: ({ "StackSetId" :: Maybe (StackSetId), "Region" :: Maybe (Region), "Account" :: Maybe (Account), "StackId" :: Maybe (StackId), "Status" :: Maybe (StackInstanceStatus), "StatusReason" :: Maybe (Reason) } -> { "StackSetId" :: Maybe (StackSetId), "Region" :: Maybe (Region), "Account" :: Maybe (Account), "StackId" :: Maybe (StackId), "Status" :: Maybe (StackInstanceStatus), "StatusReason" :: Maybe (Reason) }) -> StackInstanceSummary
 ```
 
 Constructs StackInstanceSummary's fields from required parameters
@@ -4486,7 +4486,7 @@ Encode StackPolicyURL
 
 ``` purescript
 newtype StackResource
-  = StackResource { "StackName" :: NullOrUndefined (StackName), "StackId" :: NullOrUndefined (StackId), "LogicalResourceId" :: LogicalResourceId, "PhysicalResourceId" :: NullOrUndefined (PhysicalResourceId), "ResourceType" :: ResourceType, "Timestamp" :: Timestamp, "ResourceStatus" :: ResourceStatus, "ResourceStatusReason" :: NullOrUndefined (ResourceStatusReason), "Description" :: NullOrUndefined (Description) }
+  = StackResource { "StackName" :: Maybe (StackName), "StackId" :: Maybe (StackId), "LogicalResourceId" :: LogicalResourceId, "PhysicalResourceId" :: Maybe (PhysicalResourceId), "ResourceType" :: ResourceType, "Timestamp" :: Timestamp, "ResourceStatus" :: ResourceStatus, "ResourceStatusReason" :: Maybe (ResourceStatusReason), "Description" :: Maybe (Description) }
 ```
 
 <p>The StackResource data type.</p>
@@ -4511,7 +4511,7 @@ Constructs StackResource from required parameters
 #### `newStackResource'`
 
 ``` purescript
-newStackResource' :: LogicalResourceId -> ResourceStatus -> ResourceType -> Timestamp -> ({ "StackName" :: NullOrUndefined (StackName), "StackId" :: NullOrUndefined (StackId), "LogicalResourceId" :: LogicalResourceId, "PhysicalResourceId" :: NullOrUndefined (PhysicalResourceId), "ResourceType" :: ResourceType, "Timestamp" :: Timestamp, "ResourceStatus" :: ResourceStatus, "ResourceStatusReason" :: NullOrUndefined (ResourceStatusReason), "Description" :: NullOrUndefined (Description) } -> { "StackName" :: NullOrUndefined (StackName), "StackId" :: NullOrUndefined (StackId), "LogicalResourceId" :: LogicalResourceId, "PhysicalResourceId" :: NullOrUndefined (PhysicalResourceId), "ResourceType" :: ResourceType, "Timestamp" :: Timestamp, "ResourceStatus" :: ResourceStatus, "ResourceStatusReason" :: NullOrUndefined (ResourceStatusReason), "Description" :: NullOrUndefined (Description) }) -> StackResource
+newStackResource' :: LogicalResourceId -> ResourceStatus -> ResourceType -> Timestamp -> ({ "StackName" :: Maybe (StackName), "StackId" :: Maybe (StackId), "LogicalResourceId" :: LogicalResourceId, "PhysicalResourceId" :: Maybe (PhysicalResourceId), "ResourceType" :: ResourceType, "Timestamp" :: Timestamp, "ResourceStatus" :: ResourceStatus, "ResourceStatusReason" :: Maybe (ResourceStatusReason), "Description" :: Maybe (Description) } -> { "StackName" :: Maybe (StackName), "StackId" :: Maybe (StackId), "LogicalResourceId" :: LogicalResourceId, "PhysicalResourceId" :: Maybe (PhysicalResourceId), "ResourceType" :: ResourceType, "Timestamp" :: Timestamp, "ResourceStatus" :: ResourceStatus, "ResourceStatusReason" :: Maybe (ResourceStatusReason), "Description" :: Maybe (Description) }) -> StackResource
 ```
 
 Constructs StackResource's fields from required parameters
@@ -4520,7 +4520,7 @@ Constructs StackResource's fields from required parameters
 
 ``` purescript
 newtype StackResourceDetail
-  = StackResourceDetail { "StackName" :: NullOrUndefined (StackName), "StackId" :: NullOrUndefined (StackId), "LogicalResourceId" :: LogicalResourceId, "PhysicalResourceId" :: NullOrUndefined (PhysicalResourceId), "ResourceType" :: ResourceType, "LastUpdatedTimestamp" :: Timestamp, "ResourceStatus" :: ResourceStatus, "ResourceStatusReason" :: NullOrUndefined (ResourceStatusReason), "Description" :: NullOrUndefined (Description), "Metadata" :: NullOrUndefined (Metadata) }
+  = StackResourceDetail { "StackName" :: Maybe (StackName), "StackId" :: Maybe (StackId), "LogicalResourceId" :: LogicalResourceId, "PhysicalResourceId" :: Maybe (PhysicalResourceId), "ResourceType" :: ResourceType, "LastUpdatedTimestamp" :: Timestamp, "ResourceStatus" :: ResourceStatus, "ResourceStatusReason" :: Maybe (ResourceStatusReason), "Description" :: Maybe (Description), "Metadata" :: Maybe (Metadata) }
 ```
 
 <p>Contains detailed information about the specified stack resource.</p>
@@ -4545,7 +4545,7 @@ Constructs StackResourceDetail from required parameters
 #### `newStackResourceDetail'`
 
 ``` purescript
-newStackResourceDetail' :: Timestamp -> LogicalResourceId -> ResourceStatus -> ResourceType -> ({ "StackName" :: NullOrUndefined (StackName), "StackId" :: NullOrUndefined (StackId), "LogicalResourceId" :: LogicalResourceId, "PhysicalResourceId" :: NullOrUndefined (PhysicalResourceId), "ResourceType" :: ResourceType, "LastUpdatedTimestamp" :: Timestamp, "ResourceStatus" :: ResourceStatus, "ResourceStatusReason" :: NullOrUndefined (ResourceStatusReason), "Description" :: NullOrUndefined (Description), "Metadata" :: NullOrUndefined (Metadata) } -> { "StackName" :: NullOrUndefined (StackName), "StackId" :: NullOrUndefined (StackId), "LogicalResourceId" :: LogicalResourceId, "PhysicalResourceId" :: NullOrUndefined (PhysicalResourceId), "ResourceType" :: ResourceType, "LastUpdatedTimestamp" :: Timestamp, "ResourceStatus" :: ResourceStatus, "ResourceStatusReason" :: NullOrUndefined (ResourceStatusReason), "Description" :: NullOrUndefined (Description), "Metadata" :: NullOrUndefined (Metadata) }) -> StackResourceDetail
+newStackResourceDetail' :: Timestamp -> LogicalResourceId -> ResourceStatus -> ResourceType -> ({ "StackName" :: Maybe (StackName), "StackId" :: Maybe (StackId), "LogicalResourceId" :: LogicalResourceId, "PhysicalResourceId" :: Maybe (PhysicalResourceId), "ResourceType" :: ResourceType, "LastUpdatedTimestamp" :: Timestamp, "ResourceStatus" :: ResourceStatus, "ResourceStatusReason" :: Maybe (ResourceStatusReason), "Description" :: Maybe (Description), "Metadata" :: Maybe (Metadata) } -> { "StackName" :: Maybe (StackName), "StackId" :: Maybe (StackId), "LogicalResourceId" :: LogicalResourceId, "PhysicalResourceId" :: Maybe (PhysicalResourceId), "ResourceType" :: ResourceType, "LastUpdatedTimestamp" :: Timestamp, "ResourceStatus" :: ResourceStatus, "ResourceStatusReason" :: Maybe (ResourceStatusReason), "Description" :: Maybe (Description), "Metadata" :: Maybe (Metadata) }) -> StackResourceDetail
 ```
 
 Constructs StackResourceDetail's fields from required parameters
@@ -4570,7 +4570,7 @@ Encode StackResourceSummaries
 
 ``` purescript
 newtype StackResourceSummary
-  = StackResourceSummary { "LogicalResourceId" :: LogicalResourceId, "PhysicalResourceId" :: NullOrUndefined (PhysicalResourceId), "ResourceType" :: ResourceType, "LastUpdatedTimestamp" :: Timestamp, "ResourceStatus" :: ResourceStatus, "ResourceStatusReason" :: NullOrUndefined (ResourceStatusReason) }
+  = StackResourceSummary { "LogicalResourceId" :: LogicalResourceId, "PhysicalResourceId" :: Maybe (PhysicalResourceId), "ResourceType" :: ResourceType, "LastUpdatedTimestamp" :: Timestamp, "ResourceStatus" :: ResourceStatus, "ResourceStatusReason" :: Maybe (ResourceStatusReason) }
 ```
 
 <p>Contains high-level information about the specified stack resource.</p>
@@ -4595,7 +4595,7 @@ Constructs StackResourceSummary from required parameters
 #### `newStackResourceSummary'`
 
 ``` purescript
-newStackResourceSummary' :: Timestamp -> LogicalResourceId -> ResourceStatus -> ResourceType -> ({ "LogicalResourceId" :: LogicalResourceId, "PhysicalResourceId" :: NullOrUndefined (PhysicalResourceId), "ResourceType" :: ResourceType, "LastUpdatedTimestamp" :: Timestamp, "ResourceStatus" :: ResourceStatus, "ResourceStatusReason" :: NullOrUndefined (ResourceStatusReason) } -> { "LogicalResourceId" :: LogicalResourceId, "PhysicalResourceId" :: NullOrUndefined (PhysicalResourceId), "ResourceType" :: ResourceType, "LastUpdatedTimestamp" :: Timestamp, "ResourceStatus" :: ResourceStatus, "ResourceStatusReason" :: NullOrUndefined (ResourceStatusReason) }) -> StackResourceSummary
+newStackResourceSummary' :: Timestamp -> LogicalResourceId -> ResourceStatus -> ResourceType -> ({ "LogicalResourceId" :: LogicalResourceId, "PhysicalResourceId" :: Maybe (PhysicalResourceId), "ResourceType" :: ResourceType, "LastUpdatedTimestamp" :: Timestamp, "ResourceStatus" :: ResourceStatus, "ResourceStatusReason" :: Maybe (ResourceStatusReason) } -> { "LogicalResourceId" :: LogicalResourceId, "PhysicalResourceId" :: Maybe (PhysicalResourceId), "ResourceType" :: ResourceType, "LastUpdatedTimestamp" :: Timestamp, "ResourceStatus" :: ResourceStatus, "ResourceStatusReason" :: Maybe (ResourceStatusReason) }) -> StackResourceSummary
 ```
 
 Constructs StackResourceSummary's fields from required parameters
@@ -4620,7 +4620,7 @@ Encode StackResources
 
 ``` purescript
 newtype StackSet
-  = StackSet { "StackSetName" :: NullOrUndefined (StackSetName), "StackSetId" :: NullOrUndefined (StackSetId), "Description" :: NullOrUndefined (Description), "Status" :: NullOrUndefined (StackSetStatus), "TemplateBody" :: NullOrUndefined (TemplateBody), "Parameters" :: NullOrUndefined (Parameters), "Capabilities" :: NullOrUndefined (Capabilities), "Tags" :: NullOrUndefined (Tags) }
+  = StackSet { "StackSetName" :: Maybe (StackSetName), "StackSetId" :: Maybe (StackSetId), "Description" :: Maybe (Description), "Status" :: Maybe (StackSetStatus), "TemplateBody" :: Maybe (TemplateBody), "Parameters" :: Maybe (Parameters), "Capabilities" :: Maybe (Capabilities), "Tags" :: Maybe (Tags) }
 ```
 
 <p>A structure that contains information about a stack set. A stack set enables you to provision stacks into AWS accounts and across regions by using a single CloudFormation template. In the stack set, you specify the template to use, as well as any parameters and capabilities that the template requires. </p>
@@ -4645,7 +4645,7 @@ Constructs StackSet from required parameters
 #### `newStackSet'`
 
 ``` purescript
-newStackSet' :: ({ "StackSetName" :: NullOrUndefined (StackSetName), "StackSetId" :: NullOrUndefined (StackSetId), "Description" :: NullOrUndefined (Description), "Status" :: NullOrUndefined (StackSetStatus), "TemplateBody" :: NullOrUndefined (TemplateBody), "Parameters" :: NullOrUndefined (Parameters), "Capabilities" :: NullOrUndefined (Capabilities), "Tags" :: NullOrUndefined (Tags) } -> { "StackSetName" :: NullOrUndefined (StackSetName), "StackSetId" :: NullOrUndefined (StackSetId), "Description" :: NullOrUndefined (Description), "Status" :: NullOrUndefined (StackSetStatus), "TemplateBody" :: NullOrUndefined (TemplateBody), "Parameters" :: NullOrUndefined (Parameters), "Capabilities" :: NullOrUndefined (Capabilities), "Tags" :: NullOrUndefined (Tags) }) -> StackSet
+newStackSet' :: ({ "StackSetName" :: Maybe (StackSetName), "StackSetId" :: Maybe (StackSetId), "Description" :: Maybe (Description), "Status" :: Maybe (StackSetStatus), "TemplateBody" :: Maybe (TemplateBody), "Parameters" :: Maybe (Parameters), "Capabilities" :: Maybe (Capabilities), "Tags" :: Maybe (Tags) } -> { "StackSetName" :: Maybe (StackSetName), "StackSetId" :: Maybe (StackSetId), "Description" :: Maybe (Description), "Status" :: Maybe (StackSetStatus), "TemplateBody" :: Maybe (TemplateBody), "Parameters" :: Maybe (Parameters), "Capabilities" :: Maybe (Capabilities), "Tags" :: Maybe (Tags) }) -> StackSet
 ```
 
 Constructs StackSet's fields from required parameters
@@ -4738,7 +4738,7 @@ Encode StackSetNotFoundException
 
 ``` purescript
 newtype StackSetOperation
-  = StackSetOperation { "OperationId" :: NullOrUndefined (ClientRequestToken), "StackSetId" :: NullOrUndefined (StackSetId), "Action" :: NullOrUndefined (StackSetOperationAction), "Status" :: NullOrUndefined (StackSetOperationStatus), "OperationPreferences" :: NullOrUndefined (StackSetOperationPreferences), "RetainStacks" :: NullOrUndefined (RetainStacksNullable), "CreationTimestamp" :: NullOrUndefined (Timestamp), "EndTimestamp" :: NullOrUndefined (Timestamp) }
+  = StackSetOperation { "OperationId" :: Maybe (ClientRequestToken), "StackSetId" :: Maybe (StackSetId), "Action" :: Maybe (StackSetOperationAction), "Status" :: Maybe (StackSetOperationStatus), "OperationPreferences" :: Maybe (StackSetOperationPreferences), "RetainStacks" :: Maybe (RetainStacksNullable), "CreationTimestamp" :: Maybe (Timestamp), "EndTimestamp" :: Maybe (Timestamp) }
 ```
 
 <p>The structure that contains information about a stack set operation. </p>
@@ -4763,7 +4763,7 @@ Constructs StackSetOperation from required parameters
 #### `newStackSetOperation'`
 
 ``` purescript
-newStackSetOperation' :: ({ "OperationId" :: NullOrUndefined (ClientRequestToken), "StackSetId" :: NullOrUndefined (StackSetId), "Action" :: NullOrUndefined (StackSetOperationAction), "Status" :: NullOrUndefined (StackSetOperationStatus), "OperationPreferences" :: NullOrUndefined (StackSetOperationPreferences), "RetainStacks" :: NullOrUndefined (RetainStacksNullable), "CreationTimestamp" :: NullOrUndefined (Timestamp), "EndTimestamp" :: NullOrUndefined (Timestamp) } -> { "OperationId" :: NullOrUndefined (ClientRequestToken), "StackSetId" :: NullOrUndefined (StackSetId), "Action" :: NullOrUndefined (StackSetOperationAction), "Status" :: NullOrUndefined (StackSetOperationStatus), "OperationPreferences" :: NullOrUndefined (StackSetOperationPreferences), "RetainStacks" :: NullOrUndefined (RetainStacksNullable), "CreationTimestamp" :: NullOrUndefined (Timestamp), "EndTimestamp" :: NullOrUndefined (Timestamp) }) -> StackSetOperation
+newStackSetOperation' :: ({ "OperationId" :: Maybe (ClientRequestToken), "StackSetId" :: Maybe (StackSetId), "Action" :: Maybe (StackSetOperationAction), "Status" :: Maybe (StackSetOperationStatus), "OperationPreferences" :: Maybe (StackSetOperationPreferences), "RetainStacks" :: Maybe (RetainStacksNullable), "CreationTimestamp" :: Maybe (Timestamp), "EndTimestamp" :: Maybe (Timestamp) } -> { "OperationId" :: Maybe (ClientRequestToken), "StackSetId" :: Maybe (StackSetId), "Action" :: Maybe (StackSetOperationAction), "Status" :: Maybe (StackSetOperationStatus), "OperationPreferences" :: Maybe (StackSetOperationPreferences), "RetainStacks" :: Maybe (RetainStacksNullable), "CreationTimestamp" :: Maybe (Timestamp), "EndTimestamp" :: Maybe (Timestamp) }) -> StackSetOperation
 ```
 
 Constructs StackSetOperation's fields from required parameters
@@ -4788,7 +4788,7 @@ Encode StackSetOperationAction
 
 ``` purescript
 newtype StackSetOperationPreferences
-  = StackSetOperationPreferences { "RegionOrder" :: NullOrUndefined (RegionList), "FailureToleranceCount" :: NullOrUndefined (FailureToleranceCount), "FailureTolerancePercentage" :: NullOrUndefined (FailureTolerancePercentage), "MaxConcurrentCount" :: NullOrUndefined (MaxConcurrentCount), "MaxConcurrentPercentage" :: NullOrUndefined (MaxConcurrentPercentage) }
+  = StackSetOperationPreferences { "RegionOrder" :: Maybe (RegionList), "FailureToleranceCount" :: Maybe (FailureToleranceCount), "FailureTolerancePercentage" :: Maybe (FailureTolerancePercentage), "MaxConcurrentCount" :: Maybe (MaxConcurrentCount), "MaxConcurrentPercentage" :: Maybe (MaxConcurrentPercentage) }
 ```
 
 <p>The user-specified preferences for how AWS CloudFormation performs a stack set operation. </p> <p>For more information on maximum concurrent accounts and failure tolerance, see <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html#stackset-ops-options">Stack set operation options</a>.</p>
@@ -4813,7 +4813,7 @@ Constructs StackSetOperationPreferences from required parameters
 #### `newStackSetOperationPreferences'`
 
 ``` purescript
-newStackSetOperationPreferences' :: ({ "RegionOrder" :: NullOrUndefined (RegionList), "FailureToleranceCount" :: NullOrUndefined (FailureToleranceCount), "FailureTolerancePercentage" :: NullOrUndefined (FailureTolerancePercentage), "MaxConcurrentCount" :: NullOrUndefined (MaxConcurrentCount), "MaxConcurrentPercentage" :: NullOrUndefined (MaxConcurrentPercentage) } -> { "RegionOrder" :: NullOrUndefined (RegionList), "FailureToleranceCount" :: NullOrUndefined (FailureToleranceCount), "FailureTolerancePercentage" :: NullOrUndefined (FailureTolerancePercentage), "MaxConcurrentCount" :: NullOrUndefined (MaxConcurrentCount), "MaxConcurrentPercentage" :: NullOrUndefined (MaxConcurrentPercentage) }) -> StackSetOperationPreferences
+newStackSetOperationPreferences' :: ({ "RegionOrder" :: Maybe (RegionList), "FailureToleranceCount" :: Maybe (FailureToleranceCount), "FailureTolerancePercentage" :: Maybe (FailureTolerancePercentage), "MaxConcurrentCount" :: Maybe (MaxConcurrentCount), "MaxConcurrentPercentage" :: Maybe (MaxConcurrentPercentage) } -> { "RegionOrder" :: Maybe (RegionList), "FailureToleranceCount" :: Maybe (FailureToleranceCount), "FailureTolerancePercentage" :: Maybe (FailureTolerancePercentage), "MaxConcurrentCount" :: Maybe (MaxConcurrentCount), "MaxConcurrentPercentage" :: Maybe (MaxConcurrentPercentage) }) -> StackSetOperationPreferences
 ```
 
 Constructs StackSetOperationPreferences's fields from required parameters
@@ -4854,7 +4854,7 @@ Encode StackSetOperationResultSummaries
 
 ``` purescript
 newtype StackSetOperationResultSummary
-  = StackSetOperationResultSummary { "Account" :: NullOrUndefined (Account), "Region" :: NullOrUndefined (Region), "Status" :: NullOrUndefined (StackSetOperationResultStatus), "StatusReason" :: NullOrUndefined (Reason), "AccountGateResult" :: NullOrUndefined (AccountGateResult) }
+  = StackSetOperationResultSummary { "Account" :: Maybe (Account), "Region" :: Maybe (Region), "Status" :: Maybe (StackSetOperationResultStatus), "StatusReason" :: Maybe (Reason), "AccountGateResult" :: Maybe (AccountGateResult) }
 ```
 
 <p>The structure that contains information about a specified operation's results for a given account in a given region.</p>
@@ -4879,7 +4879,7 @@ Constructs StackSetOperationResultSummary from required parameters
 #### `newStackSetOperationResultSummary'`
 
 ``` purescript
-newStackSetOperationResultSummary' :: ({ "Account" :: NullOrUndefined (Account), "Region" :: NullOrUndefined (Region), "Status" :: NullOrUndefined (StackSetOperationResultStatus), "StatusReason" :: NullOrUndefined (Reason), "AccountGateResult" :: NullOrUndefined (AccountGateResult) } -> { "Account" :: NullOrUndefined (Account), "Region" :: NullOrUndefined (Region), "Status" :: NullOrUndefined (StackSetOperationResultStatus), "StatusReason" :: NullOrUndefined (Reason), "AccountGateResult" :: NullOrUndefined (AccountGateResult) }) -> StackSetOperationResultSummary
+newStackSetOperationResultSummary' :: ({ "Account" :: Maybe (Account), "Region" :: Maybe (Region), "Status" :: Maybe (StackSetOperationResultStatus), "StatusReason" :: Maybe (Reason), "AccountGateResult" :: Maybe (AccountGateResult) } -> { "Account" :: Maybe (Account), "Region" :: Maybe (Region), "Status" :: Maybe (StackSetOperationResultStatus), "StatusReason" :: Maybe (Reason), "AccountGateResult" :: Maybe (AccountGateResult) }) -> StackSetOperationResultSummary
 ```
 
 Constructs StackSetOperationResultSummary's fields from required parameters
@@ -4920,7 +4920,7 @@ Encode StackSetOperationSummaries
 
 ``` purescript
 newtype StackSetOperationSummary
-  = StackSetOperationSummary { "OperationId" :: NullOrUndefined (ClientRequestToken), "Action" :: NullOrUndefined (StackSetOperationAction), "Status" :: NullOrUndefined (StackSetOperationStatus), "CreationTimestamp" :: NullOrUndefined (Timestamp), "EndTimestamp" :: NullOrUndefined (Timestamp) }
+  = StackSetOperationSummary { "OperationId" :: Maybe (ClientRequestToken), "Action" :: Maybe (StackSetOperationAction), "Status" :: Maybe (StackSetOperationStatus), "CreationTimestamp" :: Maybe (Timestamp), "EndTimestamp" :: Maybe (Timestamp) }
 ```
 
 <p>The structures that contain summary information about the specified operation.</p>
@@ -4945,7 +4945,7 @@ Constructs StackSetOperationSummary from required parameters
 #### `newStackSetOperationSummary'`
 
 ``` purescript
-newStackSetOperationSummary' :: ({ "OperationId" :: NullOrUndefined (ClientRequestToken), "Action" :: NullOrUndefined (StackSetOperationAction), "Status" :: NullOrUndefined (StackSetOperationStatus), "CreationTimestamp" :: NullOrUndefined (Timestamp), "EndTimestamp" :: NullOrUndefined (Timestamp) } -> { "OperationId" :: NullOrUndefined (ClientRequestToken), "Action" :: NullOrUndefined (StackSetOperationAction), "Status" :: NullOrUndefined (StackSetOperationStatus), "CreationTimestamp" :: NullOrUndefined (Timestamp), "EndTimestamp" :: NullOrUndefined (Timestamp) }) -> StackSetOperationSummary
+newStackSetOperationSummary' :: ({ "OperationId" :: Maybe (ClientRequestToken), "Action" :: Maybe (StackSetOperationAction), "Status" :: Maybe (StackSetOperationStatus), "CreationTimestamp" :: Maybe (Timestamp), "EndTimestamp" :: Maybe (Timestamp) } -> { "OperationId" :: Maybe (ClientRequestToken), "Action" :: Maybe (StackSetOperationAction), "Status" :: Maybe (StackSetOperationStatus), "CreationTimestamp" :: Maybe (Timestamp), "EndTimestamp" :: Maybe (Timestamp) }) -> StackSetOperationSummary
 ```
 
 Constructs StackSetOperationSummary's fields from required parameters
@@ -4986,7 +4986,7 @@ Encode StackSetSummaries
 
 ``` purescript
 newtype StackSetSummary
-  = StackSetSummary { "StackSetName" :: NullOrUndefined (StackSetName), "StackSetId" :: NullOrUndefined (StackSetId), "Description" :: NullOrUndefined (Description), "Status" :: NullOrUndefined (StackSetStatus) }
+  = StackSetSummary { "StackSetName" :: Maybe (StackSetName), "StackSetId" :: Maybe (StackSetId), "Description" :: Maybe (Description), "Status" :: Maybe (StackSetStatus) }
 ```
 
 <p>The structures that contain summary information about the specified stack set.</p>
@@ -5011,7 +5011,7 @@ Constructs StackSetSummary from required parameters
 #### `newStackSetSummary'`
 
 ``` purescript
-newStackSetSummary' :: ({ "StackSetName" :: NullOrUndefined (StackSetName), "StackSetId" :: NullOrUndefined (StackSetId), "Description" :: NullOrUndefined (Description), "Status" :: NullOrUndefined (StackSetStatus) } -> { "StackSetName" :: NullOrUndefined (StackSetName), "StackSetId" :: NullOrUndefined (StackSetId), "Description" :: NullOrUndefined (Description), "Status" :: NullOrUndefined (StackSetStatus) }) -> StackSetSummary
+newStackSetSummary' :: ({ "StackSetName" :: Maybe (StackSetName), "StackSetId" :: Maybe (StackSetId), "Description" :: Maybe (Description), "Status" :: Maybe (StackSetStatus) } -> { "StackSetName" :: Maybe (StackSetName), "StackSetId" :: Maybe (StackSetId), "Description" :: Maybe (Description), "Status" :: Maybe (StackSetStatus) }) -> StackSetSummary
 ```
 
 Constructs StackSetSummary's fields from required parameters
@@ -5084,7 +5084,7 @@ Encode StackSummaries
 
 ``` purescript
 newtype StackSummary
-  = StackSummary { "StackId" :: NullOrUndefined (StackId), "StackName" :: StackName, "TemplateDescription" :: NullOrUndefined (TemplateDescription), "CreationTime" :: CreationTime, "LastUpdatedTime" :: NullOrUndefined (LastUpdatedTime), "DeletionTime" :: NullOrUndefined (DeletionTime), "StackStatus" :: StackStatus, "StackStatusReason" :: NullOrUndefined (StackStatusReason), "ParentId" :: NullOrUndefined (StackId), "RootId" :: NullOrUndefined (StackId) }
+  = StackSummary { "StackId" :: Maybe (StackId), "StackName" :: StackName, "TemplateDescription" :: Maybe (TemplateDescription), "CreationTime" :: CreationTime, "LastUpdatedTime" :: Maybe (LastUpdatedTime), "DeletionTime" :: Maybe (DeletionTime), "StackStatus" :: StackStatus, "StackStatusReason" :: Maybe (StackStatusReason), "ParentId" :: Maybe (StackId), "RootId" :: Maybe (StackId) }
 ```
 
 <p>The StackSummary Data Type</p>
@@ -5109,7 +5109,7 @@ Constructs StackSummary from required parameters
 #### `newStackSummary'`
 
 ``` purescript
-newStackSummary' :: CreationTime -> StackName -> StackStatus -> ({ "StackId" :: NullOrUndefined (StackId), "StackName" :: StackName, "TemplateDescription" :: NullOrUndefined (TemplateDescription), "CreationTime" :: CreationTime, "LastUpdatedTime" :: NullOrUndefined (LastUpdatedTime), "DeletionTime" :: NullOrUndefined (DeletionTime), "StackStatus" :: StackStatus, "StackStatusReason" :: NullOrUndefined (StackStatusReason), "ParentId" :: NullOrUndefined (StackId), "RootId" :: NullOrUndefined (StackId) } -> { "StackId" :: NullOrUndefined (StackId), "StackName" :: StackName, "TemplateDescription" :: NullOrUndefined (TemplateDescription), "CreationTime" :: CreationTime, "LastUpdatedTime" :: NullOrUndefined (LastUpdatedTime), "DeletionTime" :: NullOrUndefined (DeletionTime), "StackStatus" :: StackStatus, "StackStatusReason" :: NullOrUndefined (StackStatusReason), "ParentId" :: NullOrUndefined (StackId), "RootId" :: NullOrUndefined (StackId) }) -> StackSummary
+newStackSummary' :: CreationTime -> StackName -> StackStatus -> ({ "StackId" :: Maybe (StackId), "StackName" :: StackName, "TemplateDescription" :: Maybe (TemplateDescription), "CreationTime" :: CreationTime, "LastUpdatedTime" :: Maybe (LastUpdatedTime), "DeletionTime" :: Maybe (DeletionTime), "StackStatus" :: StackStatus, "StackStatusReason" :: Maybe (StackStatusReason), "ParentId" :: Maybe (StackId), "RootId" :: Maybe (StackId) } -> { "StackId" :: Maybe (StackId), "StackName" :: StackName, "TemplateDescription" :: Maybe (TemplateDescription), "CreationTime" :: CreationTime, "LastUpdatedTime" :: Maybe (LastUpdatedTime), "DeletionTime" :: Maybe (DeletionTime), "StackStatus" :: StackStatus, "StackStatusReason" :: Maybe (StackStatusReason), "ParentId" :: Maybe (StackId), "RootId" :: Maybe (StackId) }) -> StackSummary
 ```
 
 Constructs StackSummary's fields from required parameters
@@ -5330,7 +5330,7 @@ Encode TemplateDescription
 
 ``` purescript
 newtype TemplateParameter
-  = TemplateParameter { "ParameterKey" :: NullOrUndefined (ParameterKey), "DefaultValue" :: NullOrUndefined (ParameterValue), "NoEcho" :: NullOrUndefined (NoEcho), "Description" :: NullOrUndefined (Description) }
+  = TemplateParameter { "ParameterKey" :: Maybe (ParameterKey), "DefaultValue" :: Maybe (ParameterValue), "NoEcho" :: Maybe (NoEcho), "Description" :: Maybe (Description) }
 ```
 
 <p>The TemplateParameter data type.</p>
@@ -5355,7 +5355,7 @@ Constructs TemplateParameter from required parameters
 #### `newTemplateParameter'`
 
 ``` purescript
-newTemplateParameter' :: ({ "ParameterKey" :: NullOrUndefined (ParameterKey), "DefaultValue" :: NullOrUndefined (ParameterValue), "NoEcho" :: NullOrUndefined (NoEcho), "Description" :: NullOrUndefined (Description) } -> { "ParameterKey" :: NullOrUndefined (ParameterKey), "DefaultValue" :: NullOrUndefined (ParameterValue), "NoEcho" :: NullOrUndefined (NoEcho), "Description" :: NullOrUndefined (Description) }) -> TemplateParameter
+newTemplateParameter' :: ({ "ParameterKey" :: Maybe (ParameterKey), "DefaultValue" :: Maybe (ParameterValue), "NoEcho" :: Maybe (NoEcho), "Description" :: Maybe (Description) } -> { "ParameterKey" :: Maybe (ParameterKey), "DefaultValue" :: Maybe (ParameterValue), "NoEcho" :: Maybe (NoEcho), "Description" :: Maybe (Description) }) -> TemplateParameter
 ```
 
 Constructs TemplateParameter's fields from required parameters
@@ -5494,7 +5494,7 @@ Encode Type
 
 ``` purescript
 newtype UpdateStackInput
-  = UpdateStackInput { "StackName" :: StackName, "TemplateBody" :: NullOrUndefined (TemplateBody), "TemplateURL" :: NullOrUndefined (TemplateURL), "UsePreviousTemplate" :: NullOrUndefined (UsePreviousTemplate), "StackPolicyDuringUpdateBody" :: NullOrUndefined (StackPolicyDuringUpdateBody), "StackPolicyDuringUpdateURL" :: NullOrUndefined (StackPolicyDuringUpdateURL), "Parameters" :: NullOrUndefined (Parameters), "Capabilities" :: NullOrUndefined (Capabilities), "ResourceTypes" :: NullOrUndefined (ResourceTypes), "RoleARN" :: NullOrUndefined (RoleARN), "RollbackConfiguration" :: NullOrUndefined (RollbackConfiguration), "StackPolicyBody" :: NullOrUndefined (StackPolicyBody), "StackPolicyURL" :: NullOrUndefined (StackPolicyURL), "NotificationARNs" :: NullOrUndefined (NotificationARNs), "Tags" :: NullOrUndefined (Tags), "ClientRequestToken" :: NullOrUndefined (ClientRequestToken) }
+  = UpdateStackInput { "StackName" :: StackName, "TemplateBody" :: Maybe (TemplateBody), "TemplateURL" :: Maybe (TemplateURL), "UsePreviousTemplate" :: Maybe (UsePreviousTemplate), "StackPolicyDuringUpdateBody" :: Maybe (StackPolicyDuringUpdateBody), "StackPolicyDuringUpdateURL" :: Maybe (StackPolicyDuringUpdateURL), "Parameters" :: Maybe (Parameters), "Capabilities" :: Maybe (Capabilities), "ResourceTypes" :: Maybe (ResourceTypes), "RoleARN" :: Maybe (RoleARN), "RollbackConfiguration" :: Maybe (RollbackConfiguration), "StackPolicyBody" :: Maybe (StackPolicyBody), "StackPolicyURL" :: Maybe (StackPolicyURL), "NotificationARNs" :: Maybe (NotificationARNs), "Tags" :: Maybe (Tags), "ClientRequestToken" :: Maybe (ClientRequestToken) }
 ```
 
 <p>The input for an <a>UpdateStack</a> action.</p>
@@ -5519,7 +5519,7 @@ Constructs UpdateStackInput from required parameters
 #### `newUpdateStackInput'`
 
 ``` purescript
-newUpdateStackInput' :: StackName -> ({ "StackName" :: StackName, "TemplateBody" :: NullOrUndefined (TemplateBody), "TemplateURL" :: NullOrUndefined (TemplateURL), "UsePreviousTemplate" :: NullOrUndefined (UsePreviousTemplate), "StackPolicyDuringUpdateBody" :: NullOrUndefined (StackPolicyDuringUpdateBody), "StackPolicyDuringUpdateURL" :: NullOrUndefined (StackPolicyDuringUpdateURL), "Parameters" :: NullOrUndefined (Parameters), "Capabilities" :: NullOrUndefined (Capabilities), "ResourceTypes" :: NullOrUndefined (ResourceTypes), "RoleARN" :: NullOrUndefined (RoleARN), "RollbackConfiguration" :: NullOrUndefined (RollbackConfiguration), "StackPolicyBody" :: NullOrUndefined (StackPolicyBody), "StackPolicyURL" :: NullOrUndefined (StackPolicyURL), "NotificationARNs" :: NullOrUndefined (NotificationARNs), "Tags" :: NullOrUndefined (Tags), "ClientRequestToken" :: NullOrUndefined (ClientRequestToken) } -> { "StackName" :: StackName, "TemplateBody" :: NullOrUndefined (TemplateBody), "TemplateURL" :: NullOrUndefined (TemplateURL), "UsePreviousTemplate" :: NullOrUndefined (UsePreviousTemplate), "StackPolicyDuringUpdateBody" :: NullOrUndefined (StackPolicyDuringUpdateBody), "StackPolicyDuringUpdateURL" :: NullOrUndefined (StackPolicyDuringUpdateURL), "Parameters" :: NullOrUndefined (Parameters), "Capabilities" :: NullOrUndefined (Capabilities), "ResourceTypes" :: NullOrUndefined (ResourceTypes), "RoleARN" :: NullOrUndefined (RoleARN), "RollbackConfiguration" :: NullOrUndefined (RollbackConfiguration), "StackPolicyBody" :: NullOrUndefined (StackPolicyBody), "StackPolicyURL" :: NullOrUndefined (StackPolicyURL), "NotificationARNs" :: NullOrUndefined (NotificationARNs), "Tags" :: NullOrUndefined (Tags), "ClientRequestToken" :: NullOrUndefined (ClientRequestToken) }) -> UpdateStackInput
+newUpdateStackInput' :: StackName -> ({ "StackName" :: StackName, "TemplateBody" :: Maybe (TemplateBody), "TemplateURL" :: Maybe (TemplateURL), "UsePreviousTemplate" :: Maybe (UsePreviousTemplate), "StackPolicyDuringUpdateBody" :: Maybe (StackPolicyDuringUpdateBody), "StackPolicyDuringUpdateURL" :: Maybe (StackPolicyDuringUpdateURL), "Parameters" :: Maybe (Parameters), "Capabilities" :: Maybe (Capabilities), "ResourceTypes" :: Maybe (ResourceTypes), "RoleARN" :: Maybe (RoleARN), "RollbackConfiguration" :: Maybe (RollbackConfiguration), "StackPolicyBody" :: Maybe (StackPolicyBody), "StackPolicyURL" :: Maybe (StackPolicyURL), "NotificationARNs" :: Maybe (NotificationARNs), "Tags" :: Maybe (Tags), "ClientRequestToken" :: Maybe (ClientRequestToken) } -> { "StackName" :: StackName, "TemplateBody" :: Maybe (TemplateBody), "TemplateURL" :: Maybe (TemplateURL), "UsePreviousTemplate" :: Maybe (UsePreviousTemplate), "StackPolicyDuringUpdateBody" :: Maybe (StackPolicyDuringUpdateBody), "StackPolicyDuringUpdateURL" :: Maybe (StackPolicyDuringUpdateURL), "Parameters" :: Maybe (Parameters), "Capabilities" :: Maybe (Capabilities), "ResourceTypes" :: Maybe (ResourceTypes), "RoleARN" :: Maybe (RoleARN), "RollbackConfiguration" :: Maybe (RollbackConfiguration), "StackPolicyBody" :: Maybe (StackPolicyBody), "StackPolicyURL" :: Maybe (StackPolicyURL), "NotificationARNs" :: Maybe (NotificationARNs), "Tags" :: Maybe (Tags), "ClientRequestToken" :: Maybe (ClientRequestToken) }) -> UpdateStackInput
 ```
 
 Constructs UpdateStackInput's fields from required parameters
@@ -5528,7 +5528,7 @@ Constructs UpdateStackInput's fields from required parameters
 
 ``` purescript
 newtype UpdateStackInstancesInput
-  = UpdateStackInstancesInput { "StackSetName" :: StackSetName, "Accounts" :: AccountList, "Regions" :: RegionList, "ParameterOverrides" :: NullOrUndefined (Parameters), "OperationPreferences" :: NullOrUndefined (StackSetOperationPreferences), "OperationId" :: NullOrUndefined (ClientRequestToken) }
+  = UpdateStackInstancesInput { "StackSetName" :: StackSetName, "Accounts" :: AccountList, "Regions" :: RegionList, "ParameterOverrides" :: Maybe (Parameters), "OperationPreferences" :: Maybe (StackSetOperationPreferences), "OperationId" :: Maybe (ClientRequestToken) }
 ```
 
 ##### Instances
@@ -5551,7 +5551,7 @@ Constructs UpdateStackInstancesInput from required parameters
 #### `newUpdateStackInstancesInput'`
 
 ``` purescript
-newUpdateStackInstancesInput' :: AccountList -> RegionList -> StackSetName -> ({ "StackSetName" :: StackSetName, "Accounts" :: AccountList, "Regions" :: RegionList, "ParameterOverrides" :: NullOrUndefined (Parameters), "OperationPreferences" :: NullOrUndefined (StackSetOperationPreferences), "OperationId" :: NullOrUndefined (ClientRequestToken) } -> { "StackSetName" :: StackSetName, "Accounts" :: AccountList, "Regions" :: RegionList, "ParameterOverrides" :: NullOrUndefined (Parameters), "OperationPreferences" :: NullOrUndefined (StackSetOperationPreferences), "OperationId" :: NullOrUndefined (ClientRequestToken) }) -> UpdateStackInstancesInput
+newUpdateStackInstancesInput' :: AccountList -> RegionList -> StackSetName -> ({ "StackSetName" :: StackSetName, "Accounts" :: AccountList, "Regions" :: RegionList, "ParameterOverrides" :: Maybe (Parameters), "OperationPreferences" :: Maybe (StackSetOperationPreferences), "OperationId" :: Maybe (ClientRequestToken) } -> { "StackSetName" :: StackSetName, "Accounts" :: AccountList, "Regions" :: RegionList, "ParameterOverrides" :: Maybe (Parameters), "OperationPreferences" :: Maybe (StackSetOperationPreferences), "OperationId" :: Maybe (ClientRequestToken) }) -> UpdateStackInstancesInput
 ```
 
 Constructs UpdateStackInstancesInput's fields from required parameters
@@ -5560,7 +5560,7 @@ Constructs UpdateStackInstancesInput's fields from required parameters
 
 ``` purescript
 newtype UpdateStackInstancesOutput
-  = UpdateStackInstancesOutput { "OperationId" :: NullOrUndefined (ClientRequestToken) }
+  = UpdateStackInstancesOutput { "OperationId" :: Maybe (ClientRequestToken) }
 ```
 
 ##### Instances
@@ -5583,7 +5583,7 @@ Constructs UpdateStackInstancesOutput from required parameters
 #### `newUpdateStackInstancesOutput'`
 
 ``` purescript
-newUpdateStackInstancesOutput' :: ({ "OperationId" :: NullOrUndefined (ClientRequestToken) } -> { "OperationId" :: NullOrUndefined (ClientRequestToken) }) -> UpdateStackInstancesOutput
+newUpdateStackInstancesOutput' :: ({ "OperationId" :: Maybe (ClientRequestToken) } -> { "OperationId" :: Maybe (ClientRequestToken) }) -> UpdateStackInstancesOutput
 ```
 
 Constructs UpdateStackInstancesOutput's fields from required parameters
@@ -5592,7 +5592,7 @@ Constructs UpdateStackInstancesOutput's fields from required parameters
 
 ``` purescript
 newtype UpdateStackOutput
-  = UpdateStackOutput { "StackId" :: NullOrUndefined (StackId) }
+  = UpdateStackOutput { "StackId" :: Maybe (StackId) }
 ```
 
 <p>The output for an <a>UpdateStack</a> action.</p>
@@ -5617,7 +5617,7 @@ Constructs UpdateStackOutput from required parameters
 #### `newUpdateStackOutput'`
 
 ``` purescript
-newUpdateStackOutput' :: ({ "StackId" :: NullOrUndefined (StackId) } -> { "StackId" :: NullOrUndefined (StackId) }) -> UpdateStackOutput
+newUpdateStackOutput' :: ({ "StackId" :: Maybe (StackId) } -> { "StackId" :: Maybe (StackId) }) -> UpdateStackOutput
 ```
 
 Constructs UpdateStackOutput's fields from required parameters
@@ -5626,7 +5626,7 @@ Constructs UpdateStackOutput's fields from required parameters
 
 ``` purescript
 newtype UpdateStackSetInput
-  = UpdateStackSetInput { "StackSetName" :: StackSetName, "Description" :: NullOrUndefined (Description), "TemplateBody" :: NullOrUndefined (TemplateBody), "TemplateURL" :: NullOrUndefined (TemplateURL), "UsePreviousTemplate" :: NullOrUndefined (UsePreviousTemplate), "Parameters" :: NullOrUndefined (Parameters), "Capabilities" :: NullOrUndefined (Capabilities), "Tags" :: NullOrUndefined (Tags), "OperationPreferences" :: NullOrUndefined (StackSetOperationPreferences), "OperationId" :: NullOrUndefined (ClientRequestToken) }
+  = UpdateStackSetInput { "StackSetName" :: StackSetName, "Description" :: Maybe (Description), "TemplateBody" :: Maybe (TemplateBody), "TemplateURL" :: Maybe (TemplateURL), "UsePreviousTemplate" :: Maybe (UsePreviousTemplate), "Parameters" :: Maybe (Parameters), "Capabilities" :: Maybe (Capabilities), "Tags" :: Maybe (Tags), "OperationPreferences" :: Maybe (StackSetOperationPreferences), "OperationId" :: Maybe (ClientRequestToken) }
 ```
 
 ##### Instances
@@ -5649,7 +5649,7 @@ Constructs UpdateStackSetInput from required parameters
 #### `newUpdateStackSetInput'`
 
 ``` purescript
-newUpdateStackSetInput' :: StackSetName -> ({ "StackSetName" :: StackSetName, "Description" :: NullOrUndefined (Description), "TemplateBody" :: NullOrUndefined (TemplateBody), "TemplateURL" :: NullOrUndefined (TemplateURL), "UsePreviousTemplate" :: NullOrUndefined (UsePreviousTemplate), "Parameters" :: NullOrUndefined (Parameters), "Capabilities" :: NullOrUndefined (Capabilities), "Tags" :: NullOrUndefined (Tags), "OperationPreferences" :: NullOrUndefined (StackSetOperationPreferences), "OperationId" :: NullOrUndefined (ClientRequestToken) } -> { "StackSetName" :: StackSetName, "Description" :: NullOrUndefined (Description), "TemplateBody" :: NullOrUndefined (TemplateBody), "TemplateURL" :: NullOrUndefined (TemplateURL), "UsePreviousTemplate" :: NullOrUndefined (UsePreviousTemplate), "Parameters" :: NullOrUndefined (Parameters), "Capabilities" :: NullOrUndefined (Capabilities), "Tags" :: NullOrUndefined (Tags), "OperationPreferences" :: NullOrUndefined (StackSetOperationPreferences), "OperationId" :: NullOrUndefined (ClientRequestToken) }) -> UpdateStackSetInput
+newUpdateStackSetInput' :: StackSetName -> ({ "StackSetName" :: StackSetName, "Description" :: Maybe (Description), "TemplateBody" :: Maybe (TemplateBody), "TemplateURL" :: Maybe (TemplateURL), "UsePreviousTemplate" :: Maybe (UsePreviousTemplate), "Parameters" :: Maybe (Parameters), "Capabilities" :: Maybe (Capabilities), "Tags" :: Maybe (Tags), "OperationPreferences" :: Maybe (StackSetOperationPreferences), "OperationId" :: Maybe (ClientRequestToken) } -> { "StackSetName" :: StackSetName, "Description" :: Maybe (Description), "TemplateBody" :: Maybe (TemplateBody), "TemplateURL" :: Maybe (TemplateURL), "UsePreviousTemplate" :: Maybe (UsePreviousTemplate), "Parameters" :: Maybe (Parameters), "Capabilities" :: Maybe (Capabilities), "Tags" :: Maybe (Tags), "OperationPreferences" :: Maybe (StackSetOperationPreferences), "OperationId" :: Maybe (ClientRequestToken) }) -> UpdateStackSetInput
 ```
 
 Constructs UpdateStackSetInput's fields from required parameters
@@ -5658,7 +5658,7 @@ Constructs UpdateStackSetInput's fields from required parameters
 
 ``` purescript
 newtype UpdateStackSetOutput
-  = UpdateStackSetOutput { "OperationId" :: NullOrUndefined (ClientRequestToken) }
+  = UpdateStackSetOutput { "OperationId" :: Maybe (ClientRequestToken) }
 ```
 
 ##### Instances
@@ -5681,7 +5681,7 @@ Constructs UpdateStackSetOutput from required parameters
 #### `newUpdateStackSetOutput'`
 
 ``` purescript
-newUpdateStackSetOutput' :: ({ "OperationId" :: NullOrUndefined (ClientRequestToken) } -> { "OperationId" :: NullOrUndefined (ClientRequestToken) }) -> UpdateStackSetOutput
+newUpdateStackSetOutput' :: ({ "OperationId" :: Maybe (ClientRequestToken) } -> { "OperationId" :: Maybe (ClientRequestToken) }) -> UpdateStackSetOutput
 ```
 
 Constructs UpdateStackSetOutput's fields from required parameters
@@ -5722,7 +5722,7 @@ Constructs UpdateTerminationProtectionInput's fields from required parameters
 
 ``` purescript
 newtype UpdateTerminationProtectionOutput
-  = UpdateTerminationProtectionOutput { "StackId" :: NullOrUndefined (StackId) }
+  = UpdateTerminationProtectionOutput { "StackId" :: Maybe (StackId) }
 ```
 
 ##### Instances
@@ -5745,7 +5745,7 @@ Constructs UpdateTerminationProtectionOutput from required parameters
 #### `newUpdateTerminationProtectionOutput'`
 
 ``` purescript
-newUpdateTerminationProtectionOutput' :: ({ "StackId" :: NullOrUndefined (StackId) } -> { "StackId" :: NullOrUndefined (StackId) }) -> UpdateTerminationProtectionOutput
+newUpdateTerminationProtectionOutput' :: ({ "StackId" :: Maybe (StackId) } -> { "StackId" :: Maybe (StackId) }) -> UpdateTerminationProtectionOutput
 ```
 
 Constructs UpdateTerminationProtectionOutput's fields from required parameters
@@ -5802,7 +5802,7 @@ Encode UsePreviousValue
 
 ``` purescript
 newtype ValidateTemplateInput
-  = ValidateTemplateInput { "TemplateBody" :: NullOrUndefined (TemplateBody), "TemplateURL" :: NullOrUndefined (TemplateURL) }
+  = ValidateTemplateInput { "TemplateBody" :: Maybe (TemplateBody), "TemplateURL" :: Maybe (TemplateURL) }
 ```
 
 <p>The input for <a>ValidateTemplate</a> action.</p>
@@ -5827,7 +5827,7 @@ Constructs ValidateTemplateInput from required parameters
 #### `newValidateTemplateInput'`
 
 ``` purescript
-newValidateTemplateInput' :: ({ "TemplateBody" :: NullOrUndefined (TemplateBody), "TemplateURL" :: NullOrUndefined (TemplateURL) } -> { "TemplateBody" :: NullOrUndefined (TemplateBody), "TemplateURL" :: NullOrUndefined (TemplateURL) }) -> ValidateTemplateInput
+newValidateTemplateInput' :: ({ "TemplateBody" :: Maybe (TemplateBody), "TemplateURL" :: Maybe (TemplateURL) } -> { "TemplateBody" :: Maybe (TemplateBody), "TemplateURL" :: Maybe (TemplateURL) }) -> ValidateTemplateInput
 ```
 
 Constructs ValidateTemplateInput's fields from required parameters
@@ -5836,7 +5836,7 @@ Constructs ValidateTemplateInput's fields from required parameters
 
 ``` purescript
 newtype ValidateTemplateOutput
-  = ValidateTemplateOutput { "Parameters" :: NullOrUndefined (TemplateParameters), "Description" :: NullOrUndefined (Description), "Capabilities" :: NullOrUndefined (Capabilities), "CapabilitiesReason" :: NullOrUndefined (CapabilitiesReason), "DeclaredTransforms" :: NullOrUndefined (TransformsList) }
+  = ValidateTemplateOutput { "Parameters" :: Maybe (TemplateParameters), "Description" :: Maybe (Description), "Capabilities" :: Maybe (Capabilities), "CapabilitiesReason" :: Maybe (CapabilitiesReason), "DeclaredTransforms" :: Maybe (TransformsList) }
 ```
 
 <p>The output for <a>ValidateTemplate</a> action.</p>
@@ -5861,7 +5861,7 @@ Constructs ValidateTemplateOutput from required parameters
 #### `newValidateTemplateOutput'`
 
 ``` purescript
-newValidateTemplateOutput' :: ({ "Parameters" :: NullOrUndefined (TemplateParameters), "Description" :: NullOrUndefined (Description), "Capabilities" :: NullOrUndefined (Capabilities), "CapabilitiesReason" :: NullOrUndefined (CapabilitiesReason), "DeclaredTransforms" :: NullOrUndefined (TransformsList) } -> { "Parameters" :: NullOrUndefined (TemplateParameters), "Description" :: NullOrUndefined (Description), "Capabilities" :: NullOrUndefined (Capabilities), "CapabilitiesReason" :: NullOrUndefined (CapabilitiesReason), "DeclaredTransforms" :: NullOrUndefined (TransformsList) }) -> ValidateTemplateOutput
+newValidateTemplateOutput' :: ({ "Parameters" :: Maybe (TemplateParameters), "Description" :: Maybe (Description), "Capabilities" :: Maybe (Capabilities), "CapabilitiesReason" :: Maybe (CapabilitiesReason), "DeclaredTransforms" :: Maybe (TransformsList) } -> { "Parameters" :: Maybe (TemplateParameters), "Description" :: Maybe (Description), "Capabilities" :: Maybe (Capabilities), "CapabilitiesReason" :: Maybe (CapabilitiesReason), "DeclaredTransforms" :: Maybe (TransformsList) }) -> ValidateTemplateOutput
 ```
 
 Constructs ValidateTemplateOutput's fields from required parameters

@@ -13,7 +13,7 @@ import AWS.CloudFormation.Types as CloudFormationTypes
 
 
 -- | <p>Cancels an update on the specified stack. If the call completes successfully, the stack rolls back the update and reverts to the previous stack configuration.</p> <note> <p>You can cancel only stacks that are in the UPDATE_IN_PROGRESS state.</p> </note>
-cancelUpdateStack :: forall eff. CloudFormation.Service -> CloudFormationTypes.CancelUpdateStackInput -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+cancelUpdateStack :: forall eff. CloudFormation.Service -> CloudFormationTypes.CancelUpdateStackInput -> Aff (exception :: EXCEPTION | eff) Unit
 cancelUpdateStack (CloudFormation.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "cancelUpdateStack"
 
@@ -55,7 +55,7 @@ deleteChangeSet (CloudFormation.Service serviceImpl) = AWS.request serviceImpl m
 
 
 -- | <p>Deletes a specified stack. Once the call completes successfully, stack deletion starts. Deleted stacks do not show up in the <a>DescribeStacks</a> API if the deletion has been completed successfully.</p>
-deleteStack :: forall eff. CloudFormation.Service -> CloudFormationTypes.DeleteStackInput -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+deleteStack :: forall eff. CloudFormation.Service -> CloudFormationTypes.DeleteStackInput -> Aff (exception :: EXCEPTION | eff) Unit
 deleteStack (CloudFormation.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "deleteStack"
 
@@ -211,13 +211,13 @@ listStacks (CloudFormation.Service serviceImpl) = AWS.request serviceImpl method
 
 
 -- | <p>Sets a stack policy for a specified stack.</p>
-setStackPolicy :: forall eff. CloudFormation.Service -> CloudFormationTypes.SetStackPolicyInput -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+setStackPolicy :: forall eff. CloudFormation.Service -> CloudFormationTypes.SetStackPolicyInput -> Aff (exception :: EXCEPTION | eff) Unit
 setStackPolicy (CloudFormation.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "setStackPolicy"
 
 
 -- | <p>Sends a signal to the specified resource with a success or failure status. You can use the SignalResource API in conjunction with a creation policy or update policy. AWS CloudFormation doesn't proceed with a stack creation or update until resources receive the required number of signals or the timeout period is exceeded. The SignalResource API is useful in cases where you want to send signals from anywhere other than an Amazon EC2 instance.</p>
-signalResource :: forall eff. CloudFormation.Service -> CloudFormationTypes.SignalResourceInput -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+signalResource :: forall eff. CloudFormation.Service -> CloudFormationTypes.SignalResourceInput -> Aff (exception :: EXCEPTION | eff) Unit
 signalResource (CloudFormation.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "signalResource"
 

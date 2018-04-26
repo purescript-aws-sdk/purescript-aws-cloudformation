@@ -5,7 +5,6 @@ import Prelude
 import Data.Foreign.Class (class Decode, class Encode)
 import Data.Foreign.Generic (defaultOptions, genericDecode, genericEncode)
 import Data.Foreign.Generic.Types (Options)
-import Data.Foreign.NullOrUndefined (NullOrUndefined(..))
 import Data.Generic.Rep (class Generic)
 import Data.Generic.Rep.Show (genericShow)
 import Data.Maybe (Maybe(..))
@@ -29,8 +28,8 @@ instance encodeAccount :: Encode Account where encode = genericEncode options
 
 -- | <p>Structure that contains the results of the account gate function which AWS CloudFormation invokes, if present, before proceeding with a stack set operation in an account and region.</p> <p>For each account and region, AWS CloudFormation lets you specify a Lamdba function that encapsulates any requirements that must be met before CloudFormation can proceed with a stack set operation in that account and region. CloudFormation invokes the function each time a stack set operation is requested for that account and region; if the function returns <code>FAILED</code>, CloudFormation cancels the operation in that account and region, and sets the stack set operation result status for that account and region to <code>FAILED</code>. </p> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-account-gating.html">Configuring a target account gate</a>.</p>
 newtype AccountGateResult = AccountGateResult 
-  { "Status" :: NullOrUndefined (AccountGateStatus)
-  , "StatusReason" :: NullOrUndefined (AccountGateStatusReason)
+  { "Status" :: Maybe (AccountGateStatus)
+  , "StatusReason" :: Maybe (AccountGateStatusReason)
   }
 derive instance newtypeAccountGateResult :: Newtype AccountGateResult _
 derive instance repGenericAccountGateResult :: Generic AccountGateResult _
@@ -40,12 +39,12 @@ instance encodeAccountGateResult :: Encode AccountGateResult where encode = gene
 
 -- | Constructs AccountGateResult from required parameters
 newAccountGateResult :: AccountGateResult
-newAccountGateResult  = AccountGateResult { "Status": (NullOrUndefined Nothing), "StatusReason": (NullOrUndefined Nothing) }
+newAccountGateResult  = AccountGateResult { "Status": Nothing, "StatusReason": Nothing }
 
 -- | Constructs AccountGateResult's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newAccountGateResult' :: ( { "Status" :: NullOrUndefined (AccountGateStatus) , "StatusReason" :: NullOrUndefined (AccountGateStatusReason) } -> {"Status" :: NullOrUndefined (AccountGateStatus) , "StatusReason" :: NullOrUndefined (AccountGateStatusReason) } ) -> AccountGateResult
-newAccountGateResult'  customize = (AccountGateResult <<< customize) { "Status": (NullOrUndefined Nothing), "StatusReason": (NullOrUndefined Nothing) }
+newAccountGateResult' :: ( { "Status" :: Maybe (AccountGateStatus) , "StatusReason" :: Maybe (AccountGateStatusReason) } -> {"Status" :: Maybe (AccountGateStatus) , "StatusReason" :: Maybe (AccountGateStatusReason) } ) -> AccountGateResult
+newAccountGateResult'  customize = (AccountGateResult <<< customize) { "Status": Nothing, "StatusReason": Nothing }
 
 
 
@@ -69,8 +68,8 @@ instance encodeAccountGateStatusReason :: Encode AccountGateStatusReason where e
 
 -- | <p>The AccountLimit data type.</p>
 newtype AccountLimit = AccountLimit 
-  { "Name" :: NullOrUndefined (LimitName)
-  , "Value" :: NullOrUndefined (LimitValue)
+  { "Name" :: Maybe (LimitName)
+  , "Value" :: Maybe (LimitValue)
   }
 derive instance newtypeAccountLimit :: Newtype AccountLimit _
 derive instance repGenericAccountLimit :: Generic AccountLimit _
@@ -80,12 +79,12 @@ instance encodeAccountLimit :: Encode AccountLimit where encode = genericEncode 
 
 -- | Constructs AccountLimit from required parameters
 newAccountLimit :: AccountLimit
-newAccountLimit  = AccountLimit { "Name": (NullOrUndefined Nothing), "Value": (NullOrUndefined Nothing) }
+newAccountLimit  = AccountLimit { "Name": Nothing, "Value": Nothing }
 
 -- | Constructs AccountLimit's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newAccountLimit' :: ( { "Name" :: NullOrUndefined (LimitName) , "Value" :: NullOrUndefined (LimitValue) } -> {"Name" :: NullOrUndefined (LimitName) , "Value" :: NullOrUndefined (LimitValue) } ) -> AccountLimit
-newAccountLimit'  customize = (AccountLimit <<< customize) { "Name": (NullOrUndefined Nothing), "Value": (NullOrUndefined Nothing) }
+newAccountLimit' :: ( { "Name" :: Maybe (LimitName) , "Value" :: Maybe (LimitValue) } -> {"Name" :: Maybe (LimitName) , "Value" :: Maybe (LimitValue) } ) -> AccountLimit
+newAccountLimit'  customize = (AccountLimit <<< customize) { "Name": Nothing, "Value": Nothing }
 
 
 
@@ -147,7 +146,7 @@ instance encodeArn :: Encode Arn where encode = genericEncode options
 -- | <p>The input for the <a>CancelUpdateStack</a> action.</p>
 newtype CancelUpdateStackInput = CancelUpdateStackInput 
   { "StackName" :: (StackName)
-  , "ClientRequestToken" :: NullOrUndefined (ClientRequestToken)
+  , "ClientRequestToken" :: Maybe (ClientRequestToken)
   }
 derive instance newtypeCancelUpdateStackInput :: Newtype CancelUpdateStackInput _
 derive instance repGenericCancelUpdateStackInput :: Generic CancelUpdateStackInput _
@@ -157,12 +156,12 @@ instance encodeCancelUpdateStackInput :: Encode CancelUpdateStackInput where enc
 
 -- | Constructs CancelUpdateStackInput from required parameters
 newCancelUpdateStackInput :: StackName -> CancelUpdateStackInput
-newCancelUpdateStackInput _StackName = CancelUpdateStackInput { "StackName": _StackName, "ClientRequestToken": (NullOrUndefined Nothing) }
+newCancelUpdateStackInput _StackName = CancelUpdateStackInput { "StackName": _StackName, "ClientRequestToken": Nothing }
 
 -- | Constructs CancelUpdateStackInput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newCancelUpdateStackInput' :: StackName -> ( { "StackName" :: (StackName) , "ClientRequestToken" :: NullOrUndefined (ClientRequestToken) } -> {"StackName" :: (StackName) , "ClientRequestToken" :: NullOrUndefined (ClientRequestToken) } ) -> CancelUpdateStackInput
-newCancelUpdateStackInput' _StackName customize = (CancelUpdateStackInput <<< customize) { "StackName": _StackName, "ClientRequestToken": (NullOrUndefined Nothing) }
+newCancelUpdateStackInput' :: StackName -> ( { "StackName" :: (StackName) , "ClientRequestToken" :: Maybe (ClientRequestToken) } -> {"StackName" :: (StackName) , "ClientRequestToken" :: Maybe (ClientRequestToken) } ) -> CancelUpdateStackInput
+newCancelUpdateStackInput' _StackName customize = (CancelUpdateStackInput <<< customize) { "StackName": _StackName, "ClientRequestToken": Nothing }
 
 
 
@@ -204,8 +203,8 @@ instance encodeCausingEntity :: Encode CausingEntity where encode = genericEncod
 
 -- | <p>The <code>Change</code> structure describes the changes AWS CloudFormation will perform if you execute the change set.</p>
 newtype Change = Change 
-  { "Type" :: NullOrUndefined (ChangeType)
-  , "ResourceChange" :: NullOrUndefined (ResourceChange)
+  { "Type" :: Maybe (ChangeType)
+  , "ResourceChange" :: Maybe (ResourceChange)
   }
 derive instance newtypeChange :: Newtype Change _
 derive instance repGenericChange :: Generic Change _
@@ -215,12 +214,12 @@ instance encodeChange :: Encode Change where encode = genericEncode options
 
 -- | Constructs Change from required parameters
 newChange :: Change
-newChange  = Change { "ResourceChange": (NullOrUndefined Nothing), "Type": (NullOrUndefined Nothing) }
+newChange  = Change { "ResourceChange": Nothing, "Type": Nothing }
 
 -- | Constructs Change's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newChange' :: ( { "Type" :: NullOrUndefined (ChangeType) , "ResourceChange" :: NullOrUndefined (ResourceChange) } -> {"Type" :: NullOrUndefined (ChangeType) , "ResourceChange" :: NullOrUndefined (ResourceChange) } ) -> Change
-newChange'  customize = (Change <<< customize) { "ResourceChange": (NullOrUndefined Nothing), "Type": (NullOrUndefined Nothing) }
+newChange' :: ( { "Type" :: Maybe (ChangeType) , "ResourceChange" :: Maybe (ResourceChange) } -> {"Type" :: Maybe (ChangeType) , "ResourceChange" :: Maybe (ResourceChange) } ) -> Change
+newChange'  customize = (Change <<< customize) { "ResourceChange": Nothing, "Type": Nothing }
 
 
 
@@ -299,15 +298,15 @@ instance encodeChangeSetSummaries :: Encode ChangeSetSummaries where encode = ge
 
 -- | <p>The <code>ChangeSetSummary</code> structure describes a change set, its status, and the stack with which it's associated.</p>
 newtype ChangeSetSummary = ChangeSetSummary 
-  { "StackId" :: NullOrUndefined (StackId)
-  , "StackName" :: NullOrUndefined (StackName)
-  , "ChangeSetId" :: NullOrUndefined (ChangeSetId)
-  , "ChangeSetName" :: NullOrUndefined (ChangeSetName)
-  , "ExecutionStatus" :: NullOrUndefined (ExecutionStatus)
-  , "Status" :: NullOrUndefined (ChangeSetStatus)
-  , "StatusReason" :: NullOrUndefined (ChangeSetStatusReason)
-  , "CreationTime" :: NullOrUndefined (CreationTime)
-  , "Description" :: NullOrUndefined (Description)
+  { "StackId" :: Maybe (StackId)
+  , "StackName" :: Maybe (StackName)
+  , "ChangeSetId" :: Maybe (ChangeSetId)
+  , "ChangeSetName" :: Maybe (ChangeSetName)
+  , "ExecutionStatus" :: Maybe (ExecutionStatus)
+  , "Status" :: Maybe (ChangeSetStatus)
+  , "StatusReason" :: Maybe (ChangeSetStatusReason)
+  , "CreationTime" :: Maybe (CreationTime)
+  , "Description" :: Maybe (Description)
   }
 derive instance newtypeChangeSetSummary :: Newtype ChangeSetSummary _
 derive instance repGenericChangeSetSummary :: Generic ChangeSetSummary _
@@ -317,12 +316,12 @@ instance encodeChangeSetSummary :: Encode ChangeSetSummary where encode = generi
 
 -- | Constructs ChangeSetSummary from required parameters
 newChangeSetSummary :: ChangeSetSummary
-newChangeSetSummary  = ChangeSetSummary { "ChangeSetId": (NullOrUndefined Nothing), "ChangeSetName": (NullOrUndefined Nothing), "CreationTime": (NullOrUndefined Nothing), "Description": (NullOrUndefined Nothing), "ExecutionStatus": (NullOrUndefined Nothing), "StackId": (NullOrUndefined Nothing), "StackName": (NullOrUndefined Nothing), "Status": (NullOrUndefined Nothing), "StatusReason": (NullOrUndefined Nothing) }
+newChangeSetSummary  = ChangeSetSummary { "ChangeSetId": Nothing, "ChangeSetName": Nothing, "CreationTime": Nothing, "Description": Nothing, "ExecutionStatus": Nothing, "StackId": Nothing, "StackName": Nothing, "Status": Nothing, "StatusReason": Nothing }
 
 -- | Constructs ChangeSetSummary's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newChangeSetSummary' :: ( { "StackId" :: NullOrUndefined (StackId) , "StackName" :: NullOrUndefined (StackName) , "ChangeSetId" :: NullOrUndefined (ChangeSetId) , "ChangeSetName" :: NullOrUndefined (ChangeSetName) , "ExecutionStatus" :: NullOrUndefined (ExecutionStatus) , "Status" :: NullOrUndefined (ChangeSetStatus) , "StatusReason" :: NullOrUndefined (ChangeSetStatusReason) , "CreationTime" :: NullOrUndefined (CreationTime) , "Description" :: NullOrUndefined (Description) } -> {"StackId" :: NullOrUndefined (StackId) , "StackName" :: NullOrUndefined (StackName) , "ChangeSetId" :: NullOrUndefined (ChangeSetId) , "ChangeSetName" :: NullOrUndefined (ChangeSetName) , "ExecutionStatus" :: NullOrUndefined (ExecutionStatus) , "Status" :: NullOrUndefined (ChangeSetStatus) , "StatusReason" :: NullOrUndefined (ChangeSetStatusReason) , "CreationTime" :: NullOrUndefined (CreationTime) , "Description" :: NullOrUndefined (Description) } ) -> ChangeSetSummary
-newChangeSetSummary'  customize = (ChangeSetSummary <<< customize) { "ChangeSetId": (NullOrUndefined Nothing), "ChangeSetName": (NullOrUndefined Nothing), "CreationTime": (NullOrUndefined Nothing), "Description": (NullOrUndefined Nothing), "ExecutionStatus": (NullOrUndefined Nothing), "StackId": (NullOrUndefined Nothing), "StackName": (NullOrUndefined Nothing), "Status": (NullOrUndefined Nothing), "StatusReason": (NullOrUndefined Nothing) }
+newChangeSetSummary' :: ( { "StackId" :: Maybe (StackId) , "StackName" :: Maybe (StackName) , "ChangeSetId" :: Maybe (ChangeSetId) , "ChangeSetName" :: Maybe (ChangeSetName) , "ExecutionStatus" :: Maybe (ExecutionStatus) , "Status" :: Maybe (ChangeSetStatus) , "StatusReason" :: Maybe (ChangeSetStatusReason) , "CreationTime" :: Maybe (CreationTime) , "Description" :: Maybe (Description) } -> {"StackId" :: Maybe (StackId) , "StackName" :: Maybe (StackName) , "ChangeSetId" :: Maybe (ChangeSetId) , "ChangeSetName" :: Maybe (ChangeSetName) , "ExecutionStatus" :: Maybe (ExecutionStatus) , "Status" :: Maybe (ChangeSetStatus) , "StatusReason" :: Maybe (ChangeSetStatusReason) , "CreationTime" :: Maybe (CreationTime) , "Description" :: Maybe (Description) } ) -> ChangeSetSummary
+newChangeSetSummary'  customize = (ChangeSetSummary <<< customize) { "ChangeSetId": Nothing, "ChangeSetName": Nothing, "CreationTime": Nothing, "Description": Nothing, "ExecutionStatus": Nothing, "StackId": Nothing, "StackName": Nothing, "Status": Nothing, "StatusReason": Nothing }
 
 
 
@@ -383,9 +382,9 @@ instance encodeClientToken :: Encode ClientToken where encode = genericEncode op
 -- | <p>The input for the <a>ContinueUpdateRollback</a> action.</p>
 newtype ContinueUpdateRollbackInput = ContinueUpdateRollbackInput 
   { "StackName" :: (StackNameOrId)
-  , "RoleARN" :: NullOrUndefined (RoleARN)
-  , "ResourcesToSkip" :: NullOrUndefined (ResourcesToSkip)
-  , "ClientRequestToken" :: NullOrUndefined (ClientRequestToken)
+  , "RoleARN" :: Maybe (RoleARN)
+  , "ResourcesToSkip" :: Maybe (ResourcesToSkip)
+  , "ClientRequestToken" :: Maybe (ClientRequestToken)
   }
 derive instance newtypeContinueUpdateRollbackInput :: Newtype ContinueUpdateRollbackInput _
 derive instance repGenericContinueUpdateRollbackInput :: Generic ContinueUpdateRollbackInput _
@@ -395,12 +394,12 @@ instance encodeContinueUpdateRollbackInput :: Encode ContinueUpdateRollbackInput
 
 -- | Constructs ContinueUpdateRollbackInput from required parameters
 newContinueUpdateRollbackInput :: StackNameOrId -> ContinueUpdateRollbackInput
-newContinueUpdateRollbackInput _StackName = ContinueUpdateRollbackInput { "StackName": _StackName, "ClientRequestToken": (NullOrUndefined Nothing), "ResourcesToSkip": (NullOrUndefined Nothing), "RoleARN": (NullOrUndefined Nothing) }
+newContinueUpdateRollbackInput _StackName = ContinueUpdateRollbackInput { "StackName": _StackName, "ClientRequestToken": Nothing, "ResourcesToSkip": Nothing, "RoleARN": Nothing }
 
 -- | Constructs ContinueUpdateRollbackInput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newContinueUpdateRollbackInput' :: StackNameOrId -> ( { "StackName" :: (StackNameOrId) , "RoleARN" :: NullOrUndefined (RoleARN) , "ResourcesToSkip" :: NullOrUndefined (ResourcesToSkip) , "ClientRequestToken" :: NullOrUndefined (ClientRequestToken) } -> {"StackName" :: (StackNameOrId) , "RoleARN" :: NullOrUndefined (RoleARN) , "ResourcesToSkip" :: NullOrUndefined (ResourcesToSkip) , "ClientRequestToken" :: NullOrUndefined (ClientRequestToken) } ) -> ContinueUpdateRollbackInput
-newContinueUpdateRollbackInput' _StackName customize = (ContinueUpdateRollbackInput <<< customize) { "StackName": _StackName, "ClientRequestToken": (NullOrUndefined Nothing), "ResourcesToSkip": (NullOrUndefined Nothing), "RoleARN": (NullOrUndefined Nothing) }
+newContinueUpdateRollbackInput' :: StackNameOrId -> ( { "StackName" :: (StackNameOrId) , "RoleARN" :: Maybe (RoleARN) , "ResourcesToSkip" :: Maybe (ResourcesToSkip) , "ClientRequestToken" :: Maybe (ClientRequestToken) } -> {"StackName" :: (StackNameOrId) , "RoleARN" :: Maybe (RoleARN) , "ResourcesToSkip" :: Maybe (ResourcesToSkip) , "ClientRequestToken" :: Maybe (ClientRequestToken) } ) -> ContinueUpdateRollbackInput
+newContinueUpdateRollbackInput' _StackName customize = (ContinueUpdateRollbackInput <<< customize) { "StackName": _StackName, "ClientRequestToken": Nothing, "ResourcesToSkip": Nothing, "RoleARN": Nothing }
 
 
 
@@ -417,20 +416,20 @@ instance encodeContinueUpdateRollbackOutput :: Encode ContinueUpdateRollbackOutp
 -- | <p>The input for the <a>CreateChangeSet</a> action.</p>
 newtype CreateChangeSetInput = CreateChangeSetInput 
   { "StackName" :: (StackNameOrId)
-  , "TemplateBody" :: NullOrUndefined (TemplateBody)
-  , "TemplateURL" :: NullOrUndefined (TemplateURL)
-  , "UsePreviousTemplate" :: NullOrUndefined (UsePreviousTemplate)
-  , "Parameters" :: NullOrUndefined (Parameters)
-  , "Capabilities" :: NullOrUndefined (Capabilities)
-  , "ResourceTypes" :: NullOrUndefined (ResourceTypes)
-  , "RoleARN" :: NullOrUndefined (RoleARN)
-  , "RollbackConfiguration" :: NullOrUndefined (RollbackConfiguration)
-  , "NotificationARNs" :: NullOrUndefined (NotificationARNs)
-  , "Tags" :: NullOrUndefined (Tags)
+  , "TemplateBody" :: Maybe (TemplateBody)
+  , "TemplateURL" :: Maybe (TemplateURL)
+  , "UsePreviousTemplate" :: Maybe (UsePreviousTemplate)
+  , "Parameters" :: Maybe (Parameters)
+  , "Capabilities" :: Maybe (Capabilities)
+  , "ResourceTypes" :: Maybe (ResourceTypes)
+  , "RoleARN" :: Maybe (RoleARN)
+  , "RollbackConfiguration" :: Maybe (RollbackConfiguration)
+  , "NotificationARNs" :: Maybe (NotificationARNs)
+  , "Tags" :: Maybe (Tags)
   , "ChangeSetName" :: (ChangeSetName)
-  , "ClientToken" :: NullOrUndefined (ClientToken)
-  , "Description" :: NullOrUndefined (Description)
-  , "ChangeSetType" :: NullOrUndefined (ChangeSetType)
+  , "ClientToken" :: Maybe (ClientToken)
+  , "Description" :: Maybe (Description)
+  , "ChangeSetType" :: Maybe (ChangeSetType)
   }
 derive instance newtypeCreateChangeSetInput :: Newtype CreateChangeSetInput _
 derive instance repGenericCreateChangeSetInput :: Generic CreateChangeSetInput _
@@ -440,19 +439,19 @@ instance encodeCreateChangeSetInput :: Encode CreateChangeSetInput where encode 
 
 -- | Constructs CreateChangeSetInput from required parameters
 newCreateChangeSetInput :: ChangeSetName -> StackNameOrId -> CreateChangeSetInput
-newCreateChangeSetInput _ChangeSetName _StackName = CreateChangeSetInput { "ChangeSetName": _ChangeSetName, "StackName": _StackName, "Capabilities": (NullOrUndefined Nothing), "ChangeSetType": (NullOrUndefined Nothing), "ClientToken": (NullOrUndefined Nothing), "Description": (NullOrUndefined Nothing), "NotificationARNs": (NullOrUndefined Nothing), "Parameters": (NullOrUndefined Nothing), "ResourceTypes": (NullOrUndefined Nothing), "RoleARN": (NullOrUndefined Nothing), "RollbackConfiguration": (NullOrUndefined Nothing), "Tags": (NullOrUndefined Nothing), "TemplateBody": (NullOrUndefined Nothing), "TemplateURL": (NullOrUndefined Nothing), "UsePreviousTemplate": (NullOrUndefined Nothing) }
+newCreateChangeSetInput _ChangeSetName _StackName = CreateChangeSetInput { "ChangeSetName": _ChangeSetName, "StackName": _StackName, "Capabilities": Nothing, "ChangeSetType": Nothing, "ClientToken": Nothing, "Description": Nothing, "NotificationARNs": Nothing, "Parameters": Nothing, "ResourceTypes": Nothing, "RoleARN": Nothing, "RollbackConfiguration": Nothing, "Tags": Nothing, "TemplateBody": Nothing, "TemplateURL": Nothing, "UsePreviousTemplate": Nothing }
 
 -- | Constructs CreateChangeSetInput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newCreateChangeSetInput' :: ChangeSetName -> StackNameOrId -> ( { "StackName" :: (StackNameOrId) , "TemplateBody" :: NullOrUndefined (TemplateBody) , "TemplateURL" :: NullOrUndefined (TemplateURL) , "UsePreviousTemplate" :: NullOrUndefined (UsePreviousTemplate) , "Parameters" :: NullOrUndefined (Parameters) , "Capabilities" :: NullOrUndefined (Capabilities) , "ResourceTypes" :: NullOrUndefined (ResourceTypes) , "RoleARN" :: NullOrUndefined (RoleARN) , "RollbackConfiguration" :: NullOrUndefined (RollbackConfiguration) , "NotificationARNs" :: NullOrUndefined (NotificationARNs) , "Tags" :: NullOrUndefined (Tags) , "ChangeSetName" :: (ChangeSetName) , "ClientToken" :: NullOrUndefined (ClientToken) , "Description" :: NullOrUndefined (Description) , "ChangeSetType" :: NullOrUndefined (ChangeSetType) } -> {"StackName" :: (StackNameOrId) , "TemplateBody" :: NullOrUndefined (TemplateBody) , "TemplateURL" :: NullOrUndefined (TemplateURL) , "UsePreviousTemplate" :: NullOrUndefined (UsePreviousTemplate) , "Parameters" :: NullOrUndefined (Parameters) , "Capabilities" :: NullOrUndefined (Capabilities) , "ResourceTypes" :: NullOrUndefined (ResourceTypes) , "RoleARN" :: NullOrUndefined (RoleARN) , "RollbackConfiguration" :: NullOrUndefined (RollbackConfiguration) , "NotificationARNs" :: NullOrUndefined (NotificationARNs) , "Tags" :: NullOrUndefined (Tags) , "ChangeSetName" :: (ChangeSetName) , "ClientToken" :: NullOrUndefined (ClientToken) , "Description" :: NullOrUndefined (Description) , "ChangeSetType" :: NullOrUndefined (ChangeSetType) } ) -> CreateChangeSetInput
-newCreateChangeSetInput' _ChangeSetName _StackName customize = (CreateChangeSetInput <<< customize) { "ChangeSetName": _ChangeSetName, "StackName": _StackName, "Capabilities": (NullOrUndefined Nothing), "ChangeSetType": (NullOrUndefined Nothing), "ClientToken": (NullOrUndefined Nothing), "Description": (NullOrUndefined Nothing), "NotificationARNs": (NullOrUndefined Nothing), "Parameters": (NullOrUndefined Nothing), "ResourceTypes": (NullOrUndefined Nothing), "RoleARN": (NullOrUndefined Nothing), "RollbackConfiguration": (NullOrUndefined Nothing), "Tags": (NullOrUndefined Nothing), "TemplateBody": (NullOrUndefined Nothing), "TemplateURL": (NullOrUndefined Nothing), "UsePreviousTemplate": (NullOrUndefined Nothing) }
+newCreateChangeSetInput' :: ChangeSetName -> StackNameOrId -> ( { "StackName" :: (StackNameOrId) , "TemplateBody" :: Maybe (TemplateBody) , "TemplateURL" :: Maybe (TemplateURL) , "UsePreviousTemplate" :: Maybe (UsePreviousTemplate) , "Parameters" :: Maybe (Parameters) , "Capabilities" :: Maybe (Capabilities) , "ResourceTypes" :: Maybe (ResourceTypes) , "RoleARN" :: Maybe (RoleARN) , "RollbackConfiguration" :: Maybe (RollbackConfiguration) , "NotificationARNs" :: Maybe (NotificationARNs) , "Tags" :: Maybe (Tags) , "ChangeSetName" :: (ChangeSetName) , "ClientToken" :: Maybe (ClientToken) , "Description" :: Maybe (Description) , "ChangeSetType" :: Maybe (ChangeSetType) } -> {"StackName" :: (StackNameOrId) , "TemplateBody" :: Maybe (TemplateBody) , "TemplateURL" :: Maybe (TemplateURL) , "UsePreviousTemplate" :: Maybe (UsePreviousTemplate) , "Parameters" :: Maybe (Parameters) , "Capabilities" :: Maybe (Capabilities) , "ResourceTypes" :: Maybe (ResourceTypes) , "RoleARN" :: Maybe (RoleARN) , "RollbackConfiguration" :: Maybe (RollbackConfiguration) , "NotificationARNs" :: Maybe (NotificationARNs) , "Tags" :: Maybe (Tags) , "ChangeSetName" :: (ChangeSetName) , "ClientToken" :: Maybe (ClientToken) , "Description" :: Maybe (Description) , "ChangeSetType" :: Maybe (ChangeSetType) } ) -> CreateChangeSetInput
+newCreateChangeSetInput' _ChangeSetName _StackName customize = (CreateChangeSetInput <<< customize) { "ChangeSetName": _ChangeSetName, "StackName": _StackName, "Capabilities": Nothing, "ChangeSetType": Nothing, "ClientToken": Nothing, "Description": Nothing, "NotificationARNs": Nothing, "Parameters": Nothing, "ResourceTypes": Nothing, "RoleARN": Nothing, "RollbackConfiguration": Nothing, "Tags": Nothing, "TemplateBody": Nothing, "TemplateURL": Nothing, "UsePreviousTemplate": Nothing }
 
 
 
 -- | <p>The output for the <a>CreateChangeSet</a> action.</p>
 newtype CreateChangeSetOutput = CreateChangeSetOutput 
-  { "Id" :: NullOrUndefined (ChangeSetId)
-  , "StackId" :: NullOrUndefined (StackId)
+  { "Id" :: Maybe (ChangeSetId)
+  , "StackId" :: Maybe (StackId)
   }
 derive instance newtypeCreateChangeSetOutput :: Newtype CreateChangeSetOutput _
 derive instance repGenericCreateChangeSetOutput :: Generic CreateChangeSetOutput _
@@ -462,34 +461,34 @@ instance encodeCreateChangeSetOutput :: Encode CreateChangeSetOutput where encod
 
 -- | Constructs CreateChangeSetOutput from required parameters
 newCreateChangeSetOutput :: CreateChangeSetOutput
-newCreateChangeSetOutput  = CreateChangeSetOutput { "Id": (NullOrUndefined Nothing), "StackId": (NullOrUndefined Nothing) }
+newCreateChangeSetOutput  = CreateChangeSetOutput { "Id": Nothing, "StackId": Nothing }
 
 -- | Constructs CreateChangeSetOutput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newCreateChangeSetOutput' :: ( { "Id" :: NullOrUndefined (ChangeSetId) , "StackId" :: NullOrUndefined (StackId) } -> {"Id" :: NullOrUndefined (ChangeSetId) , "StackId" :: NullOrUndefined (StackId) } ) -> CreateChangeSetOutput
-newCreateChangeSetOutput'  customize = (CreateChangeSetOutput <<< customize) { "Id": (NullOrUndefined Nothing), "StackId": (NullOrUndefined Nothing) }
+newCreateChangeSetOutput' :: ( { "Id" :: Maybe (ChangeSetId) , "StackId" :: Maybe (StackId) } -> {"Id" :: Maybe (ChangeSetId) , "StackId" :: Maybe (StackId) } ) -> CreateChangeSetOutput
+newCreateChangeSetOutput'  customize = (CreateChangeSetOutput <<< customize) { "Id": Nothing, "StackId": Nothing }
 
 
 
 -- | <p>The input for <a>CreateStack</a> action.</p>
 newtype CreateStackInput = CreateStackInput 
   { "StackName" :: (StackName)
-  , "TemplateBody" :: NullOrUndefined (TemplateBody)
-  , "TemplateURL" :: NullOrUndefined (TemplateURL)
-  , "Parameters" :: NullOrUndefined (Parameters)
-  , "DisableRollback" :: NullOrUndefined (DisableRollback)
-  , "RollbackConfiguration" :: NullOrUndefined (RollbackConfiguration)
-  , "TimeoutInMinutes" :: NullOrUndefined (TimeoutMinutes)
-  , "NotificationARNs" :: NullOrUndefined (NotificationARNs)
-  , "Capabilities" :: NullOrUndefined (Capabilities)
-  , "ResourceTypes" :: NullOrUndefined (ResourceTypes)
-  , "RoleARN" :: NullOrUndefined (RoleARN)
-  , "OnFailure" :: NullOrUndefined (OnFailure)
-  , "StackPolicyBody" :: NullOrUndefined (StackPolicyBody)
-  , "StackPolicyURL" :: NullOrUndefined (StackPolicyURL)
-  , "Tags" :: NullOrUndefined (Tags)
-  , "ClientRequestToken" :: NullOrUndefined (ClientRequestToken)
-  , "EnableTerminationProtection" :: NullOrUndefined (EnableTerminationProtection)
+  , "TemplateBody" :: Maybe (TemplateBody)
+  , "TemplateURL" :: Maybe (TemplateURL)
+  , "Parameters" :: Maybe (Parameters)
+  , "DisableRollback" :: Maybe (DisableRollback)
+  , "RollbackConfiguration" :: Maybe (RollbackConfiguration)
+  , "TimeoutInMinutes" :: Maybe (TimeoutMinutes)
+  , "NotificationARNs" :: Maybe (NotificationARNs)
+  , "Capabilities" :: Maybe (Capabilities)
+  , "ResourceTypes" :: Maybe (ResourceTypes)
+  , "RoleARN" :: Maybe (RoleARN)
+  , "OnFailure" :: Maybe (OnFailure)
+  , "StackPolicyBody" :: Maybe (StackPolicyBody)
+  , "StackPolicyURL" :: Maybe (StackPolicyURL)
+  , "Tags" :: Maybe (Tags)
+  , "ClientRequestToken" :: Maybe (ClientRequestToken)
+  , "EnableTerminationProtection" :: Maybe (EnableTerminationProtection)
   }
 derive instance newtypeCreateStackInput :: Newtype CreateStackInput _
 derive instance repGenericCreateStackInput :: Generic CreateStackInput _
@@ -499,12 +498,12 @@ instance encodeCreateStackInput :: Encode CreateStackInput where encode = generi
 
 -- | Constructs CreateStackInput from required parameters
 newCreateStackInput :: StackName -> CreateStackInput
-newCreateStackInput _StackName = CreateStackInput { "StackName": _StackName, "Capabilities": (NullOrUndefined Nothing), "ClientRequestToken": (NullOrUndefined Nothing), "DisableRollback": (NullOrUndefined Nothing), "EnableTerminationProtection": (NullOrUndefined Nothing), "NotificationARNs": (NullOrUndefined Nothing), "OnFailure": (NullOrUndefined Nothing), "Parameters": (NullOrUndefined Nothing), "ResourceTypes": (NullOrUndefined Nothing), "RoleARN": (NullOrUndefined Nothing), "RollbackConfiguration": (NullOrUndefined Nothing), "StackPolicyBody": (NullOrUndefined Nothing), "StackPolicyURL": (NullOrUndefined Nothing), "Tags": (NullOrUndefined Nothing), "TemplateBody": (NullOrUndefined Nothing), "TemplateURL": (NullOrUndefined Nothing), "TimeoutInMinutes": (NullOrUndefined Nothing) }
+newCreateStackInput _StackName = CreateStackInput { "StackName": _StackName, "Capabilities": Nothing, "ClientRequestToken": Nothing, "DisableRollback": Nothing, "EnableTerminationProtection": Nothing, "NotificationARNs": Nothing, "OnFailure": Nothing, "Parameters": Nothing, "ResourceTypes": Nothing, "RoleARN": Nothing, "RollbackConfiguration": Nothing, "StackPolicyBody": Nothing, "StackPolicyURL": Nothing, "Tags": Nothing, "TemplateBody": Nothing, "TemplateURL": Nothing, "TimeoutInMinutes": Nothing }
 
 -- | Constructs CreateStackInput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newCreateStackInput' :: StackName -> ( { "StackName" :: (StackName) , "TemplateBody" :: NullOrUndefined (TemplateBody) , "TemplateURL" :: NullOrUndefined (TemplateURL) , "Parameters" :: NullOrUndefined (Parameters) , "DisableRollback" :: NullOrUndefined (DisableRollback) , "RollbackConfiguration" :: NullOrUndefined (RollbackConfiguration) , "TimeoutInMinutes" :: NullOrUndefined (TimeoutMinutes) , "NotificationARNs" :: NullOrUndefined (NotificationARNs) , "Capabilities" :: NullOrUndefined (Capabilities) , "ResourceTypes" :: NullOrUndefined (ResourceTypes) , "RoleARN" :: NullOrUndefined (RoleARN) , "OnFailure" :: NullOrUndefined (OnFailure) , "StackPolicyBody" :: NullOrUndefined (StackPolicyBody) , "StackPolicyURL" :: NullOrUndefined (StackPolicyURL) , "Tags" :: NullOrUndefined (Tags) , "ClientRequestToken" :: NullOrUndefined (ClientRequestToken) , "EnableTerminationProtection" :: NullOrUndefined (EnableTerminationProtection) } -> {"StackName" :: (StackName) , "TemplateBody" :: NullOrUndefined (TemplateBody) , "TemplateURL" :: NullOrUndefined (TemplateURL) , "Parameters" :: NullOrUndefined (Parameters) , "DisableRollback" :: NullOrUndefined (DisableRollback) , "RollbackConfiguration" :: NullOrUndefined (RollbackConfiguration) , "TimeoutInMinutes" :: NullOrUndefined (TimeoutMinutes) , "NotificationARNs" :: NullOrUndefined (NotificationARNs) , "Capabilities" :: NullOrUndefined (Capabilities) , "ResourceTypes" :: NullOrUndefined (ResourceTypes) , "RoleARN" :: NullOrUndefined (RoleARN) , "OnFailure" :: NullOrUndefined (OnFailure) , "StackPolicyBody" :: NullOrUndefined (StackPolicyBody) , "StackPolicyURL" :: NullOrUndefined (StackPolicyURL) , "Tags" :: NullOrUndefined (Tags) , "ClientRequestToken" :: NullOrUndefined (ClientRequestToken) , "EnableTerminationProtection" :: NullOrUndefined (EnableTerminationProtection) } ) -> CreateStackInput
-newCreateStackInput' _StackName customize = (CreateStackInput <<< customize) { "StackName": _StackName, "Capabilities": (NullOrUndefined Nothing), "ClientRequestToken": (NullOrUndefined Nothing), "DisableRollback": (NullOrUndefined Nothing), "EnableTerminationProtection": (NullOrUndefined Nothing), "NotificationARNs": (NullOrUndefined Nothing), "OnFailure": (NullOrUndefined Nothing), "Parameters": (NullOrUndefined Nothing), "ResourceTypes": (NullOrUndefined Nothing), "RoleARN": (NullOrUndefined Nothing), "RollbackConfiguration": (NullOrUndefined Nothing), "StackPolicyBody": (NullOrUndefined Nothing), "StackPolicyURL": (NullOrUndefined Nothing), "Tags": (NullOrUndefined Nothing), "TemplateBody": (NullOrUndefined Nothing), "TemplateURL": (NullOrUndefined Nothing), "TimeoutInMinutes": (NullOrUndefined Nothing) }
+newCreateStackInput' :: StackName -> ( { "StackName" :: (StackName) , "TemplateBody" :: Maybe (TemplateBody) , "TemplateURL" :: Maybe (TemplateURL) , "Parameters" :: Maybe (Parameters) , "DisableRollback" :: Maybe (DisableRollback) , "RollbackConfiguration" :: Maybe (RollbackConfiguration) , "TimeoutInMinutes" :: Maybe (TimeoutMinutes) , "NotificationARNs" :: Maybe (NotificationARNs) , "Capabilities" :: Maybe (Capabilities) , "ResourceTypes" :: Maybe (ResourceTypes) , "RoleARN" :: Maybe (RoleARN) , "OnFailure" :: Maybe (OnFailure) , "StackPolicyBody" :: Maybe (StackPolicyBody) , "StackPolicyURL" :: Maybe (StackPolicyURL) , "Tags" :: Maybe (Tags) , "ClientRequestToken" :: Maybe (ClientRequestToken) , "EnableTerminationProtection" :: Maybe (EnableTerminationProtection) } -> {"StackName" :: (StackName) , "TemplateBody" :: Maybe (TemplateBody) , "TemplateURL" :: Maybe (TemplateURL) , "Parameters" :: Maybe (Parameters) , "DisableRollback" :: Maybe (DisableRollback) , "RollbackConfiguration" :: Maybe (RollbackConfiguration) , "TimeoutInMinutes" :: Maybe (TimeoutMinutes) , "NotificationARNs" :: Maybe (NotificationARNs) , "Capabilities" :: Maybe (Capabilities) , "ResourceTypes" :: Maybe (ResourceTypes) , "RoleARN" :: Maybe (RoleARN) , "OnFailure" :: Maybe (OnFailure) , "StackPolicyBody" :: Maybe (StackPolicyBody) , "StackPolicyURL" :: Maybe (StackPolicyURL) , "Tags" :: Maybe (Tags) , "ClientRequestToken" :: Maybe (ClientRequestToken) , "EnableTerminationProtection" :: Maybe (EnableTerminationProtection) } ) -> CreateStackInput
+newCreateStackInput' _StackName customize = (CreateStackInput <<< customize) { "StackName": _StackName, "Capabilities": Nothing, "ClientRequestToken": Nothing, "DisableRollback": Nothing, "EnableTerminationProtection": Nothing, "NotificationARNs": Nothing, "OnFailure": Nothing, "Parameters": Nothing, "ResourceTypes": Nothing, "RoleARN": Nothing, "RollbackConfiguration": Nothing, "StackPolicyBody": Nothing, "StackPolicyURL": Nothing, "Tags": Nothing, "TemplateBody": Nothing, "TemplateURL": Nothing, "TimeoutInMinutes": Nothing }
 
 
 
@@ -512,9 +511,9 @@ newtype CreateStackInstancesInput = CreateStackInstancesInput
   { "StackSetName" :: (StackSetName)
   , "Accounts" :: (AccountList)
   , "Regions" :: (RegionList)
-  , "ParameterOverrides" :: NullOrUndefined (Parameters)
-  , "OperationPreferences" :: NullOrUndefined (StackSetOperationPreferences)
-  , "OperationId" :: NullOrUndefined (ClientRequestToken)
+  , "ParameterOverrides" :: Maybe (Parameters)
+  , "OperationPreferences" :: Maybe (StackSetOperationPreferences)
+  , "OperationId" :: Maybe (ClientRequestToken)
   }
 derive instance newtypeCreateStackInstancesInput :: Newtype CreateStackInstancesInput _
 derive instance repGenericCreateStackInstancesInput :: Generic CreateStackInstancesInput _
@@ -524,17 +523,17 @@ instance encodeCreateStackInstancesInput :: Encode CreateStackInstancesInput whe
 
 -- | Constructs CreateStackInstancesInput from required parameters
 newCreateStackInstancesInput :: AccountList -> RegionList -> StackSetName -> CreateStackInstancesInput
-newCreateStackInstancesInput _Accounts _Regions _StackSetName = CreateStackInstancesInput { "Accounts": _Accounts, "Regions": _Regions, "StackSetName": _StackSetName, "OperationId": (NullOrUndefined Nothing), "OperationPreferences": (NullOrUndefined Nothing), "ParameterOverrides": (NullOrUndefined Nothing) }
+newCreateStackInstancesInput _Accounts _Regions _StackSetName = CreateStackInstancesInput { "Accounts": _Accounts, "Regions": _Regions, "StackSetName": _StackSetName, "OperationId": Nothing, "OperationPreferences": Nothing, "ParameterOverrides": Nothing }
 
 -- | Constructs CreateStackInstancesInput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newCreateStackInstancesInput' :: AccountList -> RegionList -> StackSetName -> ( { "StackSetName" :: (StackSetName) , "Accounts" :: (AccountList) , "Regions" :: (RegionList) , "ParameterOverrides" :: NullOrUndefined (Parameters) , "OperationPreferences" :: NullOrUndefined (StackSetOperationPreferences) , "OperationId" :: NullOrUndefined (ClientRequestToken) } -> {"StackSetName" :: (StackSetName) , "Accounts" :: (AccountList) , "Regions" :: (RegionList) , "ParameterOverrides" :: NullOrUndefined (Parameters) , "OperationPreferences" :: NullOrUndefined (StackSetOperationPreferences) , "OperationId" :: NullOrUndefined (ClientRequestToken) } ) -> CreateStackInstancesInput
-newCreateStackInstancesInput' _Accounts _Regions _StackSetName customize = (CreateStackInstancesInput <<< customize) { "Accounts": _Accounts, "Regions": _Regions, "StackSetName": _StackSetName, "OperationId": (NullOrUndefined Nothing), "OperationPreferences": (NullOrUndefined Nothing), "ParameterOverrides": (NullOrUndefined Nothing) }
+newCreateStackInstancesInput' :: AccountList -> RegionList -> StackSetName -> ( { "StackSetName" :: (StackSetName) , "Accounts" :: (AccountList) , "Regions" :: (RegionList) , "ParameterOverrides" :: Maybe (Parameters) , "OperationPreferences" :: Maybe (StackSetOperationPreferences) , "OperationId" :: Maybe (ClientRequestToken) } -> {"StackSetName" :: (StackSetName) , "Accounts" :: (AccountList) , "Regions" :: (RegionList) , "ParameterOverrides" :: Maybe (Parameters) , "OperationPreferences" :: Maybe (StackSetOperationPreferences) , "OperationId" :: Maybe (ClientRequestToken) } ) -> CreateStackInstancesInput
+newCreateStackInstancesInput' _Accounts _Regions _StackSetName customize = (CreateStackInstancesInput <<< customize) { "Accounts": _Accounts, "Regions": _Regions, "StackSetName": _StackSetName, "OperationId": Nothing, "OperationPreferences": Nothing, "ParameterOverrides": Nothing }
 
 
 
 newtype CreateStackInstancesOutput = CreateStackInstancesOutput 
-  { "OperationId" :: NullOrUndefined (ClientRequestToken)
+  { "OperationId" :: Maybe (ClientRequestToken)
   }
 derive instance newtypeCreateStackInstancesOutput :: Newtype CreateStackInstancesOutput _
 derive instance repGenericCreateStackInstancesOutput :: Generic CreateStackInstancesOutput _
@@ -544,18 +543,18 @@ instance encodeCreateStackInstancesOutput :: Encode CreateStackInstancesOutput w
 
 -- | Constructs CreateStackInstancesOutput from required parameters
 newCreateStackInstancesOutput :: CreateStackInstancesOutput
-newCreateStackInstancesOutput  = CreateStackInstancesOutput { "OperationId": (NullOrUndefined Nothing) }
+newCreateStackInstancesOutput  = CreateStackInstancesOutput { "OperationId": Nothing }
 
 -- | Constructs CreateStackInstancesOutput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newCreateStackInstancesOutput' :: ( { "OperationId" :: NullOrUndefined (ClientRequestToken) } -> {"OperationId" :: NullOrUndefined (ClientRequestToken) } ) -> CreateStackInstancesOutput
-newCreateStackInstancesOutput'  customize = (CreateStackInstancesOutput <<< customize) { "OperationId": (NullOrUndefined Nothing) }
+newCreateStackInstancesOutput' :: ( { "OperationId" :: Maybe (ClientRequestToken) } -> {"OperationId" :: Maybe (ClientRequestToken) } ) -> CreateStackInstancesOutput
+newCreateStackInstancesOutput'  customize = (CreateStackInstancesOutput <<< customize) { "OperationId": Nothing }
 
 
 
 -- | <p>The output for a <a>CreateStack</a> action.</p>
 newtype CreateStackOutput = CreateStackOutput 
-  { "StackId" :: NullOrUndefined (StackId)
+  { "StackId" :: Maybe (StackId)
   }
 derive instance newtypeCreateStackOutput :: Newtype CreateStackOutput _
 derive instance repGenericCreateStackOutput :: Generic CreateStackOutput _
@@ -565,24 +564,24 @@ instance encodeCreateStackOutput :: Encode CreateStackOutput where encode = gene
 
 -- | Constructs CreateStackOutput from required parameters
 newCreateStackOutput :: CreateStackOutput
-newCreateStackOutput  = CreateStackOutput { "StackId": (NullOrUndefined Nothing) }
+newCreateStackOutput  = CreateStackOutput { "StackId": Nothing }
 
 -- | Constructs CreateStackOutput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newCreateStackOutput' :: ( { "StackId" :: NullOrUndefined (StackId) } -> {"StackId" :: NullOrUndefined (StackId) } ) -> CreateStackOutput
-newCreateStackOutput'  customize = (CreateStackOutput <<< customize) { "StackId": (NullOrUndefined Nothing) }
+newCreateStackOutput' :: ( { "StackId" :: Maybe (StackId) } -> {"StackId" :: Maybe (StackId) } ) -> CreateStackOutput
+newCreateStackOutput'  customize = (CreateStackOutput <<< customize) { "StackId": Nothing }
 
 
 
 newtype CreateStackSetInput = CreateStackSetInput 
   { "StackSetName" :: (StackSetName)
-  , "Description" :: NullOrUndefined (Description)
-  , "TemplateBody" :: NullOrUndefined (TemplateBody)
-  , "TemplateURL" :: NullOrUndefined (TemplateURL)
-  , "Parameters" :: NullOrUndefined (Parameters)
-  , "Capabilities" :: NullOrUndefined (Capabilities)
-  , "Tags" :: NullOrUndefined (Tags)
-  , "ClientRequestToken" :: NullOrUndefined (ClientRequestToken)
+  , "Description" :: Maybe (Description)
+  , "TemplateBody" :: Maybe (TemplateBody)
+  , "TemplateURL" :: Maybe (TemplateURL)
+  , "Parameters" :: Maybe (Parameters)
+  , "Capabilities" :: Maybe (Capabilities)
+  , "Tags" :: Maybe (Tags)
+  , "ClientRequestToken" :: Maybe (ClientRequestToken)
   }
 derive instance newtypeCreateStackSetInput :: Newtype CreateStackSetInput _
 derive instance repGenericCreateStackSetInput :: Generic CreateStackSetInput _
@@ -592,17 +591,17 @@ instance encodeCreateStackSetInput :: Encode CreateStackSetInput where encode = 
 
 -- | Constructs CreateStackSetInput from required parameters
 newCreateStackSetInput :: StackSetName -> CreateStackSetInput
-newCreateStackSetInput _StackSetName = CreateStackSetInput { "StackSetName": _StackSetName, "Capabilities": (NullOrUndefined Nothing), "ClientRequestToken": (NullOrUndefined Nothing), "Description": (NullOrUndefined Nothing), "Parameters": (NullOrUndefined Nothing), "Tags": (NullOrUndefined Nothing), "TemplateBody": (NullOrUndefined Nothing), "TemplateURL": (NullOrUndefined Nothing) }
+newCreateStackSetInput _StackSetName = CreateStackSetInput { "StackSetName": _StackSetName, "Capabilities": Nothing, "ClientRequestToken": Nothing, "Description": Nothing, "Parameters": Nothing, "Tags": Nothing, "TemplateBody": Nothing, "TemplateURL": Nothing }
 
 -- | Constructs CreateStackSetInput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newCreateStackSetInput' :: StackSetName -> ( { "StackSetName" :: (StackSetName) , "Description" :: NullOrUndefined (Description) , "TemplateBody" :: NullOrUndefined (TemplateBody) , "TemplateURL" :: NullOrUndefined (TemplateURL) , "Parameters" :: NullOrUndefined (Parameters) , "Capabilities" :: NullOrUndefined (Capabilities) , "Tags" :: NullOrUndefined (Tags) , "ClientRequestToken" :: NullOrUndefined (ClientRequestToken) } -> {"StackSetName" :: (StackSetName) , "Description" :: NullOrUndefined (Description) , "TemplateBody" :: NullOrUndefined (TemplateBody) , "TemplateURL" :: NullOrUndefined (TemplateURL) , "Parameters" :: NullOrUndefined (Parameters) , "Capabilities" :: NullOrUndefined (Capabilities) , "Tags" :: NullOrUndefined (Tags) , "ClientRequestToken" :: NullOrUndefined (ClientRequestToken) } ) -> CreateStackSetInput
-newCreateStackSetInput' _StackSetName customize = (CreateStackSetInput <<< customize) { "StackSetName": _StackSetName, "Capabilities": (NullOrUndefined Nothing), "ClientRequestToken": (NullOrUndefined Nothing), "Description": (NullOrUndefined Nothing), "Parameters": (NullOrUndefined Nothing), "Tags": (NullOrUndefined Nothing), "TemplateBody": (NullOrUndefined Nothing), "TemplateURL": (NullOrUndefined Nothing) }
+newCreateStackSetInput' :: StackSetName -> ( { "StackSetName" :: (StackSetName) , "Description" :: Maybe (Description) , "TemplateBody" :: Maybe (TemplateBody) , "TemplateURL" :: Maybe (TemplateURL) , "Parameters" :: Maybe (Parameters) , "Capabilities" :: Maybe (Capabilities) , "Tags" :: Maybe (Tags) , "ClientRequestToken" :: Maybe (ClientRequestToken) } -> {"StackSetName" :: (StackSetName) , "Description" :: Maybe (Description) , "TemplateBody" :: Maybe (TemplateBody) , "TemplateURL" :: Maybe (TemplateURL) , "Parameters" :: Maybe (Parameters) , "Capabilities" :: Maybe (Capabilities) , "Tags" :: Maybe (Tags) , "ClientRequestToken" :: Maybe (ClientRequestToken) } ) -> CreateStackSetInput
+newCreateStackSetInput' _StackSetName customize = (CreateStackSetInput <<< customize) { "StackSetName": _StackSetName, "Capabilities": Nothing, "ClientRequestToken": Nothing, "Description": Nothing, "Parameters": Nothing, "Tags": Nothing, "TemplateBody": Nothing, "TemplateURL": Nothing }
 
 
 
 newtype CreateStackSetOutput = CreateStackSetOutput 
-  { "StackSetId" :: NullOrUndefined (StackSetId)
+  { "StackSetId" :: Maybe (StackSetId)
   }
 derive instance newtypeCreateStackSetOutput :: Newtype CreateStackSetOutput _
 derive instance repGenericCreateStackSetOutput :: Generic CreateStackSetOutput _
@@ -612,12 +611,12 @@ instance encodeCreateStackSetOutput :: Encode CreateStackSetOutput where encode 
 
 -- | Constructs CreateStackSetOutput from required parameters
 newCreateStackSetOutput :: CreateStackSetOutput
-newCreateStackSetOutput  = CreateStackSetOutput { "StackSetId": (NullOrUndefined Nothing) }
+newCreateStackSetOutput  = CreateStackSetOutput { "StackSetId": Nothing }
 
 -- | Constructs CreateStackSetOutput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newCreateStackSetOutput' :: ( { "StackSetId" :: NullOrUndefined (StackSetId) } -> {"StackSetId" :: NullOrUndefined (StackSetId) } ) -> CreateStackSetOutput
-newCreateStackSetOutput'  customize = (CreateStackSetOutput <<< customize) { "StackSetId": (NullOrUndefined Nothing) }
+newCreateStackSetOutput' :: ( { "StackSetId" :: Maybe (StackSetId) } -> {"StackSetId" :: Maybe (StackSetId) } ) -> CreateStackSetOutput
+newCreateStackSetOutput'  customize = (CreateStackSetOutput <<< customize) { "StackSetId": Nothing }
 
 
 
@@ -643,7 +642,7 @@ instance encodeCreationTime :: Encode CreationTime where encode = genericEncode 
 -- | <p>The input for the <a>DeleteChangeSet</a> action.</p>
 newtype DeleteChangeSetInput = DeleteChangeSetInput 
   { "ChangeSetName" :: (ChangeSetNameOrId)
-  , "StackName" :: NullOrUndefined (StackNameOrId)
+  , "StackName" :: Maybe (StackNameOrId)
   }
 derive instance newtypeDeleteChangeSetInput :: Newtype DeleteChangeSetInput _
 derive instance repGenericDeleteChangeSetInput :: Generic DeleteChangeSetInput _
@@ -653,12 +652,12 @@ instance encodeDeleteChangeSetInput :: Encode DeleteChangeSetInput where encode 
 
 -- | Constructs DeleteChangeSetInput from required parameters
 newDeleteChangeSetInput :: ChangeSetNameOrId -> DeleteChangeSetInput
-newDeleteChangeSetInput _ChangeSetName = DeleteChangeSetInput { "ChangeSetName": _ChangeSetName, "StackName": (NullOrUndefined Nothing) }
+newDeleteChangeSetInput _ChangeSetName = DeleteChangeSetInput { "ChangeSetName": _ChangeSetName, "StackName": Nothing }
 
 -- | Constructs DeleteChangeSetInput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDeleteChangeSetInput' :: ChangeSetNameOrId -> ( { "ChangeSetName" :: (ChangeSetNameOrId) , "StackName" :: NullOrUndefined (StackNameOrId) } -> {"ChangeSetName" :: (ChangeSetNameOrId) , "StackName" :: NullOrUndefined (StackNameOrId) } ) -> DeleteChangeSetInput
-newDeleteChangeSetInput' _ChangeSetName customize = (DeleteChangeSetInput <<< customize) { "ChangeSetName": _ChangeSetName, "StackName": (NullOrUndefined Nothing) }
+newDeleteChangeSetInput' :: ChangeSetNameOrId -> ( { "ChangeSetName" :: (ChangeSetNameOrId) , "StackName" :: Maybe (StackNameOrId) } -> {"ChangeSetName" :: (ChangeSetNameOrId) , "StackName" :: Maybe (StackNameOrId) } ) -> DeleteChangeSetInput
+newDeleteChangeSetInput' _ChangeSetName customize = (DeleteChangeSetInput <<< customize) { "ChangeSetName": _ChangeSetName, "StackName": Nothing }
 
 
 
@@ -675,9 +674,9 @@ instance encodeDeleteChangeSetOutput :: Encode DeleteChangeSetOutput where encod
 -- | <p>The input for <a>DeleteStack</a> action.</p>
 newtype DeleteStackInput = DeleteStackInput 
   { "StackName" :: (StackName)
-  , "RetainResources" :: NullOrUndefined (RetainResources)
-  , "RoleARN" :: NullOrUndefined (RoleARN)
-  , "ClientRequestToken" :: NullOrUndefined (ClientRequestToken)
+  , "RetainResources" :: Maybe (RetainResources)
+  , "RoleARN" :: Maybe (RoleARN)
+  , "ClientRequestToken" :: Maybe (ClientRequestToken)
   }
 derive instance newtypeDeleteStackInput :: Newtype DeleteStackInput _
 derive instance repGenericDeleteStackInput :: Generic DeleteStackInput _
@@ -687,12 +686,12 @@ instance encodeDeleteStackInput :: Encode DeleteStackInput where encode = generi
 
 -- | Constructs DeleteStackInput from required parameters
 newDeleteStackInput :: StackName -> DeleteStackInput
-newDeleteStackInput _StackName = DeleteStackInput { "StackName": _StackName, "ClientRequestToken": (NullOrUndefined Nothing), "RetainResources": (NullOrUndefined Nothing), "RoleARN": (NullOrUndefined Nothing) }
+newDeleteStackInput _StackName = DeleteStackInput { "StackName": _StackName, "ClientRequestToken": Nothing, "RetainResources": Nothing, "RoleARN": Nothing }
 
 -- | Constructs DeleteStackInput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDeleteStackInput' :: StackName -> ( { "StackName" :: (StackName) , "RetainResources" :: NullOrUndefined (RetainResources) , "RoleARN" :: NullOrUndefined (RoleARN) , "ClientRequestToken" :: NullOrUndefined (ClientRequestToken) } -> {"StackName" :: (StackName) , "RetainResources" :: NullOrUndefined (RetainResources) , "RoleARN" :: NullOrUndefined (RoleARN) , "ClientRequestToken" :: NullOrUndefined (ClientRequestToken) } ) -> DeleteStackInput
-newDeleteStackInput' _StackName customize = (DeleteStackInput <<< customize) { "StackName": _StackName, "ClientRequestToken": (NullOrUndefined Nothing), "RetainResources": (NullOrUndefined Nothing), "RoleARN": (NullOrUndefined Nothing) }
+newDeleteStackInput' :: StackName -> ( { "StackName" :: (StackName) , "RetainResources" :: Maybe (RetainResources) , "RoleARN" :: Maybe (RoleARN) , "ClientRequestToken" :: Maybe (ClientRequestToken) } -> {"StackName" :: (StackName) , "RetainResources" :: Maybe (RetainResources) , "RoleARN" :: Maybe (RoleARN) , "ClientRequestToken" :: Maybe (ClientRequestToken) } ) -> DeleteStackInput
+newDeleteStackInput' _StackName customize = (DeleteStackInput <<< customize) { "StackName": _StackName, "ClientRequestToken": Nothing, "RetainResources": Nothing, "RoleARN": Nothing }
 
 
 
@@ -700,9 +699,9 @@ newtype DeleteStackInstancesInput = DeleteStackInstancesInput
   { "StackSetName" :: (StackSetName)
   , "Accounts" :: (AccountList)
   , "Regions" :: (RegionList)
-  , "OperationPreferences" :: NullOrUndefined (StackSetOperationPreferences)
+  , "OperationPreferences" :: Maybe (StackSetOperationPreferences)
   , "RetainStacks" :: (RetainStacks)
-  , "OperationId" :: NullOrUndefined (ClientRequestToken)
+  , "OperationId" :: Maybe (ClientRequestToken)
   }
 derive instance newtypeDeleteStackInstancesInput :: Newtype DeleteStackInstancesInput _
 derive instance repGenericDeleteStackInstancesInput :: Generic DeleteStackInstancesInput _
@@ -712,17 +711,17 @@ instance encodeDeleteStackInstancesInput :: Encode DeleteStackInstancesInput whe
 
 -- | Constructs DeleteStackInstancesInput from required parameters
 newDeleteStackInstancesInput :: AccountList -> RegionList -> RetainStacks -> StackSetName -> DeleteStackInstancesInput
-newDeleteStackInstancesInput _Accounts _Regions _RetainStacks _StackSetName = DeleteStackInstancesInput { "Accounts": _Accounts, "Regions": _Regions, "RetainStacks": _RetainStacks, "StackSetName": _StackSetName, "OperationId": (NullOrUndefined Nothing), "OperationPreferences": (NullOrUndefined Nothing) }
+newDeleteStackInstancesInput _Accounts _Regions _RetainStacks _StackSetName = DeleteStackInstancesInput { "Accounts": _Accounts, "Regions": _Regions, "RetainStacks": _RetainStacks, "StackSetName": _StackSetName, "OperationId": Nothing, "OperationPreferences": Nothing }
 
 -- | Constructs DeleteStackInstancesInput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDeleteStackInstancesInput' :: AccountList -> RegionList -> RetainStacks -> StackSetName -> ( { "StackSetName" :: (StackSetName) , "Accounts" :: (AccountList) , "Regions" :: (RegionList) , "OperationPreferences" :: NullOrUndefined (StackSetOperationPreferences) , "RetainStacks" :: (RetainStacks) , "OperationId" :: NullOrUndefined (ClientRequestToken) } -> {"StackSetName" :: (StackSetName) , "Accounts" :: (AccountList) , "Regions" :: (RegionList) , "OperationPreferences" :: NullOrUndefined (StackSetOperationPreferences) , "RetainStacks" :: (RetainStacks) , "OperationId" :: NullOrUndefined (ClientRequestToken) } ) -> DeleteStackInstancesInput
-newDeleteStackInstancesInput' _Accounts _Regions _RetainStacks _StackSetName customize = (DeleteStackInstancesInput <<< customize) { "Accounts": _Accounts, "Regions": _Regions, "RetainStacks": _RetainStacks, "StackSetName": _StackSetName, "OperationId": (NullOrUndefined Nothing), "OperationPreferences": (NullOrUndefined Nothing) }
+newDeleteStackInstancesInput' :: AccountList -> RegionList -> RetainStacks -> StackSetName -> ( { "StackSetName" :: (StackSetName) , "Accounts" :: (AccountList) , "Regions" :: (RegionList) , "OperationPreferences" :: Maybe (StackSetOperationPreferences) , "RetainStacks" :: (RetainStacks) , "OperationId" :: Maybe (ClientRequestToken) } -> {"StackSetName" :: (StackSetName) , "Accounts" :: (AccountList) , "Regions" :: (RegionList) , "OperationPreferences" :: Maybe (StackSetOperationPreferences) , "RetainStacks" :: (RetainStacks) , "OperationId" :: Maybe (ClientRequestToken) } ) -> DeleteStackInstancesInput
+newDeleteStackInstancesInput' _Accounts _Regions _RetainStacks _StackSetName customize = (DeleteStackInstancesInput <<< customize) { "Accounts": _Accounts, "Regions": _Regions, "RetainStacks": _RetainStacks, "StackSetName": _StackSetName, "OperationId": Nothing, "OperationPreferences": Nothing }
 
 
 
 newtype DeleteStackInstancesOutput = DeleteStackInstancesOutput 
-  { "OperationId" :: NullOrUndefined (ClientRequestToken)
+  { "OperationId" :: Maybe (ClientRequestToken)
   }
 derive instance newtypeDeleteStackInstancesOutput :: Newtype DeleteStackInstancesOutput _
 derive instance repGenericDeleteStackInstancesOutput :: Generic DeleteStackInstancesOutput _
@@ -732,12 +731,12 @@ instance encodeDeleteStackInstancesOutput :: Encode DeleteStackInstancesOutput w
 
 -- | Constructs DeleteStackInstancesOutput from required parameters
 newDeleteStackInstancesOutput :: DeleteStackInstancesOutput
-newDeleteStackInstancesOutput  = DeleteStackInstancesOutput { "OperationId": (NullOrUndefined Nothing) }
+newDeleteStackInstancesOutput  = DeleteStackInstancesOutput { "OperationId": Nothing }
 
 -- | Constructs DeleteStackInstancesOutput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDeleteStackInstancesOutput' :: ( { "OperationId" :: NullOrUndefined (ClientRequestToken) } -> {"OperationId" :: NullOrUndefined (ClientRequestToken) } ) -> DeleteStackInstancesOutput
-newDeleteStackInstancesOutput'  customize = (DeleteStackInstancesOutput <<< customize) { "OperationId": (NullOrUndefined Nothing) }
+newDeleteStackInstancesOutput' :: ( { "OperationId" :: Maybe (ClientRequestToken) } -> {"OperationId" :: Maybe (ClientRequestToken) } ) -> DeleteStackInstancesOutput
+newDeleteStackInstancesOutput'  customize = (DeleteStackInstancesOutput <<< customize) { "OperationId": Nothing }
 
 
 
@@ -781,7 +780,7 @@ instance encodeDeletionTime :: Encode DeletionTime where encode = genericEncode 
 
 -- | <p>The input for the <a>DescribeAccountLimits</a> action.</p>
 newtype DescribeAccountLimitsInput = DescribeAccountLimitsInput 
-  { "NextToken" :: NullOrUndefined (NextToken)
+  { "NextToken" :: Maybe (NextToken)
   }
 derive instance newtypeDescribeAccountLimitsInput :: Newtype DescribeAccountLimitsInput _
 derive instance repGenericDescribeAccountLimitsInput :: Generic DescribeAccountLimitsInput _
@@ -791,19 +790,19 @@ instance encodeDescribeAccountLimitsInput :: Encode DescribeAccountLimitsInput w
 
 -- | Constructs DescribeAccountLimitsInput from required parameters
 newDescribeAccountLimitsInput :: DescribeAccountLimitsInput
-newDescribeAccountLimitsInput  = DescribeAccountLimitsInput { "NextToken": (NullOrUndefined Nothing) }
+newDescribeAccountLimitsInput  = DescribeAccountLimitsInput { "NextToken": Nothing }
 
 -- | Constructs DescribeAccountLimitsInput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDescribeAccountLimitsInput' :: ( { "NextToken" :: NullOrUndefined (NextToken) } -> {"NextToken" :: NullOrUndefined (NextToken) } ) -> DescribeAccountLimitsInput
-newDescribeAccountLimitsInput'  customize = (DescribeAccountLimitsInput <<< customize) { "NextToken": (NullOrUndefined Nothing) }
+newDescribeAccountLimitsInput' :: ( { "NextToken" :: Maybe (NextToken) } -> {"NextToken" :: Maybe (NextToken) } ) -> DescribeAccountLimitsInput
+newDescribeAccountLimitsInput'  customize = (DescribeAccountLimitsInput <<< customize) { "NextToken": Nothing }
 
 
 
 -- | <p>The output for the <a>DescribeAccountLimits</a> action.</p>
 newtype DescribeAccountLimitsOutput = DescribeAccountLimitsOutput 
-  { "AccountLimits" :: NullOrUndefined (AccountLimitList)
-  , "NextToken" :: NullOrUndefined (NextToken)
+  { "AccountLimits" :: Maybe (AccountLimitList)
+  , "NextToken" :: Maybe (NextToken)
   }
 derive instance newtypeDescribeAccountLimitsOutput :: Newtype DescribeAccountLimitsOutput _
 derive instance repGenericDescribeAccountLimitsOutput :: Generic DescribeAccountLimitsOutput _
@@ -813,20 +812,20 @@ instance encodeDescribeAccountLimitsOutput :: Encode DescribeAccountLimitsOutput
 
 -- | Constructs DescribeAccountLimitsOutput from required parameters
 newDescribeAccountLimitsOutput :: DescribeAccountLimitsOutput
-newDescribeAccountLimitsOutput  = DescribeAccountLimitsOutput { "AccountLimits": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newDescribeAccountLimitsOutput  = DescribeAccountLimitsOutput { "AccountLimits": Nothing, "NextToken": Nothing }
 
 -- | Constructs DescribeAccountLimitsOutput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDescribeAccountLimitsOutput' :: ( { "AccountLimits" :: NullOrUndefined (AccountLimitList) , "NextToken" :: NullOrUndefined (NextToken) } -> {"AccountLimits" :: NullOrUndefined (AccountLimitList) , "NextToken" :: NullOrUndefined (NextToken) } ) -> DescribeAccountLimitsOutput
-newDescribeAccountLimitsOutput'  customize = (DescribeAccountLimitsOutput <<< customize) { "AccountLimits": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newDescribeAccountLimitsOutput' :: ( { "AccountLimits" :: Maybe (AccountLimitList) , "NextToken" :: Maybe (NextToken) } -> {"AccountLimits" :: Maybe (AccountLimitList) , "NextToken" :: Maybe (NextToken) } ) -> DescribeAccountLimitsOutput
+newDescribeAccountLimitsOutput'  customize = (DescribeAccountLimitsOutput <<< customize) { "AccountLimits": Nothing, "NextToken": Nothing }
 
 
 
 -- | <p>The input for the <a>DescribeChangeSet</a> action.</p>
 newtype DescribeChangeSetInput = DescribeChangeSetInput 
   { "ChangeSetName" :: (ChangeSetNameOrId)
-  , "StackName" :: NullOrUndefined (StackNameOrId)
-  , "NextToken" :: NullOrUndefined (NextToken)
+  , "StackName" :: Maybe (StackNameOrId)
+  , "NextToken" :: Maybe (NextToken)
   }
 derive instance newtypeDescribeChangeSetInput :: Newtype DescribeChangeSetInput _
 derive instance repGenericDescribeChangeSetInput :: Generic DescribeChangeSetInput _
@@ -836,33 +835,33 @@ instance encodeDescribeChangeSetInput :: Encode DescribeChangeSetInput where enc
 
 -- | Constructs DescribeChangeSetInput from required parameters
 newDescribeChangeSetInput :: ChangeSetNameOrId -> DescribeChangeSetInput
-newDescribeChangeSetInput _ChangeSetName = DescribeChangeSetInput { "ChangeSetName": _ChangeSetName, "NextToken": (NullOrUndefined Nothing), "StackName": (NullOrUndefined Nothing) }
+newDescribeChangeSetInput _ChangeSetName = DescribeChangeSetInput { "ChangeSetName": _ChangeSetName, "NextToken": Nothing, "StackName": Nothing }
 
 -- | Constructs DescribeChangeSetInput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDescribeChangeSetInput' :: ChangeSetNameOrId -> ( { "ChangeSetName" :: (ChangeSetNameOrId) , "StackName" :: NullOrUndefined (StackNameOrId) , "NextToken" :: NullOrUndefined (NextToken) } -> {"ChangeSetName" :: (ChangeSetNameOrId) , "StackName" :: NullOrUndefined (StackNameOrId) , "NextToken" :: NullOrUndefined (NextToken) } ) -> DescribeChangeSetInput
-newDescribeChangeSetInput' _ChangeSetName customize = (DescribeChangeSetInput <<< customize) { "ChangeSetName": _ChangeSetName, "NextToken": (NullOrUndefined Nothing), "StackName": (NullOrUndefined Nothing) }
+newDescribeChangeSetInput' :: ChangeSetNameOrId -> ( { "ChangeSetName" :: (ChangeSetNameOrId) , "StackName" :: Maybe (StackNameOrId) , "NextToken" :: Maybe (NextToken) } -> {"ChangeSetName" :: (ChangeSetNameOrId) , "StackName" :: Maybe (StackNameOrId) , "NextToken" :: Maybe (NextToken) } ) -> DescribeChangeSetInput
+newDescribeChangeSetInput' _ChangeSetName customize = (DescribeChangeSetInput <<< customize) { "ChangeSetName": _ChangeSetName, "NextToken": Nothing, "StackName": Nothing }
 
 
 
 -- | <p>The output for the <a>DescribeChangeSet</a> action.</p>
 newtype DescribeChangeSetOutput = DescribeChangeSetOutput 
-  { "ChangeSetName" :: NullOrUndefined (ChangeSetName)
-  , "ChangeSetId" :: NullOrUndefined (ChangeSetId)
-  , "StackId" :: NullOrUndefined (StackId)
-  , "StackName" :: NullOrUndefined (StackName)
-  , "Description" :: NullOrUndefined (Description)
-  , "Parameters" :: NullOrUndefined (Parameters)
-  , "CreationTime" :: NullOrUndefined (CreationTime)
-  , "ExecutionStatus" :: NullOrUndefined (ExecutionStatus)
-  , "Status" :: NullOrUndefined (ChangeSetStatus)
-  , "StatusReason" :: NullOrUndefined (ChangeSetStatusReason)
-  , "NotificationARNs" :: NullOrUndefined (NotificationARNs)
-  , "RollbackConfiguration" :: NullOrUndefined (RollbackConfiguration)
-  , "Capabilities" :: NullOrUndefined (Capabilities)
-  , "Tags" :: NullOrUndefined (Tags)
-  , "Changes" :: NullOrUndefined (Changes)
-  , "NextToken" :: NullOrUndefined (NextToken)
+  { "ChangeSetName" :: Maybe (ChangeSetName)
+  , "ChangeSetId" :: Maybe (ChangeSetId)
+  , "StackId" :: Maybe (StackId)
+  , "StackName" :: Maybe (StackName)
+  , "Description" :: Maybe (Description)
+  , "Parameters" :: Maybe (Parameters)
+  , "CreationTime" :: Maybe (CreationTime)
+  , "ExecutionStatus" :: Maybe (ExecutionStatus)
+  , "Status" :: Maybe (ChangeSetStatus)
+  , "StatusReason" :: Maybe (ChangeSetStatusReason)
+  , "NotificationARNs" :: Maybe (NotificationARNs)
+  , "RollbackConfiguration" :: Maybe (RollbackConfiguration)
+  , "Capabilities" :: Maybe (Capabilities)
+  , "Tags" :: Maybe (Tags)
+  , "Changes" :: Maybe (Changes)
+  , "NextToken" :: Maybe (NextToken)
   }
 derive instance newtypeDescribeChangeSetOutput :: Newtype DescribeChangeSetOutput _
 derive instance repGenericDescribeChangeSetOutput :: Generic DescribeChangeSetOutput _
@@ -872,19 +871,19 @@ instance encodeDescribeChangeSetOutput :: Encode DescribeChangeSetOutput where e
 
 -- | Constructs DescribeChangeSetOutput from required parameters
 newDescribeChangeSetOutput :: DescribeChangeSetOutput
-newDescribeChangeSetOutput  = DescribeChangeSetOutput { "Capabilities": (NullOrUndefined Nothing), "ChangeSetId": (NullOrUndefined Nothing), "ChangeSetName": (NullOrUndefined Nothing), "Changes": (NullOrUndefined Nothing), "CreationTime": (NullOrUndefined Nothing), "Description": (NullOrUndefined Nothing), "ExecutionStatus": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing), "NotificationARNs": (NullOrUndefined Nothing), "Parameters": (NullOrUndefined Nothing), "RollbackConfiguration": (NullOrUndefined Nothing), "StackId": (NullOrUndefined Nothing), "StackName": (NullOrUndefined Nothing), "Status": (NullOrUndefined Nothing), "StatusReason": (NullOrUndefined Nothing), "Tags": (NullOrUndefined Nothing) }
+newDescribeChangeSetOutput  = DescribeChangeSetOutput { "Capabilities": Nothing, "ChangeSetId": Nothing, "ChangeSetName": Nothing, "Changes": Nothing, "CreationTime": Nothing, "Description": Nothing, "ExecutionStatus": Nothing, "NextToken": Nothing, "NotificationARNs": Nothing, "Parameters": Nothing, "RollbackConfiguration": Nothing, "StackId": Nothing, "StackName": Nothing, "Status": Nothing, "StatusReason": Nothing, "Tags": Nothing }
 
 -- | Constructs DescribeChangeSetOutput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDescribeChangeSetOutput' :: ( { "ChangeSetName" :: NullOrUndefined (ChangeSetName) , "ChangeSetId" :: NullOrUndefined (ChangeSetId) , "StackId" :: NullOrUndefined (StackId) , "StackName" :: NullOrUndefined (StackName) , "Description" :: NullOrUndefined (Description) , "Parameters" :: NullOrUndefined (Parameters) , "CreationTime" :: NullOrUndefined (CreationTime) , "ExecutionStatus" :: NullOrUndefined (ExecutionStatus) , "Status" :: NullOrUndefined (ChangeSetStatus) , "StatusReason" :: NullOrUndefined (ChangeSetStatusReason) , "NotificationARNs" :: NullOrUndefined (NotificationARNs) , "RollbackConfiguration" :: NullOrUndefined (RollbackConfiguration) , "Capabilities" :: NullOrUndefined (Capabilities) , "Tags" :: NullOrUndefined (Tags) , "Changes" :: NullOrUndefined (Changes) , "NextToken" :: NullOrUndefined (NextToken) } -> {"ChangeSetName" :: NullOrUndefined (ChangeSetName) , "ChangeSetId" :: NullOrUndefined (ChangeSetId) , "StackId" :: NullOrUndefined (StackId) , "StackName" :: NullOrUndefined (StackName) , "Description" :: NullOrUndefined (Description) , "Parameters" :: NullOrUndefined (Parameters) , "CreationTime" :: NullOrUndefined (CreationTime) , "ExecutionStatus" :: NullOrUndefined (ExecutionStatus) , "Status" :: NullOrUndefined (ChangeSetStatus) , "StatusReason" :: NullOrUndefined (ChangeSetStatusReason) , "NotificationARNs" :: NullOrUndefined (NotificationARNs) , "RollbackConfiguration" :: NullOrUndefined (RollbackConfiguration) , "Capabilities" :: NullOrUndefined (Capabilities) , "Tags" :: NullOrUndefined (Tags) , "Changes" :: NullOrUndefined (Changes) , "NextToken" :: NullOrUndefined (NextToken) } ) -> DescribeChangeSetOutput
-newDescribeChangeSetOutput'  customize = (DescribeChangeSetOutput <<< customize) { "Capabilities": (NullOrUndefined Nothing), "ChangeSetId": (NullOrUndefined Nothing), "ChangeSetName": (NullOrUndefined Nothing), "Changes": (NullOrUndefined Nothing), "CreationTime": (NullOrUndefined Nothing), "Description": (NullOrUndefined Nothing), "ExecutionStatus": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing), "NotificationARNs": (NullOrUndefined Nothing), "Parameters": (NullOrUndefined Nothing), "RollbackConfiguration": (NullOrUndefined Nothing), "StackId": (NullOrUndefined Nothing), "StackName": (NullOrUndefined Nothing), "Status": (NullOrUndefined Nothing), "StatusReason": (NullOrUndefined Nothing), "Tags": (NullOrUndefined Nothing) }
+newDescribeChangeSetOutput' :: ( { "ChangeSetName" :: Maybe (ChangeSetName) , "ChangeSetId" :: Maybe (ChangeSetId) , "StackId" :: Maybe (StackId) , "StackName" :: Maybe (StackName) , "Description" :: Maybe (Description) , "Parameters" :: Maybe (Parameters) , "CreationTime" :: Maybe (CreationTime) , "ExecutionStatus" :: Maybe (ExecutionStatus) , "Status" :: Maybe (ChangeSetStatus) , "StatusReason" :: Maybe (ChangeSetStatusReason) , "NotificationARNs" :: Maybe (NotificationARNs) , "RollbackConfiguration" :: Maybe (RollbackConfiguration) , "Capabilities" :: Maybe (Capabilities) , "Tags" :: Maybe (Tags) , "Changes" :: Maybe (Changes) , "NextToken" :: Maybe (NextToken) } -> {"ChangeSetName" :: Maybe (ChangeSetName) , "ChangeSetId" :: Maybe (ChangeSetId) , "StackId" :: Maybe (StackId) , "StackName" :: Maybe (StackName) , "Description" :: Maybe (Description) , "Parameters" :: Maybe (Parameters) , "CreationTime" :: Maybe (CreationTime) , "ExecutionStatus" :: Maybe (ExecutionStatus) , "Status" :: Maybe (ChangeSetStatus) , "StatusReason" :: Maybe (ChangeSetStatusReason) , "NotificationARNs" :: Maybe (NotificationARNs) , "RollbackConfiguration" :: Maybe (RollbackConfiguration) , "Capabilities" :: Maybe (Capabilities) , "Tags" :: Maybe (Tags) , "Changes" :: Maybe (Changes) , "NextToken" :: Maybe (NextToken) } ) -> DescribeChangeSetOutput
+newDescribeChangeSetOutput'  customize = (DescribeChangeSetOutput <<< customize) { "Capabilities": Nothing, "ChangeSetId": Nothing, "ChangeSetName": Nothing, "Changes": Nothing, "CreationTime": Nothing, "Description": Nothing, "ExecutionStatus": Nothing, "NextToken": Nothing, "NotificationARNs": Nothing, "Parameters": Nothing, "RollbackConfiguration": Nothing, "StackId": Nothing, "StackName": Nothing, "Status": Nothing, "StatusReason": Nothing, "Tags": Nothing }
 
 
 
 -- | <p>The input for <a>DescribeStackEvents</a> action.</p>
 newtype DescribeStackEventsInput = DescribeStackEventsInput 
-  { "StackName" :: NullOrUndefined (StackName)
-  , "NextToken" :: NullOrUndefined (NextToken)
+  { "StackName" :: Maybe (StackName)
+  , "NextToken" :: Maybe (NextToken)
   }
 derive instance newtypeDescribeStackEventsInput :: Newtype DescribeStackEventsInput _
 derive instance repGenericDescribeStackEventsInput :: Generic DescribeStackEventsInput _
@@ -894,19 +893,19 @@ instance encodeDescribeStackEventsInput :: Encode DescribeStackEventsInput where
 
 -- | Constructs DescribeStackEventsInput from required parameters
 newDescribeStackEventsInput :: DescribeStackEventsInput
-newDescribeStackEventsInput  = DescribeStackEventsInput { "NextToken": (NullOrUndefined Nothing), "StackName": (NullOrUndefined Nothing) }
+newDescribeStackEventsInput  = DescribeStackEventsInput { "NextToken": Nothing, "StackName": Nothing }
 
 -- | Constructs DescribeStackEventsInput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDescribeStackEventsInput' :: ( { "StackName" :: NullOrUndefined (StackName) , "NextToken" :: NullOrUndefined (NextToken) } -> {"StackName" :: NullOrUndefined (StackName) , "NextToken" :: NullOrUndefined (NextToken) } ) -> DescribeStackEventsInput
-newDescribeStackEventsInput'  customize = (DescribeStackEventsInput <<< customize) { "NextToken": (NullOrUndefined Nothing), "StackName": (NullOrUndefined Nothing) }
+newDescribeStackEventsInput' :: ( { "StackName" :: Maybe (StackName) , "NextToken" :: Maybe (NextToken) } -> {"StackName" :: Maybe (StackName) , "NextToken" :: Maybe (NextToken) } ) -> DescribeStackEventsInput
+newDescribeStackEventsInput'  customize = (DescribeStackEventsInput <<< customize) { "NextToken": Nothing, "StackName": Nothing }
 
 
 
 -- | <p>The output for a <a>DescribeStackEvents</a> action.</p>
 newtype DescribeStackEventsOutput = DescribeStackEventsOutput 
-  { "StackEvents" :: NullOrUndefined (StackEvents)
-  , "NextToken" :: NullOrUndefined (NextToken)
+  { "StackEvents" :: Maybe (StackEvents)
+  , "NextToken" :: Maybe (NextToken)
   }
 derive instance newtypeDescribeStackEventsOutput :: Newtype DescribeStackEventsOutput _
 derive instance repGenericDescribeStackEventsOutput :: Generic DescribeStackEventsOutput _
@@ -916,12 +915,12 @@ instance encodeDescribeStackEventsOutput :: Encode DescribeStackEventsOutput whe
 
 -- | Constructs DescribeStackEventsOutput from required parameters
 newDescribeStackEventsOutput :: DescribeStackEventsOutput
-newDescribeStackEventsOutput  = DescribeStackEventsOutput { "NextToken": (NullOrUndefined Nothing), "StackEvents": (NullOrUndefined Nothing) }
+newDescribeStackEventsOutput  = DescribeStackEventsOutput { "NextToken": Nothing, "StackEvents": Nothing }
 
 -- | Constructs DescribeStackEventsOutput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDescribeStackEventsOutput' :: ( { "StackEvents" :: NullOrUndefined (StackEvents) , "NextToken" :: NullOrUndefined (NextToken) } -> {"StackEvents" :: NullOrUndefined (StackEvents) , "NextToken" :: NullOrUndefined (NextToken) } ) -> DescribeStackEventsOutput
-newDescribeStackEventsOutput'  customize = (DescribeStackEventsOutput <<< customize) { "NextToken": (NullOrUndefined Nothing), "StackEvents": (NullOrUndefined Nothing) }
+newDescribeStackEventsOutput' :: ( { "StackEvents" :: Maybe (StackEvents) , "NextToken" :: Maybe (NextToken) } -> {"StackEvents" :: Maybe (StackEvents) , "NextToken" :: Maybe (NextToken) } ) -> DescribeStackEventsOutput
+newDescribeStackEventsOutput'  customize = (DescribeStackEventsOutput <<< customize) { "NextToken": Nothing, "StackEvents": Nothing }
 
 
 
@@ -948,7 +947,7 @@ newDescribeStackInstanceInput' _StackInstanceAccount _StackInstanceRegion _Stack
 
 
 newtype DescribeStackInstanceOutput = DescribeStackInstanceOutput 
-  { "StackInstance" :: NullOrUndefined (StackInstance)
+  { "StackInstance" :: Maybe (StackInstance)
   }
 derive instance newtypeDescribeStackInstanceOutput :: Newtype DescribeStackInstanceOutput _
 derive instance repGenericDescribeStackInstanceOutput :: Generic DescribeStackInstanceOutput _
@@ -958,12 +957,12 @@ instance encodeDescribeStackInstanceOutput :: Encode DescribeStackInstanceOutput
 
 -- | Constructs DescribeStackInstanceOutput from required parameters
 newDescribeStackInstanceOutput :: DescribeStackInstanceOutput
-newDescribeStackInstanceOutput  = DescribeStackInstanceOutput { "StackInstance": (NullOrUndefined Nothing) }
+newDescribeStackInstanceOutput  = DescribeStackInstanceOutput { "StackInstance": Nothing }
 
 -- | Constructs DescribeStackInstanceOutput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDescribeStackInstanceOutput' :: ( { "StackInstance" :: NullOrUndefined (StackInstance) } -> {"StackInstance" :: NullOrUndefined (StackInstance) } ) -> DescribeStackInstanceOutput
-newDescribeStackInstanceOutput'  customize = (DescribeStackInstanceOutput <<< customize) { "StackInstance": (NullOrUndefined Nothing) }
+newDescribeStackInstanceOutput' :: ( { "StackInstance" :: Maybe (StackInstance) } -> {"StackInstance" :: Maybe (StackInstance) } ) -> DescribeStackInstanceOutput
+newDescribeStackInstanceOutput'  customize = (DescribeStackInstanceOutput <<< customize) { "StackInstance": Nothing }
 
 
 
@@ -991,7 +990,7 @@ newDescribeStackResourceInput' _LogicalResourceId _StackName customize = (Descri
 
 -- | <p>The output for a <a>DescribeStackResource</a> action.</p>
 newtype DescribeStackResourceOutput = DescribeStackResourceOutput 
-  { "StackResourceDetail" :: NullOrUndefined (StackResourceDetail)
+  { "StackResourceDetail" :: Maybe (StackResourceDetail)
   }
 derive instance newtypeDescribeStackResourceOutput :: Newtype DescribeStackResourceOutput _
 derive instance repGenericDescribeStackResourceOutput :: Generic DescribeStackResourceOutput _
@@ -1001,20 +1000,20 @@ instance encodeDescribeStackResourceOutput :: Encode DescribeStackResourceOutput
 
 -- | Constructs DescribeStackResourceOutput from required parameters
 newDescribeStackResourceOutput :: DescribeStackResourceOutput
-newDescribeStackResourceOutput  = DescribeStackResourceOutput { "StackResourceDetail": (NullOrUndefined Nothing) }
+newDescribeStackResourceOutput  = DescribeStackResourceOutput { "StackResourceDetail": Nothing }
 
 -- | Constructs DescribeStackResourceOutput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDescribeStackResourceOutput' :: ( { "StackResourceDetail" :: NullOrUndefined (StackResourceDetail) } -> {"StackResourceDetail" :: NullOrUndefined (StackResourceDetail) } ) -> DescribeStackResourceOutput
-newDescribeStackResourceOutput'  customize = (DescribeStackResourceOutput <<< customize) { "StackResourceDetail": (NullOrUndefined Nothing) }
+newDescribeStackResourceOutput' :: ( { "StackResourceDetail" :: Maybe (StackResourceDetail) } -> {"StackResourceDetail" :: Maybe (StackResourceDetail) } ) -> DescribeStackResourceOutput
+newDescribeStackResourceOutput'  customize = (DescribeStackResourceOutput <<< customize) { "StackResourceDetail": Nothing }
 
 
 
 -- | <p>The input for <a>DescribeStackResources</a> action.</p>
 newtype DescribeStackResourcesInput = DescribeStackResourcesInput 
-  { "StackName" :: NullOrUndefined (StackName)
-  , "LogicalResourceId" :: NullOrUndefined (LogicalResourceId)
-  , "PhysicalResourceId" :: NullOrUndefined (PhysicalResourceId)
+  { "StackName" :: Maybe (StackName)
+  , "LogicalResourceId" :: Maybe (LogicalResourceId)
+  , "PhysicalResourceId" :: Maybe (PhysicalResourceId)
   }
 derive instance newtypeDescribeStackResourcesInput :: Newtype DescribeStackResourcesInput _
 derive instance repGenericDescribeStackResourcesInput :: Generic DescribeStackResourcesInput _
@@ -1024,18 +1023,18 @@ instance encodeDescribeStackResourcesInput :: Encode DescribeStackResourcesInput
 
 -- | Constructs DescribeStackResourcesInput from required parameters
 newDescribeStackResourcesInput :: DescribeStackResourcesInput
-newDescribeStackResourcesInput  = DescribeStackResourcesInput { "LogicalResourceId": (NullOrUndefined Nothing), "PhysicalResourceId": (NullOrUndefined Nothing), "StackName": (NullOrUndefined Nothing) }
+newDescribeStackResourcesInput  = DescribeStackResourcesInput { "LogicalResourceId": Nothing, "PhysicalResourceId": Nothing, "StackName": Nothing }
 
 -- | Constructs DescribeStackResourcesInput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDescribeStackResourcesInput' :: ( { "StackName" :: NullOrUndefined (StackName) , "LogicalResourceId" :: NullOrUndefined (LogicalResourceId) , "PhysicalResourceId" :: NullOrUndefined (PhysicalResourceId) } -> {"StackName" :: NullOrUndefined (StackName) , "LogicalResourceId" :: NullOrUndefined (LogicalResourceId) , "PhysicalResourceId" :: NullOrUndefined (PhysicalResourceId) } ) -> DescribeStackResourcesInput
-newDescribeStackResourcesInput'  customize = (DescribeStackResourcesInput <<< customize) { "LogicalResourceId": (NullOrUndefined Nothing), "PhysicalResourceId": (NullOrUndefined Nothing), "StackName": (NullOrUndefined Nothing) }
+newDescribeStackResourcesInput' :: ( { "StackName" :: Maybe (StackName) , "LogicalResourceId" :: Maybe (LogicalResourceId) , "PhysicalResourceId" :: Maybe (PhysicalResourceId) } -> {"StackName" :: Maybe (StackName) , "LogicalResourceId" :: Maybe (LogicalResourceId) , "PhysicalResourceId" :: Maybe (PhysicalResourceId) } ) -> DescribeStackResourcesInput
+newDescribeStackResourcesInput'  customize = (DescribeStackResourcesInput <<< customize) { "LogicalResourceId": Nothing, "PhysicalResourceId": Nothing, "StackName": Nothing }
 
 
 
 -- | <p>The output for a <a>DescribeStackResources</a> action.</p>
 newtype DescribeStackResourcesOutput = DescribeStackResourcesOutput 
-  { "StackResources" :: NullOrUndefined (StackResources)
+  { "StackResources" :: Maybe (StackResources)
   }
 derive instance newtypeDescribeStackResourcesOutput :: Newtype DescribeStackResourcesOutput _
 derive instance repGenericDescribeStackResourcesOutput :: Generic DescribeStackResourcesOutput _
@@ -1045,12 +1044,12 @@ instance encodeDescribeStackResourcesOutput :: Encode DescribeStackResourcesOutp
 
 -- | Constructs DescribeStackResourcesOutput from required parameters
 newDescribeStackResourcesOutput :: DescribeStackResourcesOutput
-newDescribeStackResourcesOutput  = DescribeStackResourcesOutput { "StackResources": (NullOrUndefined Nothing) }
+newDescribeStackResourcesOutput  = DescribeStackResourcesOutput { "StackResources": Nothing }
 
 -- | Constructs DescribeStackResourcesOutput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDescribeStackResourcesOutput' :: ( { "StackResources" :: NullOrUndefined (StackResources) } -> {"StackResources" :: NullOrUndefined (StackResources) } ) -> DescribeStackResourcesOutput
-newDescribeStackResourcesOutput'  customize = (DescribeStackResourcesOutput <<< customize) { "StackResources": (NullOrUndefined Nothing) }
+newDescribeStackResourcesOutput' :: ( { "StackResources" :: Maybe (StackResources) } -> {"StackResources" :: Maybe (StackResources) } ) -> DescribeStackResourcesOutput
+newDescribeStackResourcesOutput'  customize = (DescribeStackResourcesOutput <<< customize) { "StackResources": Nothing }
 
 
 
@@ -1096,7 +1095,7 @@ newDescribeStackSetOperationInput' _OperationId _StackSetName customize = (Descr
 
 
 newtype DescribeStackSetOperationOutput = DescribeStackSetOperationOutput 
-  { "StackSetOperation" :: NullOrUndefined (StackSetOperation)
+  { "StackSetOperation" :: Maybe (StackSetOperation)
   }
 derive instance newtypeDescribeStackSetOperationOutput :: Newtype DescribeStackSetOperationOutput _
 derive instance repGenericDescribeStackSetOperationOutput :: Generic DescribeStackSetOperationOutput _
@@ -1106,17 +1105,17 @@ instance encodeDescribeStackSetOperationOutput :: Encode DescribeStackSetOperati
 
 -- | Constructs DescribeStackSetOperationOutput from required parameters
 newDescribeStackSetOperationOutput :: DescribeStackSetOperationOutput
-newDescribeStackSetOperationOutput  = DescribeStackSetOperationOutput { "StackSetOperation": (NullOrUndefined Nothing) }
+newDescribeStackSetOperationOutput  = DescribeStackSetOperationOutput { "StackSetOperation": Nothing }
 
 -- | Constructs DescribeStackSetOperationOutput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDescribeStackSetOperationOutput' :: ( { "StackSetOperation" :: NullOrUndefined (StackSetOperation) } -> {"StackSetOperation" :: NullOrUndefined (StackSetOperation) } ) -> DescribeStackSetOperationOutput
-newDescribeStackSetOperationOutput'  customize = (DescribeStackSetOperationOutput <<< customize) { "StackSetOperation": (NullOrUndefined Nothing) }
+newDescribeStackSetOperationOutput' :: ( { "StackSetOperation" :: Maybe (StackSetOperation) } -> {"StackSetOperation" :: Maybe (StackSetOperation) } ) -> DescribeStackSetOperationOutput
+newDescribeStackSetOperationOutput'  customize = (DescribeStackSetOperationOutput <<< customize) { "StackSetOperation": Nothing }
 
 
 
 newtype DescribeStackSetOutput = DescribeStackSetOutput 
-  { "StackSet" :: NullOrUndefined (StackSet)
+  { "StackSet" :: Maybe (StackSet)
   }
 derive instance newtypeDescribeStackSetOutput :: Newtype DescribeStackSetOutput _
 derive instance repGenericDescribeStackSetOutput :: Generic DescribeStackSetOutput _
@@ -1126,19 +1125,19 @@ instance encodeDescribeStackSetOutput :: Encode DescribeStackSetOutput where enc
 
 -- | Constructs DescribeStackSetOutput from required parameters
 newDescribeStackSetOutput :: DescribeStackSetOutput
-newDescribeStackSetOutput  = DescribeStackSetOutput { "StackSet": (NullOrUndefined Nothing) }
+newDescribeStackSetOutput  = DescribeStackSetOutput { "StackSet": Nothing }
 
 -- | Constructs DescribeStackSetOutput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDescribeStackSetOutput' :: ( { "StackSet" :: NullOrUndefined (StackSet) } -> {"StackSet" :: NullOrUndefined (StackSet) } ) -> DescribeStackSetOutput
-newDescribeStackSetOutput'  customize = (DescribeStackSetOutput <<< customize) { "StackSet": (NullOrUndefined Nothing) }
+newDescribeStackSetOutput' :: ( { "StackSet" :: Maybe (StackSet) } -> {"StackSet" :: Maybe (StackSet) } ) -> DescribeStackSetOutput
+newDescribeStackSetOutput'  customize = (DescribeStackSetOutput <<< customize) { "StackSet": Nothing }
 
 
 
 -- | <p>The input for <a>DescribeStacks</a> action.</p>
 newtype DescribeStacksInput = DescribeStacksInput 
-  { "StackName" :: NullOrUndefined (StackName)
-  , "NextToken" :: NullOrUndefined (NextToken)
+  { "StackName" :: Maybe (StackName)
+  , "NextToken" :: Maybe (NextToken)
   }
 derive instance newtypeDescribeStacksInput :: Newtype DescribeStacksInput _
 derive instance repGenericDescribeStacksInput :: Generic DescribeStacksInput _
@@ -1148,19 +1147,19 @@ instance encodeDescribeStacksInput :: Encode DescribeStacksInput where encode = 
 
 -- | Constructs DescribeStacksInput from required parameters
 newDescribeStacksInput :: DescribeStacksInput
-newDescribeStacksInput  = DescribeStacksInput { "NextToken": (NullOrUndefined Nothing), "StackName": (NullOrUndefined Nothing) }
+newDescribeStacksInput  = DescribeStacksInput { "NextToken": Nothing, "StackName": Nothing }
 
 -- | Constructs DescribeStacksInput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDescribeStacksInput' :: ( { "StackName" :: NullOrUndefined (StackName) , "NextToken" :: NullOrUndefined (NextToken) } -> {"StackName" :: NullOrUndefined (StackName) , "NextToken" :: NullOrUndefined (NextToken) } ) -> DescribeStacksInput
-newDescribeStacksInput'  customize = (DescribeStacksInput <<< customize) { "NextToken": (NullOrUndefined Nothing), "StackName": (NullOrUndefined Nothing) }
+newDescribeStacksInput' :: ( { "StackName" :: Maybe (StackName) , "NextToken" :: Maybe (NextToken) } -> {"StackName" :: Maybe (StackName) , "NextToken" :: Maybe (NextToken) } ) -> DescribeStacksInput
+newDescribeStacksInput'  customize = (DescribeStacksInput <<< customize) { "NextToken": Nothing, "StackName": Nothing }
 
 
 
 -- | <p>The output for a <a>DescribeStacks</a> action.</p>
 newtype DescribeStacksOutput = DescribeStacksOutput 
-  { "Stacks" :: NullOrUndefined (Stacks)
-  , "NextToken" :: NullOrUndefined (NextToken)
+  { "Stacks" :: Maybe (Stacks)
+  , "NextToken" :: Maybe (NextToken)
   }
 derive instance newtypeDescribeStacksOutput :: Newtype DescribeStacksOutput _
 derive instance repGenericDescribeStacksOutput :: Generic DescribeStacksOutput _
@@ -1170,12 +1169,12 @@ instance encodeDescribeStacksOutput :: Encode DescribeStacksOutput where encode 
 
 -- | Constructs DescribeStacksOutput from required parameters
 newDescribeStacksOutput :: DescribeStacksOutput
-newDescribeStacksOutput  = DescribeStacksOutput { "NextToken": (NullOrUndefined Nothing), "Stacks": (NullOrUndefined Nothing) }
+newDescribeStacksOutput  = DescribeStacksOutput { "NextToken": Nothing, "Stacks": Nothing }
 
 -- | Constructs DescribeStacksOutput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDescribeStacksOutput' :: ( { "Stacks" :: NullOrUndefined (Stacks) , "NextToken" :: NullOrUndefined (NextToken) } -> {"Stacks" :: NullOrUndefined (Stacks) , "NextToken" :: NullOrUndefined (NextToken) } ) -> DescribeStacksOutput
-newDescribeStacksOutput'  customize = (DescribeStacksOutput <<< customize) { "NextToken": (NullOrUndefined Nothing), "Stacks": (NullOrUndefined Nothing) }
+newDescribeStacksOutput' :: ( { "Stacks" :: Maybe (Stacks) , "NextToken" :: Maybe (NextToken) } -> {"Stacks" :: Maybe (Stacks) , "NextToken" :: Maybe (NextToken) } ) -> DescribeStacksOutput
+newDescribeStacksOutput'  customize = (DescribeStacksOutput <<< customize) { "NextToken": Nothing, "Stacks": Nothing }
 
 
 
@@ -1208,9 +1207,9 @@ instance encodeEnableTerminationProtection :: Encode EnableTerminationProtection
 
 -- | <p>The input for an <a>EstimateTemplateCost</a> action.</p>
 newtype EstimateTemplateCostInput = EstimateTemplateCostInput 
-  { "TemplateBody" :: NullOrUndefined (TemplateBody)
-  , "TemplateURL" :: NullOrUndefined (TemplateURL)
-  , "Parameters" :: NullOrUndefined (Parameters)
+  { "TemplateBody" :: Maybe (TemplateBody)
+  , "TemplateURL" :: Maybe (TemplateURL)
+  , "Parameters" :: Maybe (Parameters)
   }
 derive instance newtypeEstimateTemplateCostInput :: Newtype EstimateTemplateCostInput _
 derive instance repGenericEstimateTemplateCostInput :: Generic EstimateTemplateCostInput _
@@ -1220,18 +1219,18 @@ instance encodeEstimateTemplateCostInput :: Encode EstimateTemplateCostInput whe
 
 -- | Constructs EstimateTemplateCostInput from required parameters
 newEstimateTemplateCostInput :: EstimateTemplateCostInput
-newEstimateTemplateCostInput  = EstimateTemplateCostInput { "Parameters": (NullOrUndefined Nothing), "TemplateBody": (NullOrUndefined Nothing), "TemplateURL": (NullOrUndefined Nothing) }
+newEstimateTemplateCostInput  = EstimateTemplateCostInput { "Parameters": Nothing, "TemplateBody": Nothing, "TemplateURL": Nothing }
 
 -- | Constructs EstimateTemplateCostInput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newEstimateTemplateCostInput' :: ( { "TemplateBody" :: NullOrUndefined (TemplateBody) , "TemplateURL" :: NullOrUndefined (TemplateURL) , "Parameters" :: NullOrUndefined (Parameters) } -> {"TemplateBody" :: NullOrUndefined (TemplateBody) , "TemplateURL" :: NullOrUndefined (TemplateURL) , "Parameters" :: NullOrUndefined (Parameters) } ) -> EstimateTemplateCostInput
-newEstimateTemplateCostInput'  customize = (EstimateTemplateCostInput <<< customize) { "Parameters": (NullOrUndefined Nothing), "TemplateBody": (NullOrUndefined Nothing), "TemplateURL": (NullOrUndefined Nothing) }
+newEstimateTemplateCostInput' :: ( { "TemplateBody" :: Maybe (TemplateBody) , "TemplateURL" :: Maybe (TemplateURL) , "Parameters" :: Maybe (Parameters) } -> {"TemplateBody" :: Maybe (TemplateBody) , "TemplateURL" :: Maybe (TemplateURL) , "Parameters" :: Maybe (Parameters) } ) -> EstimateTemplateCostInput
+newEstimateTemplateCostInput'  customize = (EstimateTemplateCostInput <<< customize) { "Parameters": Nothing, "TemplateBody": Nothing, "TemplateURL": Nothing }
 
 
 
 -- | <p>The output for a <a>EstimateTemplateCost</a> action.</p>
 newtype EstimateTemplateCostOutput = EstimateTemplateCostOutput 
-  { "Url" :: NullOrUndefined (Url)
+  { "Url" :: Maybe (Url)
   }
 derive instance newtypeEstimateTemplateCostOutput :: Newtype EstimateTemplateCostOutput _
 derive instance repGenericEstimateTemplateCostOutput :: Generic EstimateTemplateCostOutput _
@@ -1241,12 +1240,12 @@ instance encodeEstimateTemplateCostOutput :: Encode EstimateTemplateCostOutput w
 
 -- | Constructs EstimateTemplateCostOutput from required parameters
 newEstimateTemplateCostOutput :: EstimateTemplateCostOutput
-newEstimateTemplateCostOutput  = EstimateTemplateCostOutput { "Url": (NullOrUndefined Nothing) }
+newEstimateTemplateCostOutput  = EstimateTemplateCostOutput { "Url": Nothing }
 
 -- | Constructs EstimateTemplateCostOutput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newEstimateTemplateCostOutput' :: ( { "Url" :: NullOrUndefined (Url) } -> {"Url" :: NullOrUndefined (Url) } ) -> EstimateTemplateCostOutput
-newEstimateTemplateCostOutput'  customize = (EstimateTemplateCostOutput <<< customize) { "Url": (NullOrUndefined Nothing) }
+newEstimateTemplateCostOutput' :: ( { "Url" :: Maybe (Url) } -> {"Url" :: Maybe (Url) } ) -> EstimateTemplateCostOutput
+newEstimateTemplateCostOutput'  customize = (EstimateTemplateCostOutput <<< customize) { "Url": Nothing }
 
 
 
@@ -1271,8 +1270,8 @@ instance encodeEventId :: Encode EventId where encode = genericEncode options
 -- | <p>The input for the <a>ExecuteChangeSet</a> action.</p>
 newtype ExecuteChangeSetInput = ExecuteChangeSetInput 
   { "ChangeSetName" :: (ChangeSetNameOrId)
-  , "StackName" :: NullOrUndefined (StackNameOrId)
-  , "ClientRequestToken" :: NullOrUndefined (ClientRequestToken)
+  , "StackName" :: Maybe (StackNameOrId)
+  , "ClientRequestToken" :: Maybe (ClientRequestToken)
   }
 derive instance newtypeExecuteChangeSetInput :: Newtype ExecuteChangeSetInput _
 derive instance repGenericExecuteChangeSetInput :: Generic ExecuteChangeSetInput _
@@ -1282,12 +1281,12 @@ instance encodeExecuteChangeSetInput :: Encode ExecuteChangeSetInput where encod
 
 -- | Constructs ExecuteChangeSetInput from required parameters
 newExecuteChangeSetInput :: ChangeSetNameOrId -> ExecuteChangeSetInput
-newExecuteChangeSetInput _ChangeSetName = ExecuteChangeSetInput { "ChangeSetName": _ChangeSetName, "ClientRequestToken": (NullOrUndefined Nothing), "StackName": (NullOrUndefined Nothing) }
+newExecuteChangeSetInput _ChangeSetName = ExecuteChangeSetInput { "ChangeSetName": _ChangeSetName, "ClientRequestToken": Nothing, "StackName": Nothing }
 
 -- | Constructs ExecuteChangeSetInput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newExecuteChangeSetInput' :: ChangeSetNameOrId -> ( { "ChangeSetName" :: (ChangeSetNameOrId) , "StackName" :: NullOrUndefined (StackNameOrId) , "ClientRequestToken" :: NullOrUndefined (ClientRequestToken) } -> {"ChangeSetName" :: (ChangeSetNameOrId) , "StackName" :: NullOrUndefined (StackNameOrId) , "ClientRequestToken" :: NullOrUndefined (ClientRequestToken) } ) -> ExecuteChangeSetInput
-newExecuteChangeSetInput' _ChangeSetName customize = (ExecuteChangeSetInput <<< customize) { "ChangeSetName": _ChangeSetName, "ClientRequestToken": (NullOrUndefined Nothing), "StackName": (NullOrUndefined Nothing) }
+newExecuteChangeSetInput' :: ChangeSetNameOrId -> ( { "ChangeSetName" :: (ChangeSetNameOrId) , "StackName" :: Maybe (StackNameOrId) , "ClientRequestToken" :: Maybe (ClientRequestToken) } -> {"ChangeSetName" :: (ChangeSetNameOrId) , "StackName" :: Maybe (StackNameOrId) , "ClientRequestToken" :: Maybe (ClientRequestToken) } ) -> ExecuteChangeSetInput
+newExecuteChangeSetInput' _ChangeSetName customize = (ExecuteChangeSetInput <<< customize) { "ChangeSetName": _ChangeSetName, "ClientRequestToken": Nothing, "StackName": Nothing }
 
 
 
@@ -1312,9 +1311,9 @@ instance encodeExecutionStatus :: Encode ExecutionStatus where encode = genericE
 
 -- | <p>The <code>Export</code> structure describes the exported output values for a stack.</p>
 newtype Export = Export 
-  { "ExportingStackId" :: NullOrUndefined (StackId)
-  , "Name" :: NullOrUndefined (ExportName)
-  , "Value" :: NullOrUndefined (ExportValue)
+  { "ExportingStackId" :: Maybe (StackId)
+  , "Name" :: Maybe (ExportName)
+  , "Value" :: Maybe (ExportValue)
   }
 derive instance newtypeExport :: Newtype Export _
 derive instance repGenericExport :: Generic Export _
@@ -1324,12 +1323,12 @@ instance encodeExport :: Encode Export where encode = genericEncode options
 
 -- | Constructs Export from required parameters
 newExport :: Export
-newExport  = Export { "ExportingStackId": (NullOrUndefined Nothing), "Name": (NullOrUndefined Nothing), "Value": (NullOrUndefined Nothing) }
+newExport  = Export { "ExportingStackId": Nothing, "Name": Nothing, "Value": Nothing }
 
 -- | Constructs Export's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newExport' :: ( { "ExportingStackId" :: NullOrUndefined (StackId) , "Name" :: NullOrUndefined (ExportName) , "Value" :: NullOrUndefined (ExportValue) } -> {"ExportingStackId" :: NullOrUndefined (StackId) , "Name" :: NullOrUndefined (ExportName) , "Value" :: NullOrUndefined (ExportValue) } ) -> Export
-newExport'  customize = (Export <<< customize) { "ExportingStackId": (NullOrUndefined Nothing), "Name": (NullOrUndefined Nothing), "Value": (NullOrUndefined Nothing) }
+newExport' :: ( { "ExportingStackId" :: Maybe (StackId) , "Name" :: Maybe (ExportName) , "Value" :: Maybe (ExportValue) } -> {"ExportingStackId" :: Maybe (StackId) , "Name" :: Maybe (ExportName) , "Value" :: Maybe (ExportValue) } ) -> Export
+newExport'  customize = (Export <<< customize) { "ExportingStackId": Nothing, "Name": Nothing, "Value": Nothing }
 
 
 
@@ -1401,7 +1400,7 @@ newGetStackPolicyInput' _StackName customize = (GetStackPolicyInput <<< customiz
 
 -- | <p>The output for the <a>GetStackPolicy</a> action.</p>
 newtype GetStackPolicyOutput = GetStackPolicyOutput 
-  { "StackPolicyBody" :: NullOrUndefined (StackPolicyBody)
+  { "StackPolicyBody" :: Maybe (StackPolicyBody)
   }
 derive instance newtypeGetStackPolicyOutput :: Newtype GetStackPolicyOutput _
 derive instance repGenericGetStackPolicyOutput :: Generic GetStackPolicyOutput _
@@ -1411,20 +1410,20 @@ instance encodeGetStackPolicyOutput :: Encode GetStackPolicyOutput where encode 
 
 -- | Constructs GetStackPolicyOutput from required parameters
 newGetStackPolicyOutput :: GetStackPolicyOutput
-newGetStackPolicyOutput  = GetStackPolicyOutput { "StackPolicyBody": (NullOrUndefined Nothing) }
+newGetStackPolicyOutput  = GetStackPolicyOutput { "StackPolicyBody": Nothing }
 
 -- | Constructs GetStackPolicyOutput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetStackPolicyOutput' :: ( { "StackPolicyBody" :: NullOrUndefined (StackPolicyBody) } -> {"StackPolicyBody" :: NullOrUndefined (StackPolicyBody) } ) -> GetStackPolicyOutput
-newGetStackPolicyOutput'  customize = (GetStackPolicyOutput <<< customize) { "StackPolicyBody": (NullOrUndefined Nothing) }
+newGetStackPolicyOutput' :: ( { "StackPolicyBody" :: Maybe (StackPolicyBody) } -> {"StackPolicyBody" :: Maybe (StackPolicyBody) } ) -> GetStackPolicyOutput
+newGetStackPolicyOutput'  customize = (GetStackPolicyOutput <<< customize) { "StackPolicyBody": Nothing }
 
 
 
 -- | <p>The input for a <a>GetTemplate</a> action.</p>
 newtype GetTemplateInput = GetTemplateInput 
-  { "StackName" :: NullOrUndefined (StackName)
-  , "ChangeSetName" :: NullOrUndefined (ChangeSetNameOrId)
-  , "TemplateStage" :: NullOrUndefined (TemplateStage)
+  { "StackName" :: Maybe (StackName)
+  , "ChangeSetName" :: Maybe (ChangeSetNameOrId)
+  , "TemplateStage" :: Maybe (TemplateStage)
   }
 derive instance newtypeGetTemplateInput :: Newtype GetTemplateInput _
 derive instance repGenericGetTemplateInput :: Generic GetTemplateInput _
@@ -1434,19 +1433,19 @@ instance encodeGetTemplateInput :: Encode GetTemplateInput where encode = generi
 
 -- | Constructs GetTemplateInput from required parameters
 newGetTemplateInput :: GetTemplateInput
-newGetTemplateInput  = GetTemplateInput { "ChangeSetName": (NullOrUndefined Nothing), "StackName": (NullOrUndefined Nothing), "TemplateStage": (NullOrUndefined Nothing) }
+newGetTemplateInput  = GetTemplateInput { "ChangeSetName": Nothing, "StackName": Nothing, "TemplateStage": Nothing }
 
 -- | Constructs GetTemplateInput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetTemplateInput' :: ( { "StackName" :: NullOrUndefined (StackName) , "ChangeSetName" :: NullOrUndefined (ChangeSetNameOrId) , "TemplateStage" :: NullOrUndefined (TemplateStage) } -> {"StackName" :: NullOrUndefined (StackName) , "ChangeSetName" :: NullOrUndefined (ChangeSetNameOrId) , "TemplateStage" :: NullOrUndefined (TemplateStage) } ) -> GetTemplateInput
-newGetTemplateInput'  customize = (GetTemplateInput <<< customize) { "ChangeSetName": (NullOrUndefined Nothing), "StackName": (NullOrUndefined Nothing), "TemplateStage": (NullOrUndefined Nothing) }
+newGetTemplateInput' :: ( { "StackName" :: Maybe (StackName) , "ChangeSetName" :: Maybe (ChangeSetNameOrId) , "TemplateStage" :: Maybe (TemplateStage) } -> {"StackName" :: Maybe (StackName) , "ChangeSetName" :: Maybe (ChangeSetNameOrId) , "TemplateStage" :: Maybe (TemplateStage) } ) -> GetTemplateInput
+newGetTemplateInput'  customize = (GetTemplateInput <<< customize) { "ChangeSetName": Nothing, "StackName": Nothing, "TemplateStage": Nothing }
 
 
 
 -- | <p>The output for <a>GetTemplate</a> action.</p>
 newtype GetTemplateOutput = GetTemplateOutput 
-  { "TemplateBody" :: NullOrUndefined (TemplateBody)
-  , "StagesAvailable" :: NullOrUndefined (StageList)
+  { "TemplateBody" :: Maybe (TemplateBody)
+  , "StagesAvailable" :: Maybe (StageList)
   }
 derive instance newtypeGetTemplateOutput :: Newtype GetTemplateOutput _
 derive instance repGenericGetTemplateOutput :: Generic GetTemplateOutput _
@@ -1456,21 +1455,21 @@ instance encodeGetTemplateOutput :: Encode GetTemplateOutput where encode = gene
 
 -- | Constructs GetTemplateOutput from required parameters
 newGetTemplateOutput :: GetTemplateOutput
-newGetTemplateOutput  = GetTemplateOutput { "StagesAvailable": (NullOrUndefined Nothing), "TemplateBody": (NullOrUndefined Nothing) }
+newGetTemplateOutput  = GetTemplateOutput { "StagesAvailable": Nothing, "TemplateBody": Nothing }
 
 -- | Constructs GetTemplateOutput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetTemplateOutput' :: ( { "TemplateBody" :: NullOrUndefined (TemplateBody) , "StagesAvailable" :: NullOrUndefined (StageList) } -> {"TemplateBody" :: NullOrUndefined (TemplateBody) , "StagesAvailable" :: NullOrUndefined (StageList) } ) -> GetTemplateOutput
-newGetTemplateOutput'  customize = (GetTemplateOutput <<< customize) { "StagesAvailable": (NullOrUndefined Nothing), "TemplateBody": (NullOrUndefined Nothing) }
+newGetTemplateOutput' :: ( { "TemplateBody" :: Maybe (TemplateBody) , "StagesAvailable" :: Maybe (StageList) } -> {"TemplateBody" :: Maybe (TemplateBody) , "StagesAvailable" :: Maybe (StageList) } ) -> GetTemplateOutput
+newGetTemplateOutput'  customize = (GetTemplateOutput <<< customize) { "StagesAvailable": Nothing, "TemplateBody": Nothing }
 
 
 
 -- | <p>The input for the <a>GetTemplateSummary</a> action.</p>
 newtype GetTemplateSummaryInput = GetTemplateSummaryInput 
-  { "TemplateBody" :: NullOrUndefined (TemplateBody)
-  , "TemplateURL" :: NullOrUndefined (TemplateURL)
-  , "StackName" :: NullOrUndefined (StackNameOrId)
-  , "StackSetName" :: NullOrUndefined (StackSetNameOrId)
+  { "TemplateBody" :: Maybe (TemplateBody)
+  , "TemplateURL" :: Maybe (TemplateURL)
+  , "StackName" :: Maybe (StackNameOrId)
+  , "StackSetName" :: Maybe (StackSetNameOrId)
   }
 derive instance newtypeGetTemplateSummaryInput :: Newtype GetTemplateSummaryInput _
 derive instance repGenericGetTemplateSummaryInput :: Generic GetTemplateSummaryInput _
@@ -1480,25 +1479,25 @@ instance encodeGetTemplateSummaryInput :: Encode GetTemplateSummaryInput where e
 
 -- | Constructs GetTemplateSummaryInput from required parameters
 newGetTemplateSummaryInput :: GetTemplateSummaryInput
-newGetTemplateSummaryInput  = GetTemplateSummaryInput { "StackName": (NullOrUndefined Nothing), "StackSetName": (NullOrUndefined Nothing), "TemplateBody": (NullOrUndefined Nothing), "TemplateURL": (NullOrUndefined Nothing) }
+newGetTemplateSummaryInput  = GetTemplateSummaryInput { "StackName": Nothing, "StackSetName": Nothing, "TemplateBody": Nothing, "TemplateURL": Nothing }
 
 -- | Constructs GetTemplateSummaryInput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetTemplateSummaryInput' :: ( { "TemplateBody" :: NullOrUndefined (TemplateBody) , "TemplateURL" :: NullOrUndefined (TemplateURL) , "StackName" :: NullOrUndefined (StackNameOrId) , "StackSetName" :: NullOrUndefined (StackSetNameOrId) } -> {"TemplateBody" :: NullOrUndefined (TemplateBody) , "TemplateURL" :: NullOrUndefined (TemplateURL) , "StackName" :: NullOrUndefined (StackNameOrId) , "StackSetName" :: NullOrUndefined (StackSetNameOrId) } ) -> GetTemplateSummaryInput
-newGetTemplateSummaryInput'  customize = (GetTemplateSummaryInput <<< customize) { "StackName": (NullOrUndefined Nothing), "StackSetName": (NullOrUndefined Nothing), "TemplateBody": (NullOrUndefined Nothing), "TemplateURL": (NullOrUndefined Nothing) }
+newGetTemplateSummaryInput' :: ( { "TemplateBody" :: Maybe (TemplateBody) , "TemplateURL" :: Maybe (TemplateURL) , "StackName" :: Maybe (StackNameOrId) , "StackSetName" :: Maybe (StackSetNameOrId) } -> {"TemplateBody" :: Maybe (TemplateBody) , "TemplateURL" :: Maybe (TemplateURL) , "StackName" :: Maybe (StackNameOrId) , "StackSetName" :: Maybe (StackSetNameOrId) } ) -> GetTemplateSummaryInput
+newGetTemplateSummaryInput'  customize = (GetTemplateSummaryInput <<< customize) { "StackName": Nothing, "StackSetName": Nothing, "TemplateBody": Nothing, "TemplateURL": Nothing }
 
 
 
 -- | <p>The output for the <a>GetTemplateSummary</a> action.</p>
 newtype GetTemplateSummaryOutput = GetTemplateSummaryOutput 
-  { "Parameters" :: NullOrUndefined (ParameterDeclarations)
-  , "Description" :: NullOrUndefined (Description)
-  , "Capabilities" :: NullOrUndefined (Capabilities)
-  , "CapabilitiesReason" :: NullOrUndefined (CapabilitiesReason)
-  , "ResourceTypes" :: NullOrUndefined (ResourceTypes)
-  , "Version" :: NullOrUndefined (Version)
-  , "Metadata" :: NullOrUndefined (Metadata)
-  , "DeclaredTransforms" :: NullOrUndefined (TransformsList)
+  { "Parameters" :: Maybe (ParameterDeclarations)
+  , "Description" :: Maybe (Description)
+  , "Capabilities" :: Maybe (Capabilities)
+  , "CapabilitiesReason" :: Maybe (CapabilitiesReason)
+  , "ResourceTypes" :: Maybe (ResourceTypes)
+  , "Version" :: Maybe (Version)
+  , "Metadata" :: Maybe (Metadata)
+  , "DeclaredTransforms" :: Maybe (TransformsList)
   }
 derive instance newtypeGetTemplateSummaryOutput :: Newtype GetTemplateSummaryOutput _
 derive instance repGenericGetTemplateSummaryOutput :: Generic GetTemplateSummaryOutput _
@@ -1508,12 +1507,12 @@ instance encodeGetTemplateSummaryOutput :: Encode GetTemplateSummaryOutput where
 
 -- | Constructs GetTemplateSummaryOutput from required parameters
 newGetTemplateSummaryOutput :: GetTemplateSummaryOutput
-newGetTemplateSummaryOutput  = GetTemplateSummaryOutput { "Capabilities": (NullOrUndefined Nothing), "CapabilitiesReason": (NullOrUndefined Nothing), "DeclaredTransforms": (NullOrUndefined Nothing), "Description": (NullOrUndefined Nothing), "Metadata": (NullOrUndefined Nothing), "Parameters": (NullOrUndefined Nothing), "ResourceTypes": (NullOrUndefined Nothing), "Version": (NullOrUndefined Nothing) }
+newGetTemplateSummaryOutput  = GetTemplateSummaryOutput { "Capabilities": Nothing, "CapabilitiesReason": Nothing, "DeclaredTransforms": Nothing, "Description": Nothing, "Metadata": Nothing, "Parameters": Nothing, "ResourceTypes": Nothing, "Version": Nothing }
 
 -- | Constructs GetTemplateSummaryOutput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetTemplateSummaryOutput' :: ( { "Parameters" :: NullOrUndefined (ParameterDeclarations) , "Description" :: NullOrUndefined (Description) , "Capabilities" :: NullOrUndefined (Capabilities) , "CapabilitiesReason" :: NullOrUndefined (CapabilitiesReason) , "ResourceTypes" :: NullOrUndefined (ResourceTypes) , "Version" :: NullOrUndefined (Version) , "Metadata" :: NullOrUndefined (Metadata) , "DeclaredTransforms" :: NullOrUndefined (TransformsList) } -> {"Parameters" :: NullOrUndefined (ParameterDeclarations) , "Description" :: NullOrUndefined (Description) , "Capabilities" :: NullOrUndefined (Capabilities) , "CapabilitiesReason" :: NullOrUndefined (CapabilitiesReason) , "ResourceTypes" :: NullOrUndefined (ResourceTypes) , "Version" :: NullOrUndefined (Version) , "Metadata" :: NullOrUndefined (Metadata) , "DeclaredTransforms" :: NullOrUndefined (TransformsList) } ) -> GetTemplateSummaryOutput
-newGetTemplateSummaryOutput'  customize = (GetTemplateSummaryOutput <<< customize) { "Capabilities": (NullOrUndefined Nothing), "CapabilitiesReason": (NullOrUndefined Nothing), "DeclaredTransforms": (NullOrUndefined Nothing), "Description": (NullOrUndefined Nothing), "Metadata": (NullOrUndefined Nothing), "Parameters": (NullOrUndefined Nothing), "ResourceTypes": (NullOrUndefined Nothing), "Version": (NullOrUndefined Nothing) }
+newGetTemplateSummaryOutput' :: ( { "Parameters" :: Maybe (ParameterDeclarations) , "Description" :: Maybe (Description) , "Capabilities" :: Maybe (Capabilities) , "CapabilitiesReason" :: Maybe (CapabilitiesReason) , "ResourceTypes" :: Maybe (ResourceTypes) , "Version" :: Maybe (Version) , "Metadata" :: Maybe (Metadata) , "DeclaredTransforms" :: Maybe (TransformsList) } -> {"Parameters" :: Maybe (ParameterDeclarations) , "Description" :: Maybe (Description) , "Capabilities" :: Maybe (Capabilities) , "CapabilitiesReason" :: Maybe (CapabilitiesReason) , "ResourceTypes" :: Maybe (ResourceTypes) , "Version" :: Maybe (Version) , "Metadata" :: Maybe (Metadata) , "DeclaredTransforms" :: Maybe (TransformsList) } ) -> GetTemplateSummaryOutput
+newGetTemplateSummaryOutput'  customize = (GetTemplateSummaryOutput <<< customize) { "Capabilities": Nothing, "CapabilitiesReason": Nothing, "DeclaredTransforms": Nothing, "Description": Nothing, "Metadata": Nothing, "Parameters": Nothing, "ResourceTypes": Nothing, "Version": Nothing }
 
 
 
@@ -1596,7 +1595,7 @@ instance encodeLimitValue :: Encode LimitValue where encode = genericEncode opti
 -- | <p>The input for the <a>ListChangeSets</a> action.</p>
 newtype ListChangeSetsInput = ListChangeSetsInput 
   { "StackName" :: (StackNameOrId)
-  , "NextToken" :: NullOrUndefined (NextToken)
+  , "NextToken" :: Maybe (NextToken)
   }
 derive instance newtypeListChangeSetsInput :: Newtype ListChangeSetsInput _
 derive instance repGenericListChangeSetsInput :: Generic ListChangeSetsInput _
@@ -1606,19 +1605,19 @@ instance encodeListChangeSetsInput :: Encode ListChangeSetsInput where encode = 
 
 -- | Constructs ListChangeSetsInput from required parameters
 newListChangeSetsInput :: StackNameOrId -> ListChangeSetsInput
-newListChangeSetsInput _StackName = ListChangeSetsInput { "StackName": _StackName, "NextToken": (NullOrUndefined Nothing) }
+newListChangeSetsInput _StackName = ListChangeSetsInput { "StackName": _StackName, "NextToken": Nothing }
 
 -- | Constructs ListChangeSetsInput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListChangeSetsInput' :: StackNameOrId -> ( { "StackName" :: (StackNameOrId) , "NextToken" :: NullOrUndefined (NextToken) } -> {"StackName" :: (StackNameOrId) , "NextToken" :: NullOrUndefined (NextToken) } ) -> ListChangeSetsInput
-newListChangeSetsInput' _StackName customize = (ListChangeSetsInput <<< customize) { "StackName": _StackName, "NextToken": (NullOrUndefined Nothing) }
+newListChangeSetsInput' :: StackNameOrId -> ( { "StackName" :: (StackNameOrId) , "NextToken" :: Maybe (NextToken) } -> {"StackName" :: (StackNameOrId) , "NextToken" :: Maybe (NextToken) } ) -> ListChangeSetsInput
+newListChangeSetsInput' _StackName customize = (ListChangeSetsInput <<< customize) { "StackName": _StackName, "NextToken": Nothing }
 
 
 
 -- | <p>The output for the <a>ListChangeSets</a> action.</p>
 newtype ListChangeSetsOutput = ListChangeSetsOutput 
-  { "Summaries" :: NullOrUndefined (ChangeSetSummaries)
-  , "NextToken" :: NullOrUndefined (NextToken)
+  { "Summaries" :: Maybe (ChangeSetSummaries)
+  , "NextToken" :: Maybe (NextToken)
   }
 derive instance newtypeListChangeSetsOutput :: Newtype ListChangeSetsOutput _
 derive instance repGenericListChangeSetsOutput :: Generic ListChangeSetsOutput _
@@ -1628,17 +1627,17 @@ instance encodeListChangeSetsOutput :: Encode ListChangeSetsOutput where encode 
 
 -- | Constructs ListChangeSetsOutput from required parameters
 newListChangeSetsOutput :: ListChangeSetsOutput
-newListChangeSetsOutput  = ListChangeSetsOutput { "NextToken": (NullOrUndefined Nothing), "Summaries": (NullOrUndefined Nothing) }
+newListChangeSetsOutput  = ListChangeSetsOutput { "NextToken": Nothing, "Summaries": Nothing }
 
 -- | Constructs ListChangeSetsOutput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListChangeSetsOutput' :: ( { "Summaries" :: NullOrUndefined (ChangeSetSummaries) , "NextToken" :: NullOrUndefined (NextToken) } -> {"Summaries" :: NullOrUndefined (ChangeSetSummaries) , "NextToken" :: NullOrUndefined (NextToken) } ) -> ListChangeSetsOutput
-newListChangeSetsOutput'  customize = (ListChangeSetsOutput <<< customize) { "NextToken": (NullOrUndefined Nothing), "Summaries": (NullOrUndefined Nothing) }
+newListChangeSetsOutput' :: ( { "Summaries" :: Maybe (ChangeSetSummaries) , "NextToken" :: Maybe (NextToken) } -> {"Summaries" :: Maybe (ChangeSetSummaries) , "NextToken" :: Maybe (NextToken) } ) -> ListChangeSetsOutput
+newListChangeSetsOutput'  customize = (ListChangeSetsOutput <<< customize) { "NextToken": Nothing, "Summaries": Nothing }
 
 
 
 newtype ListExportsInput = ListExportsInput 
-  { "NextToken" :: NullOrUndefined (NextToken)
+  { "NextToken" :: Maybe (NextToken)
   }
 derive instance newtypeListExportsInput :: Newtype ListExportsInput _
 derive instance repGenericListExportsInput :: Generic ListExportsInput _
@@ -1648,18 +1647,18 @@ instance encodeListExportsInput :: Encode ListExportsInput where encode = generi
 
 -- | Constructs ListExportsInput from required parameters
 newListExportsInput :: ListExportsInput
-newListExportsInput  = ListExportsInput { "NextToken": (NullOrUndefined Nothing) }
+newListExportsInput  = ListExportsInput { "NextToken": Nothing }
 
 -- | Constructs ListExportsInput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListExportsInput' :: ( { "NextToken" :: NullOrUndefined (NextToken) } -> {"NextToken" :: NullOrUndefined (NextToken) } ) -> ListExportsInput
-newListExportsInput'  customize = (ListExportsInput <<< customize) { "NextToken": (NullOrUndefined Nothing) }
+newListExportsInput' :: ( { "NextToken" :: Maybe (NextToken) } -> {"NextToken" :: Maybe (NextToken) } ) -> ListExportsInput
+newListExportsInput'  customize = (ListExportsInput <<< customize) { "NextToken": Nothing }
 
 
 
 newtype ListExportsOutput = ListExportsOutput 
-  { "Exports" :: NullOrUndefined (Exports)
-  , "NextToken" :: NullOrUndefined (NextToken)
+  { "Exports" :: Maybe (Exports)
+  , "NextToken" :: Maybe (NextToken)
   }
 derive instance newtypeListExportsOutput :: Newtype ListExportsOutput _
 derive instance repGenericListExportsOutput :: Generic ListExportsOutput _
@@ -1669,18 +1668,18 @@ instance encodeListExportsOutput :: Encode ListExportsOutput where encode = gene
 
 -- | Constructs ListExportsOutput from required parameters
 newListExportsOutput :: ListExportsOutput
-newListExportsOutput  = ListExportsOutput { "Exports": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newListExportsOutput  = ListExportsOutput { "Exports": Nothing, "NextToken": Nothing }
 
 -- | Constructs ListExportsOutput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListExportsOutput' :: ( { "Exports" :: NullOrUndefined (Exports) , "NextToken" :: NullOrUndefined (NextToken) } -> {"Exports" :: NullOrUndefined (Exports) , "NextToken" :: NullOrUndefined (NextToken) } ) -> ListExportsOutput
-newListExportsOutput'  customize = (ListExportsOutput <<< customize) { "Exports": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newListExportsOutput' :: ( { "Exports" :: Maybe (Exports) , "NextToken" :: Maybe (NextToken) } -> {"Exports" :: Maybe (Exports) , "NextToken" :: Maybe (NextToken) } ) -> ListExportsOutput
+newListExportsOutput'  customize = (ListExportsOutput <<< customize) { "Exports": Nothing, "NextToken": Nothing }
 
 
 
 newtype ListImportsInput = ListImportsInput 
   { "ExportName" :: (ExportName)
-  , "NextToken" :: NullOrUndefined (NextToken)
+  , "NextToken" :: Maybe (NextToken)
   }
 derive instance newtypeListImportsInput :: Newtype ListImportsInput _
 derive instance repGenericListImportsInput :: Generic ListImportsInput _
@@ -1690,18 +1689,18 @@ instance encodeListImportsInput :: Encode ListImportsInput where encode = generi
 
 -- | Constructs ListImportsInput from required parameters
 newListImportsInput :: ExportName -> ListImportsInput
-newListImportsInput _ExportName = ListImportsInput { "ExportName": _ExportName, "NextToken": (NullOrUndefined Nothing) }
+newListImportsInput _ExportName = ListImportsInput { "ExportName": _ExportName, "NextToken": Nothing }
 
 -- | Constructs ListImportsInput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListImportsInput' :: ExportName -> ( { "ExportName" :: (ExportName) , "NextToken" :: NullOrUndefined (NextToken) } -> {"ExportName" :: (ExportName) , "NextToken" :: NullOrUndefined (NextToken) } ) -> ListImportsInput
-newListImportsInput' _ExportName customize = (ListImportsInput <<< customize) { "ExportName": _ExportName, "NextToken": (NullOrUndefined Nothing) }
+newListImportsInput' :: ExportName -> ( { "ExportName" :: (ExportName) , "NextToken" :: Maybe (NextToken) } -> {"ExportName" :: (ExportName) , "NextToken" :: Maybe (NextToken) } ) -> ListImportsInput
+newListImportsInput' _ExportName customize = (ListImportsInput <<< customize) { "ExportName": _ExportName, "NextToken": Nothing }
 
 
 
 newtype ListImportsOutput = ListImportsOutput 
-  { "Imports" :: NullOrUndefined (Imports)
-  , "NextToken" :: NullOrUndefined (NextToken)
+  { "Imports" :: Maybe (Imports)
+  , "NextToken" :: Maybe (NextToken)
   }
 derive instance newtypeListImportsOutput :: Newtype ListImportsOutput _
 derive instance repGenericListImportsOutput :: Generic ListImportsOutput _
@@ -1711,21 +1710,21 @@ instance encodeListImportsOutput :: Encode ListImportsOutput where encode = gene
 
 -- | Constructs ListImportsOutput from required parameters
 newListImportsOutput :: ListImportsOutput
-newListImportsOutput  = ListImportsOutput { "Imports": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newListImportsOutput  = ListImportsOutput { "Imports": Nothing, "NextToken": Nothing }
 
 -- | Constructs ListImportsOutput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListImportsOutput' :: ( { "Imports" :: NullOrUndefined (Imports) , "NextToken" :: NullOrUndefined (NextToken) } -> {"Imports" :: NullOrUndefined (Imports) , "NextToken" :: NullOrUndefined (NextToken) } ) -> ListImportsOutput
-newListImportsOutput'  customize = (ListImportsOutput <<< customize) { "Imports": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newListImportsOutput' :: ( { "Imports" :: Maybe (Imports) , "NextToken" :: Maybe (NextToken) } -> {"Imports" :: Maybe (Imports) , "NextToken" :: Maybe (NextToken) } ) -> ListImportsOutput
+newListImportsOutput'  customize = (ListImportsOutput <<< customize) { "Imports": Nothing, "NextToken": Nothing }
 
 
 
 newtype ListStackInstancesInput = ListStackInstancesInput 
   { "StackSetName" :: (StackSetName)
-  , "NextToken" :: NullOrUndefined (NextToken)
-  , "MaxResults" :: NullOrUndefined (MaxResults)
-  , "StackInstanceAccount" :: NullOrUndefined (Account)
-  , "StackInstanceRegion" :: NullOrUndefined (Region)
+  , "NextToken" :: Maybe (NextToken)
+  , "MaxResults" :: Maybe (MaxResults)
+  , "StackInstanceAccount" :: Maybe (Account)
+  , "StackInstanceRegion" :: Maybe (Region)
   }
 derive instance newtypeListStackInstancesInput :: Newtype ListStackInstancesInput _
 derive instance repGenericListStackInstancesInput :: Generic ListStackInstancesInput _
@@ -1735,18 +1734,18 @@ instance encodeListStackInstancesInput :: Encode ListStackInstancesInput where e
 
 -- | Constructs ListStackInstancesInput from required parameters
 newListStackInstancesInput :: StackSetName -> ListStackInstancesInput
-newListStackInstancesInput _StackSetName = ListStackInstancesInput { "StackSetName": _StackSetName, "MaxResults": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing), "StackInstanceAccount": (NullOrUndefined Nothing), "StackInstanceRegion": (NullOrUndefined Nothing) }
+newListStackInstancesInput _StackSetName = ListStackInstancesInput { "StackSetName": _StackSetName, "MaxResults": Nothing, "NextToken": Nothing, "StackInstanceAccount": Nothing, "StackInstanceRegion": Nothing }
 
 -- | Constructs ListStackInstancesInput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListStackInstancesInput' :: StackSetName -> ( { "StackSetName" :: (StackSetName) , "NextToken" :: NullOrUndefined (NextToken) , "MaxResults" :: NullOrUndefined (MaxResults) , "StackInstanceAccount" :: NullOrUndefined (Account) , "StackInstanceRegion" :: NullOrUndefined (Region) } -> {"StackSetName" :: (StackSetName) , "NextToken" :: NullOrUndefined (NextToken) , "MaxResults" :: NullOrUndefined (MaxResults) , "StackInstanceAccount" :: NullOrUndefined (Account) , "StackInstanceRegion" :: NullOrUndefined (Region) } ) -> ListStackInstancesInput
-newListStackInstancesInput' _StackSetName customize = (ListStackInstancesInput <<< customize) { "StackSetName": _StackSetName, "MaxResults": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing), "StackInstanceAccount": (NullOrUndefined Nothing), "StackInstanceRegion": (NullOrUndefined Nothing) }
+newListStackInstancesInput' :: StackSetName -> ( { "StackSetName" :: (StackSetName) , "NextToken" :: Maybe (NextToken) , "MaxResults" :: Maybe (MaxResults) , "StackInstanceAccount" :: Maybe (Account) , "StackInstanceRegion" :: Maybe (Region) } -> {"StackSetName" :: (StackSetName) , "NextToken" :: Maybe (NextToken) , "MaxResults" :: Maybe (MaxResults) , "StackInstanceAccount" :: Maybe (Account) , "StackInstanceRegion" :: Maybe (Region) } ) -> ListStackInstancesInput
+newListStackInstancesInput' _StackSetName customize = (ListStackInstancesInput <<< customize) { "StackSetName": _StackSetName, "MaxResults": Nothing, "NextToken": Nothing, "StackInstanceAccount": Nothing, "StackInstanceRegion": Nothing }
 
 
 
 newtype ListStackInstancesOutput = ListStackInstancesOutput 
-  { "Summaries" :: NullOrUndefined (StackInstanceSummaries)
-  , "NextToken" :: NullOrUndefined (NextToken)
+  { "Summaries" :: Maybe (StackInstanceSummaries)
+  , "NextToken" :: Maybe (NextToken)
   }
 derive instance newtypeListStackInstancesOutput :: Newtype ListStackInstancesOutput _
 derive instance repGenericListStackInstancesOutput :: Generic ListStackInstancesOutput _
@@ -1756,19 +1755,19 @@ instance encodeListStackInstancesOutput :: Encode ListStackInstancesOutput where
 
 -- | Constructs ListStackInstancesOutput from required parameters
 newListStackInstancesOutput :: ListStackInstancesOutput
-newListStackInstancesOutput  = ListStackInstancesOutput { "NextToken": (NullOrUndefined Nothing), "Summaries": (NullOrUndefined Nothing) }
+newListStackInstancesOutput  = ListStackInstancesOutput { "NextToken": Nothing, "Summaries": Nothing }
 
 -- | Constructs ListStackInstancesOutput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListStackInstancesOutput' :: ( { "Summaries" :: NullOrUndefined (StackInstanceSummaries) , "NextToken" :: NullOrUndefined (NextToken) } -> {"Summaries" :: NullOrUndefined (StackInstanceSummaries) , "NextToken" :: NullOrUndefined (NextToken) } ) -> ListStackInstancesOutput
-newListStackInstancesOutput'  customize = (ListStackInstancesOutput <<< customize) { "NextToken": (NullOrUndefined Nothing), "Summaries": (NullOrUndefined Nothing) }
+newListStackInstancesOutput' :: ( { "Summaries" :: Maybe (StackInstanceSummaries) , "NextToken" :: Maybe (NextToken) } -> {"Summaries" :: Maybe (StackInstanceSummaries) , "NextToken" :: Maybe (NextToken) } ) -> ListStackInstancesOutput
+newListStackInstancesOutput'  customize = (ListStackInstancesOutput <<< customize) { "NextToken": Nothing, "Summaries": Nothing }
 
 
 
 -- | <p>The input for the <a>ListStackResource</a> action.</p>
 newtype ListStackResourcesInput = ListStackResourcesInput 
   { "StackName" :: (StackName)
-  , "NextToken" :: NullOrUndefined (NextToken)
+  , "NextToken" :: Maybe (NextToken)
   }
 derive instance newtypeListStackResourcesInput :: Newtype ListStackResourcesInput _
 derive instance repGenericListStackResourcesInput :: Generic ListStackResourcesInput _
@@ -1778,19 +1777,19 @@ instance encodeListStackResourcesInput :: Encode ListStackResourcesInput where e
 
 -- | Constructs ListStackResourcesInput from required parameters
 newListStackResourcesInput :: StackName -> ListStackResourcesInput
-newListStackResourcesInput _StackName = ListStackResourcesInput { "StackName": _StackName, "NextToken": (NullOrUndefined Nothing) }
+newListStackResourcesInput _StackName = ListStackResourcesInput { "StackName": _StackName, "NextToken": Nothing }
 
 -- | Constructs ListStackResourcesInput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListStackResourcesInput' :: StackName -> ( { "StackName" :: (StackName) , "NextToken" :: NullOrUndefined (NextToken) } -> {"StackName" :: (StackName) , "NextToken" :: NullOrUndefined (NextToken) } ) -> ListStackResourcesInput
-newListStackResourcesInput' _StackName customize = (ListStackResourcesInput <<< customize) { "StackName": _StackName, "NextToken": (NullOrUndefined Nothing) }
+newListStackResourcesInput' :: StackName -> ( { "StackName" :: (StackName) , "NextToken" :: Maybe (NextToken) } -> {"StackName" :: (StackName) , "NextToken" :: Maybe (NextToken) } ) -> ListStackResourcesInput
+newListStackResourcesInput' _StackName customize = (ListStackResourcesInput <<< customize) { "StackName": _StackName, "NextToken": Nothing }
 
 
 
 -- | <p>The output for a <a>ListStackResources</a> action.</p>
 newtype ListStackResourcesOutput = ListStackResourcesOutput 
-  { "StackResourceSummaries" :: NullOrUndefined (StackResourceSummaries)
-  , "NextToken" :: NullOrUndefined (NextToken)
+  { "StackResourceSummaries" :: Maybe (StackResourceSummaries)
+  , "NextToken" :: Maybe (NextToken)
   }
 derive instance newtypeListStackResourcesOutput :: Newtype ListStackResourcesOutput _
 derive instance repGenericListStackResourcesOutput :: Generic ListStackResourcesOutput _
@@ -1800,20 +1799,20 @@ instance encodeListStackResourcesOutput :: Encode ListStackResourcesOutput where
 
 -- | Constructs ListStackResourcesOutput from required parameters
 newListStackResourcesOutput :: ListStackResourcesOutput
-newListStackResourcesOutput  = ListStackResourcesOutput { "NextToken": (NullOrUndefined Nothing), "StackResourceSummaries": (NullOrUndefined Nothing) }
+newListStackResourcesOutput  = ListStackResourcesOutput { "NextToken": Nothing, "StackResourceSummaries": Nothing }
 
 -- | Constructs ListStackResourcesOutput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListStackResourcesOutput' :: ( { "StackResourceSummaries" :: NullOrUndefined (StackResourceSummaries) , "NextToken" :: NullOrUndefined (NextToken) } -> {"StackResourceSummaries" :: NullOrUndefined (StackResourceSummaries) , "NextToken" :: NullOrUndefined (NextToken) } ) -> ListStackResourcesOutput
-newListStackResourcesOutput'  customize = (ListStackResourcesOutput <<< customize) { "NextToken": (NullOrUndefined Nothing), "StackResourceSummaries": (NullOrUndefined Nothing) }
+newListStackResourcesOutput' :: ( { "StackResourceSummaries" :: Maybe (StackResourceSummaries) , "NextToken" :: Maybe (NextToken) } -> {"StackResourceSummaries" :: Maybe (StackResourceSummaries) , "NextToken" :: Maybe (NextToken) } ) -> ListStackResourcesOutput
+newListStackResourcesOutput'  customize = (ListStackResourcesOutput <<< customize) { "NextToken": Nothing, "StackResourceSummaries": Nothing }
 
 
 
 newtype ListStackSetOperationResultsInput = ListStackSetOperationResultsInput 
   { "StackSetName" :: (StackSetName)
   , "OperationId" :: (ClientRequestToken)
-  , "NextToken" :: NullOrUndefined (NextToken)
-  , "MaxResults" :: NullOrUndefined (MaxResults)
+  , "NextToken" :: Maybe (NextToken)
+  , "MaxResults" :: Maybe (MaxResults)
   }
 derive instance newtypeListStackSetOperationResultsInput :: Newtype ListStackSetOperationResultsInput _
 derive instance repGenericListStackSetOperationResultsInput :: Generic ListStackSetOperationResultsInput _
@@ -1823,18 +1822,18 @@ instance encodeListStackSetOperationResultsInput :: Encode ListStackSetOperation
 
 -- | Constructs ListStackSetOperationResultsInput from required parameters
 newListStackSetOperationResultsInput :: ClientRequestToken -> StackSetName -> ListStackSetOperationResultsInput
-newListStackSetOperationResultsInput _OperationId _StackSetName = ListStackSetOperationResultsInput { "OperationId": _OperationId, "StackSetName": _StackSetName, "MaxResults": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newListStackSetOperationResultsInput _OperationId _StackSetName = ListStackSetOperationResultsInput { "OperationId": _OperationId, "StackSetName": _StackSetName, "MaxResults": Nothing, "NextToken": Nothing }
 
 -- | Constructs ListStackSetOperationResultsInput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListStackSetOperationResultsInput' :: ClientRequestToken -> StackSetName -> ( { "StackSetName" :: (StackSetName) , "OperationId" :: (ClientRequestToken) , "NextToken" :: NullOrUndefined (NextToken) , "MaxResults" :: NullOrUndefined (MaxResults) } -> {"StackSetName" :: (StackSetName) , "OperationId" :: (ClientRequestToken) , "NextToken" :: NullOrUndefined (NextToken) , "MaxResults" :: NullOrUndefined (MaxResults) } ) -> ListStackSetOperationResultsInput
-newListStackSetOperationResultsInput' _OperationId _StackSetName customize = (ListStackSetOperationResultsInput <<< customize) { "OperationId": _OperationId, "StackSetName": _StackSetName, "MaxResults": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newListStackSetOperationResultsInput' :: ClientRequestToken -> StackSetName -> ( { "StackSetName" :: (StackSetName) , "OperationId" :: (ClientRequestToken) , "NextToken" :: Maybe (NextToken) , "MaxResults" :: Maybe (MaxResults) } -> {"StackSetName" :: (StackSetName) , "OperationId" :: (ClientRequestToken) , "NextToken" :: Maybe (NextToken) , "MaxResults" :: Maybe (MaxResults) } ) -> ListStackSetOperationResultsInput
+newListStackSetOperationResultsInput' _OperationId _StackSetName customize = (ListStackSetOperationResultsInput <<< customize) { "OperationId": _OperationId, "StackSetName": _StackSetName, "MaxResults": Nothing, "NextToken": Nothing }
 
 
 
 newtype ListStackSetOperationResultsOutput = ListStackSetOperationResultsOutput 
-  { "Summaries" :: NullOrUndefined (StackSetOperationResultSummaries)
-  , "NextToken" :: NullOrUndefined (NextToken)
+  { "Summaries" :: Maybe (StackSetOperationResultSummaries)
+  , "NextToken" :: Maybe (NextToken)
   }
 derive instance newtypeListStackSetOperationResultsOutput :: Newtype ListStackSetOperationResultsOutput _
 derive instance repGenericListStackSetOperationResultsOutput :: Generic ListStackSetOperationResultsOutput _
@@ -1844,19 +1843,19 @@ instance encodeListStackSetOperationResultsOutput :: Encode ListStackSetOperatio
 
 -- | Constructs ListStackSetOperationResultsOutput from required parameters
 newListStackSetOperationResultsOutput :: ListStackSetOperationResultsOutput
-newListStackSetOperationResultsOutput  = ListStackSetOperationResultsOutput { "NextToken": (NullOrUndefined Nothing), "Summaries": (NullOrUndefined Nothing) }
+newListStackSetOperationResultsOutput  = ListStackSetOperationResultsOutput { "NextToken": Nothing, "Summaries": Nothing }
 
 -- | Constructs ListStackSetOperationResultsOutput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListStackSetOperationResultsOutput' :: ( { "Summaries" :: NullOrUndefined (StackSetOperationResultSummaries) , "NextToken" :: NullOrUndefined (NextToken) } -> {"Summaries" :: NullOrUndefined (StackSetOperationResultSummaries) , "NextToken" :: NullOrUndefined (NextToken) } ) -> ListStackSetOperationResultsOutput
-newListStackSetOperationResultsOutput'  customize = (ListStackSetOperationResultsOutput <<< customize) { "NextToken": (NullOrUndefined Nothing), "Summaries": (NullOrUndefined Nothing) }
+newListStackSetOperationResultsOutput' :: ( { "Summaries" :: Maybe (StackSetOperationResultSummaries) , "NextToken" :: Maybe (NextToken) } -> {"Summaries" :: Maybe (StackSetOperationResultSummaries) , "NextToken" :: Maybe (NextToken) } ) -> ListStackSetOperationResultsOutput
+newListStackSetOperationResultsOutput'  customize = (ListStackSetOperationResultsOutput <<< customize) { "NextToken": Nothing, "Summaries": Nothing }
 
 
 
 newtype ListStackSetOperationsInput = ListStackSetOperationsInput 
   { "StackSetName" :: (StackSetName)
-  , "NextToken" :: NullOrUndefined (NextToken)
-  , "MaxResults" :: NullOrUndefined (MaxResults)
+  , "NextToken" :: Maybe (NextToken)
+  , "MaxResults" :: Maybe (MaxResults)
   }
 derive instance newtypeListStackSetOperationsInput :: Newtype ListStackSetOperationsInput _
 derive instance repGenericListStackSetOperationsInput :: Generic ListStackSetOperationsInput _
@@ -1866,18 +1865,18 @@ instance encodeListStackSetOperationsInput :: Encode ListStackSetOperationsInput
 
 -- | Constructs ListStackSetOperationsInput from required parameters
 newListStackSetOperationsInput :: StackSetName -> ListStackSetOperationsInput
-newListStackSetOperationsInput _StackSetName = ListStackSetOperationsInput { "StackSetName": _StackSetName, "MaxResults": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newListStackSetOperationsInput _StackSetName = ListStackSetOperationsInput { "StackSetName": _StackSetName, "MaxResults": Nothing, "NextToken": Nothing }
 
 -- | Constructs ListStackSetOperationsInput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListStackSetOperationsInput' :: StackSetName -> ( { "StackSetName" :: (StackSetName) , "NextToken" :: NullOrUndefined (NextToken) , "MaxResults" :: NullOrUndefined (MaxResults) } -> {"StackSetName" :: (StackSetName) , "NextToken" :: NullOrUndefined (NextToken) , "MaxResults" :: NullOrUndefined (MaxResults) } ) -> ListStackSetOperationsInput
-newListStackSetOperationsInput' _StackSetName customize = (ListStackSetOperationsInput <<< customize) { "StackSetName": _StackSetName, "MaxResults": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newListStackSetOperationsInput' :: StackSetName -> ( { "StackSetName" :: (StackSetName) , "NextToken" :: Maybe (NextToken) , "MaxResults" :: Maybe (MaxResults) } -> {"StackSetName" :: (StackSetName) , "NextToken" :: Maybe (NextToken) , "MaxResults" :: Maybe (MaxResults) } ) -> ListStackSetOperationsInput
+newListStackSetOperationsInput' _StackSetName customize = (ListStackSetOperationsInput <<< customize) { "StackSetName": _StackSetName, "MaxResults": Nothing, "NextToken": Nothing }
 
 
 
 newtype ListStackSetOperationsOutput = ListStackSetOperationsOutput 
-  { "Summaries" :: NullOrUndefined (StackSetOperationSummaries)
-  , "NextToken" :: NullOrUndefined (NextToken)
+  { "Summaries" :: Maybe (StackSetOperationSummaries)
+  , "NextToken" :: Maybe (NextToken)
   }
 derive instance newtypeListStackSetOperationsOutput :: Newtype ListStackSetOperationsOutput _
 derive instance repGenericListStackSetOperationsOutput :: Generic ListStackSetOperationsOutput _
@@ -1887,19 +1886,19 @@ instance encodeListStackSetOperationsOutput :: Encode ListStackSetOperationsOutp
 
 -- | Constructs ListStackSetOperationsOutput from required parameters
 newListStackSetOperationsOutput :: ListStackSetOperationsOutput
-newListStackSetOperationsOutput  = ListStackSetOperationsOutput { "NextToken": (NullOrUndefined Nothing), "Summaries": (NullOrUndefined Nothing) }
+newListStackSetOperationsOutput  = ListStackSetOperationsOutput { "NextToken": Nothing, "Summaries": Nothing }
 
 -- | Constructs ListStackSetOperationsOutput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListStackSetOperationsOutput' :: ( { "Summaries" :: NullOrUndefined (StackSetOperationSummaries) , "NextToken" :: NullOrUndefined (NextToken) } -> {"Summaries" :: NullOrUndefined (StackSetOperationSummaries) , "NextToken" :: NullOrUndefined (NextToken) } ) -> ListStackSetOperationsOutput
-newListStackSetOperationsOutput'  customize = (ListStackSetOperationsOutput <<< customize) { "NextToken": (NullOrUndefined Nothing), "Summaries": (NullOrUndefined Nothing) }
+newListStackSetOperationsOutput' :: ( { "Summaries" :: Maybe (StackSetOperationSummaries) , "NextToken" :: Maybe (NextToken) } -> {"Summaries" :: Maybe (StackSetOperationSummaries) , "NextToken" :: Maybe (NextToken) } ) -> ListStackSetOperationsOutput
+newListStackSetOperationsOutput'  customize = (ListStackSetOperationsOutput <<< customize) { "NextToken": Nothing, "Summaries": Nothing }
 
 
 
 newtype ListStackSetsInput = ListStackSetsInput 
-  { "NextToken" :: NullOrUndefined (NextToken)
-  , "MaxResults" :: NullOrUndefined (MaxResults)
-  , "Status" :: NullOrUndefined (StackSetStatus)
+  { "NextToken" :: Maybe (NextToken)
+  , "MaxResults" :: Maybe (MaxResults)
+  , "Status" :: Maybe (StackSetStatus)
   }
 derive instance newtypeListStackSetsInput :: Newtype ListStackSetsInput _
 derive instance repGenericListStackSetsInput :: Generic ListStackSetsInput _
@@ -1909,18 +1908,18 @@ instance encodeListStackSetsInput :: Encode ListStackSetsInput where encode = ge
 
 -- | Constructs ListStackSetsInput from required parameters
 newListStackSetsInput :: ListStackSetsInput
-newListStackSetsInput  = ListStackSetsInput { "MaxResults": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing), "Status": (NullOrUndefined Nothing) }
+newListStackSetsInput  = ListStackSetsInput { "MaxResults": Nothing, "NextToken": Nothing, "Status": Nothing }
 
 -- | Constructs ListStackSetsInput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListStackSetsInput' :: ( { "NextToken" :: NullOrUndefined (NextToken) , "MaxResults" :: NullOrUndefined (MaxResults) , "Status" :: NullOrUndefined (StackSetStatus) } -> {"NextToken" :: NullOrUndefined (NextToken) , "MaxResults" :: NullOrUndefined (MaxResults) , "Status" :: NullOrUndefined (StackSetStatus) } ) -> ListStackSetsInput
-newListStackSetsInput'  customize = (ListStackSetsInput <<< customize) { "MaxResults": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing), "Status": (NullOrUndefined Nothing) }
+newListStackSetsInput' :: ( { "NextToken" :: Maybe (NextToken) , "MaxResults" :: Maybe (MaxResults) , "Status" :: Maybe (StackSetStatus) } -> {"NextToken" :: Maybe (NextToken) , "MaxResults" :: Maybe (MaxResults) , "Status" :: Maybe (StackSetStatus) } ) -> ListStackSetsInput
+newListStackSetsInput'  customize = (ListStackSetsInput <<< customize) { "MaxResults": Nothing, "NextToken": Nothing, "Status": Nothing }
 
 
 
 newtype ListStackSetsOutput = ListStackSetsOutput 
-  { "Summaries" :: NullOrUndefined (StackSetSummaries)
-  , "NextToken" :: NullOrUndefined (NextToken)
+  { "Summaries" :: Maybe (StackSetSummaries)
+  , "NextToken" :: Maybe (NextToken)
   }
 derive instance newtypeListStackSetsOutput :: Newtype ListStackSetsOutput _
 derive instance repGenericListStackSetsOutput :: Generic ListStackSetsOutput _
@@ -1930,19 +1929,19 @@ instance encodeListStackSetsOutput :: Encode ListStackSetsOutput where encode = 
 
 -- | Constructs ListStackSetsOutput from required parameters
 newListStackSetsOutput :: ListStackSetsOutput
-newListStackSetsOutput  = ListStackSetsOutput { "NextToken": (NullOrUndefined Nothing), "Summaries": (NullOrUndefined Nothing) }
+newListStackSetsOutput  = ListStackSetsOutput { "NextToken": Nothing, "Summaries": Nothing }
 
 -- | Constructs ListStackSetsOutput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListStackSetsOutput' :: ( { "Summaries" :: NullOrUndefined (StackSetSummaries) , "NextToken" :: NullOrUndefined (NextToken) } -> {"Summaries" :: NullOrUndefined (StackSetSummaries) , "NextToken" :: NullOrUndefined (NextToken) } ) -> ListStackSetsOutput
-newListStackSetsOutput'  customize = (ListStackSetsOutput <<< customize) { "NextToken": (NullOrUndefined Nothing), "Summaries": (NullOrUndefined Nothing) }
+newListStackSetsOutput' :: ( { "Summaries" :: Maybe (StackSetSummaries) , "NextToken" :: Maybe (NextToken) } -> {"Summaries" :: Maybe (StackSetSummaries) , "NextToken" :: Maybe (NextToken) } ) -> ListStackSetsOutput
+newListStackSetsOutput'  customize = (ListStackSetsOutput <<< customize) { "NextToken": Nothing, "Summaries": Nothing }
 
 
 
 -- | <p>The input for <a>ListStacks</a> action.</p>
 newtype ListStacksInput = ListStacksInput 
-  { "NextToken" :: NullOrUndefined (NextToken)
-  , "StackStatusFilter" :: NullOrUndefined (StackStatusFilter)
+  { "NextToken" :: Maybe (NextToken)
+  , "StackStatusFilter" :: Maybe (StackStatusFilter)
   }
 derive instance newtypeListStacksInput :: Newtype ListStacksInput _
 derive instance repGenericListStacksInput :: Generic ListStacksInput _
@@ -1952,19 +1951,19 @@ instance encodeListStacksInput :: Encode ListStacksInput where encode = genericE
 
 -- | Constructs ListStacksInput from required parameters
 newListStacksInput :: ListStacksInput
-newListStacksInput  = ListStacksInput { "NextToken": (NullOrUndefined Nothing), "StackStatusFilter": (NullOrUndefined Nothing) }
+newListStacksInput  = ListStacksInput { "NextToken": Nothing, "StackStatusFilter": Nothing }
 
 -- | Constructs ListStacksInput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListStacksInput' :: ( { "NextToken" :: NullOrUndefined (NextToken) , "StackStatusFilter" :: NullOrUndefined (StackStatusFilter) } -> {"NextToken" :: NullOrUndefined (NextToken) , "StackStatusFilter" :: NullOrUndefined (StackStatusFilter) } ) -> ListStacksInput
-newListStacksInput'  customize = (ListStacksInput <<< customize) { "NextToken": (NullOrUndefined Nothing), "StackStatusFilter": (NullOrUndefined Nothing) }
+newListStacksInput' :: ( { "NextToken" :: Maybe (NextToken) , "StackStatusFilter" :: Maybe (StackStatusFilter) } -> {"NextToken" :: Maybe (NextToken) , "StackStatusFilter" :: Maybe (StackStatusFilter) } ) -> ListStacksInput
+newListStacksInput'  customize = (ListStacksInput <<< customize) { "NextToken": Nothing, "StackStatusFilter": Nothing }
 
 
 
 -- | <p>The output for <a>ListStacks</a> action.</p>
 newtype ListStacksOutput = ListStacksOutput 
-  { "StackSummaries" :: NullOrUndefined (StackSummaries)
-  , "NextToken" :: NullOrUndefined (NextToken)
+  { "StackSummaries" :: Maybe (StackSummaries)
+  , "NextToken" :: Maybe (NextToken)
   }
 derive instance newtypeListStacksOutput :: Newtype ListStacksOutput _
 derive instance repGenericListStacksOutput :: Generic ListStacksOutput _
@@ -1974,12 +1973,12 @@ instance encodeListStacksOutput :: Encode ListStacksOutput where encode = generi
 
 -- | Constructs ListStacksOutput from required parameters
 newListStacksOutput :: ListStacksOutput
-newListStacksOutput  = ListStacksOutput { "NextToken": (NullOrUndefined Nothing), "StackSummaries": (NullOrUndefined Nothing) }
+newListStacksOutput  = ListStacksOutput { "NextToken": Nothing, "StackSummaries": Nothing }
 
 -- | Constructs ListStacksOutput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListStacksOutput' :: ( { "StackSummaries" :: NullOrUndefined (StackSummaries) , "NextToken" :: NullOrUndefined (NextToken) } -> {"StackSummaries" :: NullOrUndefined (StackSummaries) , "NextToken" :: NullOrUndefined (NextToken) } ) -> ListStacksOutput
-newListStacksOutput'  customize = (ListStacksOutput <<< customize) { "NextToken": (NullOrUndefined Nothing), "StackSummaries": (NullOrUndefined Nothing) }
+newListStacksOutput' :: ( { "StackSummaries" :: Maybe (StackSummaries) , "NextToken" :: Maybe (NextToken) } -> {"StackSummaries" :: Maybe (StackSummaries) , "NextToken" :: Maybe (NextToken) } ) -> ListStacksOutput
+newListStacksOutput'  customize = (ListStacksOutput <<< customize) { "NextToken": Nothing, "StackSummaries": Nothing }
 
 
 
@@ -2124,10 +2123,10 @@ instance encodeOperationNotFoundException :: Encode OperationNotFoundException w
 
 -- | <p>The Output data type.</p>
 newtype Output = Output 
-  { "OutputKey" :: NullOrUndefined (OutputKey)
-  , "OutputValue" :: NullOrUndefined (OutputValue)
-  , "Description" :: NullOrUndefined (Description)
-  , "ExportName" :: NullOrUndefined (ExportName)
+  { "OutputKey" :: Maybe (OutputKey)
+  , "OutputValue" :: Maybe (OutputValue)
+  , "Description" :: Maybe (Description)
+  , "ExportName" :: Maybe (ExportName)
   }
 derive instance newtypeOutput :: Newtype Output _
 derive instance repGenericOutput :: Generic Output _
@@ -2137,12 +2136,12 @@ instance encodeOutput :: Encode Output where encode = genericEncode options
 
 -- | Constructs Output from required parameters
 newOutput :: Output
-newOutput  = Output { "Description": (NullOrUndefined Nothing), "ExportName": (NullOrUndefined Nothing), "OutputKey": (NullOrUndefined Nothing), "OutputValue": (NullOrUndefined Nothing) }
+newOutput  = Output { "Description": Nothing, "ExportName": Nothing, "OutputKey": Nothing, "OutputValue": Nothing }
 
 -- | Constructs Output's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newOutput' :: ( { "OutputKey" :: NullOrUndefined (OutputKey) , "OutputValue" :: NullOrUndefined (OutputValue) , "Description" :: NullOrUndefined (Description) , "ExportName" :: NullOrUndefined (ExportName) } -> {"OutputKey" :: NullOrUndefined (OutputKey) , "OutputValue" :: NullOrUndefined (OutputValue) , "Description" :: NullOrUndefined (Description) , "ExportName" :: NullOrUndefined (ExportName) } ) -> Output
-newOutput'  customize = (Output <<< customize) { "Description": (NullOrUndefined Nothing), "ExportName": (NullOrUndefined Nothing), "OutputKey": (NullOrUndefined Nothing), "OutputValue": (NullOrUndefined Nothing) }
+newOutput' :: ( { "OutputKey" :: Maybe (OutputKey) , "OutputValue" :: Maybe (OutputValue) , "Description" :: Maybe (Description) , "ExportName" :: Maybe (ExportName) } -> {"OutputKey" :: Maybe (OutputKey) , "OutputValue" :: Maybe (OutputValue) , "Description" :: Maybe (Description) , "ExportName" :: Maybe (ExportName) } ) -> Output
+newOutput'  customize = (Output <<< customize) { "Description": Nothing, "ExportName": Nothing, "OutputKey": Nothing, "OutputValue": Nothing }
 
 
 
@@ -2175,10 +2174,10 @@ instance encodeOutputs :: Encode Outputs where encode = genericEncode options
 
 -- | <p>The Parameter data type.</p>
 newtype Parameter = Parameter 
-  { "ParameterKey" :: NullOrUndefined (ParameterKey)
-  , "ParameterValue" :: NullOrUndefined (ParameterValue)
-  , "UsePreviousValue" :: NullOrUndefined (UsePreviousValue)
-  , "ResolvedValue" :: NullOrUndefined (ParameterValue)
+  { "ParameterKey" :: Maybe (ParameterKey)
+  , "ParameterValue" :: Maybe (ParameterValue)
+  , "UsePreviousValue" :: Maybe (UsePreviousValue)
+  , "ResolvedValue" :: Maybe (ParameterValue)
   }
 derive instance newtypeParameter :: Newtype Parameter _
 derive instance repGenericParameter :: Generic Parameter _
@@ -2188,18 +2187,18 @@ instance encodeParameter :: Encode Parameter where encode = genericEncode option
 
 -- | Constructs Parameter from required parameters
 newParameter :: Parameter
-newParameter  = Parameter { "ParameterKey": (NullOrUndefined Nothing), "ParameterValue": (NullOrUndefined Nothing), "ResolvedValue": (NullOrUndefined Nothing), "UsePreviousValue": (NullOrUndefined Nothing) }
+newParameter  = Parameter { "ParameterKey": Nothing, "ParameterValue": Nothing, "ResolvedValue": Nothing, "UsePreviousValue": Nothing }
 
 -- | Constructs Parameter's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newParameter' :: ( { "ParameterKey" :: NullOrUndefined (ParameterKey) , "ParameterValue" :: NullOrUndefined (ParameterValue) , "UsePreviousValue" :: NullOrUndefined (UsePreviousValue) , "ResolvedValue" :: NullOrUndefined (ParameterValue) } -> {"ParameterKey" :: NullOrUndefined (ParameterKey) , "ParameterValue" :: NullOrUndefined (ParameterValue) , "UsePreviousValue" :: NullOrUndefined (UsePreviousValue) , "ResolvedValue" :: NullOrUndefined (ParameterValue) } ) -> Parameter
-newParameter'  customize = (Parameter <<< customize) { "ParameterKey": (NullOrUndefined Nothing), "ParameterValue": (NullOrUndefined Nothing), "ResolvedValue": (NullOrUndefined Nothing), "UsePreviousValue": (NullOrUndefined Nothing) }
+newParameter' :: ( { "ParameterKey" :: Maybe (ParameterKey) , "ParameterValue" :: Maybe (ParameterValue) , "UsePreviousValue" :: Maybe (UsePreviousValue) , "ResolvedValue" :: Maybe (ParameterValue) } -> {"ParameterKey" :: Maybe (ParameterKey) , "ParameterValue" :: Maybe (ParameterValue) , "UsePreviousValue" :: Maybe (UsePreviousValue) , "ResolvedValue" :: Maybe (ParameterValue) } ) -> Parameter
+newParameter'  customize = (Parameter <<< customize) { "ParameterKey": Nothing, "ParameterValue": Nothing, "ResolvedValue": Nothing, "UsePreviousValue": Nothing }
 
 
 
 -- | <p>A set of criteria that AWS CloudFormation uses to validate parameter values. Although other constraints might be defined in the stack template, AWS CloudFormation returns only the <code>AllowedValues</code> property.</p>
 newtype ParameterConstraints = ParameterConstraints 
-  { "AllowedValues" :: NullOrUndefined (AllowedValues)
+  { "AllowedValues" :: Maybe (AllowedValues)
   }
 derive instance newtypeParameterConstraints :: Newtype ParameterConstraints _
 derive instance repGenericParameterConstraints :: Generic ParameterConstraints _
@@ -2209,23 +2208,23 @@ instance encodeParameterConstraints :: Encode ParameterConstraints where encode 
 
 -- | Constructs ParameterConstraints from required parameters
 newParameterConstraints :: ParameterConstraints
-newParameterConstraints  = ParameterConstraints { "AllowedValues": (NullOrUndefined Nothing) }
+newParameterConstraints  = ParameterConstraints { "AllowedValues": Nothing }
 
 -- | Constructs ParameterConstraints's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newParameterConstraints' :: ( { "AllowedValues" :: NullOrUndefined (AllowedValues) } -> {"AllowedValues" :: NullOrUndefined (AllowedValues) } ) -> ParameterConstraints
-newParameterConstraints'  customize = (ParameterConstraints <<< customize) { "AllowedValues": (NullOrUndefined Nothing) }
+newParameterConstraints' :: ( { "AllowedValues" :: Maybe (AllowedValues) } -> {"AllowedValues" :: Maybe (AllowedValues) } ) -> ParameterConstraints
+newParameterConstraints'  customize = (ParameterConstraints <<< customize) { "AllowedValues": Nothing }
 
 
 
 -- | <p>The ParameterDeclaration data type.</p>
 newtype ParameterDeclaration = ParameterDeclaration 
-  { "ParameterKey" :: NullOrUndefined (ParameterKey)
-  , "DefaultValue" :: NullOrUndefined (ParameterValue)
-  , "ParameterType" :: NullOrUndefined (ParameterType)
-  , "NoEcho" :: NullOrUndefined (NoEcho)
-  , "Description" :: NullOrUndefined (Description)
-  , "ParameterConstraints" :: NullOrUndefined (ParameterConstraints)
+  { "ParameterKey" :: Maybe (ParameterKey)
+  , "DefaultValue" :: Maybe (ParameterValue)
+  , "ParameterType" :: Maybe (ParameterType)
+  , "NoEcho" :: Maybe (NoEcho)
+  , "Description" :: Maybe (Description)
+  , "ParameterConstraints" :: Maybe (ParameterConstraints)
   }
 derive instance newtypeParameterDeclaration :: Newtype ParameterDeclaration _
 derive instance repGenericParameterDeclaration :: Generic ParameterDeclaration _
@@ -2235,12 +2234,12 @@ instance encodeParameterDeclaration :: Encode ParameterDeclaration where encode 
 
 -- | Constructs ParameterDeclaration from required parameters
 newParameterDeclaration :: ParameterDeclaration
-newParameterDeclaration  = ParameterDeclaration { "DefaultValue": (NullOrUndefined Nothing), "Description": (NullOrUndefined Nothing), "NoEcho": (NullOrUndefined Nothing), "ParameterConstraints": (NullOrUndefined Nothing), "ParameterKey": (NullOrUndefined Nothing), "ParameterType": (NullOrUndefined Nothing) }
+newParameterDeclaration  = ParameterDeclaration { "DefaultValue": Nothing, "Description": Nothing, "NoEcho": Nothing, "ParameterConstraints": Nothing, "ParameterKey": Nothing, "ParameterType": Nothing }
 
 -- | Constructs ParameterDeclaration's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newParameterDeclaration' :: ( { "ParameterKey" :: NullOrUndefined (ParameterKey) , "DefaultValue" :: NullOrUndefined (ParameterValue) , "ParameterType" :: NullOrUndefined (ParameterType) , "NoEcho" :: NullOrUndefined (NoEcho) , "Description" :: NullOrUndefined (Description) , "ParameterConstraints" :: NullOrUndefined (ParameterConstraints) } -> {"ParameterKey" :: NullOrUndefined (ParameterKey) , "DefaultValue" :: NullOrUndefined (ParameterValue) , "ParameterType" :: NullOrUndefined (ParameterType) , "NoEcho" :: NullOrUndefined (NoEcho) , "Description" :: NullOrUndefined (Description) , "ParameterConstraints" :: NullOrUndefined (ParameterConstraints) } ) -> ParameterDeclaration
-newParameterDeclaration'  customize = (ParameterDeclaration <<< customize) { "DefaultValue": (NullOrUndefined Nothing), "Description": (NullOrUndefined Nothing), "NoEcho": (NullOrUndefined Nothing), "ParameterConstraints": (NullOrUndefined Nothing), "ParameterKey": (NullOrUndefined Nothing), "ParameterType": (NullOrUndefined Nothing) }
+newParameterDeclaration' :: ( { "ParameterKey" :: Maybe (ParameterKey) , "DefaultValue" :: Maybe (ParameterValue) , "ParameterType" :: Maybe (ParameterType) , "NoEcho" :: Maybe (NoEcho) , "Description" :: Maybe (Description) , "ParameterConstraints" :: Maybe (ParameterConstraints) } -> {"ParameterKey" :: Maybe (ParameterKey) , "DefaultValue" :: Maybe (ParameterValue) , "ParameterType" :: Maybe (ParameterType) , "NoEcho" :: Maybe (NoEcho) , "Description" :: Maybe (Description) , "ParameterConstraints" :: Maybe (ParameterConstraints) } ) -> ParameterDeclaration
+newParameterDeclaration'  customize = (ParameterDeclaration <<< customize) { "DefaultValue": Nothing, "Description": Nothing, "NoEcho": Nothing, "ParameterConstraints": Nothing, "ParameterKey": Nothing, "ParameterType": Nothing }
 
 
 
@@ -2363,13 +2362,13 @@ instance encodeResourceAttribute :: Encode ResourceAttribute where encode = gene
 
 -- | <p>The <code>ResourceChange</code> structure describes the resource and the action that AWS CloudFormation will perform on it if you execute this change set.</p>
 newtype ResourceChange = ResourceChange 
-  { "Action" :: NullOrUndefined (ChangeAction)
-  , "LogicalResourceId" :: NullOrUndefined (LogicalResourceId)
-  , "PhysicalResourceId" :: NullOrUndefined (PhysicalResourceId)
-  , "ResourceType" :: NullOrUndefined (ResourceType)
-  , "Replacement" :: NullOrUndefined (Replacement)
-  , "Scope" :: NullOrUndefined (Scope)
-  , "Details" :: NullOrUndefined (ResourceChangeDetails)
+  { "Action" :: Maybe (ChangeAction)
+  , "LogicalResourceId" :: Maybe (LogicalResourceId)
+  , "PhysicalResourceId" :: Maybe (PhysicalResourceId)
+  , "ResourceType" :: Maybe (ResourceType)
+  , "Replacement" :: Maybe (Replacement)
+  , "Scope" :: Maybe (Scope)
+  , "Details" :: Maybe (ResourceChangeDetails)
   }
 derive instance newtypeResourceChange :: Newtype ResourceChange _
 derive instance repGenericResourceChange :: Generic ResourceChange _
@@ -2379,21 +2378,21 @@ instance encodeResourceChange :: Encode ResourceChange where encode = genericEnc
 
 -- | Constructs ResourceChange from required parameters
 newResourceChange :: ResourceChange
-newResourceChange  = ResourceChange { "Action": (NullOrUndefined Nothing), "Details": (NullOrUndefined Nothing), "LogicalResourceId": (NullOrUndefined Nothing), "PhysicalResourceId": (NullOrUndefined Nothing), "Replacement": (NullOrUndefined Nothing), "ResourceType": (NullOrUndefined Nothing), "Scope": (NullOrUndefined Nothing) }
+newResourceChange  = ResourceChange { "Action": Nothing, "Details": Nothing, "LogicalResourceId": Nothing, "PhysicalResourceId": Nothing, "Replacement": Nothing, "ResourceType": Nothing, "Scope": Nothing }
 
 -- | Constructs ResourceChange's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newResourceChange' :: ( { "Action" :: NullOrUndefined (ChangeAction) , "LogicalResourceId" :: NullOrUndefined (LogicalResourceId) , "PhysicalResourceId" :: NullOrUndefined (PhysicalResourceId) , "ResourceType" :: NullOrUndefined (ResourceType) , "Replacement" :: NullOrUndefined (Replacement) , "Scope" :: NullOrUndefined (Scope) , "Details" :: NullOrUndefined (ResourceChangeDetails) } -> {"Action" :: NullOrUndefined (ChangeAction) , "LogicalResourceId" :: NullOrUndefined (LogicalResourceId) , "PhysicalResourceId" :: NullOrUndefined (PhysicalResourceId) , "ResourceType" :: NullOrUndefined (ResourceType) , "Replacement" :: NullOrUndefined (Replacement) , "Scope" :: NullOrUndefined (Scope) , "Details" :: NullOrUndefined (ResourceChangeDetails) } ) -> ResourceChange
-newResourceChange'  customize = (ResourceChange <<< customize) { "Action": (NullOrUndefined Nothing), "Details": (NullOrUndefined Nothing), "LogicalResourceId": (NullOrUndefined Nothing), "PhysicalResourceId": (NullOrUndefined Nothing), "Replacement": (NullOrUndefined Nothing), "ResourceType": (NullOrUndefined Nothing), "Scope": (NullOrUndefined Nothing) }
+newResourceChange' :: ( { "Action" :: Maybe (ChangeAction) , "LogicalResourceId" :: Maybe (LogicalResourceId) , "PhysicalResourceId" :: Maybe (PhysicalResourceId) , "ResourceType" :: Maybe (ResourceType) , "Replacement" :: Maybe (Replacement) , "Scope" :: Maybe (Scope) , "Details" :: Maybe (ResourceChangeDetails) } -> {"Action" :: Maybe (ChangeAction) , "LogicalResourceId" :: Maybe (LogicalResourceId) , "PhysicalResourceId" :: Maybe (PhysicalResourceId) , "ResourceType" :: Maybe (ResourceType) , "Replacement" :: Maybe (Replacement) , "Scope" :: Maybe (Scope) , "Details" :: Maybe (ResourceChangeDetails) } ) -> ResourceChange
+newResourceChange'  customize = (ResourceChange <<< customize) { "Action": Nothing, "Details": Nothing, "LogicalResourceId": Nothing, "PhysicalResourceId": Nothing, "Replacement": Nothing, "ResourceType": Nothing, "Scope": Nothing }
 
 
 
 -- | <p>For a resource with <code>Modify</code> as the action, the <code>ResourceChange</code> structure describes the changes AWS CloudFormation will make to that resource.</p>
 newtype ResourceChangeDetail = ResourceChangeDetail 
-  { "Target" :: NullOrUndefined (ResourceTargetDefinition)
-  , "Evaluation" :: NullOrUndefined (EvaluationType)
-  , "ChangeSource" :: NullOrUndefined (ChangeSource)
-  , "CausingEntity" :: NullOrUndefined (CausingEntity)
+  { "Target" :: Maybe (ResourceTargetDefinition)
+  , "Evaluation" :: Maybe (EvaluationType)
+  , "ChangeSource" :: Maybe (ChangeSource)
+  , "CausingEntity" :: Maybe (CausingEntity)
   }
 derive instance newtypeResourceChangeDetail :: Newtype ResourceChangeDetail _
 derive instance repGenericResourceChangeDetail :: Generic ResourceChangeDetail _
@@ -2403,12 +2402,12 @@ instance encodeResourceChangeDetail :: Encode ResourceChangeDetail where encode 
 
 -- | Constructs ResourceChangeDetail from required parameters
 newResourceChangeDetail :: ResourceChangeDetail
-newResourceChangeDetail  = ResourceChangeDetail { "CausingEntity": (NullOrUndefined Nothing), "ChangeSource": (NullOrUndefined Nothing), "Evaluation": (NullOrUndefined Nothing), "Target": (NullOrUndefined Nothing) }
+newResourceChangeDetail  = ResourceChangeDetail { "CausingEntity": Nothing, "ChangeSource": Nothing, "Evaluation": Nothing, "Target": Nothing }
 
 -- | Constructs ResourceChangeDetail's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newResourceChangeDetail' :: ( { "Target" :: NullOrUndefined (ResourceTargetDefinition) , "Evaluation" :: NullOrUndefined (EvaluationType) , "ChangeSource" :: NullOrUndefined (ChangeSource) , "CausingEntity" :: NullOrUndefined (CausingEntity) } -> {"Target" :: NullOrUndefined (ResourceTargetDefinition) , "Evaluation" :: NullOrUndefined (EvaluationType) , "ChangeSource" :: NullOrUndefined (ChangeSource) , "CausingEntity" :: NullOrUndefined (CausingEntity) } ) -> ResourceChangeDetail
-newResourceChangeDetail'  customize = (ResourceChangeDetail <<< customize) { "CausingEntity": (NullOrUndefined Nothing), "ChangeSource": (NullOrUndefined Nothing), "Evaluation": (NullOrUndefined Nothing), "Target": (NullOrUndefined Nothing) }
+newResourceChangeDetail' :: ( { "Target" :: Maybe (ResourceTargetDefinition) , "Evaluation" :: Maybe (EvaluationType) , "ChangeSource" :: Maybe (ChangeSource) , "CausingEntity" :: Maybe (CausingEntity) } -> {"Target" :: Maybe (ResourceTargetDefinition) , "Evaluation" :: Maybe (EvaluationType) , "ChangeSource" :: Maybe (ChangeSource) , "CausingEntity" :: Maybe (CausingEntity) } ) -> ResourceChangeDetail
+newResourceChangeDetail'  customize = (ResourceChangeDetail <<< customize) { "CausingEntity": Nothing, "ChangeSource": Nothing, "Evaluation": Nothing, "Target": Nothing }
 
 
 
@@ -2468,9 +2467,9 @@ instance encodeResourceStatusReason :: Encode ResourceStatusReason where encode 
 
 -- | <p>The field that AWS CloudFormation will change, such as the name of a resource's property, and whether the resource will be recreated.</p>
 newtype ResourceTargetDefinition = ResourceTargetDefinition 
-  { "Attribute" :: NullOrUndefined (ResourceAttribute)
-  , "Name" :: NullOrUndefined (PropertyName)
-  , "RequiresRecreation" :: NullOrUndefined (RequiresRecreation)
+  { "Attribute" :: Maybe (ResourceAttribute)
+  , "Name" :: Maybe (PropertyName)
+  , "RequiresRecreation" :: Maybe (RequiresRecreation)
   }
 derive instance newtypeResourceTargetDefinition :: Newtype ResourceTargetDefinition _
 derive instance repGenericResourceTargetDefinition :: Generic ResourceTargetDefinition _
@@ -2480,12 +2479,12 @@ instance encodeResourceTargetDefinition :: Encode ResourceTargetDefinition where
 
 -- | Constructs ResourceTargetDefinition from required parameters
 newResourceTargetDefinition :: ResourceTargetDefinition
-newResourceTargetDefinition  = ResourceTargetDefinition { "Attribute": (NullOrUndefined Nothing), "Name": (NullOrUndefined Nothing), "RequiresRecreation": (NullOrUndefined Nothing) }
+newResourceTargetDefinition  = ResourceTargetDefinition { "Attribute": Nothing, "Name": Nothing, "RequiresRecreation": Nothing }
 
 -- | Constructs ResourceTargetDefinition's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newResourceTargetDefinition' :: ( { "Attribute" :: NullOrUndefined (ResourceAttribute) , "Name" :: NullOrUndefined (PropertyName) , "RequiresRecreation" :: NullOrUndefined (RequiresRecreation) } -> {"Attribute" :: NullOrUndefined (ResourceAttribute) , "Name" :: NullOrUndefined (PropertyName) , "RequiresRecreation" :: NullOrUndefined (RequiresRecreation) } ) -> ResourceTargetDefinition
-newResourceTargetDefinition'  customize = (ResourceTargetDefinition <<< customize) { "Attribute": (NullOrUndefined Nothing), "Name": (NullOrUndefined Nothing), "RequiresRecreation": (NullOrUndefined Nothing) }
+newResourceTargetDefinition' :: ( { "Attribute" :: Maybe (ResourceAttribute) , "Name" :: Maybe (PropertyName) , "RequiresRecreation" :: Maybe (RequiresRecreation) } -> {"Attribute" :: Maybe (ResourceAttribute) , "Name" :: Maybe (PropertyName) , "RequiresRecreation" :: Maybe (RequiresRecreation) } ) -> ResourceTargetDefinition
+newResourceTargetDefinition'  customize = (ResourceTargetDefinition <<< customize) { "Attribute": Nothing, "Name": Nothing, "RequiresRecreation": Nothing }
 
 
 
@@ -2563,8 +2562,8 @@ instance encodeRoleARN :: Encode RoleARN where encode = genericEncode options
 
 -- | <p>Structure containing the rollback triggers for AWS CloudFormation to monitor during stack creation and updating operations, and for the specified monitoring period afterwards.</p> <p>Rollback triggers enable you to have AWS CloudFormation monitor the state of your application during stack creation and updating, and to roll back that operation if the application breaches the threshold of any of the alarms you've specified. For each rollback trigger you create, you specify the Cloudwatch alarm that CloudFormation should monitor. CloudFormation monitors the specified alarms during the stack create or update operation, and for the specified amount of time after all resources have been deployed. If any of the alarms goes to ALERT state during the stack operation or the monitoring period, CloudFormation rolls back the entire stack operation. If the monitoring period expires without any alarms going to ALERT state, CloudFormation proceeds to dispose of old resources as usual.</p> <p>By default, CloudFormation only rolls back stack operations if an alarm goes to ALERT state, not INSUFFICIENT_DATA state. To have CloudFormation roll back the stack operation if an alarm goes to INSUFFICIENT_DATA state as well, edit the CloudWatch alarm to treat missing data as <code>breaching</code>. For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html">Configuring How CloudWatch Alarms Treats Missing Data</a>.</p> <p>AWS CloudFormation does not monitor rollback triggers when it rolls back a stack during an update operation.</p>
 newtype RollbackConfiguration = RollbackConfiguration 
-  { "RollbackTriggers" :: NullOrUndefined (RollbackTriggers)
-  , "MonitoringTimeInMinutes" :: NullOrUndefined (MonitoringTimeInMinutes)
+  { "RollbackTriggers" :: Maybe (RollbackTriggers)
+  , "MonitoringTimeInMinutes" :: Maybe (MonitoringTimeInMinutes)
   }
 derive instance newtypeRollbackConfiguration :: Newtype RollbackConfiguration _
 derive instance repGenericRollbackConfiguration :: Generic RollbackConfiguration _
@@ -2574,12 +2573,12 @@ instance encodeRollbackConfiguration :: Encode RollbackConfiguration where encod
 
 -- | Constructs RollbackConfiguration from required parameters
 newRollbackConfiguration :: RollbackConfiguration
-newRollbackConfiguration  = RollbackConfiguration { "MonitoringTimeInMinutes": (NullOrUndefined Nothing), "RollbackTriggers": (NullOrUndefined Nothing) }
+newRollbackConfiguration  = RollbackConfiguration { "MonitoringTimeInMinutes": Nothing, "RollbackTriggers": Nothing }
 
 -- | Constructs RollbackConfiguration's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newRollbackConfiguration' :: ( { "RollbackTriggers" :: NullOrUndefined (RollbackTriggers) , "MonitoringTimeInMinutes" :: NullOrUndefined (MonitoringTimeInMinutes) } -> {"RollbackTriggers" :: NullOrUndefined (RollbackTriggers) , "MonitoringTimeInMinutes" :: NullOrUndefined (MonitoringTimeInMinutes) } ) -> RollbackConfiguration
-newRollbackConfiguration'  customize = (RollbackConfiguration <<< customize) { "MonitoringTimeInMinutes": (NullOrUndefined Nothing), "RollbackTriggers": (NullOrUndefined Nothing) }
+newRollbackConfiguration' :: ( { "RollbackTriggers" :: Maybe (RollbackTriggers) , "MonitoringTimeInMinutes" :: Maybe (MonitoringTimeInMinutes) } -> {"RollbackTriggers" :: Maybe (RollbackTriggers) , "MonitoringTimeInMinutes" :: Maybe (MonitoringTimeInMinutes) } ) -> RollbackConfiguration
+newRollbackConfiguration'  customize = (RollbackConfiguration <<< customize) { "MonitoringTimeInMinutes": Nothing, "RollbackTriggers": Nothing }
 
 
 
@@ -2626,8 +2625,8 @@ instance encodeScope :: Encode Scope where encode = genericEncode options
 -- | <p>The input for the <a>SetStackPolicy</a> action.</p>
 newtype SetStackPolicyInput = SetStackPolicyInput 
   { "StackName" :: (StackName)
-  , "StackPolicyBody" :: NullOrUndefined (StackPolicyBody)
-  , "StackPolicyURL" :: NullOrUndefined (StackPolicyURL)
+  , "StackPolicyBody" :: Maybe (StackPolicyBody)
+  , "StackPolicyURL" :: Maybe (StackPolicyURL)
   }
 derive instance newtypeSetStackPolicyInput :: Newtype SetStackPolicyInput _
 derive instance repGenericSetStackPolicyInput :: Generic SetStackPolicyInput _
@@ -2637,12 +2636,12 @@ instance encodeSetStackPolicyInput :: Encode SetStackPolicyInput where encode = 
 
 -- | Constructs SetStackPolicyInput from required parameters
 newSetStackPolicyInput :: StackName -> SetStackPolicyInput
-newSetStackPolicyInput _StackName = SetStackPolicyInput { "StackName": _StackName, "StackPolicyBody": (NullOrUndefined Nothing), "StackPolicyURL": (NullOrUndefined Nothing) }
+newSetStackPolicyInput _StackName = SetStackPolicyInput { "StackName": _StackName, "StackPolicyBody": Nothing, "StackPolicyURL": Nothing }
 
 -- | Constructs SetStackPolicyInput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newSetStackPolicyInput' :: StackName -> ( { "StackName" :: (StackName) , "StackPolicyBody" :: NullOrUndefined (StackPolicyBody) , "StackPolicyURL" :: NullOrUndefined (StackPolicyURL) } -> {"StackName" :: (StackName) , "StackPolicyBody" :: NullOrUndefined (StackPolicyBody) , "StackPolicyURL" :: NullOrUndefined (StackPolicyURL) } ) -> SetStackPolicyInput
-newSetStackPolicyInput' _StackName customize = (SetStackPolicyInput <<< customize) { "StackName": _StackName, "StackPolicyBody": (NullOrUndefined Nothing), "StackPolicyURL": (NullOrUndefined Nothing) }
+newSetStackPolicyInput' :: StackName -> ( { "StackName" :: (StackName) , "StackPolicyBody" :: Maybe (StackPolicyBody) , "StackPolicyURL" :: Maybe (StackPolicyURL) } -> {"StackName" :: (StackName) , "StackPolicyBody" :: Maybe (StackPolicyBody) , "StackPolicyURL" :: Maybe (StackPolicyURL) } ) -> SetStackPolicyInput
+newSetStackPolicyInput' _StackName customize = (SetStackPolicyInput <<< customize) { "StackName": _StackName, "StackPolicyBody": Nothing, "StackPolicyURL": Nothing }
 
 
 
@@ -2672,27 +2671,27 @@ newSignalResourceInput' _LogicalResourceId _StackName _Status _UniqueId customiz
 
 -- | <p>The Stack data type.</p>
 newtype Stack = Stack 
-  { "StackId" :: NullOrUndefined (StackId)
+  { "StackId" :: Maybe (StackId)
   , "StackName" :: (StackName)
-  , "ChangeSetId" :: NullOrUndefined (ChangeSetId)
-  , "Description" :: NullOrUndefined (Description)
-  , "Parameters" :: NullOrUndefined (Parameters)
+  , "ChangeSetId" :: Maybe (ChangeSetId)
+  , "Description" :: Maybe (Description)
+  , "Parameters" :: Maybe (Parameters)
   , "CreationTime" :: (CreationTime)
-  , "DeletionTime" :: NullOrUndefined (DeletionTime)
-  , "LastUpdatedTime" :: NullOrUndefined (LastUpdatedTime)
-  , "RollbackConfiguration" :: NullOrUndefined (RollbackConfiguration)
+  , "DeletionTime" :: Maybe (DeletionTime)
+  , "LastUpdatedTime" :: Maybe (LastUpdatedTime)
+  , "RollbackConfiguration" :: Maybe (RollbackConfiguration)
   , "StackStatus" :: (StackStatus)
-  , "StackStatusReason" :: NullOrUndefined (StackStatusReason)
-  , "DisableRollback" :: NullOrUndefined (DisableRollback)
-  , "NotificationARNs" :: NullOrUndefined (NotificationARNs)
-  , "TimeoutInMinutes" :: NullOrUndefined (TimeoutMinutes)
-  , "Capabilities" :: NullOrUndefined (Capabilities)
-  , "Outputs" :: NullOrUndefined (Outputs)
-  , "RoleARN" :: NullOrUndefined (RoleARN)
-  , "Tags" :: NullOrUndefined (Tags)
-  , "EnableTerminationProtection" :: NullOrUndefined (EnableTerminationProtection)
-  , "ParentId" :: NullOrUndefined (StackId)
-  , "RootId" :: NullOrUndefined (StackId)
+  , "StackStatusReason" :: Maybe (StackStatusReason)
+  , "DisableRollback" :: Maybe (DisableRollback)
+  , "NotificationARNs" :: Maybe (NotificationARNs)
+  , "TimeoutInMinutes" :: Maybe (TimeoutMinutes)
+  , "Capabilities" :: Maybe (Capabilities)
+  , "Outputs" :: Maybe (Outputs)
+  , "RoleARN" :: Maybe (RoleARN)
+  , "Tags" :: Maybe (Tags)
+  , "EnableTerminationProtection" :: Maybe (EnableTerminationProtection)
+  , "ParentId" :: Maybe (StackId)
+  , "RootId" :: Maybe (StackId)
   }
 derive instance newtypeStack :: Newtype Stack _
 derive instance repGenericStack :: Generic Stack _
@@ -2702,12 +2701,12 @@ instance encodeStack :: Encode Stack where encode = genericEncode options
 
 -- | Constructs Stack from required parameters
 newStack :: CreationTime -> StackName -> StackStatus -> Stack
-newStack _CreationTime _StackName _StackStatus = Stack { "CreationTime": _CreationTime, "StackName": _StackName, "StackStatus": _StackStatus, "Capabilities": (NullOrUndefined Nothing), "ChangeSetId": (NullOrUndefined Nothing), "DeletionTime": (NullOrUndefined Nothing), "Description": (NullOrUndefined Nothing), "DisableRollback": (NullOrUndefined Nothing), "EnableTerminationProtection": (NullOrUndefined Nothing), "LastUpdatedTime": (NullOrUndefined Nothing), "NotificationARNs": (NullOrUndefined Nothing), "Outputs": (NullOrUndefined Nothing), "Parameters": (NullOrUndefined Nothing), "ParentId": (NullOrUndefined Nothing), "RoleARN": (NullOrUndefined Nothing), "RollbackConfiguration": (NullOrUndefined Nothing), "RootId": (NullOrUndefined Nothing), "StackId": (NullOrUndefined Nothing), "StackStatusReason": (NullOrUndefined Nothing), "Tags": (NullOrUndefined Nothing), "TimeoutInMinutes": (NullOrUndefined Nothing) }
+newStack _CreationTime _StackName _StackStatus = Stack { "CreationTime": _CreationTime, "StackName": _StackName, "StackStatus": _StackStatus, "Capabilities": Nothing, "ChangeSetId": Nothing, "DeletionTime": Nothing, "Description": Nothing, "DisableRollback": Nothing, "EnableTerminationProtection": Nothing, "LastUpdatedTime": Nothing, "NotificationARNs": Nothing, "Outputs": Nothing, "Parameters": Nothing, "ParentId": Nothing, "RoleARN": Nothing, "RollbackConfiguration": Nothing, "RootId": Nothing, "StackId": Nothing, "StackStatusReason": Nothing, "Tags": Nothing, "TimeoutInMinutes": Nothing }
 
 -- | Constructs Stack's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newStack' :: CreationTime -> StackName -> StackStatus -> ( { "StackId" :: NullOrUndefined (StackId) , "StackName" :: (StackName) , "ChangeSetId" :: NullOrUndefined (ChangeSetId) , "Description" :: NullOrUndefined (Description) , "Parameters" :: NullOrUndefined (Parameters) , "CreationTime" :: (CreationTime) , "DeletionTime" :: NullOrUndefined (DeletionTime) , "LastUpdatedTime" :: NullOrUndefined (LastUpdatedTime) , "RollbackConfiguration" :: NullOrUndefined (RollbackConfiguration) , "StackStatus" :: (StackStatus) , "StackStatusReason" :: NullOrUndefined (StackStatusReason) , "DisableRollback" :: NullOrUndefined (DisableRollback) , "NotificationARNs" :: NullOrUndefined (NotificationARNs) , "TimeoutInMinutes" :: NullOrUndefined (TimeoutMinutes) , "Capabilities" :: NullOrUndefined (Capabilities) , "Outputs" :: NullOrUndefined (Outputs) , "RoleARN" :: NullOrUndefined (RoleARN) , "Tags" :: NullOrUndefined (Tags) , "EnableTerminationProtection" :: NullOrUndefined (EnableTerminationProtection) , "ParentId" :: NullOrUndefined (StackId) , "RootId" :: NullOrUndefined (StackId) } -> {"StackId" :: NullOrUndefined (StackId) , "StackName" :: (StackName) , "ChangeSetId" :: NullOrUndefined (ChangeSetId) , "Description" :: NullOrUndefined (Description) , "Parameters" :: NullOrUndefined (Parameters) , "CreationTime" :: (CreationTime) , "DeletionTime" :: NullOrUndefined (DeletionTime) , "LastUpdatedTime" :: NullOrUndefined (LastUpdatedTime) , "RollbackConfiguration" :: NullOrUndefined (RollbackConfiguration) , "StackStatus" :: (StackStatus) , "StackStatusReason" :: NullOrUndefined (StackStatusReason) , "DisableRollback" :: NullOrUndefined (DisableRollback) , "NotificationARNs" :: NullOrUndefined (NotificationARNs) , "TimeoutInMinutes" :: NullOrUndefined (TimeoutMinutes) , "Capabilities" :: NullOrUndefined (Capabilities) , "Outputs" :: NullOrUndefined (Outputs) , "RoleARN" :: NullOrUndefined (RoleARN) , "Tags" :: NullOrUndefined (Tags) , "EnableTerminationProtection" :: NullOrUndefined (EnableTerminationProtection) , "ParentId" :: NullOrUndefined (StackId) , "RootId" :: NullOrUndefined (StackId) } ) -> Stack
-newStack' _CreationTime _StackName _StackStatus customize = (Stack <<< customize) { "CreationTime": _CreationTime, "StackName": _StackName, "StackStatus": _StackStatus, "Capabilities": (NullOrUndefined Nothing), "ChangeSetId": (NullOrUndefined Nothing), "DeletionTime": (NullOrUndefined Nothing), "Description": (NullOrUndefined Nothing), "DisableRollback": (NullOrUndefined Nothing), "EnableTerminationProtection": (NullOrUndefined Nothing), "LastUpdatedTime": (NullOrUndefined Nothing), "NotificationARNs": (NullOrUndefined Nothing), "Outputs": (NullOrUndefined Nothing), "Parameters": (NullOrUndefined Nothing), "ParentId": (NullOrUndefined Nothing), "RoleARN": (NullOrUndefined Nothing), "RollbackConfiguration": (NullOrUndefined Nothing), "RootId": (NullOrUndefined Nothing), "StackId": (NullOrUndefined Nothing), "StackStatusReason": (NullOrUndefined Nothing), "Tags": (NullOrUndefined Nothing), "TimeoutInMinutes": (NullOrUndefined Nothing) }
+newStack' :: CreationTime -> StackName -> StackStatus -> ( { "StackId" :: Maybe (StackId) , "StackName" :: (StackName) , "ChangeSetId" :: Maybe (ChangeSetId) , "Description" :: Maybe (Description) , "Parameters" :: Maybe (Parameters) , "CreationTime" :: (CreationTime) , "DeletionTime" :: Maybe (DeletionTime) , "LastUpdatedTime" :: Maybe (LastUpdatedTime) , "RollbackConfiguration" :: Maybe (RollbackConfiguration) , "StackStatus" :: (StackStatus) , "StackStatusReason" :: Maybe (StackStatusReason) , "DisableRollback" :: Maybe (DisableRollback) , "NotificationARNs" :: Maybe (NotificationARNs) , "TimeoutInMinutes" :: Maybe (TimeoutMinutes) , "Capabilities" :: Maybe (Capabilities) , "Outputs" :: Maybe (Outputs) , "RoleARN" :: Maybe (RoleARN) , "Tags" :: Maybe (Tags) , "EnableTerminationProtection" :: Maybe (EnableTerminationProtection) , "ParentId" :: Maybe (StackId) , "RootId" :: Maybe (StackId) } -> {"StackId" :: Maybe (StackId) , "StackName" :: (StackName) , "ChangeSetId" :: Maybe (ChangeSetId) , "Description" :: Maybe (Description) , "Parameters" :: Maybe (Parameters) , "CreationTime" :: (CreationTime) , "DeletionTime" :: Maybe (DeletionTime) , "LastUpdatedTime" :: Maybe (LastUpdatedTime) , "RollbackConfiguration" :: Maybe (RollbackConfiguration) , "StackStatus" :: (StackStatus) , "StackStatusReason" :: Maybe (StackStatusReason) , "DisableRollback" :: Maybe (DisableRollback) , "NotificationARNs" :: Maybe (NotificationARNs) , "TimeoutInMinutes" :: Maybe (TimeoutMinutes) , "Capabilities" :: Maybe (Capabilities) , "Outputs" :: Maybe (Outputs) , "RoleARN" :: Maybe (RoleARN) , "Tags" :: Maybe (Tags) , "EnableTerminationProtection" :: Maybe (EnableTerminationProtection) , "ParentId" :: Maybe (StackId) , "RootId" :: Maybe (StackId) } ) -> Stack
+newStack' _CreationTime _StackName _StackStatus customize = (Stack <<< customize) { "CreationTime": _CreationTime, "StackName": _StackName, "StackStatus": _StackStatus, "Capabilities": Nothing, "ChangeSetId": Nothing, "DeletionTime": Nothing, "Description": Nothing, "DisableRollback": Nothing, "EnableTerminationProtection": Nothing, "LastUpdatedTime": Nothing, "NotificationARNs": Nothing, "Outputs": Nothing, "Parameters": Nothing, "ParentId": Nothing, "RoleARN": Nothing, "RollbackConfiguration": Nothing, "RootId": Nothing, "StackId": Nothing, "StackStatusReason": Nothing, "Tags": Nothing, "TimeoutInMinutes": Nothing }
 
 
 
@@ -2716,14 +2715,14 @@ newtype StackEvent = StackEvent
   { "StackId" :: (StackId)
   , "EventId" :: (EventId)
   , "StackName" :: (StackName)
-  , "LogicalResourceId" :: NullOrUndefined (LogicalResourceId)
-  , "PhysicalResourceId" :: NullOrUndefined (PhysicalResourceId)
-  , "ResourceType" :: NullOrUndefined (ResourceType)
+  , "LogicalResourceId" :: Maybe (LogicalResourceId)
+  , "PhysicalResourceId" :: Maybe (PhysicalResourceId)
+  , "ResourceType" :: Maybe (ResourceType)
   , "Timestamp" :: (Types.Timestamp)
-  , "ResourceStatus" :: NullOrUndefined (ResourceStatus)
-  , "ResourceStatusReason" :: NullOrUndefined (ResourceStatusReason)
-  , "ResourceProperties" :: NullOrUndefined (ResourceProperties)
-  , "ClientRequestToken" :: NullOrUndefined (ClientRequestToken)
+  , "ResourceStatus" :: Maybe (ResourceStatus)
+  , "ResourceStatusReason" :: Maybe (ResourceStatusReason)
+  , "ResourceProperties" :: Maybe (ResourceProperties)
+  , "ClientRequestToken" :: Maybe (ClientRequestToken)
   }
 derive instance newtypeStackEvent :: Newtype StackEvent _
 derive instance repGenericStackEvent :: Generic StackEvent _
@@ -2733,12 +2732,12 @@ instance encodeStackEvent :: Encode StackEvent where encode = genericEncode opti
 
 -- | Constructs StackEvent from required parameters
 newStackEvent :: EventId -> StackId -> StackName -> Types.Timestamp -> StackEvent
-newStackEvent _EventId _StackId _StackName _Timestamp = StackEvent { "EventId": _EventId, "StackId": _StackId, "StackName": _StackName, "Timestamp": _Timestamp, "ClientRequestToken": (NullOrUndefined Nothing), "LogicalResourceId": (NullOrUndefined Nothing), "PhysicalResourceId": (NullOrUndefined Nothing), "ResourceProperties": (NullOrUndefined Nothing), "ResourceStatus": (NullOrUndefined Nothing), "ResourceStatusReason": (NullOrUndefined Nothing), "ResourceType": (NullOrUndefined Nothing) }
+newStackEvent _EventId _StackId _StackName _Timestamp = StackEvent { "EventId": _EventId, "StackId": _StackId, "StackName": _StackName, "Timestamp": _Timestamp, "ClientRequestToken": Nothing, "LogicalResourceId": Nothing, "PhysicalResourceId": Nothing, "ResourceProperties": Nothing, "ResourceStatus": Nothing, "ResourceStatusReason": Nothing, "ResourceType": Nothing }
 
 -- | Constructs StackEvent's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newStackEvent' :: EventId -> StackId -> StackName -> Types.Timestamp -> ( { "StackId" :: (StackId) , "EventId" :: (EventId) , "StackName" :: (StackName) , "LogicalResourceId" :: NullOrUndefined (LogicalResourceId) , "PhysicalResourceId" :: NullOrUndefined (PhysicalResourceId) , "ResourceType" :: NullOrUndefined (ResourceType) , "Timestamp" :: (Types.Timestamp) , "ResourceStatus" :: NullOrUndefined (ResourceStatus) , "ResourceStatusReason" :: NullOrUndefined (ResourceStatusReason) , "ResourceProperties" :: NullOrUndefined (ResourceProperties) , "ClientRequestToken" :: NullOrUndefined (ClientRequestToken) } -> {"StackId" :: (StackId) , "EventId" :: (EventId) , "StackName" :: (StackName) , "LogicalResourceId" :: NullOrUndefined (LogicalResourceId) , "PhysicalResourceId" :: NullOrUndefined (PhysicalResourceId) , "ResourceType" :: NullOrUndefined (ResourceType) , "Timestamp" :: (Types.Timestamp) , "ResourceStatus" :: NullOrUndefined (ResourceStatus) , "ResourceStatusReason" :: NullOrUndefined (ResourceStatusReason) , "ResourceProperties" :: NullOrUndefined (ResourceProperties) , "ClientRequestToken" :: NullOrUndefined (ClientRequestToken) } ) -> StackEvent
-newStackEvent' _EventId _StackId _StackName _Timestamp customize = (StackEvent <<< customize) { "EventId": _EventId, "StackId": _StackId, "StackName": _StackName, "Timestamp": _Timestamp, "ClientRequestToken": (NullOrUndefined Nothing), "LogicalResourceId": (NullOrUndefined Nothing), "PhysicalResourceId": (NullOrUndefined Nothing), "ResourceProperties": (NullOrUndefined Nothing), "ResourceStatus": (NullOrUndefined Nothing), "ResourceStatusReason": (NullOrUndefined Nothing), "ResourceType": (NullOrUndefined Nothing) }
+newStackEvent' :: EventId -> StackId -> StackName -> Types.Timestamp -> ( { "StackId" :: (StackId) , "EventId" :: (EventId) , "StackName" :: (StackName) , "LogicalResourceId" :: Maybe (LogicalResourceId) , "PhysicalResourceId" :: Maybe (PhysicalResourceId) , "ResourceType" :: Maybe (ResourceType) , "Timestamp" :: (Types.Timestamp) , "ResourceStatus" :: Maybe (ResourceStatus) , "ResourceStatusReason" :: Maybe (ResourceStatusReason) , "ResourceProperties" :: Maybe (ResourceProperties) , "ClientRequestToken" :: Maybe (ClientRequestToken) } -> {"StackId" :: (StackId) , "EventId" :: (EventId) , "StackName" :: (StackName) , "LogicalResourceId" :: Maybe (LogicalResourceId) , "PhysicalResourceId" :: Maybe (PhysicalResourceId) , "ResourceType" :: Maybe (ResourceType) , "Timestamp" :: (Types.Timestamp) , "ResourceStatus" :: Maybe (ResourceStatus) , "ResourceStatusReason" :: Maybe (ResourceStatusReason) , "ResourceProperties" :: Maybe (ResourceProperties) , "ClientRequestToken" :: Maybe (ClientRequestToken) } ) -> StackEvent
+newStackEvent' _EventId _StackId _StackName _Timestamp customize = (StackEvent <<< customize) { "EventId": _EventId, "StackId": _StackId, "StackName": _StackName, "Timestamp": _Timestamp, "ClientRequestToken": Nothing, "LogicalResourceId": Nothing, "PhysicalResourceId": Nothing, "ResourceProperties": Nothing, "ResourceStatus": Nothing, "ResourceStatusReason": Nothing, "ResourceType": Nothing }
 
 
 
@@ -2762,13 +2761,13 @@ instance encodeStackId :: Encode StackId where encode = genericEncode options
 
 -- | <p>An AWS CloudFormation stack, in a specific account and region, that's part of a stack set operation. A stack instance is a reference to an attempted or actual stack in a given account within a given region. A stack instance can exist without a stack—for example, if the stack couldn't be created for some reason. A stack instance is associated with only one stack set. Each stack instance contains the ID of its associated stack set, as well as the ID of the actual stack and the stack status.</p>
 newtype StackInstance = StackInstance 
-  { "StackSetId" :: NullOrUndefined (StackSetId)
-  , "Region" :: NullOrUndefined (Region)
-  , "Account" :: NullOrUndefined (Account)
-  , "StackId" :: NullOrUndefined (StackId)
-  , "ParameterOverrides" :: NullOrUndefined (Parameters)
-  , "Status" :: NullOrUndefined (StackInstanceStatus)
-  , "StatusReason" :: NullOrUndefined (Reason)
+  { "StackSetId" :: Maybe (StackSetId)
+  , "Region" :: Maybe (Region)
+  , "Account" :: Maybe (Account)
+  , "StackId" :: Maybe (StackId)
+  , "ParameterOverrides" :: Maybe (Parameters)
+  , "Status" :: Maybe (StackInstanceStatus)
+  , "StatusReason" :: Maybe (Reason)
   }
 derive instance newtypeStackInstance :: Newtype StackInstance _
 derive instance repGenericStackInstance :: Generic StackInstance _
@@ -2778,12 +2777,12 @@ instance encodeStackInstance :: Encode StackInstance where encode = genericEncod
 
 -- | Constructs StackInstance from required parameters
 newStackInstance :: StackInstance
-newStackInstance  = StackInstance { "Account": (NullOrUndefined Nothing), "ParameterOverrides": (NullOrUndefined Nothing), "Region": (NullOrUndefined Nothing), "StackId": (NullOrUndefined Nothing), "StackSetId": (NullOrUndefined Nothing), "Status": (NullOrUndefined Nothing), "StatusReason": (NullOrUndefined Nothing) }
+newStackInstance  = StackInstance { "Account": Nothing, "ParameterOverrides": Nothing, "Region": Nothing, "StackId": Nothing, "StackSetId": Nothing, "Status": Nothing, "StatusReason": Nothing }
 
 -- | Constructs StackInstance's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newStackInstance' :: ( { "StackSetId" :: NullOrUndefined (StackSetId) , "Region" :: NullOrUndefined (Region) , "Account" :: NullOrUndefined (Account) , "StackId" :: NullOrUndefined (StackId) , "ParameterOverrides" :: NullOrUndefined (Parameters) , "Status" :: NullOrUndefined (StackInstanceStatus) , "StatusReason" :: NullOrUndefined (Reason) } -> {"StackSetId" :: NullOrUndefined (StackSetId) , "Region" :: NullOrUndefined (Region) , "Account" :: NullOrUndefined (Account) , "StackId" :: NullOrUndefined (StackId) , "ParameterOverrides" :: NullOrUndefined (Parameters) , "Status" :: NullOrUndefined (StackInstanceStatus) , "StatusReason" :: NullOrUndefined (Reason) } ) -> StackInstance
-newStackInstance'  customize = (StackInstance <<< customize) { "Account": (NullOrUndefined Nothing), "ParameterOverrides": (NullOrUndefined Nothing), "Region": (NullOrUndefined Nothing), "StackId": (NullOrUndefined Nothing), "StackSetId": (NullOrUndefined Nothing), "Status": (NullOrUndefined Nothing), "StatusReason": (NullOrUndefined Nothing) }
+newStackInstance' :: ( { "StackSetId" :: Maybe (StackSetId) , "Region" :: Maybe (Region) , "Account" :: Maybe (Account) , "StackId" :: Maybe (StackId) , "ParameterOverrides" :: Maybe (Parameters) , "Status" :: Maybe (StackInstanceStatus) , "StatusReason" :: Maybe (Reason) } -> {"StackSetId" :: Maybe (StackSetId) , "Region" :: Maybe (Region) , "Account" :: Maybe (Account) , "StackId" :: Maybe (StackId) , "ParameterOverrides" :: Maybe (Parameters) , "Status" :: Maybe (StackInstanceStatus) , "StatusReason" :: Maybe (Reason) } ) -> StackInstance
+newStackInstance'  customize = (StackInstance <<< customize) { "Account": Nothing, "ParameterOverrides": Nothing, "Region": Nothing, "StackId": Nothing, "StackSetId": Nothing, "Status": Nothing, "StatusReason": Nothing }
 
 
 
@@ -2817,12 +2816,12 @@ instance encodeStackInstanceSummaries :: Encode StackInstanceSummaries where enc
 
 -- | <p>The structure that contains summary information about a stack instance.</p>
 newtype StackInstanceSummary = StackInstanceSummary 
-  { "StackSetId" :: NullOrUndefined (StackSetId)
-  , "Region" :: NullOrUndefined (Region)
-  , "Account" :: NullOrUndefined (Account)
-  , "StackId" :: NullOrUndefined (StackId)
-  , "Status" :: NullOrUndefined (StackInstanceStatus)
-  , "StatusReason" :: NullOrUndefined (Reason)
+  { "StackSetId" :: Maybe (StackSetId)
+  , "Region" :: Maybe (Region)
+  , "Account" :: Maybe (Account)
+  , "StackId" :: Maybe (StackId)
+  , "Status" :: Maybe (StackInstanceStatus)
+  , "StatusReason" :: Maybe (Reason)
   }
 derive instance newtypeStackInstanceSummary :: Newtype StackInstanceSummary _
 derive instance repGenericStackInstanceSummary :: Generic StackInstanceSummary _
@@ -2832,12 +2831,12 @@ instance encodeStackInstanceSummary :: Encode StackInstanceSummary where encode 
 
 -- | Constructs StackInstanceSummary from required parameters
 newStackInstanceSummary :: StackInstanceSummary
-newStackInstanceSummary  = StackInstanceSummary { "Account": (NullOrUndefined Nothing), "Region": (NullOrUndefined Nothing), "StackId": (NullOrUndefined Nothing), "StackSetId": (NullOrUndefined Nothing), "Status": (NullOrUndefined Nothing), "StatusReason": (NullOrUndefined Nothing) }
+newStackInstanceSummary  = StackInstanceSummary { "Account": Nothing, "Region": Nothing, "StackId": Nothing, "StackSetId": Nothing, "Status": Nothing, "StatusReason": Nothing }
 
 -- | Constructs StackInstanceSummary's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newStackInstanceSummary' :: ( { "StackSetId" :: NullOrUndefined (StackSetId) , "Region" :: NullOrUndefined (Region) , "Account" :: NullOrUndefined (Account) , "StackId" :: NullOrUndefined (StackId) , "Status" :: NullOrUndefined (StackInstanceStatus) , "StatusReason" :: NullOrUndefined (Reason) } -> {"StackSetId" :: NullOrUndefined (StackSetId) , "Region" :: NullOrUndefined (Region) , "Account" :: NullOrUndefined (Account) , "StackId" :: NullOrUndefined (StackId) , "Status" :: NullOrUndefined (StackInstanceStatus) , "StatusReason" :: NullOrUndefined (Reason) } ) -> StackInstanceSummary
-newStackInstanceSummary'  customize = (StackInstanceSummary <<< customize) { "Account": (NullOrUndefined Nothing), "Region": (NullOrUndefined Nothing), "StackId": (NullOrUndefined Nothing), "StackSetId": (NullOrUndefined Nothing), "Status": (NullOrUndefined Nothing), "StatusReason": (NullOrUndefined Nothing) }
+newStackInstanceSummary' :: ( { "StackSetId" :: Maybe (StackSetId) , "Region" :: Maybe (Region) , "Account" :: Maybe (Account) , "StackId" :: Maybe (StackId) , "Status" :: Maybe (StackInstanceStatus) , "StatusReason" :: Maybe (Reason) } -> {"StackSetId" :: Maybe (StackSetId) , "Region" :: Maybe (Region) , "Account" :: Maybe (Account) , "StackId" :: Maybe (StackId) , "Status" :: Maybe (StackInstanceStatus) , "StatusReason" :: Maybe (Reason) } ) -> StackInstanceSummary
+newStackInstanceSummary'  customize = (StackInstanceSummary <<< customize) { "Account": Nothing, "Region": Nothing, "StackId": Nothing, "StackSetId": Nothing, "Status": Nothing, "StatusReason": Nothing }
 
 
 
@@ -2897,15 +2896,15 @@ instance encodeStackPolicyURL :: Encode StackPolicyURL where encode = genericEnc
 
 -- | <p>The StackResource data type.</p>
 newtype StackResource = StackResource 
-  { "StackName" :: NullOrUndefined (StackName)
-  , "StackId" :: NullOrUndefined (StackId)
+  { "StackName" :: Maybe (StackName)
+  , "StackId" :: Maybe (StackId)
   , "LogicalResourceId" :: (LogicalResourceId)
-  , "PhysicalResourceId" :: NullOrUndefined (PhysicalResourceId)
+  , "PhysicalResourceId" :: Maybe (PhysicalResourceId)
   , "ResourceType" :: (ResourceType)
   , "Timestamp" :: (Types.Timestamp)
   , "ResourceStatus" :: (ResourceStatus)
-  , "ResourceStatusReason" :: NullOrUndefined (ResourceStatusReason)
-  , "Description" :: NullOrUndefined (Description)
+  , "ResourceStatusReason" :: Maybe (ResourceStatusReason)
+  , "Description" :: Maybe (Description)
   }
 derive instance newtypeStackResource :: Newtype StackResource _
 derive instance repGenericStackResource :: Generic StackResource _
@@ -2915,27 +2914,27 @@ instance encodeStackResource :: Encode StackResource where encode = genericEncod
 
 -- | Constructs StackResource from required parameters
 newStackResource :: LogicalResourceId -> ResourceStatus -> ResourceType -> Types.Timestamp -> StackResource
-newStackResource _LogicalResourceId _ResourceStatus _ResourceType _Timestamp = StackResource { "LogicalResourceId": _LogicalResourceId, "ResourceStatus": _ResourceStatus, "ResourceType": _ResourceType, "Timestamp": _Timestamp, "Description": (NullOrUndefined Nothing), "PhysicalResourceId": (NullOrUndefined Nothing), "ResourceStatusReason": (NullOrUndefined Nothing), "StackId": (NullOrUndefined Nothing), "StackName": (NullOrUndefined Nothing) }
+newStackResource _LogicalResourceId _ResourceStatus _ResourceType _Timestamp = StackResource { "LogicalResourceId": _LogicalResourceId, "ResourceStatus": _ResourceStatus, "ResourceType": _ResourceType, "Timestamp": _Timestamp, "Description": Nothing, "PhysicalResourceId": Nothing, "ResourceStatusReason": Nothing, "StackId": Nothing, "StackName": Nothing }
 
 -- | Constructs StackResource's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newStackResource' :: LogicalResourceId -> ResourceStatus -> ResourceType -> Types.Timestamp -> ( { "StackName" :: NullOrUndefined (StackName) , "StackId" :: NullOrUndefined (StackId) , "LogicalResourceId" :: (LogicalResourceId) , "PhysicalResourceId" :: NullOrUndefined (PhysicalResourceId) , "ResourceType" :: (ResourceType) , "Timestamp" :: (Types.Timestamp) , "ResourceStatus" :: (ResourceStatus) , "ResourceStatusReason" :: NullOrUndefined (ResourceStatusReason) , "Description" :: NullOrUndefined (Description) } -> {"StackName" :: NullOrUndefined (StackName) , "StackId" :: NullOrUndefined (StackId) , "LogicalResourceId" :: (LogicalResourceId) , "PhysicalResourceId" :: NullOrUndefined (PhysicalResourceId) , "ResourceType" :: (ResourceType) , "Timestamp" :: (Types.Timestamp) , "ResourceStatus" :: (ResourceStatus) , "ResourceStatusReason" :: NullOrUndefined (ResourceStatusReason) , "Description" :: NullOrUndefined (Description) } ) -> StackResource
-newStackResource' _LogicalResourceId _ResourceStatus _ResourceType _Timestamp customize = (StackResource <<< customize) { "LogicalResourceId": _LogicalResourceId, "ResourceStatus": _ResourceStatus, "ResourceType": _ResourceType, "Timestamp": _Timestamp, "Description": (NullOrUndefined Nothing), "PhysicalResourceId": (NullOrUndefined Nothing), "ResourceStatusReason": (NullOrUndefined Nothing), "StackId": (NullOrUndefined Nothing), "StackName": (NullOrUndefined Nothing) }
+newStackResource' :: LogicalResourceId -> ResourceStatus -> ResourceType -> Types.Timestamp -> ( { "StackName" :: Maybe (StackName) , "StackId" :: Maybe (StackId) , "LogicalResourceId" :: (LogicalResourceId) , "PhysicalResourceId" :: Maybe (PhysicalResourceId) , "ResourceType" :: (ResourceType) , "Timestamp" :: (Types.Timestamp) , "ResourceStatus" :: (ResourceStatus) , "ResourceStatusReason" :: Maybe (ResourceStatusReason) , "Description" :: Maybe (Description) } -> {"StackName" :: Maybe (StackName) , "StackId" :: Maybe (StackId) , "LogicalResourceId" :: (LogicalResourceId) , "PhysicalResourceId" :: Maybe (PhysicalResourceId) , "ResourceType" :: (ResourceType) , "Timestamp" :: (Types.Timestamp) , "ResourceStatus" :: (ResourceStatus) , "ResourceStatusReason" :: Maybe (ResourceStatusReason) , "Description" :: Maybe (Description) } ) -> StackResource
+newStackResource' _LogicalResourceId _ResourceStatus _ResourceType _Timestamp customize = (StackResource <<< customize) { "LogicalResourceId": _LogicalResourceId, "ResourceStatus": _ResourceStatus, "ResourceType": _ResourceType, "Timestamp": _Timestamp, "Description": Nothing, "PhysicalResourceId": Nothing, "ResourceStatusReason": Nothing, "StackId": Nothing, "StackName": Nothing }
 
 
 
 -- | <p>Contains detailed information about the specified stack resource.</p>
 newtype StackResourceDetail = StackResourceDetail 
-  { "StackName" :: NullOrUndefined (StackName)
-  , "StackId" :: NullOrUndefined (StackId)
+  { "StackName" :: Maybe (StackName)
+  , "StackId" :: Maybe (StackId)
   , "LogicalResourceId" :: (LogicalResourceId)
-  , "PhysicalResourceId" :: NullOrUndefined (PhysicalResourceId)
+  , "PhysicalResourceId" :: Maybe (PhysicalResourceId)
   , "ResourceType" :: (ResourceType)
   , "LastUpdatedTimestamp" :: (Types.Timestamp)
   , "ResourceStatus" :: (ResourceStatus)
-  , "ResourceStatusReason" :: NullOrUndefined (ResourceStatusReason)
-  , "Description" :: NullOrUndefined (Description)
-  , "Metadata" :: NullOrUndefined (Metadata)
+  , "ResourceStatusReason" :: Maybe (ResourceStatusReason)
+  , "Description" :: Maybe (Description)
+  , "Metadata" :: Maybe (Metadata)
   }
 derive instance newtypeStackResourceDetail :: Newtype StackResourceDetail _
 derive instance repGenericStackResourceDetail :: Generic StackResourceDetail _
@@ -2945,12 +2944,12 @@ instance encodeStackResourceDetail :: Encode StackResourceDetail where encode = 
 
 -- | Constructs StackResourceDetail from required parameters
 newStackResourceDetail :: Types.Timestamp -> LogicalResourceId -> ResourceStatus -> ResourceType -> StackResourceDetail
-newStackResourceDetail _LastUpdatedTimestamp _LogicalResourceId _ResourceStatus _ResourceType = StackResourceDetail { "LastUpdatedTimestamp": _LastUpdatedTimestamp, "LogicalResourceId": _LogicalResourceId, "ResourceStatus": _ResourceStatus, "ResourceType": _ResourceType, "Description": (NullOrUndefined Nothing), "Metadata": (NullOrUndefined Nothing), "PhysicalResourceId": (NullOrUndefined Nothing), "ResourceStatusReason": (NullOrUndefined Nothing), "StackId": (NullOrUndefined Nothing), "StackName": (NullOrUndefined Nothing) }
+newStackResourceDetail _LastUpdatedTimestamp _LogicalResourceId _ResourceStatus _ResourceType = StackResourceDetail { "LastUpdatedTimestamp": _LastUpdatedTimestamp, "LogicalResourceId": _LogicalResourceId, "ResourceStatus": _ResourceStatus, "ResourceType": _ResourceType, "Description": Nothing, "Metadata": Nothing, "PhysicalResourceId": Nothing, "ResourceStatusReason": Nothing, "StackId": Nothing, "StackName": Nothing }
 
 -- | Constructs StackResourceDetail's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newStackResourceDetail' :: Types.Timestamp -> LogicalResourceId -> ResourceStatus -> ResourceType -> ( { "StackName" :: NullOrUndefined (StackName) , "StackId" :: NullOrUndefined (StackId) , "LogicalResourceId" :: (LogicalResourceId) , "PhysicalResourceId" :: NullOrUndefined (PhysicalResourceId) , "ResourceType" :: (ResourceType) , "LastUpdatedTimestamp" :: (Types.Timestamp) , "ResourceStatus" :: (ResourceStatus) , "ResourceStatusReason" :: NullOrUndefined (ResourceStatusReason) , "Description" :: NullOrUndefined (Description) , "Metadata" :: NullOrUndefined (Metadata) } -> {"StackName" :: NullOrUndefined (StackName) , "StackId" :: NullOrUndefined (StackId) , "LogicalResourceId" :: (LogicalResourceId) , "PhysicalResourceId" :: NullOrUndefined (PhysicalResourceId) , "ResourceType" :: (ResourceType) , "LastUpdatedTimestamp" :: (Types.Timestamp) , "ResourceStatus" :: (ResourceStatus) , "ResourceStatusReason" :: NullOrUndefined (ResourceStatusReason) , "Description" :: NullOrUndefined (Description) , "Metadata" :: NullOrUndefined (Metadata) } ) -> StackResourceDetail
-newStackResourceDetail' _LastUpdatedTimestamp _LogicalResourceId _ResourceStatus _ResourceType customize = (StackResourceDetail <<< customize) { "LastUpdatedTimestamp": _LastUpdatedTimestamp, "LogicalResourceId": _LogicalResourceId, "ResourceStatus": _ResourceStatus, "ResourceType": _ResourceType, "Description": (NullOrUndefined Nothing), "Metadata": (NullOrUndefined Nothing), "PhysicalResourceId": (NullOrUndefined Nothing), "ResourceStatusReason": (NullOrUndefined Nothing), "StackId": (NullOrUndefined Nothing), "StackName": (NullOrUndefined Nothing) }
+newStackResourceDetail' :: Types.Timestamp -> LogicalResourceId -> ResourceStatus -> ResourceType -> ( { "StackName" :: Maybe (StackName) , "StackId" :: Maybe (StackId) , "LogicalResourceId" :: (LogicalResourceId) , "PhysicalResourceId" :: Maybe (PhysicalResourceId) , "ResourceType" :: (ResourceType) , "LastUpdatedTimestamp" :: (Types.Timestamp) , "ResourceStatus" :: (ResourceStatus) , "ResourceStatusReason" :: Maybe (ResourceStatusReason) , "Description" :: Maybe (Description) , "Metadata" :: Maybe (Metadata) } -> {"StackName" :: Maybe (StackName) , "StackId" :: Maybe (StackId) , "LogicalResourceId" :: (LogicalResourceId) , "PhysicalResourceId" :: Maybe (PhysicalResourceId) , "ResourceType" :: (ResourceType) , "LastUpdatedTimestamp" :: (Types.Timestamp) , "ResourceStatus" :: (ResourceStatus) , "ResourceStatusReason" :: Maybe (ResourceStatusReason) , "Description" :: Maybe (Description) , "Metadata" :: Maybe (Metadata) } ) -> StackResourceDetail
+newStackResourceDetail' _LastUpdatedTimestamp _LogicalResourceId _ResourceStatus _ResourceType customize = (StackResourceDetail <<< customize) { "LastUpdatedTimestamp": _LastUpdatedTimestamp, "LogicalResourceId": _LogicalResourceId, "ResourceStatus": _ResourceStatus, "ResourceType": _ResourceType, "Description": Nothing, "Metadata": Nothing, "PhysicalResourceId": Nothing, "ResourceStatusReason": Nothing, "StackId": Nothing, "StackName": Nothing }
 
 
 
@@ -2966,11 +2965,11 @@ instance encodeStackResourceSummaries :: Encode StackResourceSummaries where enc
 -- | <p>Contains high-level information about the specified stack resource.</p>
 newtype StackResourceSummary = StackResourceSummary 
   { "LogicalResourceId" :: (LogicalResourceId)
-  , "PhysicalResourceId" :: NullOrUndefined (PhysicalResourceId)
+  , "PhysicalResourceId" :: Maybe (PhysicalResourceId)
   , "ResourceType" :: (ResourceType)
   , "LastUpdatedTimestamp" :: (Types.Timestamp)
   , "ResourceStatus" :: (ResourceStatus)
-  , "ResourceStatusReason" :: NullOrUndefined (ResourceStatusReason)
+  , "ResourceStatusReason" :: Maybe (ResourceStatusReason)
   }
 derive instance newtypeStackResourceSummary :: Newtype StackResourceSummary _
 derive instance repGenericStackResourceSummary :: Generic StackResourceSummary _
@@ -2980,12 +2979,12 @@ instance encodeStackResourceSummary :: Encode StackResourceSummary where encode 
 
 -- | Constructs StackResourceSummary from required parameters
 newStackResourceSummary :: Types.Timestamp -> LogicalResourceId -> ResourceStatus -> ResourceType -> StackResourceSummary
-newStackResourceSummary _LastUpdatedTimestamp _LogicalResourceId _ResourceStatus _ResourceType = StackResourceSummary { "LastUpdatedTimestamp": _LastUpdatedTimestamp, "LogicalResourceId": _LogicalResourceId, "ResourceStatus": _ResourceStatus, "ResourceType": _ResourceType, "PhysicalResourceId": (NullOrUndefined Nothing), "ResourceStatusReason": (NullOrUndefined Nothing) }
+newStackResourceSummary _LastUpdatedTimestamp _LogicalResourceId _ResourceStatus _ResourceType = StackResourceSummary { "LastUpdatedTimestamp": _LastUpdatedTimestamp, "LogicalResourceId": _LogicalResourceId, "ResourceStatus": _ResourceStatus, "ResourceType": _ResourceType, "PhysicalResourceId": Nothing, "ResourceStatusReason": Nothing }
 
 -- | Constructs StackResourceSummary's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newStackResourceSummary' :: Types.Timestamp -> LogicalResourceId -> ResourceStatus -> ResourceType -> ( { "LogicalResourceId" :: (LogicalResourceId) , "PhysicalResourceId" :: NullOrUndefined (PhysicalResourceId) , "ResourceType" :: (ResourceType) , "LastUpdatedTimestamp" :: (Types.Timestamp) , "ResourceStatus" :: (ResourceStatus) , "ResourceStatusReason" :: NullOrUndefined (ResourceStatusReason) } -> {"LogicalResourceId" :: (LogicalResourceId) , "PhysicalResourceId" :: NullOrUndefined (PhysicalResourceId) , "ResourceType" :: (ResourceType) , "LastUpdatedTimestamp" :: (Types.Timestamp) , "ResourceStatus" :: (ResourceStatus) , "ResourceStatusReason" :: NullOrUndefined (ResourceStatusReason) } ) -> StackResourceSummary
-newStackResourceSummary' _LastUpdatedTimestamp _LogicalResourceId _ResourceStatus _ResourceType customize = (StackResourceSummary <<< customize) { "LastUpdatedTimestamp": _LastUpdatedTimestamp, "LogicalResourceId": _LogicalResourceId, "ResourceStatus": _ResourceStatus, "ResourceType": _ResourceType, "PhysicalResourceId": (NullOrUndefined Nothing), "ResourceStatusReason": (NullOrUndefined Nothing) }
+newStackResourceSummary' :: Types.Timestamp -> LogicalResourceId -> ResourceStatus -> ResourceType -> ( { "LogicalResourceId" :: (LogicalResourceId) , "PhysicalResourceId" :: Maybe (PhysicalResourceId) , "ResourceType" :: (ResourceType) , "LastUpdatedTimestamp" :: (Types.Timestamp) , "ResourceStatus" :: (ResourceStatus) , "ResourceStatusReason" :: Maybe (ResourceStatusReason) } -> {"LogicalResourceId" :: (LogicalResourceId) , "PhysicalResourceId" :: Maybe (PhysicalResourceId) , "ResourceType" :: (ResourceType) , "LastUpdatedTimestamp" :: (Types.Timestamp) , "ResourceStatus" :: (ResourceStatus) , "ResourceStatusReason" :: Maybe (ResourceStatusReason) } ) -> StackResourceSummary
+newStackResourceSummary' _LastUpdatedTimestamp _LogicalResourceId _ResourceStatus _ResourceType customize = (StackResourceSummary <<< customize) { "LastUpdatedTimestamp": _LastUpdatedTimestamp, "LogicalResourceId": _LogicalResourceId, "ResourceStatus": _ResourceStatus, "ResourceType": _ResourceType, "PhysicalResourceId": Nothing, "ResourceStatusReason": Nothing }
 
 
 
@@ -3000,14 +2999,14 @@ instance encodeStackResources :: Encode StackResources where encode = genericEnc
 
 -- | <p>A structure that contains information about a stack set. A stack set enables you to provision stacks into AWS accounts and across regions by using a single CloudFormation template. In the stack set, you specify the template to use, as well as any parameters and capabilities that the template requires. </p>
 newtype StackSet = StackSet 
-  { "StackSetName" :: NullOrUndefined (StackSetName)
-  , "StackSetId" :: NullOrUndefined (StackSetId)
-  , "Description" :: NullOrUndefined (Description)
-  , "Status" :: NullOrUndefined (StackSetStatus)
-  , "TemplateBody" :: NullOrUndefined (TemplateBody)
-  , "Parameters" :: NullOrUndefined (Parameters)
-  , "Capabilities" :: NullOrUndefined (Capabilities)
-  , "Tags" :: NullOrUndefined (Tags)
+  { "StackSetName" :: Maybe (StackSetName)
+  , "StackSetId" :: Maybe (StackSetId)
+  , "Description" :: Maybe (Description)
+  , "Status" :: Maybe (StackSetStatus)
+  , "TemplateBody" :: Maybe (TemplateBody)
+  , "Parameters" :: Maybe (Parameters)
+  , "Capabilities" :: Maybe (Capabilities)
+  , "Tags" :: Maybe (Tags)
   }
 derive instance newtypeStackSet :: Newtype StackSet _
 derive instance repGenericStackSet :: Generic StackSet _
@@ -3017,12 +3016,12 @@ instance encodeStackSet :: Encode StackSet where encode = genericEncode options
 
 -- | Constructs StackSet from required parameters
 newStackSet :: StackSet
-newStackSet  = StackSet { "Capabilities": (NullOrUndefined Nothing), "Description": (NullOrUndefined Nothing), "Parameters": (NullOrUndefined Nothing), "StackSetId": (NullOrUndefined Nothing), "StackSetName": (NullOrUndefined Nothing), "Status": (NullOrUndefined Nothing), "Tags": (NullOrUndefined Nothing), "TemplateBody": (NullOrUndefined Nothing) }
+newStackSet  = StackSet { "Capabilities": Nothing, "Description": Nothing, "Parameters": Nothing, "StackSetId": Nothing, "StackSetName": Nothing, "Status": Nothing, "Tags": Nothing, "TemplateBody": Nothing }
 
 -- | Constructs StackSet's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newStackSet' :: ( { "StackSetName" :: NullOrUndefined (StackSetName) , "StackSetId" :: NullOrUndefined (StackSetId) , "Description" :: NullOrUndefined (Description) , "Status" :: NullOrUndefined (StackSetStatus) , "TemplateBody" :: NullOrUndefined (TemplateBody) , "Parameters" :: NullOrUndefined (Parameters) , "Capabilities" :: NullOrUndefined (Capabilities) , "Tags" :: NullOrUndefined (Tags) } -> {"StackSetName" :: NullOrUndefined (StackSetName) , "StackSetId" :: NullOrUndefined (StackSetId) , "Description" :: NullOrUndefined (Description) , "Status" :: NullOrUndefined (StackSetStatus) , "TemplateBody" :: NullOrUndefined (TemplateBody) , "Parameters" :: NullOrUndefined (Parameters) , "Capabilities" :: NullOrUndefined (Capabilities) , "Tags" :: NullOrUndefined (Tags) } ) -> StackSet
-newStackSet'  customize = (StackSet <<< customize) { "Capabilities": (NullOrUndefined Nothing), "Description": (NullOrUndefined Nothing), "Parameters": (NullOrUndefined Nothing), "StackSetId": (NullOrUndefined Nothing), "StackSetName": (NullOrUndefined Nothing), "Status": (NullOrUndefined Nothing), "Tags": (NullOrUndefined Nothing), "TemplateBody": (NullOrUndefined Nothing) }
+newStackSet' :: ( { "StackSetName" :: Maybe (StackSetName) , "StackSetId" :: Maybe (StackSetId) , "Description" :: Maybe (Description) , "Status" :: Maybe (StackSetStatus) , "TemplateBody" :: Maybe (TemplateBody) , "Parameters" :: Maybe (Parameters) , "Capabilities" :: Maybe (Capabilities) , "Tags" :: Maybe (Tags) } -> {"StackSetName" :: Maybe (StackSetName) , "StackSetId" :: Maybe (StackSetId) , "Description" :: Maybe (Description) , "Status" :: Maybe (StackSetStatus) , "TemplateBody" :: Maybe (TemplateBody) , "Parameters" :: Maybe (Parameters) , "Capabilities" :: Maybe (Capabilities) , "Tags" :: Maybe (Tags) } ) -> StackSet
+newStackSet'  customize = (StackSet <<< customize) { "Capabilities": Nothing, "Description": Nothing, "Parameters": Nothing, "StackSetId": Nothing, "StackSetName": Nothing, "Status": Nothing, "Tags": Nothing, "TemplateBody": Nothing }
 
 
 
@@ -3075,14 +3074,14 @@ instance encodeStackSetNotFoundException :: Encode StackSetNotFoundException whe
 
 -- | <p>The structure that contains information about a stack set operation. </p>
 newtype StackSetOperation = StackSetOperation 
-  { "OperationId" :: NullOrUndefined (ClientRequestToken)
-  , "StackSetId" :: NullOrUndefined (StackSetId)
-  , "Action" :: NullOrUndefined (StackSetOperationAction)
-  , "Status" :: NullOrUndefined (StackSetOperationStatus)
-  , "OperationPreferences" :: NullOrUndefined (StackSetOperationPreferences)
-  , "RetainStacks" :: NullOrUndefined (RetainStacksNullable)
-  , "CreationTimestamp" :: NullOrUndefined (Types.Timestamp)
-  , "EndTimestamp" :: NullOrUndefined (Types.Timestamp)
+  { "OperationId" :: Maybe (ClientRequestToken)
+  , "StackSetId" :: Maybe (StackSetId)
+  , "Action" :: Maybe (StackSetOperationAction)
+  , "Status" :: Maybe (StackSetOperationStatus)
+  , "OperationPreferences" :: Maybe (StackSetOperationPreferences)
+  , "RetainStacks" :: Maybe (RetainStacksNullable)
+  , "CreationTimestamp" :: Maybe (Types.Timestamp)
+  , "EndTimestamp" :: Maybe (Types.Timestamp)
   }
 derive instance newtypeStackSetOperation :: Newtype StackSetOperation _
 derive instance repGenericStackSetOperation :: Generic StackSetOperation _
@@ -3092,12 +3091,12 @@ instance encodeStackSetOperation :: Encode StackSetOperation where encode = gene
 
 -- | Constructs StackSetOperation from required parameters
 newStackSetOperation :: StackSetOperation
-newStackSetOperation  = StackSetOperation { "Action": (NullOrUndefined Nothing), "CreationTimestamp": (NullOrUndefined Nothing), "EndTimestamp": (NullOrUndefined Nothing), "OperationId": (NullOrUndefined Nothing), "OperationPreferences": (NullOrUndefined Nothing), "RetainStacks": (NullOrUndefined Nothing), "StackSetId": (NullOrUndefined Nothing), "Status": (NullOrUndefined Nothing) }
+newStackSetOperation  = StackSetOperation { "Action": Nothing, "CreationTimestamp": Nothing, "EndTimestamp": Nothing, "OperationId": Nothing, "OperationPreferences": Nothing, "RetainStacks": Nothing, "StackSetId": Nothing, "Status": Nothing }
 
 -- | Constructs StackSetOperation's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newStackSetOperation' :: ( { "OperationId" :: NullOrUndefined (ClientRequestToken) , "StackSetId" :: NullOrUndefined (StackSetId) , "Action" :: NullOrUndefined (StackSetOperationAction) , "Status" :: NullOrUndefined (StackSetOperationStatus) , "OperationPreferences" :: NullOrUndefined (StackSetOperationPreferences) , "RetainStacks" :: NullOrUndefined (RetainStacksNullable) , "CreationTimestamp" :: NullOrUndefined (Types.Timestamp) , "EndTimestamp" :: NullOrUndefined (Types.Timestamp) } -> {"OperationId" :: NullOrUndefined (ClientRequestToken) , "StackSetId" :: NullOrUndefined (StackSetId) , "Action" :: NullOrUndefined (StackSetOperationAction) , "Status" :: NullOrUndefined (StackSetOperationStatus) , "OperationPreferences" :: NullOrUndefined (StackSetOperationPreferences) , "RetainStacks" :: NullOrUndefined (RetainStacksNullable) , "CreationTimestamp" :: NullOrUndefined (Types.Timestamp) , "EndTimestamp" :: NullOrUndefined (Types.Timestamp) } ) -> StackSetOperation
-newStackSetOperation'  customize = (StackSetOperation <<< customize) { "Action": (NullOrUndefined Nothing), "CreationTimestamp": (NullOrUndefined Nothing), "EndTimestamp": (NullOrUndefined Nothing), "OperationId": (NullOrUndefined Nothing), "OperationPreferences": (NullOrUndefined Nothing), "RetainStacks": (NullOrUndefined Nothing), "StackSetId": (NullOrUndefined Nothing), "Status": (NullOrUndefined Nothing) }
+newStackSetOperation' :: ( { "OperationId" :: Maybe (ClientRequestToken) , "StackSetId" :: Maybe (StackSetId) , "Action" :: Maybe (StackSetOperationAction) , "Status" :: Maybe (StackSetOperationStatus) , "OperationPreferences" :: Maybe (StackSetOperationPreferences) , "RetainStacks" :: Maybe (RetainStacksNullable) , "CreationTimestamp" :: Maybe (Types.Timestamp) , "EndTimestamp" :: Maybe (Types.Timestamp) } -> {"OperationId" :: Maybe (ClientRequestToken) , "StackSetId" :: Maybe (StackSetId) , "Action" :: Maybe (StackSetOperationAction) , "Status" :: Maybe (StackSetOperationStatus) , "OperationPreferences" :: Maybe (StackSetOperationPreferences) , "RetainStacks" :: Maybe (RetainStacksNullable) , "CreationTimestamp" :: Maybe (Types.Timestamp) , "EndTimestamp" :: Maybe (Types.Timestamp) } ) -> StackSetOperation
+newStackSetOperation'  customize = (StackSetOperation <<< customize) { "Action": Nothing, "CreationTimestamp": Nothing, "EndTimestamp": Nothing, "OperationId": Nothing, "OperationPreferences": Nothing, "RetainStacks": Nothing, "StackSetId": Nothing, "Status": Nothing }
 
 
 
@@ -3112,11 +3111,11 @@ instance encodeStackSetOperationAction :: Encode StackSetOperationAction where e
 
 -- | <p>The user-specified preferences for how AWS CloudFormation performs a stack set operation. </p> <p>For more information on maximum concurrent accounts and failure tolerance, see <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html#stackset-ops-options">Stack set operation options</a>.</p>
 newtype StackSetOperationPreferences = StackSetOperationPreferences 
-  { "RegionOrder" :: NullOrUndefined (RegionList)
-  , "FailureToleranceCount" :: NullOrUndefined (FailureToleranceCount)
-  , "FailureTolerancePercentage" :: NullOrUndefined (FailureTolerancePercentage)
-  , "MaxConcurrentCount" :: NullOrUndefined (MaxConcurrentCount)
-  , "MaxConcurrentPercentage" :: NullOrUndefined (MaxConcurrentPercentage)
+  { "RegionOrder" :: Maybe (RegionList)
+  , "FailureToleranceCount" :: Maybe (FailureToleranceCount)
+  , "FailureTolerancePercentage" :: Maybe (FailureTolerancePercentage)
+  , "MaxConcurrentCount" :: Maybe (MaxConcurrentCount)
+  , "MaxConcurrentPercentage" :: Maybe (MaxConcurrentPercentage)
   }
 derive instance newtypeStackSetOperationPreferences :: Newtype StackSetOperationPreferences _
 derive instance repGenericStackSetOperationPreferences :: Generic StackSetOperationPreferences _
@@ -3126,12 +3125,12 @@ instance encodeStackSetOperationPreferences :: Encode StackSetOperationPreferenc
 
 -- | Constructs StackSetOperationPreferences from required parameters
 newStackSetOperationPreferences :: StackSetOperationPreferences
-newStackSetOperationPreferences  = StackSetOperationPreferences { "FailureToleranceCount": (NullOrUndefined Nothing), "FailureTolerancePercentage": (NullOrUndefined Nothing), "MaxConcurrentCount": (NullOrUndefined Nothing), "MaxConcurrentPercentage": (NullOrUndefined Nothing), "RegionOrder": (NullOrUndefined Nothing) }
+newStackSetOperationPreferences  = StackSetOperationPreferences { "FailureToleranceCount": Nothing, "FailureTolerancePercentage": Nothing, "MaxConcurrentCount": Nothing, "MaxConcurrentPercentage": Nothing, "RegionOrder": Nothing }
 
 -- | Constructs StackSetOperationPreferences's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newStackSetOperationPreferences' :: ( { "RegionOrder" :: NullOrUndefined (RegionList) , "FailureToleranceCount" :: NullOrUndefined (FailureToleranceCount) , "FailureTolerancePercentage" :: NullOrUndefined (FailureTolerancePercentage) , "MaxConcurrentCount" :: NullOrUndefined (MaxConcurrentCount) , "MaxConcurrentPercentage" :: NullOrUndefined (MaxConcurrentPercentage) } -> {"RegionOrder" :: NullOrUndefined (RegionList) , "FailureToleranceCount" :: NullOrUndefined (FailureToleranceCount) , "FailureTolerancePercentage" :: NullOrUndefined (FailureTolerancePercentage) , "MaxConcurrentCount" :: NullOrUndefined (MaxConcurrentCount) , "MaxConcurrentPercentage" :: NullOrUndefined (MaxConcurrentPercentage) } ) -> StackSetOperationPreferences
-newStackSetOperationPreferences'  customize = (StackSetOperationPreferences <<< customize) { "FailureToleranceCount": (NullOrUndefined Nothing), "FailureTolerancePercentage": (NullOrUndefined Nothing), "MaxConcurrentCount": (NullOrUndefined Nothing), "MaxConcurrentPercentage": (NullOrUndefined Nothing), "RegionOrder": (NullOrUndefined Nothing) }
+newStackSetOperationPreferences' :: ( { "RegionOrder" :: Maybe (RegionList) , "FailureToleranceCount" :: Maybe (FailureToleranceCount) , "FailureTolerancePercentage" :: Maybe (FailureTolerancePercentage) , "MaxConcurrentCount" :: Maybe (MaxConcurrentCount) , "MaxConcurrentPercentage" :: Maybe (MaxConcurrentPercentage) } -> {"RegionOrder" :: Maybe (RegionList) , "FailureToleranceCount" :: Maybe (FailureToleranceCount) , "FailureTolerancePercentage" :: Maybe (FailureTolerancePercentage) , "MaxConcurrentCount" :: Maybe (MaxConcurrentCount) , "MaxConcurrentPercentage" :: Maybe (MaxConcurrentPercentage) } ) -> StackSetOperationPreferences
+newStackSetOperationPreferences'  customize = (StackSetOperationPreferences <<< customize) { "FailureToleranceCount": Nothing, "FailureTolerancePercentage": Nothing, "MaxConcurrentCount": Nothing, "MaxConcurrentPercentage": Nothing, "RegionOrder": Nothing }
 
 
 
@@ -3155,11 +3154,11 @@ instance encodeStackSetOperationResultSummaries :: Encode StackSetOperationResul
 
 -- | <p>The structure that contains information about a specified operation's results for a given account in a given region.</p>
 newtype StackSetOperationResultSummary = StackSetOperationResultSummary 
-  { "Account" :: NullOrUndefined (Account)
-  , "Region" :: NullOrUndefined (Region)
-  , "Status" :: NullOrUndefined (StackSetOperationResultStatus)
-  , "StatusReason" :: NullOrUndefined (Reason)
-  , "AccountGateResult" :: NullOrUndefined (AccountGateResult)
+  { "Account" :: Maybe (Account)
+  , "Region" :: Maybe (Region)
+  , "Status" :: Maybe (StackSetOperationResultStatus)
+  , "StatusReason" :: Maybe (Reason)
+  , "AccountGateResult" :: Maybe (AccountGateResult)
   }
 derive instance newtypeStackSetOperationResultSummary :: Newtype StackSetOperationResultSummary _
 derive instance repGenericStackSetOperationResultSummary :: Generic StackSetOperationResultSummary _
@@ -3169,12 +3168,12 @@ instance encodeStackSetOperationResultSummary :: Encode StackSetOperationResultS
 
 -- | Constructs StackSetOperationResultSummary from required parameters
 newStackSetOperationResultSummary :: StackSetOperationResultSummary
-newStackSetOperationResultSummary  = StackSetOperationResultSummary { "Account": (NullOrUndefined Nothing), "AccountGateResult": (NullOrUndefined Nothing), "Region": (NullOrUndefined Nothing), "Status": (NullOrUndefined Nothing), "StatusReason": (NullOrUndefined Nothing) }
+newStackSetOperationResultSummary  = StackSetOperationResultSummary { "Account": Nothing, "AccountGateResult": Nothing, "Region": Nothing, "Status": Nothing, "StatusReason": Nothing }
 
 -- | Constructs StackSetOperationResultSummary's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newStackSetOperationResultSummary' :: ( { "Account" :: NullOrUndefined (Account) , "Region" :: NullOrUndefined (Region) , "Status" :: NullOrUndefined (StackSetOperationResultStatus) , "StatusReason" :: NullOrUndefined (Reason) , "AccountGateResult" :: NullOrUndefined (AccountGateResult) } -> {"Account" :: NullOrUndefined (Account) , "Region" :: NullOrUndefined (Region) , "Status" :: NullOrUndefined (StackSetOperationResultStatus) , "StatusReason" :: NullOrUndefined (Reason) , "AccountGateResult" :: NullOrUndefined (AccountGateResult) } ) -> StackSetOperationResultSummary
-newStackSetOperationResultSummary'  customize = (StackSetOperationResultSummary <<< customize) { "Account": (NullOrUndefined Nothing), "AccountGateResult": (NullOrUndefined Nothing), "Region": (NullOrUndefined Nothing), "Status": (NullOrUndefined Nothing), "StatusReason": (NullOrUndefined Nothing) }
+newStackSetOperationResultSummary' :: ( { "Account" :: Maybe (Account) , "Region" :: Maybe (Region) , "Status" :: Maybe (StackSetOperationResultStatus) , "StatusReason" :: Maybe (Reason) , "AccountGateResult" :: Maybe (AccountGateResult) } -> {"Account" :: Maybe (Account) , "Region" :: Maybe (Region) , "Status" :: Maybe (StackSetOperationResultStatus) , "StatusReason" :: Maybe (Reason) , "AccountGateResult" :: Maybe (AccountGateResult) } ) -> StackSetOperationResultSummary
+newStackSetOperationResultSummary'  customize = (StackSetOperationResultSummary <<< customize) { "Account": Nothing, "AccountGateResult": Nothing, "Region": Nothing, "Status": Nothing, "StatusReason": Nothing }
 
 
 
@@ -3198,11 +3197,11 @@ instance encodeStackSetOperationSummaries :: Encode StackSetOperationSummaries w
 
 -- | <p>The structures that contain summary information about the specified operation.</p>
 newtype StackSetOperationSummary = StackSetOperationSummary 
-  { "OperationId" :: NullOrUndefined (ClientRequestToken)
-  , "Action" :: NullOrUndefined (StackSetOperationAction)
-  , "Status" :: NullOrUndefined (StackSetOperationStatus)
-  , "CreationTimestamp" :: NullOrUndefined (Types.Timestamp)
-  , "EndTimestamp" :: NullOrUndefined (Types.Timestamp)
+  { "OperationId" :: Maybe (ClientRequestToken)
+  , "Action" :: Maybe (StackSetOperationAction)
+  , "Status" :: Maybe (StackSetOperationStatus)
+  , "CreationTimestamp" :: Maybe (Types.Timestamp)
+  , "EndTimestamp" :: Maybe (Types.Timestamp)
   }
 derive instance newtypeStackSetOperationSummary :: Newtype StackSetOperationSummary _
 derive instance repGenericStackSetOperationSummary :: Generic StackSetOperationSummary _
@@ -3212,12 +3211,12 @@ instance encodeStackSetOperationSummary :: Encode StackSetOperationSummary where
 
 -- | Constructs StackSetOperationSummary from required parameters
 newStackSetOperationSummary :: StackSetOperationSummary
-newStackSetOperationSummary  = StackSetOperationSummary { "Action": (NullOrUndefined Nothing), "CreationTimestamp": (NullOrUndefined Nothing), "EndTimestamp": (NullOrUndefined Nothing), "OperationId": (NullOrUndefined Nothing), "Status": (NullOrUndefined Nothing) }
+newStackSetOperationSummary  = StackSetOperationSummary { "Action": Nothing, "CreationTimestamp": Nothing, "EndTimestamp": Nothing, "OperationId": Nothing, "Status": Nothing }
 
 -- | Constructs StackSetOperationSummary's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newStackSetOperationSummary' :: ( { "OperationId" :: NullOrUndefined (ClientRequestToken) , "Action" :: NullOrUndefined (StackSetOperationAction) , "Status" :: NullOrUndefined (StackSetOperationStatus) , "CreationTimestamp" :: NullOrUndefined (Types.Timestamp) , "EndTimestamp" :: NullOrUndefined (Types.Timestamp) } -> {"OperationId" :: NullOrUndefined (ClientRequestToken) , "Action" :: NullOrUndefined (StackSetOperationAction) , "Status" :: NullOrUndefined (StackSetOperationStatus) , "CreationTimestamp" :: NullOrUndefined (Types.Timestamp) , "EndTimestamp" :: NullOrUndefined (Types.Timestamp) } ) -> StackSetOperationSummary
-newStackSetOperationSummary'  customize = (StackSetOperationSummary <<< customize) { "Action": (NullOrUndefined Nothing), "CreationTimestamp": (NullOrUndefined Nothing), "EndTimestamp": (NullOrUndefined Nothing), "OperationId": (NullOrUndefined Nothing), "Status": (NullOrUndefined Nothing) }
+newStackSetOperationSummary' :: ( { "OperationId" :: Maybe (ClientRequestToken) , "Action" :: Maybe (StackSetOperationAction) , "Status" :: Maybe (StackSetOperationStatus) , "CreationTimestamp" :: Maybe (Types.Timestamp) , "EndTimestamp" :: Maybe (Types.Timestamp) } -> {"OperationId" :: Maybe (ClientRequestToken) , "Action" :: Maybe (StackSetOperationAction) , "Status" :: Maybe (StackSetOperationStatus) , "CreationTimestamp" :: Maybe (Types.Timestamp) , "EndTimestamp" :: Maybe (Types.Timestamp) } ) -> StackSetOperationSummary
+newStackSetOperationSummary'  customize = (StackSetOperationSummary <<< customize) { "Action": Nothing, "CreationTimestamp": Nothing, "EndTimestamp": Nothing, "OperationId": Nothing, "Status": Nothing }
 
 
 
@@ -3241,10 +3240,10 @@ instance encodeStackSetSummaries :: Encode StackSetSummaries where encode = gene
 
 -- | <p>The structures that contain summary information about the specified stack set.</p>
 newtype StackSetSummary = StackSetSummary 
-  { "StackSetName" :: NullOrUndefined (StackSetName)
-  , "StackSetId" :: NullOrUndefined (StackSetId)
-  , "Description" :: NullOrUndefined (Description)
-  , "Status" :: NullOrUndefined (StackSetStatus)
+  { "StackSetName" :: Maybe (StackSetName)
+  , "StackSetId" :: Maybe (StackSetId)
+  , "Description" :: Maybe (Description)
+  , "Status" :: Maybe (StackSetStatus)
   }
 derive instance newtypeStackSetSummary :: Newtype StackSetSummary _
 derive instance repGenericStackSetSummary :: Generic StackSetSummary _
@@ -3254,12 +3253,12 @@ instance encodeStackSetSummary :: Encode StackSetSummary where encode = genericE
 
 -- | Constructs StackSetSummary from required parameters
 newStackSetSummary :: StackSetSummary
-newStackSetSummary  = StackSetSummary { "Description": (NullOrUndefined Nothing), "StackSetId": (NullOrUndefined Nothing), "StackSetName": (NullOrUndefined Nothing), "Status": (NullOrUndefined Nothing) }
+newStackSetSummary  = StackSetSummary { "Description": Nothing, "StackSetId": Nothing, "StackSetName": Nothing, "Status": Nothing }
 
 -- | Constructs StackSetSummary's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newStackSetSummary' :: ( { "StackSetName" :: NullOrUndefined (StackSetName) , "StackSetId" :: NullOrUndefined (StackSetId) , "Description" :: NullOrUndefined (Description) , "Status" :: NullOrUndefined (StackSetStatus) } -> {"StackSetName" :: NullOrUndefined (StackSetName) , "StackSetId" :: NullOrUndefined (StackSetId) , "Description" :: NullOrUndefined (Description) , "Status" :: NullOrUndefined (StackSetStatus) } ) -> StackSetSummary
-newStackSetSummary'  customize = (StackSetSummary <<< customize) { "Description": (NullOrUndefined Nothing), "StackSetId": (NullOrUndefined Nothing), "StackSetName": (NullOrUndefined Nothing), "Status": (NullOrUndefined Nothing) }
+newStackSetSummary' :: ( { "StackSetName" :: Maybe (StackSetName) , "StackSetId" :: Maybe (StackSetId) , "Description" :: Maybe (Description) , "Status" :: Maybe (StackSetStatus) } -> {"StackSetName" :: Maybe (StackSetName) , "StackSetId" :: Maybe (StackSetId) , "Description" :: Maybe (Description) , "Status" :: Maybe (StackSetStatus) } ) -> StackSetSummary
+newStackSetSummary'  customize = (StackSetSummary <<< customize) { "Description": Nothing, "StackSetId": Nothing, "StackSetName": Nothing, "Status": Nothing }
 
 
 
@@ -3301,16 +3300,16 @@ instance encodeStackSummaries :: Encode StackSummaries where encode = genericEnc
 
 -- | <p>The StackSummary Data Type</p>
 newtype StackSummary = StackSummary 
-  { "StackId" :: NullOrUndefined (StackId)
+  { "StackId" :: Maybe (StackId)
   , "StackName" :: (StackName)
-  , "TemplateDescription" :: NullOrUndefined (TemplateDescription)
+  , "TemplateDescription" :: Maybe (TemplateDescription)
   , "CreationTime" :: (CreationTime)
-  , "LastUpdatedTime" :: NullOrUndefined (LastUpdatedTime)
-  , "DeletionTime" :: NullOrUndefined (DeletionTime)
+  , "LastUpdatedTime" :: Maybe (LastUpdatedTime)
+  , "DeletionTime" :: Maybe (DeletionTime)
   , "StackStatus" :: (StackStatus)
-  , "StackStatusReason" :: NullOrUndefined (StackStatusReason)
-  , "ParentId" :: NullOrUndefined (StackId)
-  , "RootId" :: NullOrUndefined (StackId)
+  , "StackStatusReason" :: Maybe (StackStatusReason)
+  , "ParentId" :: Maybe (StackId)
+  , "RootId" :: Maybe (StackId)
   }
 derive instance newtypeStackSummary :: Newtype StackSummary _
 derive instance repGenericStackSummary :: Generic StackSummary _
@@ -3320,12 +3319,12 @@ instance encodeStackSummary :: Encode StackSummary where encode = genericEncode 
 
 -- | Constructs StackSummary from required parameters
 newStackSummary :: CreationTime -> StackName -> StackStatus -> StackSummary
-newStackSummary _CreationTime _StackName _StackStatus = StackSummary { "CreationTime": _CreationTime, "StackName": _StackName, "StackStatus": _StackStatus, "DeletionTime": (NullOrUndefined Nothing), "LastUpdatedTime": (NullOrUndefined Nothing), "ParentId": (NullOrUndefined Nothing), "RootId": (NullOrUndefined Nothing), "StackId": (NullOrUndefined Nothing), "StackStatusReason": (NullOrUndefined Nothing), "TemplateDescription": (NullOrUndefined Nothing) }
+newStackSummary _CreationTime _StackName _StackStatus = StackSummary { "CreationTime": _CreationTime, "StackName": _StackName, "StackStatus": _StackStatus, "DeletionTime": Nothing, "LastUpdatedTime": Nothing, "ParentId": Nothing, "RootId": Nothing, "StackId": Nothing, "StackStatusReason": Nothing, "TemplateDescription": Nothing }
 
 -- | Constructs StackSummary's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newStackSummary' :: CreationTime -> StackName -> StackStatus -> ( { "StackId" :: NullOrUndefined (StackId) , "StackName" :: (StackName) , "TemplateDescription" :: NullOrUndefined (TemplateDescription) , "CreationTime" :: (CreationTime) , "LastUpdatedTime" :: NullOrUndefined (LastUpdatedTime) , "DeletionTime" :: NullOrUndefined (DeletionTime) , "StackStatus" :: (StackStatus) , "StackStatusReason" :: NullOrUndefined (StackStatusReason) , "ParentId" :: NullOrUndefined (StackId) , "RootId" :: NullOrUndefined (StackId) } -> {"StackId" :: NullOrUndefined (StackId) , "StackName" :: (StackName) , "TemplateDescription" :: NullOrUndefined (TemplateDescription) , "CreationTime" :: (CreationTime) , "LastUpdatedTime" :: NullOrUndefined (LastUpdatedTime) , "DeletionTime" :: NullOrUndefined (DeletionTime) , "StackStatus" :: (StackStatus) , "StackStatusReason" :: NullOrUndefined (StackStatusReason) , "ParentId" :: NullOrUndefined (StackId) , "RootId" :: NullOrUndefined (StackId) } ) -> StackSummary
-newStackSummary' _CreationTime _StackName _StackStatus customize = (StackSummary <<< customize) { "CreationTime": _CreationTime, "StackName": _StackName, "StackStatus": _StackStatus, "DeletionTime": (NullOrUndefined Nothing), "LastUpdatedTime": (NullOrUndefined Nothing), "ParentId": (NullOrUndefined Nothing), "RootId": (NullOrUndefined Nothing), "StackId": (NullOrUndefined Nothing), "StackStatusReason": (NullOrUndefined Nothing), "TemplateDescription": (NullOrUndefined Nothing) }
+newStackSummary' :: CreationTime -> StackName -> StackStatus -> ( { "StackId" :: Maybe (StackId) , "StackName" :: (StackName) , "TemplateDescription" :: Maybe (TemplateDescription) , "CreationTime" :: (CreationTime) , "LastUpdatedTime" :: Maybe (LastUpdatedTime) , "DeletionTime" :: Maybe (DeletionTime) , "StackStatus" :: (StackStatus) , "StackStatusReason" :: Maybe (StackStatusReason) , "ParentId" :: Maybe (StackId) , "RootId" :: Maybe (StackId) } -> {"StackId" :: Maybe (StackId) , "StackName" :: (StackName) , "TemplateDescription" :: Maybe (TemplateDescription) , "CreationTime" :: (CreationTime) , "LastUpdatedTime" :: Maybe (LastUpdatedTime) , "DeletionTime" :: Maybe (DeletionTime) , "StackStatus" :: (StackStatus) , "StackStatusReason" :: Maybe (StackStatusReason) , "ParentId" :: Maybe (StackId) , "RootId" :: Maybe (StackId) } ) -> StackSummary
+newStackSummary' _CreationTime _StackName _StackStatus customize = (StackSummary <<< customize) { "CreationTime": _CreationTime, "StackName": _StackName, "StackStatus": _StackStatus, "DeletionTime": Nothing, "LastUpdatedTime": Nothing, "ParentId": Nothing, "RootId": Nothing, "StackId": Nothing, "StackStatusReason": Nothing, "TemplateDescription": Nothing }
 
 
 
@@ -3456,10 +3455,10 @@ instance encodeTemplateDescription :: Encode TemplateDescription where encode = 
 
 -- | <p>The TemplateParameter data type.</p>
 newtype TemplateParameter = TemplateParameter 
-  { "ParameterKey" :: NullOrUndefined (ParameterKey)
-  , "DefaultValue" :: NullOrUndefined (ParameterValue)
-  , "NoEcho" :: NullOrUndefined (NoEcho)
-  , "Description" :: NullOrUndefined (Description)
+  { "ParameterKey" :: Maybe (ParameterKey)
+  , "DefaultValue" :: Maybe (ParameterValue)
+  , "NoEcho" :: Maybe (NoEcho)
+  , "Description" :: Maybe (Description)
   }
 derive instance newtypeTemplateParameter :: Newtype TemplateParameter _
 derive instance repGenericTemplateParameter :: Generic TemplateParameter _
@@ -3469,12 +3468,12 @@ instance encodeTemplateParameter :: Encode TemplateParameter where encode = gene
 
 -- | Constructs TemplateParameter from required parameters
 newTemplateParameter :: TemplateParameter
-newTemplateParameter  = TemplateParameter { "DefaultValue": (NullOrUndefined Nothing), "Description": (NullOrUndefined Nothing), "NoEcho": (NullOrUndefined Nothing), "ParameterKey": (NullOrUndefined Nothing) }
+newTemplateParameter  = TemplateParameter { "DefaultValue": Nothing, "Description": Nothing, "NoEcho": Nothing, "ParameterKey": Nothing }
 
 -- | Constructs TemplateParameter's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newTemplateParameter' :: ( { "ParameterKey" :: NullOrUndefined (ParameterKey) , "DefaultValue" :: NullOrUndefined (ParameterValue) , "NoEcho" :: NullOrUndefined (NoEcho) , "Description" :: NullOrUndefined (Description) } -> {"ParameterKey" :: NullOrUndefined (ParameterKey) , "DefaultValue" :: NullOrUndefined (ParameterValue) , "NoEcho" :: NullOrUndefined (NoEcho) , "Description" :: NullOrUndefined (Description) } ) -> TemplateParameter
-newTemplateParameter'  customize = (TemplateParameter <<< customize) { "DefaultValue": (NullOrUndefined Nothing), "Description": (NullOrUndefined Nothing), "NoEcho": (NullOrUndefined Nothing), "ParameterKey": (NullOrUndefined Nothing) }
+newTemplateParameter' :: ( { "ParameterKey" :: Maybe (ParameterKey) , "DefaultValue" :: Maybe (ParameterValue) , "NoEcho" :: Maybe (NoEcho) , "Description" :: Maybe (Description) } -> {"ParameterKey" :: Maybe (ParameterKey) , "DefaultValue" :: Maybe (ParameterValue) , "NoEcho" :: Maybe (NoEcho) , "Description" :: Maybe (Description) } ) -> TemplateParameter
+newTemplateParameter'  customize = (TemplateParameter <<< customize) { "DefaultValue": Nothing, "Description": Nothing, "NoEcho": Nothing, "ParameterKey": Nothing }
 
 
 
@@ -3554,21 +3553,21 @@ instance encodeType :: Encode Type where encode = genericEncode options
 -- | <p>The input for an <a>UpdateStack</a> action.</p>
 newtype UpdateStackInput = UpdateStackInput 
   { "StackName" :: (StackName)
-  , "TemplateBody" :: NullOrUndefined (TemplateBody)
-  , "TemplateURL" :: NullOrUndefined (TemplateURL)
-  , "UsePreviousTemplate" :: NullOrUndefined (UsePreviousTemplate)
-  , "StackPolicyDuringUpdateBody" :: NullOrUndefined (StackPolicyDuringUpdateBody)
-  , "StackPolicyDuringUpdateURL" :: NullOrUndefined (StackPolicyDuringUpdateURL)
-  , "Parameters" :: NullOrUndefined (Parameters)
-  , "Capabilities" :: NullOrUndefined (Capabilities)
-  , "ResourceTypes" :: NullOrUndefined (ResourceTypes)
-  , "RoleARN" :: NullOrUndefined (RoleARN)
-  , "RollbackConfiguration" :: NullOrUndefined (RollbackConfiguration)
-  , "StackPolicyBody" :: NullOrUndefined (StackPolicyBody)
-  , "StackPolicyURL" :: NullOrUndefined (StackPolicyURL)
-  , "NotificationARNs" :: NullOrUndefined (NotificationARNs)
-  , "Tags" :: NullOrUndefined (Tags)
-  , "ClientRequestToken" :: NullOrUndefined (ClientRequestToken)
+  , "TemplateBody" :: Maybe (TemplateBody)
+  , "TemplateURL" :: Maybe (TemplateURL)
+  , "UsePreviousTemplate" :: Maybe (UsePreviousTemplate)
+  , "StackPolicyDuringUpdateBody" :: Maybe (StackPolicyDuringUpdateBody)
+  , "StackPolicyDuringUpdateURL" :: Maybe (StackPolicyDuringUpdateURL)
+  , "Parameters" :: Maybe (Parameters)
+  , "Capabilities" :: Maybe (Capabilities)
+  , "ResourceTypes" :: Maybe (ResourceTypes)
+  , "RoleARN" :: Maybe (RoleARN)
+  , "RollbackConfiguration" :: Maybe (RollbackConfiguration)
+  , "StackPolicyBody" :: Maybe (StackPolicyBody)
+  , "StackPolicyURL" :: Maybe (StackPolicyURL)
+  , "NotificationARNs" :: Maybe (NotificationARNs)
+  , "Tags" :: Maybe (Tags)
+  , "ClientRequestToken" :: Maybe (ClientRequestToken)
   }
 derive instance newtypeUpdateStackInput :: Newtype UpdateStackInput _
 derive instance repGenericUpdateStackInput :: Generic UpdateStackInput _
@@ -3578,12 +3577,12 @@ instance encodeUpdateStackInput :: Encode UpdateStackInput where encode = generi
 
 -- | Constructs UpdateStackInput from required parameters
 newUpdateStackInput :: StackName -> UpdateStackInput
-newUpdateStackInput _StackName = UpdateStackInput { "StackName": _StackName, "Capabilities": (NullOrUndefined Nothing), "ClientRequestToken": (NullOrUndefined Nothing), "NotificationARNs": (NullOrUndefined Nothing), "Parameters": (NullOrUndefined Nothing), "ResourceTypes": (NullOrUndefined Nothing), "RoleARN": (NullOrUndefined Nothing), "RollbackConfiguration": (NullOrUndefined Nothing), "StackPolicyBody": (NullOrUndefined Nothing), "StackPolicyDuringUpdateBody": (NullOrUndefined Nothing), "StackPolicyDuringUpdateURL": (NullOrUndefined Nothing), "StackPolicyURL": (NullOrUndefined Nothing), "Tags": (NullOrUndefined Nothing), "TemplateBody": (NullOrUndefined Nothing), "TemplateURL": (NullOrUndefined Nothing), "UsePreviousTemplate": (NullOrUndefined Nothing) }
+newUpdateStackInput _StackName = UpdateStackInput { "StackName": _StackName, "Capabilities": Nothing, "ClientRequestToken": Nothing, "NotificationARNs": Nothing, "Parameters": Nothing, "ResourceTypes": Nothing, "RoleARN": Nothing, "RollbackConfiguration": Nothing, "StackPolicyBody": Nothing, "StackPolicyDuringUpdateBody": Nothing, "StackPolicyDuringUpdateURL": Nothing, "StackPolicyURL": Nothing, "Tags": Nothing, "TemplateBody": Nothing, "TemplateURL": Nothing, "UsePreviousTemplate": Nothing }
 
 -- | Constructs UpdateStackInput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newUpdateStackInput' :: StackName -> ( { "StackName" :: (StackName) , "TemplateBody" :: NullOrUndefined (TemplateBody) , "TemplateURL" :: NullOrUndefined (TemplateURL) , "UsePreviousTemplate" :: NullOrUndefined (UsePreviousTemplate) , "StackPolicyDuringUpdateBody" :: NullOrUndefined (StackPolicyDuringUpdateBody) , "StackPolicyDuringUpdateURL" :: NullOrUndefined (StackPolicyDuringUpdateURL) , "Parameters" :: NullOrUndefined (Parameters) , "Capabilities" :: NullOrUndefined (Capabilities) , "ResourceTypes" :: NullOrUndefined (ResourceTypes) , "RoleARN" :: NullOrUndefined (RoleARN) , "RollbackConfiguration" :: NullOrUndefined (RollbackConfiguration) , "StackPolicyBody" :: NullOrUndefined (StackPolicyBody) , "StackPolicyURL" :: NullOrUndefined (StackPolicyURL) , "NotificationARNs" :: NullOrUndefined (NotificationARNs) , "Tags" :: NullOrUndefined (Tags) , "ClientRequestToken" :: NullOrUndefined (ClientRequestToken) } -> {"StackName" :: (StackName) , "TemplateBody" :: NullOrUndefined (TemplateBody) , "TemplateURL" :: NullOrUndefined (TemplateURL) , "UsePreviousTemplate" :: NullOrUndefined (UsePreviousTemplate) , "StackPolicyDuringUpdateBody" :: NullOrUndefined (StackPolicyDuringUpdateBody) , "StackPolicyDuringUpdateURL" :: NullOrUndefined (StackPolicyDuringUpdateURL) , "Parameters" :: NullOrUndefined (Parameters) , "Capabilities" :: NullOrUndefined (Capabilities) , "ResourceTypes" :: NullOrUndefined (ResourceTypes) , "RoleARN" :: NullOrUndefined (RoleARN) , "RollbackConfiguration" :: NullOrUndefined (RollbackConfiguration) , "StackPolicyBody" :: NullOrUndefined (StackPolicyBody) , "StackPolicyURL" :: NullOrUndefined (StackPolicyURL) , "NotificationARNs" :: NullOrUndefined (NotificationARNs) , "Tags" :: NullOrUndefined (Tags) , "ClientRequestToken" :: NullOrUndefined (ClientRequestToken) } ) -> UpdateStackInput
-newUpdateStackInput' _StackName customize = (UpdateStackInput <<< customize) { "StackName": _StackName, "Capabilities": (NullOrUndefined Nothing), "ClientRequestToken": (NullOrUndefined Nothing), "NotificationARNs": (NullOrUndefined Nothing), "Parameters": (NullOrUndefined Nothing), "ResourceTypes": (NullOrUndefined Nothing), "RoleARN": (NullOrUndefined Nothing), "RollbackConfiguration": (NullOrUndefined Nothing), "StackPolicyBody": (NullOrUndefined Nothing), "StackPolicyDuringUpdateBody": (NullOrUndefined Nothing), "StackPolicyDuringUpdateURL": (NullOrUndefined Nothing), "StackPolicyURL": (NullOrUndefined Nothing), "Tags": (NullOrUndefined Nothing), "TemplateBody": (NullOrUndefined Nothing), "TemplateURL": (NullOrUndefined Nothing), "UsePreviousTemplate": (NullOrUndefined Nothing) }
+newUpdateStackInput' :: StackName -> ( { "StackName" :: (StackName) , "TemplateBody" :: Maybe (TemplateBody) , "TemplateURL" :: Maybe (TemplateURL) , "UsePreviousTemplate" :: Maybe (UsePreviousTemplate) , "StackPolicyDuringUpdateBody" :: Maybe (StackPolicyDuringUpdateBody) , "StackPolicyDuringUpdateURL" :: Maybe (StackPolicyDuringUpdateURL) , "Parameters" :: Maybe (Parameters) , "Capabilities" :: Maybe (Capabilities) , "ResourceTypes" :: Maybe (ResourceTypes) , "RoleARN" :: Maybe (RoleARN) , "RollbackConfiguration" :: Maybe (RollbackConfiguration) , "StackPolicyBody" :: Maybe (StackPolicyBody) , "StackPolicyURL" :: Maybe (StackPolicyURL) , "NotificationARNs" :: Maybe (NotificationARNs) , "Tags" :: Maybe (Tags) , "ClientRequestToken" :: Maybe (ClientRequestToken) } -> {"StackName" :: (StackName) , "TemplateBody" :: Maybe (TemplateBody) , "TemplateURL" :: Maybe (TemplateURL) , "UsePreviousTemplate" :: Maybe (UsePreviousTemplate) , "StackPolicyDuringUpdateBody" :: Maybe (StackPolicyDuringUpdateBody) , "StackPolicyDuringUpdateURL" :: Maybe (StackPolicyDuringUpdateURL) , "Parameters" :: Maybe (Parameters) , "Capabilities" :: Maybe (Capabilities) , "ResourceTypes" :: Maybe (ResourceTypes) , "RoleARN" :: Maybe (RoleARN) , "RollbackConfiguration" :: Maybe (RollbackConfiguration) , "StackPolicyBody" :: Maybe (StackPolicyBody) , "StackPolicyURL" :: Maybe (StackPolicyURL) , "NotificationARNs" :: Maybe (NotificationARNs) , "Tags" :: Maybe (Tags) , "ClientRequestToken" :: Maybe (ClientRequestToken) } ) -> UpdateStackInput
+newUpdateStackInput' _StackName customize = (UpdateStackInput <<< customize) { "StackName": _StackName, "Capabilities": Nothing, "ClientRequestToken": Nothing, "NotificationARNs": Nothing, "Parameters": Nothing, "ResourceTypes": Nothing, "RoleARN": Nothing, "RollbackConfiguration": Nothing, "StackPolicyBody": Nothing, "StackPolicyDuringUpdateBody": Nothing, "StackPolicyDuringUpdateURL": Nothing, "StackPolicyURL": Nothing, "Tags": Nothing, "TemplateBody": Nothing, "TemplateURL": Nothing, "UsePreviousTemplate": Nothing }
 
 
 
@@ -3591,9 +3590,9 @@ newtype UpdateStackInstancesInput = UpdateStackInstancesInput
   { "StackSetName" :: (StackSetName)
   , "Accounts" :: (AccountList)
   , "Regions" :: (RegionList)
-  , "ParameterOverrides" :: NullOrUndefined (Parameters)
-  , "OperationPreferences" :: NullOrUndefined (StackSetOperationPreferences)
-  , "OperationId" :: NullOrUndefined (ClientRequestToken)
+  , "ParameterOverrides" :: Maybe (Parameters)
+  , "OperationPreferences" :: Maybe (StackSetOperationPreferences)
+  , "OperationId" :: Maybe (ClientRequestToken)
   }
 derive instance newtypeUpdateStackInstancesInput :: Newtype UpdateStackInstancesInput _
 derive instance repGenericUpdateStackInstancesInput :: Generic UpdateStackInstancesInput _
@@ -3603,17 +3602,17 @@ instance encodeUpdateStackInstancesInput :: Encode UpdateStackInstancesInput whe
 
 -- | Constructs UpdateStackInstancesInput from required parameters
 newUpdateStackInstancesInput :: AccountList -> RegionList -> StackSetName -> UpdateStackInstancesInput
-newUpdateStackInstancesInput _Accounts _Regions _StackSetName = UpdateStackInstancesInput { "Accounts": _Accounts, "Regions": _Regions, "StackSetName": _StackSetName, "OperationId": (NullOrUndefined Nothing), "OperationPreferences": (NullOrUndefined Nothing), "ParameterOverrides": (NullOrUndefined Nothing) }
+newUpdateStackInstancesInput _Accounts _Regions _StackSetName = UpdateStackInstancesInput { "Accounts": _Accounts, "Regions": _Regions, "StackSetName": _StackSetName, "OperationId": Nothing, "OperationPreferences": Nothing, "ParameterOverrides": Nothing }
 
 -- | Constructs UpdateStackInstancesInput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newUpdateStackInstancesInput' :: AccountList -> RegionList -> StackSetName -> ( { "StackSetName" :: (StackSetName) , "Accounts" :: (AccountList) , "Regions" :: (RegionList) , "ParameterOverrides" :: NullOrUndefined (Parameters) , "OperationPreferences" :: NullOrUndefined (StackSetOperationPreferences) , "OperationId" :: NullOrUndefined (ClientRequestToken) } -> {"StackSetName" :: (StackSetName) , "Accounts" :: (AccountList) , "Regions" :: (RegionList) , "ParameterOverrides" :: NullOrUndefined (Parameters) , "OperationPreferences" :: NullOrUndefined (StackSetOperationPreferences) , "OperationId" :: NullOrUndefined (ClientRequestToken) } ) -> UpdateStackInstancesInput
-newUpdateStackInstancesInput' _Accounts _Regions _StackSetName customize = (UpdateStackInstancesInput <<< customize) { "Accounts": _Accounts, "Regions": _Regions, "StackSetName": _StackSetName, "OperationId": (NullOrUndefined Nothing), "OperationPreferences": (NullOrUndefined Nothing), "ParameterOverrides": (NullOrUndefined Nothing) }
+newUpdateStackInstancesInput' :: AccountList -> RegionList -> StackSetName -> ( { "StackSetName" :: (StackSetName) , "Accounts" :: (AccountList) , "Regions" :: (RegionList) , "ParameterOverrides" :: Maybe (Parameters) , "OperationPreferences" :: Maybe (StackSetOperationPreferences) , "OperationId" :: Maybe (ClientRequestToken) } -> {"StackSetName" :: (StackSetName) , "Accounts" :: (AccountList) , "Regions" :: (RegionList) , "ParameterOverrides" :: Maybe (Parameters) , "OperationPreferences" :: Maybe (StackSetOperationPreferences) , "OperationId" :: Maybe (ClientRequestToken) } ) -> UpdateStackInstancesInput
+newUpdateStackInstancesInput' _Accounts _Regions _StackSetName customize = (UpdateStackInstancesInput <<< customize) { "Accounts": _Accounts, "Regions": _Regions, "StackSetName": _StackSetName, "OperationId": Nothing, "OperationPreferences": Nothing, "ParameterOverrides": Nothing }
 
 
 
 newtype UpdateStackInstancesOutput = UpdateStackInstancesOutput 
-  { "OperationId" :: NullOrUndefined (ClientRequestToken)
+  { "OperationId" :: Maybe (ClientRequestToken)
   }
 derive instance newtypeUpdateStackInstancesOutput :: Newtype UpdateStackInstancesOutput _
 derive instance repGenericUpdateStackInstancesOutput :: Generic UpdateStackInstancesOutput _
@@ -3623,18 +3622,18 @@ instance encodeUpdateStackInstancesOutput :: Encode UpdateStackInstancesOutput w
 
 -- | Constructs UpdateStackInstancesOutput from required parameters
 newUpdateStackInstancesOutput :: UpdateStackInstancesOutput
-newUpdateStackInstancesOutput  = UpdateStackInstancesOutput { "OperationId": (NullOrUndefined Nothing) }
+newUpdateStackInstancesOutput  = UpdateStackInstancesOutput { "OperationId": Nothing }
 
 -- | Constructs UpdateStackInstancesOutput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newUpdateStackInstancesOutput' :: ( { "OperationId" :: NullOrUndefined (ClientRequestToken) } -> {"OperationId" :: NullOrUndefined (ClientRequestToken) } ) -> UpdateStackInstancesOutput
-newUpdateStackInstancesOutput'  customize = (UpdateStackInstancesOutput <<< customize) { "OperationId": (NullOrUndefined Nothing) }
+newUpdateStackInstancesOutput' :: ( { "OperationId" :: Maybe (ClientRequestToken) } -> {"OperationId" :: Maybe (ClientRequestToken) } ) -> UpdateStackInstancesOutput
+newUpdateStackInstancesOutput'  customize = (UpdateStackInstancesOutput <<< customize) { "OperationId": Nothing }
 
 
 
 -- | <p>The output for an <a>UpdateStack</a> action.</p>
 newtype UpdateStackOutput = UpdateStackOutput 
-  { "StackId" :: NullOrUndefined (StackId)
+  { "StackId" :: Maybe (StackId)
   }
 derive instance newtypeUpdateStackOutput :: Newtype UpdateStackOutput _
 derive instance repGenericUpdateStackOutput :: Generic UpdateStackOutput _
@@ -3644,26 +3643,26 @@ instance encodeUpdateStackOutput :: Encode UpdateStackOutput where encode = gene
 
 -- | Constructs UpdateStackOutput from required parameters
 newUpdateStackOutput :: UpdateStackOutput
-newUpdateStackOutput  = UpdateStackOutput { "StackId": (NullOrUndefined Nothing) }
+newUpdateStackOutput  = UpdateStackOutput { "StackId": Nothing }
 
 -- | Constructs UpdateStackOutput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newUpdateStackOutput' :: ( { "StackId" :: NullOrUndefined (StackId) } -> {"StackId" :: NullOrUndefined (StackId) } ) -> UpdateStackOutput
-newUpdateStackOutput'  customize = (UpdateStackOutput <<< customize) { "StackId": (NullOrUndefined Nothing) }
+newUpdateStackOutput' :: ( { "StackId" :: Maybe (StackId) } -> {"StackId" :: Maybe (StackId) } ) -> UpdateStackOutput
+newUpdateStackOutput'  customize = (UpdateStackOutput <<< customize) { "StackId": Nothing }
 
 
 
 newtype UpdateStackSetInput = UpdateStackSetInput 
   { "StackSetName" :: (StackSetName)
-  , "Description" :: NullOrUndefined (Description)
-  , "TemplateBody" :: NullOrUndefined (TemplateBody)
-  , "TemplateURL" :: NullOrUndefined (TemplateURL)
-  , "UsePreviousTemplate" :: NullOrUndefined (UsePreviousTemplate)
-  , "Parameters" :: NullOrUndefined (Parameters)
-  , "Capabilities" :: NullOrUndefined (Capabilities)
-  , "Tags" :: NullOrUndefined (Tags)
-  , "OperationPreferences" :: NullOrUndefined (StackSetOperationPreferences)
-  , "OperationId" :: NullOrUndefined (ClientRequestToken)
+  , "Description" :: Maybe (Description)
+  , "TemplateBody" :: Maybe (TemplateBody)
+  , "TemplateURL" :: Maybe (TemplateURL)
+  , "UsePreviousTemplate" :: Maybe (UsePreviousTemplate)
+  , "Parameters" :: Maybe (Parameters)
+  , "Capabilities" :: Maybe (Capabilities)
+  , "Tags" :: Maybe (Tags)
+  , "OperationPreferences" :: Maybe (StackSetOperationPreferences)
+  , "OperationId" :: Maybe (ClientRequestToken)
   }
 derive instance newtypeUpdateStackSetInput :: Newtype UpdateStackSetInput _
 derive instance repGenericUpdateStackSetInput :: Generic UpdateStackSetInput _
@@ -3673,17 +3672,17 @@ instance encodeUpdateStackSetInput :: Encode UpdateStackSetInput where encode = 
 
 -- | Constructs UpdateStackSetInput from required parameters
 newUpdateStackSetInput :: StackSetName -> UpdateStackSetInput
-newUpdateStackSetInput _StackSetName = UpdateStackSetInput { "StackSetName": _StackSetName, "Capabilities": (NullOrUndefined Nothing), "Description": (NullOrUndefined Nothing), "OperationId": (NullOrUndefined Nothing), "OperationPreferences": (NullOrUndefined Nothing), "Parameters": (NullOrUndefined Nothing), "Tags": (NullOrUndefined Nothing), "TemplateBody": (NullOrUndefined Nothing), "TemplateURL": (NullOrUndefined Nothing), "UsePreviousTemplate": (NullOrUndefined Nothing) }
+newUpdateStackSetInput _StackSetName = UpdateStackSetInput { "StackSetName": _StackSetName, "Capabilities": Nothing, "Description": Nothing, "OperationId": Nothing, "OperationPreferences": Nothing, "Parameters": Nothing, "Tags": Nothing, "TemplateBody": Nothing, "TemplateURL": Nothing, "UsePreviousTemplate": Nothing }
 
 -- | Constructs UpdateStackSetInput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newUpdateStackSetInput' :: StackSetName -> ( { "StackSetName" :: (StackSetName) , "Description" :: NullOrUndefined (Description) , "TemplateBody" :: NullOrUndefined (TemplateBody) , "TemplateURL" :: NullOrUndefined (TemplateURL) , "UsePreviousTemplate" :: NullOrUndefined (UsePreviousTemplate) , "Parameters" :: NullOrUndefined (Parameters) , "Capabilities" :: NullOrUndefined (Capabilities) , "Tags" :: NullOrUndefined (Tags) , "OperationPreferences" :: NullOrUndefined (StackSetOperationPreferences) , "OperationId" :: NullOrUndefined (ClientRequestToken) } -> {"StackSetName" :: (StackSetName) , "Description" :: NullOrUndefined (Description) , "TemplateBody" :: NullOrUndefined (TemplateBody) , "TemplateURL" :: NullOrUndefined (TemplateURL) , "UsePreviousTemplate" :: NullOrUndefined (UsePreviousTemplate) , "Parameters" :: NullOrUndefined (Parameters) , "Capabilities" :: NullOrUndefined (Capabilities) , "Tags" :: NullOrUndefined (Tags) , "OperationPreferences" :: NullOrUndefined (StackSetOperationPreferences) , "OperationId" :: NullOrUndefined (ClientRequestToken) } ) -> UpdateStackSetInput
-newUpdateStackSetInput' _StackSetName customize = (UpdateStackSetInput <<< customize) { "StackSetName": _StackSetName, "Capabilities": (NullOrUndefined Nothing), "Description": (NullOrUndefined Nothing), "OperationId": (NullOrUndefined Nothing), "OperationPreferences": (NullOrUndefined Nothing), "Parameters": (NullOrUndefined Nothing), "Tags": (NullOrUndefined Nothing), "TemplateBody": (NullOrUndefined Nothing), "TemplateURL": (NullOrUndefined Nothing), "UsePreviousTemplate": (NullOrUndefined Nothing) }
+newUpdateStackSetInput' :: StackSetName -> ( { "StackSetName" :: (StackSetName) , "Description" :: Maybe (Description) , "TemplateBody" :: Maybe (TemplateBody) , "TemplateURL" :: Maybe (TemplateURL) , "UsePreviousTemplate" :: Maybe (UsePreviousTemplate) , "Parameters" :: Maybe (Parameters) , "Capabilities" :: Maybe (Capabilities) , "Tags" :: Maybe (Tags) , "OperationPreferences" :: Maybe (StackSetOperationPreferences) , "OperationId" :: Maybe (ClientRequestToken) } -> {"StackSetName" :: (StackSetName) , "Description" :: Maybe (Description) , "TemplateBody" :: Maybe (TemplateBody) , "TemplateURL" :: Maybe (TemplateURL) , "UsePreviousTemplate" :: Maybe (UsePreviousTemplate) , "Parameters" :: Maybe (Parameters) , "Capabilities" :: Maybe (Capabilities) , "Tags" :: Maybe (Tags) , "OperationPreferences" :: Maybe (StackSetOperationPreferences) , "OperationId" :: Maybe (ClientRequestToken) } ) -> UpdateStackSetInput
+newUpdateStackSetInput' _StackSetName customize = (UpdateStackSetInput <<< customize) { "StackSetName": _StackSetName, "Capabilities": Nothing, "Description": Nothing, "OperationId": Nothing, "OperationPreferences": Nothing, "Parameters": Nothing, "Tags": Nothing, "TemplateBody": Nothing, "TemplateURL": Nothing, "UsePreviousTemplate": Nothing }
 
 
 
 newtype UpdateStackSetOutput = UpdateStackSetOutput 
-  { "OperationId" :: NullOrUndefined (ClientRequestToken)
+  { "OperationId" :: Maybe (ClientRequestToken)
   }
 derive instance newtypeUpdateStackSetOutput :: Newtype UpdateStackSetOutput _
 derive instance repGenericUpdateStackSetOutput :: Generic UpdateStackSetOutput _
@@ -3693,12 +3692,12 @@ instance encodeUpdateStackSetOutput :: Encode UpdateStackSetOutput where encode 
 
 -- | Constructs UpdateStackSetOutput from required parameters
 newUpdateStackSetOutput :: UpdateStackSetOutput
-newUpdateStackSetOutput  = UpdateStackSetOutput { "OperationId": (NullOrUndefined Nothing) }
+newUpdateStackSetOutput  = UpdateStackSetOutput { "OperationId": Nothing }
 
 -- | Constructs UpdateStackSetOutput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newUpdateStackSetOutput' :: ( { "OperationId" :: NullOrUndefined (ClientRequestToken) } -> {"OperationId" :: NullOrUndefined (ClientRequestToken) } ) -> UpdateStackSetOutput
-newUpdateStackSetOutput'  customize = (UpdateStackSetOutput <<< customize) { "OperationId": (NullOrUndefined Nothing) }
+newUpdateStackSetOutput' :: ( { "OperationId" :: Maybe (ClientRequestToken) } -> {"OperationId" :: Maybe (ClientRequestToken) } ) -> UpdateStackSetOutput
+newUpdateStackSetOutput'  customize = (UpdateStackSetOutput <<< customize) { "OperationId": Nothing }
 
 
 
@@ -3724,7 +3723,7 @@ newUpdateTerminationProtectionInput' _EnableTerminationProtection _StackName cus
 
 
 newtype UpdateTerminationProtectionOutput = UpdateTerminationProtectionOutput 
-  { "StackId" :: NullOrUndefined (StackId)
+  { "StackId" :: Maybe (StackId)
   }
 derive instance newtypeUpdateTerminationProtectionOutput :: Newtype UpdateTerminationProtectionOutput _
 derive instance repGenericUpdateTerminationProtectionOutput :: Generic UpdateTerminationProtectionOutput _
@@ -3734,12 +3733,12 @@ instance encodeUpdateTerminationProtectionOutput :: Encode UpdateTerminationProt
 
 -- | Constructs UpdateTerminationProtectionOutput from required parameters
 newUpdateTerminationProtectionOutput :: UpdateTerminationProtectionOutput
-newUpdateTerminationProtectionOutput  = UpdateTerminationProtectionOutput { "StackId": (NullOrUndefined Nothing) }
+newUpdateTerminationProtectionOutput  = UpdateTerminationProtectionOutput { "StackId": Nothing }
 
 -- | Constructs UpdateTerminationProtectionOutput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newUpdateTerminationProtectionOutput' :: ( { "StackId" :: NullOrUndefined (StackId) } -> {"StackId" :: NullOrUndefined (StackId) } ) -> UpdateTerminationProtectionOutput
-newUpdateTerminationProtectionOutput'  customize = (UpdateTerminationProtectionOutput <<< customize) { "StackId": (NullOrUndefined Nothing) }
+newUpdateTerminationProtectionOutput' :: ( { "StackId" :: Maybe (StackId) } -> {"StackId" :: Maybe (StackId) } ) -> UpdateTerminationProtectionOutput
+newUpdateTerminationProtectionOutput'  customize = (UpdateTerminationProtectionOutput <<< customize) { "StackId": Nothing }
 
 
 
@@ -3772,8 +3771,8 @@ instance encodeUsePreviousValue :: Encode UsePreviousValue where encode = generi
 
 -- | <p>The input for <a>ValidateTemplate</a> action.</p>
 newtype ValidateTemplateInput = ValidateTemplateInput 
-  { "TemplateBody" :: NullOrUndefined (TemplateBody)
-  , "TemplateURL" :: NullOrUndefined (TemplateURL)
+  { "TemplateBody" :: Maybe (TemplateBody)
+  , "TemplateURL" :: Maybe (TemplateURL)
   }
 derive instance newtypeValidateTemplateInput :: Newtype ValidateTemplateInput _
 derive instance repGenericValidateTemplateInput :: Generic ValidateTemplateInput _
@@ -3783,22 +3782,22 @@ instance encodeValidateTemplateInput :: Encode ValidateTemplateInput where encod
 
 -- | Constructs ValidateTemplateInput from required parameters
 newValidateTemplateInput :: ValidateTemplateInput
-newValidateTemplateInput  = ValidateTemplateInput { "TemplateBody": (NullOrUndefined Nothing), "TemplateURL": (NullOrUndefined Nothing) }
+newValidateTemplateInput  = ValidateTemplateInput { "TemplateBody": Nothing, "TemplateURL": Nothing }
 
 -- | Constructs ValidateTemplateInput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newValidateTemplateInput' :: ( { "TemplateBody" :: NullOrUndefined (TemplateBody) , "TemplateURL" :: NullOrUndefined (TemplateURL) } -> {"TemplateBody" :: NullOrUndefined (TemplateBody) , "TemplateURL" :: NullOrUndefined (TemplateURL) } ) -> ValidateTemplateInput
-newValidateTemplateInput'  customize = (ValidateTemplateInput <<< customize) { "TemplateBody": (NullOrUndefined Nothing), "TemplateURL": (NullOrUndefined Nothing) }
+newValidateTemplateInput' :: ( { "TemplateBody" :: Maybe (TemplateBody) , "TemplateURL" :: Maybe (TemplateURL) } -> {"TemplateBody" :: Maybe (TemplateBody) , "TemplateURL" :: Maybe (TemplateURL) } ) -> ValidateTemplateInput
+newValidateTemplateInput'  customize = (ValidateTemplateInput <<< customize) { "TemplateBody": Nothing, "TemplateURL": Nothing }
 
 
 
 -- | <p>The output for <a>ValidateTemplate</a> action.</p>
 newtype ValidateTemplateOutput = ValidateTemplateOutput 
-  { "Parameters" :: NullOrUndefined (TemplateParameters)
-  , "Description" :: NullOrUndefined (Description)
-  , "Capabilities" :: NullOrUndefined (Capabilities)
-  , "CapabilitiesReason" :: NullOrUndefined (CapabilitiesReason)
-  , "DeclaredTransforms" :: NullOrUndefined (TransformsList)
+  { "Parameters" :: Maybe (TemplateParameters)
+  , "Description" :: Maybe (Description)
+  , "Capabilities" :: Maybe (Capabilities)
+  , "CapabilitiesReason" :: Maybe (CapabilitiesReason)
+  , "DeclaredTransforms" :: Maybe (TransformsList)
   }
 derive instance newtypeValidateTemplateOutput :: Newtype ValidateTemplateOutput _
 derive instance repGenericValidateTemplateOutput :: Generic ValidateTemplateOutput _
@@ -3808,12 +3807,12 @@ instance encodeValidateTemplateOutput :: Encode ValidateTemplateOutput where enc
 
 -- | Constructs ValidateTemplateOutput from required parameters
 newValidateTemplateOutput :: ValidateTemplateOutput
-newValidateTemplateOutput  = ValidateTemplateOutput { "Capabilities": (NullOrUndefined Nothing), "CapabilitiesReason": (NullOrUndefined Nothing), "DeclaredTransforms": (NullOrUndefined Nothing), "Description": (NullOrUndefined Nothing), "Parameters": (NullOrUndefined Nothing) }
+newValidateTemplateOutput  = ValidateTemplateOutput { "Capabilities": Nothing, "CapabilitiesReason": Nothing, "DeclaredTransforms": Nothing, "Description": Nothing, "Parameters": Nothing }
 
 -- | Constructs ValidateTemplateOutput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newValidateTemplateOutput' :: ( { "Parameters" :: NullOrUndefined (TemplateParameters) , "Description" :: NullOrUndefined (Description) , "Capabilities" :: NullOrUndefined (Capabilities) , "CapabilitiesReason" :: NullOrUndefined (CapabilitiesReason) , "DeclaredTransforms" :: NullOrUndefined (TransformsList) } -> {"Parameters" :: NullOrUndefined (TemplateParameters) , "Description" :: NullOrUndefined (Description) , "Capabilities" :: NullOrUndefined (Capabilities) , "CapabilitiesReason" :: NullOrUndefined (CapabilitiesReason) , "DeclaredTransforms" :: NullOrUndefined (TransformsList) } ) -> ValidateTemplateOutput
-newValidateTemplateOutput'  customize = (ValidateTemplateOutput <<< customize) { "Capabilities": (NullOrUndefined Nothing), "CapabilitiesReason": (NullOrUndefined Nothing), "DeclaredTransforms": (NullOrUndefined Nothing), "Description": (NullOrUndefined Nothing), "Parameters": (NullOrUndefined Nothing) }
+newValidateTemplateOutput' :: ( { "Parameters" :: Maybe (TemplateParameters) , "Description" :: Maybe (Description) , "Capabilities" :: Maybe (Capabilities) , "CapabilitiesReason" :: Maybe (CapabilitiesReason) , "DeclaredTransforms" :: Maybe (TransformsList) } -> {"Parameters" :: Maybe (TemplateParameters) , "Description" :: Maybe (Description) , "Capabilities" :: Maybe (Capabilities) , "CapabilitiesReason" :: Maybe (CapabilitiesReason) , "DeclaredTransforms" :: Maybe (TransformsList) } ) -> ValidateTemplateOutput
+newValidateTemplateOutput'  customize = (ValidateTemplateOutput <<< customize) { "Capabilities": Nothing, "CapabilitiesReason": Nothing, "DeclaredTransforms": Nothing, "Description": Nothing, "Parameters": Nothing }
 
 
 
